@@ -1,15 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!--Hi, I´m Danna-->
-    <h1>hiii
-    
-    </h1>
+    <title>Trivel - Descubre el Mundo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <script type="module" src=".src/firebase/firebaseConfig.js"></script>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="Logo.png" alt="Trivel Logo" class="logo-img">
+            <h1>Trivel</h1>
+        </div>
+        <div class="nav-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#destinos">Destinos</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#about">Nosotros</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero">
+        <div class="hero-content">
+            <h1 class="animate-text">Descubre el Mundo</h1>
+            <p class="animate-text-delay">Explora destinos increíbles con nosotros</p>
+            <a href="#destinos" class="cta-button">Comenzar Aventura</a>
+        </div>
+    </header>
+
+    <section id="destinos" class="destinations">
+        <h2>Destinos Populares</h2>
+        <div class="destination-grid">
+            <div class="destination-card">
+                <img src="https://source.unsplash.com/600x400/?beach" alt="Playa">
+                <h3>Playas Paradisíacas</h3>
+                <p>Descubre las mejores playas del mundo</p>
+            </div>
+            <div class="destination-card">
+                <img src="https://source.unsplash.com/600x400/?mountain" alt="Montañas">
+                <h3>Montañas Majestuosas</h3>
+                <p>Aventuras en las alturas</p>
+            </div>
+            <div class="destination-card">
+                <img src="https://source.unsplash.com/600x400/?city" alt="Ciudades">
+                <h3>Ciudades Vibrantes</h3>
+                <p>Explora culturas fascinantes</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="services">
+        <h2>Nuestros Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-plane"></i>
+                <h3>Vuelos</h3>
+                <p>Las mejores tarifas aéreas</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-hotel"></i>
+                <h3>Hoteles</h3>
+                <p>Hospedaje de calidad</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-map-marked-alt"></i>
+                <h3>Tours</h3>
+                <p>Experiencias únicas</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-car"></i>
+                <h3>Transporte</h3>
+                <p>Traslados seguros</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>Sobre Nosotros</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Somos una agencia de viajes comprometida con brindarte las mejores experiencias turísticas. Con años de experiencia en el sector, garantizamos calidad y satisfacción en cada viaje.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Más de 10 años de experiencia</li>
+                    <li><i class="fas fa-check"></i> Atención personalizada</li>
+                    <li><i class="fas fa-check"></i> Destinos exclusivos</li>
+                </ul>
+            </div>
+            <div class="about-image">
+                <img src="https://source.unsplash.com/800x600/?travel" alt="Sobre nosotros">
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <h2>Contáctanos</h2>
+        <div class="contact-container">
+            <form class="contact-form">
+                <input type="text" placeholder="Nombre" required>
+                <input type="email" placeholder="Email" required>
+                <input type="tel" placeholder="Teléfono">
+                <textarea placeholder="Mensaje" required></textarea>
+                <button type="submit" class="submit-btn">Enviar Mensaje</button>
+            </form>
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>123 Calle Principal, Ciudad</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <p>+1 234 567 890</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>info@trivel.com</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Trivel</h3>
+                <p>Tu compañero de viajes perfecto</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <a href="#inicio">Inicio</a>
+                <a href="#destinos">Destinos</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Tu email">
+                    <button type="submit">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Trivel. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
