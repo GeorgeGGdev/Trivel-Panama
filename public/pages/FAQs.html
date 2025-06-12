@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes - Trivel Panamá</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/faqs.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="../assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
+                <span class="logo-text">Trivel Panamá</span>
+            </a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#destinations">Destinations</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="ContactUs.html">Contact</a></li>
+                <li><a href="FAQs.html" class="active">FAQs</a></li>
+            </ul>
+        </nav>
+        <a href="login.html" class="auth-btn">Login / Register</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="faq-hero">
+        <div class="hero-content">
+            <h1>Preguntas Frecuentes</h1>
+            <p>Encuentra respuestas a las preguntas más comunes sobre nuestros servicios</p>
+        </div>
+        <div class="wave-container">
+            <div class="wave"></div>
+        </div>
+    </section>
+
+    <!-- FAQ Navigation -->
+    <section class="faq-navigation">
+        <div class="container">
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-category="general">
+                    <i class="fas fa-info-circle"></i>
+                    General
+                </button>
+                <button class="nav-tab" data-category="reservations">
+                    <i class="fas fa-calendar-check"></i>
+                    Reservas
+                </button>
+                <button class="nav-tab" data-category="destinations">
+                    <i class="fas fa-map-marked-alt"></i>
+                    Destinos
+                </button>
+                <button class="nav-tab" data-category="payment">
+                    <i class="fas fa-credit-card"></i>
+                    Pagos
+                </button>
+                <button class="nav-tab" data-category="travel">
+                    <i class="fas fa-plane"></i>
+                    Viajes
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="faq-content">
+        <div class="container">
+            <!-- General FAQs -->
+            <div class="faq-category active" id="general">
+                <h2>Preguntas Generales</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Qué es Trivel Panamá?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Trivel Panamá es una agencia de viajes especializada en mostrar los destinos más hermosos de Panamá. Nos dedicamos a crear experiencias únicas y memorables para nuestros clientes, desde playas paradisíacas hasta aventuras en la selva.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Dónde están ubicados?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Nuestra oficina principal está ubicada en Panamá City, Calle 50, Edificio Plaza. También contamos con representantes en diferentes destinos turísticos del país.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Ofrecen servicios en otros idiomas?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sí, ofrecemos servicios en español, inglés y portugués. Nuestro equipo está capacitado para atender a turistas de diferentes nacionalidades.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Cuál es el horario de atención?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Nuestro horario de atención es de lunes a viernes de 8:00 AM a 6:00 PM, y los sábados de 9:00 AM a 2:00 PM. También puedes contactarnos por WhatsApp 24/7 para emergencias.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reservations FAQs -->
+            <div class="faq-category" id="reservations">
+                <h2>Reservas y Reservaciones</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Con cuánta anticipación debo hacer mi reserva?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Recomendamos hacer las reservas con al menos 2-3 semanas de anticipación, especialmente durante temporada alta (diciembre-abril). Para viajes personalizados, sugerimos 1-2 meses de anticipación.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Puedo cancelar o modificar mi reserva?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sí, puedes cancelar o modificar tu reserva hasta 48 horas antes del viaje. Las políticas de reembolso varían según el tipo de paquete. Consulta nuestros términos y condiciones para más detalles.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Qué documentos necesito para reservar?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Necesitarás: pasaporte válido (para extranjeros), cédula de identidad (para panameños), información de contacto y método de pago. Para algunos destinos especiales, podrían requerirse documentos adicionales.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Ofrecen descuentos para grupos?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sí, ofrecemos descuentos especiales para grupos de 6 o más personas. También tenemos promociones para estudiantes, familias y viajeros frecuentes. Contáctanos para más información.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destinations FAQs -->
+            <div class="faq-category" id="destinations">
+                <h2>Destinos y Lugares</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Cuáles son los destinos más populares?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Nuestros destinos más populares incluyen: Bocas del Toro, San Blas, Playa Venao, Isla Grande, Taboga Island, Contadora Island y el Canal de Panamá. Cada uno ofrece experiencias únicas.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Cuál es la mejor época para visitar cada destino?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>La temporada seca (diciembre-abril) es ideal para la mayoría de destinos. Bocas del Toro es mejor de septiembre a noviembre, mientras que San Blas es perfecto todo el año. Te asesoramos según tus preferencias.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Los destinos son seguros para turistas?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sí, todos nuestros destinos son seguros. Trabajamos con proveedores confiables y seguimos protocolos de seguridad. Nuestros guías están capacitados para garantizar tu seguridad en todo momento.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Ofrecen tours personalizados?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutamente. Creamos itinerarios personalizados según tus intereses, presupuesto y tiempo disponible. Desde aventuras extremas hasta viajes relajantes, adaptamos todo a tus necesidades.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment FAQs -->
+            <div class="faq-category" id="payment">
+                <h2>Pagos y Precios</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Qué métodos de pago aceptan?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Aceptamos tarjetas de crédito/débito (Visa, MasterCard, American Express), transferencias bancarias, PayPal, y pagos en efectivo en nuestra oficina. También ofrecemos opciones de pago en cuotas.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Los precios incluyen todos los servicios?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Nuestros precios incluyen transporte, alojamiento, comidas especificadas, guías y actividades principales. Los gastos personales, propinas y actividades opcionales no están incluidos. Te proporcionamos un desglose detallado.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Ofrecen seguros de viaje?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sí, ofrecemos seguros de viaje opcionales que cubren cancelaciones, emergencias médicas, pérdida de equipaje y más. Te recomendamos contratar el seguro para mayor tranquilidad.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Hay cargos ocultos?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No, somos completamente transparentes con nuestros precios. Todos los cargos están claramente especificados en tu cotización. No hay sorpresas ni cargos ocultos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Travel FAQs -->
+            <div class="faq-category" id="travel">
+                <h2>Información de Viaje</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Qué debo empacar para mi viaje?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Te proporcionamos una lista de empaque específica para cada destino. En general, incluye: ropa cómoda, protector solar, repelente de insectos, documentos, medicamentos personales y cámara fotográfica.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Qué pasa si hay mal tiempo?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Monitoreamos constantemente las condiciones climáticas. Si hay mal tiempo, te ofrecemos reprogramar el viaje sin costo adicional o un reembolso completo. Tu seguridad es nuestra prioridad.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Los guías hablan inglés?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sí, todos nuestros guías están certificados y hablan español e inglés. Algunos también hablan portugués y otros idiomas. Especifica tu idioma preferido al hacer la reserva.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Qué pasa si tengo necesidades especiales?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Nos adaptamos a necesidades especiales como movilidad reducida, dietas específicas, alergias, etc. Informa con anticipación para que podamos preparar todo adecuadamente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section class="contact-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>¿No encontraste tu respuesta?</h2>
+                <p>Nuestro equipo está aquí para ayudarte con cualquier pregunta adicional que tengas.</p>
+                <div class="cta-buttons">
+                    <a href="ContactUs.html" class="cta-btn primary">
+                        <i class="fas fa-envelope"></i>
+                        Contáctanos
+                    </a>
+                    <a href="tel:+5071234567" class="cta-btn secondary">
+                        <i class="fas fa-phone"></i>
+                        Llamar Ahora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-wave"></div>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Trivel Panama</h3>
+                    <p>Tu puerta de entrada a las mejores experiencias en Panamá. Descubre playas paradisíacas, cultura vibrante y aventuras inolvidables.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#destinations">Destinos</a></li>
+                        <li><a href="index.html#gallery">Galería</a></li>
+                        <li><a href="ContactUs.html">Contacto</a></li>
+                        <li><a href="FAQs.html">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Destinos Populares</h3>
+                    <ul>
+                        <li><a href="#">Bocas del Toro</a></li>
+                        <li><a href="#">San Blas</a></li>
+                        <li><a href="#">Playa Venao</a></li>
+                        <li><a href="#">Isla Grande</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-envelope"></i> info@trivelpanama.com</li>
+                        <li><i class="fas fa-phone"></i> +507 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Panamá City, Panamá</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Trivel Panamá. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../JS/faqs.js"></script>
+</body>
+</html> 
