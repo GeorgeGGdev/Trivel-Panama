@@ -14,12 +14,18 @@
         <div class="logo">
             <a href="#" class="logo-link">
                 <img src="../assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
-                <span class="logo-text">Trivel Panamá</span>
+                <span class="logo-text">Trivel Panama</span>
             </a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
         <nav class="nav-menu">
             <ul>
                 <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
                 <li><a href="#destinations">Destinations</a></li>
                 <li><a href="#gallery">Gallery</a></li>
             </ul>
@@ -31,11 +37,46 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Discover Panama's Hidden Gems</h1>
-            <p>Experience the beauty of paradise</p>
+            <p class="hero-subtitle">Experience the beauty of paradise</p>
             <button class="cta-button">Explore Now</button>
         </div>
         <div class="wave-container">
             <div class="wave"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>About Us</h2>
+                <p class="subtitle">Your travel companion in Panama</p>
+                <div class="about-description">
+                    <p>At Trivel Panama, we are passionate about showcasing the beauty and diversity of our country. From the crystal clear Caribbean beaches to the perfect Pacific waves, we help you discover the most incredible destinations.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="500">0</span>
+                            <span class="stat-label">Organized Trips</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="1000">0</span>
+                            <span class="stat-label">Satisfied Customers</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="50">0</span>
+                            <span class="stat-label">Unique Destinations</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="../assets/img/about-us.jpg" alt="Our Team">
+                <div class="floating-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Explore with Us</h3>
+                    <p>Discover the magic of Panama</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -55,10 +96,10 @@
             </div>
             <div class="card">
                 <div class="card-image">
-                    <img src="../assets/img/SanBlas.jpg" alt="San Blas">
+                    <img src="../assets/img/SanBlas.jpg" alt="Guna Yala">
                 </div>
                 <div class="card-content">
-                    <h3>San Blas</h3>
+                    <h3>Guna Yala</h3>
                     <p>Discover pristine islands and rich indigenous culture in this tropical paradise.</p>
                     <button class="learn-more">Learn More</button>
                 </div>
@@ -113,6 +154,22 @@
         </div>
     </section>
 
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="newsletter-content">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter and be the first to know about our latest adventures and exclusive offers!</p>
+            <form class="newsletter-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <textarea placeholder="Send us a message (optional)"></textarea>
+                <button type="submit" class="subscribe-btn">Subscribe Now</button>
+            </form>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2>Contact Us</h2>
@@ -135,41 +192,6 @@
                 <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/trivelpanama?utm_source=ig_web_button_share_sheet&igsh=MTdyeGJ1OTZrazBtcQ==" class="social-icon"><i class="fab fa-instagram"></i></a>
                 <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- After Contact Section and before Footer -->
-    <section id="about" class="about">
-        <div class="about-content">
-            <div class="about-text">
-                <h2>About Us</h2>
-                <p class="subtitle">Your travel companion in Panama</p>
-                <div class="about-description">
-                    <p>At Trivel Panama, we are passionate about showcasing the beauty and diversity of our country. From the crystal clear Caribbean beaches to the perfect Pacific waves, we help you discover the most incredible destinations.</p>
-                    <div class="stats">
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="500">0</span>
-                            <span class="stat-label">Organized Trips</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="1000">0</span>
-                            <span class="stat-label">Satisfied Customers</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="50">0</span>
-                            <span class="stat-label">Unique Destinations</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="about-image">
-                <img src="images/about-us.jpg" alt="Our Team">
-                <div class="floating-card">
-                    <i class="fas fa-map-marked-alt"></i>
-                    <h3>Explore with Us</h3>
-                    <p>Discover the magic of Panama</p>
-                </div>
             </div>
         </div>
     </section>
