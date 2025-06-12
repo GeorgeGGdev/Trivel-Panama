@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contáctanos - Trivel Panamá</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="../assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
+                <span class="logo-text">Trivel Panamá</span>
+            </a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#destinations">Destinations</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="ContactUs.html" class="active">Contact</a></li>
+                <li><a href="FAQs.html">FAQs</a></li>
+            </ul>
+        </nav>
+        <a href="login.html" class="auth-btn">Login / Register</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="hero-content">
+            <h1>Contáctanos</h1>
+            <p>Estamos aquí para ayudarte a planificar tu próxima aventura en Panamá</p>
+        </div>
+        <div class="wave-container">
+            <div class="wave"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2>Envíanos un Mensaje</h2>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nombre Completo *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Asunto *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Selecciona un asunto</option>
+                                <option value="reservation">Reserva de Viaje</option>
+                                <option value="information">Información General</option>
+                                <option value="custom">Viaje Personalizado</option>
+                                <option value="support">Soporte Técnico</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje *</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Cuéntanos sobre tu viaje ideal..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span>Enviar Mensaje</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info-container">
+                    <h2>Información de Contacto</h2>
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Correo Electrónico</h3>
+                                <p>info@trivelpanama.com</p>
+                                <p>reservas@trivelpanama.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Teléfono</h3>
+                                <p>+507 123-4567</p>
+                                <p>+507 987-6543</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Dirección</h3>
+                                <p>Calle 50, Edificio Plaza</p>
+                                <p>Panamá City, Panamá</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Horario de Atención</h3>
+                                <p>Lunes - Viernes: 8:00 AM - 6:00 PM</p>
+                                <p>Sábados: 9:00 AM - 2:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="social-media-section">
+                        <h3>Síguenos en Redes Sociales</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="https://www.instagram.com/trivelpanama?utm_source=ig_web_button_share_sheet&igsh=MTdyeGJ1OTZrazBtcQ==" class="social-link instagram">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="#" class="social-link tiktok">
+                                <i class="fab fa-tiktok"></i>
+                                <span>TikTok</span>
+                            </a>
+                            <a href="#" class="social-link whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Button -->
+                    <div class="faq-section">
+                        <h3>¿Tienes Preguntas?</h3>
+                        <p>Consulta nuestra sección de preguntas frecuentes para encontrar respuestas rápidas.</p>
+                        <a href="FAQs.html" class="faq-btn">
+                            <i class="fas fa-question-circle"></i>
+                            Ver Preguntas Frecuentes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2>Nuestra Ubicación</h2>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.5!2d-79.5342!3d8.9824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwNTgnNTguNiJOIDc5wrAzMicwMy4xIlc!5e0!3m2!1ses!2spa!4v1234567890"
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-wave"></div>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Trivel Panama</h3>
+                    <p>Tu puerta de entrada a las mejores experiencias en Panamá. Descubre playas paradisíacas, cultura vibrante y aventuras inolvidables.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#destinations">Destinos</a></li>
+                        <li><a href="index.html#gallery">Galería</a></li>
+                        <li><a href="ContactUs.html">Contacto</a></li>
+                        <li><a href="FAQs.html">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Destinos Populares</h3>
+                    <ul>
+                        <li><a href="#">Bocas del Toro</a></li>
+                        <li><a href="#">San Blas</a></li>
+                        <li><a href="#">Playa Venao</a></li>
+                        <li><a href="#">Isla Grande</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-envelope"></i> info@trivelpanama.com</li>
+                        <li><i class="fas fa-phone"></i> +507 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Panamá City, Panamá</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Trivel Panamá. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="success-content">
+                <i class="fas fa-check-circle"></i>
+                <h3>¡Mensaje Enviado!</h3>
+                <p>Gracias por contactarnos. Nos pondremos en contacto contigo pronto.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JS/contact.js"></script>
+</body>
+</html>
