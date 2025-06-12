@@ -1,67 +1,83 @@
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
-.testimonials-container {
-    width: 80%;
-    max-width: 600px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-    background-color: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.testimonial {
-    display: none;
-    padding: 20px;
+section {
+    padding: 40px;
     text-align: center;
 }
 
-.testimonial p {
-    font-size: 18px;
-    color: #555;
-}
-
-.testimonial h4 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 10px;
+h2 {
     color: #333;
 }
 
+#testimonials {
+    background-color: #fff;
+    padding: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.carousel {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-item {
+    display: none;
+    padding: 20px;
+    font-size: 1.2rem;
+    color: #555;
+    text-align: center;
+}
+
+.carousel-item.active {
+    display: block;
+}
+
+.carousel-item span {
+    display: block;
+    font-style: italic;
+    color: #777;
+    margin-top: 10px;
+}
+
 button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #007BFF;
     color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
     border-radius: 50%;
-    font-size: 18px;
-}
-
-button.prev {
-    left: 10px;
-}
-
-button.next {
-    right: 10px;
 }
 
 button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #0056b3;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .carousel {
+        width: 100%;
+    }
+
+    button {
+        font-size: 1.2rem;
+        padding: 8px;
+    }
 }
