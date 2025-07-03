@@ -383,4 +383,39 @@ document.addEventListener('DOMContentLoaded', () => {
     stats.forEach(stat => {
         statsObserver.observe(stat);
     });
+
+    // Testimonial Carousel Logic
+    const testimonials = document.querySelectorAll('.testimonial-carousel .testimonial');
+    const leftArrow = document.querySelector('.testimonial-carousel .carousel-arrow.left');
+    const rightArrow = document.querySelector('.testimonial-carousel .carousel-arrow.right');
+    let current = 0;
+
+    function showTestimonial(index) {
+        testimonials.forEach((t, i) => {
+            t.classList.remove('active');
+            if (i === index) t.classList.add('active');
+        });
+    }
+
+    leftArrow.addEventListener('click', () => {
+        current = (current - 1 + testimonials.length) % testimonials.length;
+        showTestimonial(current);
+    });
+
+    rightArrow.addEventListener('click', () => {
+        current = (current + 1) % testimonials.length;
+        showTestimonial(current);
+    });
+
+    // Optional: swipe support for mobile
+    let startX = 0;
+    const track = document.querySelector('.testimonial-carousel .carousel-track');
+    track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+    track.addEventListener('touchend', (e) => {
+        let endX = e.changedTouches[0].clientX;
+        if (endX - startX > 50) leftArrow.click();
+        else if (startX - endX > 50) rightArrow.click();
+    });
 }); 
