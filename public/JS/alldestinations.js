@@ -98,12 +98,12 @@ document.addEventListener('DOMContentLoaded', () => {
 // Animación de botones de filtro
 filterButtons.forEach(button => {
     button.addEventListener('mouseenter', () => {
-        button.style.transform = 'scale(1.05)';
-        button.style.boxShadow = '0 5px 15px rgba(255, 107, 0, 0.2)';
+        button.style.transform = 'translateY(-5px)';
+        button.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
     });
 
     button.addEventListener('mouseleave', () => {
-        button.style.transform = 'scale(1)';
-        button.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';
+        button.style.transform = 'translateY(0)';
+        button.style.boxShadow = 'none';
     });
 });
