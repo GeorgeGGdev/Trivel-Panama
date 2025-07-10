@@ -168,41 +168,61 @@ document.addEventListener('DOMContentLoaded', () => {
         tabBtns[0].click();
     }
 
-    // Number counter animation
-    const stats = document.querySelectorAll('.stat-number');
-    
-    function animateValue(element, start, end, duration) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            const value = Math.floor(progress * (end - start) + start);
-            element.textContent = value;
-            
-            // Add pulse effect
-            element.style.transform = `scale(${1 + Math.sin(progress * Math.PI) * 0.1})`;
-            
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            } else {
-                element.style.transform = 'scale(1)';
-            }
-        };
-        window.requestAnimationFrame(step);
-    }
+    // Hamburger Menu Functionality
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-menu a');
 
-    function startCounterAnimation() {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking a link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    });
+
+    // Stats Counter Animation
+    const stats = document.querySelectorAll('.stat-number');
+
+    const animateStats = () => {
         stats.forEach(stat => {
             const target = parseInt(stat.getAttribute('data-count'));
-            animateValue(stat, 0, target, 2000);
+            const duration = 2000; // 2 seconds
+            const step = target / (duration / 16); // 60fps
+            let current = 0;
+
+            const updateCount = () => {
+                current += step;
+                if (current < target) {
+                    stat.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCount);
+                } else {
+                    stat.textContent = target;
+                }
+            };
+
+            updateCount();
         });
-    }
+    };
 
     // Intersection Observer for stats animation
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                startCounterAnimation();
+                animateStats();
                 observer.unobserve(entry.target);
             }
         });
@@ -362,5 +382,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     stats.forEach(stat => {
         statsObserver.observe(stat);
+    });
+
+    // Testimonial Carousel Logic
+    const testimonials = document.querySelectorAll('.testimonial-carousel .testimonial');
+    const leftArrow = document.querySelector('.testimonial-carousel .carousel-arrow.left');
+    const rightArrow = document.querySelector('.testimonial-carousel .carousel-arrow.right');
+    let current = 0;
+
+    function showTestimonial(index) {
+        testimonials.forEach((t, i) => {
+            t.classList.remove('active');
+            if (i === index) t.classList.add('active');
+        });
+    }
+
+    leftArrow.addEventListener('click', () => {
+        current = (current - 1 + testimonials.length) % testimonials.length;
+        showTestimonial(current);
+    });
+
+    rightArrow.addEventListener('click', () => {
+        current = (current + 1) % testimonials.length;
+        showTestimonial(current);
+    });
+
+    // Optional: swipe support for mobile
+    let startX = 0;
+    const track = document.querySelector('.testimonial-carousel .carousel-track');
+    track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+    track.addEventListener('touchend', (e) => {
+        let endX = e.changedTouches[0].clientX;
+        if (endX - startX > 50) leftArrow.click();
+        else if (startX - endX > 50) rightArrow.click();
     });
 }); 

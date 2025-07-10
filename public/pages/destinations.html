@@ -2,50 +2,101 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Destinations</title>
+    <title>Destinos - Trivel Panamá</title>
     <link rel="stylesheet" href="../CSS/destinations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <a href="#" class="logo-link">
+                <img src="../assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
+                <span class="logo-text">Trivel Panamá</span>
+            </a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#gallery">Galería</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+        <a href="login.html" class="auth-btn">Iniciar Sesión / Registrarse</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1>Descubre Panamá</h1>
+        <p>Explora los destinos más increíbles de Panamá con Trivel</p>
+        <button class="explore-btn">Explorar Destinos</button>
+    </section>
+
+    <!-- Destinations Section -->
     <section class="destinations">
-        <h2>Popular Destinations</h2>
-        <div class="destination-cards" id="cards-container">
-        <section id="destinations" class="destinations">
-        <h2>Featured Destinations</h2>
-        <div class="destination-cards">
-            <div class="card">
-                <div class="card-image">
-                    <img src="../assets/img/BocasToro.jpeg" alt="Bocas del Toro">
-                </div>
-                <div class="card-content">
-                    <h3>Bocas del Toro</h3>
-                    <p>Experience the Caribbean charm with crystal clear waters and vibrant marine life.</p>
-                    <button class="learn-more">Learn More</button>
-                </div>
+        <div class="container">
+            <h2>Destinos Destacados</h2>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="caribe">Caribe</button>
+                <button class="filter-btn" data-filter="pacifico">Pacífico</button>
+                <button class="filter-btn" data-filter="interior">Interior</button>
             </div>
-            <div class="card">
-                <div class="card-image">
-                    <img src="../assets/img/SanBlas.jpg" alt="San Blas">
+            <div class="destination-cards" id="cards-container">
+                <div class="card" data-category="caribe">
+                    <div class="card-image">
+                        <img src="../assets/img/BocasToro.jpeg" alt="Bocas del Toro">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Bocas del Toro</h3>
+                        <p>Experimenta el encanto del Caribe con aguas cristalinas y vida marina vibrante.</p>
+                        <div class="card-footer">
+                            <span class="category">Caribe</span>
+                            <button class="learn-more">Más información</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <h3>San Blas</h3>
-                    <p>Discover pristine islands and rich indigenous culture in this tropical paradise.</p>
-                    <button class="learn-more">Learn More</button>
+                <div class="card" data-category="caribe">
+                    <div class="card-image">
+                        <img src="../assets/img/SanBlas.jpg" alt="San Blas">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>San Blas</h3>
+                        <p>Descubre islas vírgenes y rica cultura indígena en este paraíso tropical.</p>
+                        <div class="card-footer">
+                            <span class="category">Caribe</span>
+                            <button class="learn-more">Más información</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="card-image">
-                    <img src="../assets/img/venao.jpg" alt="Playa Venao">
-                </div>
-                <div class="card-content">
-                    <h3>Playa Venao</h3>
-                    <p>Perfect waves and stunning sunsets await at this Pacific coast gem.</p>
-                    <button class="learn-more">Learn More</button>
+                <div class="card" data-category="pacifico">
+                    <div class="card-image">
+                        <img src="../assets/img/venao.jpg" alt="Playa Venao">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Playa Venao</h3>
+                        <p>Olas perfectas y atardeceres espectaculares en esta joya de la costa Pacífica.</p>
+                        <div class="card-footer">
+                            <span class="category">Pacífico</span>
+                            <button class="learn-more">Más información</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Trivel Panamá. Todos los derechos reservados.</p>
         </div>
-    </section>
+    </footer>
+
     <script src="destinations.js"></script>
 </body>
 </html>
