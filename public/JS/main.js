@@ -318,7 +318,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Add animation to navigation links
-    const navLinks = document.querySelectorAll('.nav-menu a');
     navLinks.forEach(link => {
         link.addEventListener('mouseenter', () => {
             link.style.color = 'var(--primary-color)';
@@ -384,38 +383,53 @@ document.addEventListener('DOMContentLoaded', () => {
         statsObserver.observe(stat);
     });
 
-    // Testimonial Carousel Logic
-    const testimonials = document.querySelectorAll('.testimonial-carousel .testimonial');
-    const leftArrow = document.querySelector('.testimonial-carousel .carousel-arrow.left');
-    const rightArrow = document.querySelector('.testimonial-carousel .carousel-arrow.right');
-    let current = 0;
+    // 3D Testimonial Carousel Logic
+    (function() {
+        const testimonials = document.querySelectorAll('.testimonial-3d');
+        const leftArrow = document.querySelector('.carousel-3d-arrow.left');
+        const rightArrow = document.querySelector('.carousel-3d-arrow.right');
+        if (!testimonials.length || !leftArrow || !rightArrow) {
+            console.error('No se encontraron los elementos del carrusel 3D.');
+            return;
+        }
+        let current = 0;
 
-    function showTestimonial(index) {
-        testimonials.forEach((t, i) => {
-            t.classList.remove('active');
-            if (i === index) t.classList.add('active');
+        function update3DCarousel() {
+            testimonials.forEach((t, i) => {
+                t.classList.remove('active', 'left', 'right');
+                if (i === current) {
+                    t.classList.add('active');
+                } else if (i === (current - 1 + testimonials.length) % testimonials.length) {
+                    t.classList.add('left');
+                } else if (i === (current + 1) % testimonials.length) {
+                    t.classList.add('right');
+                }
+            });
+            console.log('update3DCarousel', current);
+        }
+
+        leftArrow.addEventListener('click', () => {
+            current = (current - 1 + testimonials.length) % testimonials.length;
+            update3DCarousel();
         });
-    }
+        rightArrow.addEventListener('click', () => {
+            current = (current + 1) % testimonials.length;
+            update3DCarousel();
+        });
 
-    leftArrow.addEventListener('click', () => {
-        current = (current - 1 + testimonials.length) % testimonials.length;
-        showTestimonial(current);
-    });
+        // Swipe support for mobile
+        const track = document.querySelector('.carousel-3d-track');
+        let startX = 0;
+        track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+        track.addEventListener('touchend', (e) => {
+            let endX = e.changedTouches[0].clientX;
+            if (endX - startX > 50) leftArrow.click();
+            else if (startX - endX > 50) rightArrow.click();
+        });
 
-    rightArrow.addEventListener('click', () => {
-        current = (current + 1) % testimonials.length;
-        showTestimonial(current);
-    });
-
-    // Optional: swipe support for mobile
-    let startX = 0;
-    const track = document.querySelector('.testimonial-carousel .carousel-track');
-    track.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-    });
-    track.addEventListener('touchend', (e) => {
-        let endX = e.changedTouches[0].clientX;
-        if (endX - startX > 50) leftArrow.click();
-        else if (startX - endX > 50) rightArrow.click();
-    });
+        // Inicializar
+        update3DCarousel();
+    })();
 }); 
