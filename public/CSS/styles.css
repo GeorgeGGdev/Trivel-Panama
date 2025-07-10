@@ -1126,4 +1126,143 @@ body {
 
 .rotate-animation {
     animation: rotate 20s linear infinite;
-} 
+}
+
+/* Testimonial Carousel Styles */
+.testimonial-carousel {
+    background: linear-gradient(135deg, #0099ff 0%, #ffffff 100%);
+    padding: 60px 0 40px 0;
+    text-align: center;
+    position: relative;
+}
+
+.testimonial-carousel h2 {
+    color: #ff7f32;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+}
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.carousel-arrow {
+    background: #ff7f32;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.carousel-arrow:hover {
+    background: #0099ff;
+}
+
+.carousel-track {
+    display: flex;
+    overflow: hidden;
+    width: 400px;
+    min-height: 180px;
+    position: relative;
+}
+
+.testimonial {
+    min-width: 100%;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s cubic-bezier(.77,0,.18,1);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(255,255,255,0.95);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,153,255,0.08);
+    padding: 30px 20px 20px 20px;
+    z-index: 1;
+}
+
+.testimonial.active {
+    opacity: 1;
+    transform: translateX(0);
+    position: relative;
+    z-index: 2;
+}
+
+.testimonial-text {
+    color: #0099ff;
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.testimonial-author img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #ff7f32;
+    background: #fff;
+}
+
+.testimonial-author span {
+    color: #ff7f32;
+    font-weight: 600;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Testimonial Carousel Logic */
+document.addEventListener('DOMContentLoaded', function() {
+    const testimonials = document.querySelectorAll('.testimonial-carousel .testimonial');
+    const leftArrow = document.querySelector('.testimonial-carousel .carousel-arrow.left');
+    const rightArrow = document.querySelector('.testimonial-carousel .carousel-arrow.right');
+    let current = 0;
+
+    function showTestimonial(index) {
+        testimonials.forEach((t, i) => {
+            t.classList.remove('active');
+            if (i === index) t.classList.add('active');
+        });
+    }
+
+    leftArrow.addEventListener('click', () => {
+        current = (current - 1 + testimonials.length) % testimonials.length;
+        showTestimonial(current);
+    });
+
+    rightArrow.addEventListener('click', () => {
+        current = (current + 1) % testimonials.length;
+        showTestimonial(current);
+    });
+
+    // Optional: swipe support for mobile
+    let startX = 0;
+    const track = document.querySelector('.testimonial-carousel .carousel-track');
+    track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+    track.addEventListener('touchend', (e) => {
+        let endX = e.changedTouches[0].clientX;
+        if (endX - startX > 50) leftArrow.click();
+        else if (startX - endX > 50) rightArrow.click();
+    });
+}); 
