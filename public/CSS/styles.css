@@ -1258,3 +1258,120 @@ body {
         padding: 24px 8vw 24px 8vw;
     }
 } 
+
+/* Contact & Newsletter Side by Side */
+.contact-newsletter-row {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1200px;
+  margin: 60px auto 0 auto;
+  padding: 0 2rem 60px 2rem;
+}
+.contact-half, .newsletter-half {
+  flex: 1 1 0;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 4px 24px rgba(26,115,232,0.07);
+  padding: 2.5rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.contact-half {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 2px solid #f0f4fa;
+}
+.newsletter-half {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.contact-header, .newsletter-header {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+.contact-header h2, .newsletter-header h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+.contact-header p, .newsletter-header p {
+  color: #555;
+  font-size: 1.05rem;
+}
+.contact-info {
+  margin-bottom: 1.5rem;
+}
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.info-icon {
+  background: var(--gradient-blue);
+  color: #fff;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  font-size: 1.2rem;
+}
+.info-text h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+}
+.info-text p {
+  margin: 0;
+  color: #444;
+  font-size: 1rem;
+}
+.social-media {
+  margin-top: 1.5rem;
+}
+.social-media h4 {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+.social-icon {
+  background: var(--gradient-orange);
+  color: #fff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: background 0.3s, transform 0.2s;
+}
+.social-icon:hover {
+  background: var(--primary-color);
+  transform: scale(1.1);
+}
+@media (max-width: 900px) {
+  .contact-newsletter-row {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0 1rem 40px 1rem;
+  }
+  .contact-half, .newsletter-half {
+    border-radius: 22px;
+    border-right: none;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+  }
+} 

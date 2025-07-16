@@ -32,9 +32,7 @@
                 <a href="pages/destinations.html"> All Destinations</a></li>
             </ul>
         </nav>
-        <div id="auth-area">
-            <!-- Aquí se mostrará el botón de login o el nombre del usuario -->
-        </div>
+        <div id="auth-area"></div>
     </header>
 
     <!-- Hero Section -->
@@ -417,23 +415,22 @@
                         displayName = userDoc.data().fullName;
                     }
                     if (!displayName) {
-                        // Abreviar el correo: ejemplo juan****@gmail.com
+                        // Mostrar solo las primeras 5 letras del correo
                         const email = user.email;
-                        const atIdx = email.indexOf('@');
                         let shortEmail = email;
-                        if (atIdx > 2) {
-                            shortEmail = email.substring(0, 2) + '****' + email.substring(atIdx - 1);
+                        if (email.length > 5) {
+                            shortEmail = email.substring(0, 5) + '...';
                         }
                         displayName = shortEmail;
                     }
-                    authArea.innerHTML = `<span style="font-weight:600;">${displayName}</span> <button id="logout-btn" style="margin-left:10px;">Cerrar sesión</button>`;
+                    authArea.innerHTML = `<span style=\"font-weight:600;\">${displayName}</span> <button id=\"logout-btn\" class=\"auth-btn\" style=\"margin-left:10px;\">Cerrar sesión</button>`;
                     document.getElementById('logout-btn').onclick = function() {
                         firebase.auth().signOut().then(function() {
                             window.location.href = 'pages/login.html';
                         });
                     };
                 } catch (e) {
-                    authArea.innerHTML = `<span>${user.email}</span> <button id="logout-btn">Cerrar sesión</button>`;
+                    authArea.innerHTML = `<span>${user.email}</span> <button id="logout-btn" class="auth-btn" style="margin-left:10px;">Cerrar sesión</button>`;
                     document.getElementById('logout-btn').onclick = function() {
                         firebase.auth().signOut();
                         window.location.reload();
