@@ -198,8 +198,7 @@ body {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(26, 115, 232, 0.7), rgba(255, 107, 0, 0.7)),
-                url('../assets/img/hero-bg.jpg') center/cover no-repeat;
+    background: url('../assets/img/home.png') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
