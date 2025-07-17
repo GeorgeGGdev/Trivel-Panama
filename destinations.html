@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Destinos - Trivel Panamá</title>
+    <link rel="stylesheet" href="../CSS/destinations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="logo">
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
+                <span class="logo-text">Trivel Panama</span>
+            </a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#destinations">Destinations</a></li>
+                <li><a href="carrusel.html">Gallery</a></li>
+                <li><a href="ContactUs.html">Contact</a></li>
+                <li><a href="destinations.html">All Destinations</a></li>
+                <li><a href="FAQs.html">FAQs</a></li>
+            </ul>
+        </nav>
+        <div id="auth-area"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1>Descubre Panamá</h1>
+        <p>Explora los destinos más increíbles de Panamá con Trivel</p>
+        <button class="explore-btn">Explorar Destinos</button>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="destinations">
+        <div class="container">
+            <h2>Destinos Destacados</h2>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="caribe">Caribe</button>
+                <button class="filter-btn" data-filter="pacifico">Pacífico</button>
+                <button class="filter-btn" data-filter="interior">Interior</button>
+            </div>
+            <div class="destination-cards" id="cards-container">
+                <div class="card" data-category="caribe">
+                    <div class="card-image">
+                        <img src="../assets/img/BocasToro.jpeg" alt="Bocas del Toro">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Bocas del Toro</h3>
+                        <p>Experimenta el encanto del Caribe con aguas cristalinas y vida marina vibrante.</p>
+                        <div class="card-footer">
+                            <span class="category">Caribe</span>
+                            <button class="learn-more">more information</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-category="caribe">
+                    <div class="card-image">
+                        <img src="../assets/img/SanBlas.jpg" alt="San Blas">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>San Blas</h3>
+                        <p>Descubre islas vírgenes y rica cultura indígena en este paraíso tropical.</p>
+                        <div class="card-footer">
+                            <span class="category">Caribe</span>
+                            <button class="learn-more">more information</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-category="pacifico">
+                    <div class="card-image">
+                        <img src="../assets/img/venao.jpg" alt="Playa Venao">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Playa Venao</h3>
+                        <p>Olas perfectas y atardeceres espectaculares en esta joya de la costa Pacífica.</p>
+                        <div class="card-footer">
+                            <span class="category">Pacífico</span>
+                            <button class="learn-more">more information</button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card" data-category="caribe">
+                    <div class="card-image">
+                        <img src="https://bocastours.com/wp-content/uploads/2022/03/Playa-Estrella-Bocas-del-Toro-Panama-4.webp" alt="San Blas">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Playa Estrella</h3>
+                        <p>Un paraíso cristalino donde el mar turquesa se mezcla con cientos de estrellas de mar. Tranquila, colorida y perfecta para relajarte o nadar rodeado de belleza natural.</p>
+                        <div class="card-footer">
+                            <span class="category">Caribe</span>
+                            <button class="learn-more">more information</button>
+                        </div>
+            </div>
+        </div>
+        <div class="card" data-category="interior">
+            <div class="card-image">
+                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/02/6c/85/a7/filename-vera-cruz-beach.jpg?w=1200&h=-1&s=1">
+                <div class="card-overlay"></div>
+            </div>
+            <div class="card-content">
+                <h3>Playa Veracruz</h3>
+                <p> a solo minutos de la ciudad de Panamá, te ofrece arena suave, brisa fresca y deliciosos mariscos frente al mar. ¡Perfecta para escapar, relajarte y disfrutar del atardecer con sabor local!</p>
+                <div class="card-footer">
+                    <span class="category">Interior</span>
+                    <button class="learn-more">more information</button>
+                </div>
+    </section>
+
+    <script src="../JS/alldestinations.js"></script>
+    <!-- Enhanced Footer -->
+    <footer class="footer">
+        <div class="footer-wave"></div>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Trivel Panama</h3>
+                    <p>Your gateway to the best experiences in Panama. Discover paradise beaches, vibrant culture, and unforgettable adventures.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="ContactUs.html">Contact</a></li>
+                        <li><a href="FAQs.html">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Popular Destinations</h3>
+                    <ul>
+                        <li><a href="#">Bocas del Toro</a></li>
+                        <li><a href="#">San Blas</a></li>
+                        <li><a href="#">Playa Venao</a></li>
+                        <li><a href="#">Panama City</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-envelope"></i> info@trivelpanama.com</li>
+                        <li><i class="fas fa-phone"></i> +507 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Panama City, Panama</li>
+                    </ul>
+                    <div class="social-media">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/trivelpanama?utm_source=ig_web_button_share_sheet&igsh=MTdyeGJ1OTZrazBtcQ==" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Your adventure begins here.</p>
+                <p>&copy; 2025 Trivel Panama. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
