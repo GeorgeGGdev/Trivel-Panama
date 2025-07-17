@@ -28,8 +28,9 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#destinations">Destinations</a></li>
                 <li><a href="pages/carrusel.html">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <a href="pages/destinations.html"> All Destinations</a></li>
+                <li><a href="pages/ContactUs.html">Contact</a></li>
+                <li><a href="pages/destinations.html">All Destinations</a></li>
+                <li><a href="pages/FAQs.html">FAQs</a></li>
             </ul>
         </nav>
         <div id="auth-area"></div>
@@ -37,6 +38,7 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-overlay"></div>
         <!-- Floating Icons Background -->
         <div class="floating-icons">
             <div class="floating-icon" data-speed="2">
@@ -65,7 +67,7 @@
             </div>
         </div>
         
-        <div class="hero-content">
+        <div class="hero-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
             <h1>Discover Panama's Hidden Gems</h1>
             <p class="hero-subtitle">Experience the beauty of paradise</p>
             <button class="cta-button">
@@ -86,29 +88,6 @@
                 <p class="subtitle">Your travel companion in Panama</p>
                 <div class="about-description">
                     <p>At Trivel Panama, we are passionate about showcasing the beauty and diversity of our country. From the crystal clear Caribbean beaches to the perfect Pacific waves, we help you discover the most incredible destinations.</p>
-                    <div class="stats">
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="fas fa-route"></i>
-                            </div>
-                            <span class="stat-number" data-count="500">0</span>
-                            <span class="stat-label">Organized Trips</span>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="fas fa-smile"></i>
-                            </div>
-                            <span class="stat-number" data-count="1000">0</span>
-                            <span class="stat-label">Satisfied Customers</span>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="fas fa-map-pin"></i>
-                            </div>
-                            <span class="stat-number" data-count="50">0</span>
-                            <span class="stat-label">Unique Destinations</span>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="about-image">
@@ -136,7 +115,7 @@
                 <div class="card-content">
                     <h3><i class="fas fa-map-marker-alt"></i> Bocas del Toro</h3>
                     <p>Experience the Caribbean charm with crystal clear waters and vibrant marine life.</p>
-                    <button class="learn-more">
+                    <button class="learn-more" onclick="window.location.href='pages/destinations.html'">
                         <span>Learn More</span>
                         <i class="fas fa-arrow-right"></i>
                     </button>
@@ -152,7 +131,7 @@
                 <div class="card-content">
                     <h3><i class="fas fa-map-marker-alt"></i> Guna Yala</h3>
                     <p>Discover pristine islands and rich indigenous culture in this tropical paradise.</p>
-                    <button class="learn-more">
+                    <button class="learn-more" onclick="window.location.href='pages/destinations.html'">
                         <span>Learn More</span>
                         <i class="fas fa-arrow-right"></i>
                     </button>
@@ -168,7 +147,7 @@
                 <div class="card-content">
                     <h3><i class="fas fa-map-marker-alt"></i> Playa Venao</h3>
                     <p>Perfect waves and stunning sunsets await at this Pacific coast gem.</p>
-                    <button class="learn-more">
+                    <button class="learn-more" onclick="window.location.href='pages/destinations.html'">
                         <span>Learn More</span>
                         <i class="fas fa-arrow-right"></i>
                     </button>
@@ -260,7 +239,7 @@
                                 <img src="assets/img/Isla Grande.jpg" alt="Lucía P.">
                             </div>
                             <div class="author-info">
-                                <span class="author-name">Lucía P.</span>
+                                <span class="author-name">Lucía Pascal</span>
                                 <span class="author-role">Explorer</span>
                             </div>
                         </div>
@@ -512,7 +491,7 @@
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <div class="auth-tabs">
-                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn active" data-tab="login">Loginn</button>
                 <button class="tab-btn" data-tab="register">Register</button>
             </div>
             <div class="tab-content" id="login">
