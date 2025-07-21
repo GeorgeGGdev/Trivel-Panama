@@ -1,0 +1,311 @@
+/* Destination Detail Page Styles */
+.highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.highlight-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,107,0,0.1);
+}
+
+.highlight-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(255,107,0,0.2);
+    border-color: rgba(255,107,0,0.2);
+}
+
+.highlight-item i {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.highlight-item h3 {
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.highlight-item p {
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+/* Nearby Sections */
+.nearby-section {
+    margin: 4rem 0;
+}
+
+.nearby-section h2 {
+    color: var(--accent-color);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.nearby-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-orange);
+    border-radius: 2px;
+}
+
+.nearby-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.nearby-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,107,0,0.1);
+}
+
+.nearby-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(255,107,0,0.2);
+    border-color: rgba(255,107,0,0.2);
+}
+
+.nearby-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    border: 3px solid rgba(255,107,0,0.2);
+}
+
+.nearby-item:hover img {
+    transform: scale(1.1);
+    border-color: rgba(255,107,0,0.3);
+}
+
+.nearby-info {
+    flex: 1;
+}
+
+.nearby-info h3 {
+    margin: 0;
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+.nearby-info p {
+    margin: 0.5rem 0;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.distance {
+    display: inline-block;
+    padding: 0.2rem 0.8rem;
+    background: var(--gradient-orange);
+    border-radius: 15px;
+    font-size: 0.9rem;
+    color: white;
+    margin-top: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .highlights {
+        grid-template-columns: 1fr;
+    }
+    
+    .nearby-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .nearby-item img {
+        width: 80px;
+        height: 80px;
+    }
+}
+:root {
+    --primary-color: #1a73e8;
+    --secondary-color: #4285f4;
+    --accent-color: #ef5c1d;
+    --accent2-color: #000000;
+    --accent-color-light: #ff8533;
+    --text-color: #202124;
+    --light-text: #fff;
+    --background-color: #ffffff;
+    --transition: all 0.3s ease;
+    --gradient-blue: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+    --gradient-orange: linear-gradient(135deg, #ff6b00 0%, #ff8533 100%);
+    --gradient-light: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+    --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.9) 100%);
+    --gradient-header: linear-gradient(135deg, #ff6b00 0%, #1a73e8 100%);
+    --gradient-footer: linear-gradient(135deg, #1a73e8 0%, #ff6b00 100%);
+}
+
+.destination-detail {
+    padding-top: 80px;
+    min-height: 100vh;
+    background: var(--background-color);
+}
+
+.destination-hero {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    margin-bottom: 4rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.destination-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.1);
+    transition: transform 0.5s ease;
+    border-radius: 20px;
+}
+
+.destination-hero:hover img {
+    transform: scale(1.05);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
+    border-radius: 20px;
+}
+
+.destination-hero h1 {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    color: white;
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.destination-info {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.destination-info h2 {
+    color: var(--accent2-color);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.destination-info p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 3rem;
+    text-align: justify;
+}
+
+.nearby-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.nearby-restaurants, .nearby-hotels {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.nearby-restaurants:hover, .nearby-hotels:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nearby-restaurants h3, .nearby-hotels h3 {
+    color: var(--accent2-color);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.nearby-items {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.nearby-item {
+    background: var(--gradient-card);
+    padding: 1.5rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: var(--transition);
+}
+
+.nearby-item:hover {
+    transform: translateX(10px);
+}
+
+.nearby-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--accent-color-light);
+}
+
+.nearby-item h4 {
+    color: var(--accent2-color);
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.nearby-item p {
+    color: var(--text-color);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .destination-hero h1 {
+        font-size: 2rem;
+        bottom: 1rem;
+    }
+    
+    .destination-info h2 {
+        font-size: 2rem;
+    }
+    
+    .nearby-sections {
+        grid-template-columns: 1fr;
+    }
+}

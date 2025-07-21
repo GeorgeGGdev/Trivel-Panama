@@ -1,20 +1,30 @@
-// Obtener el contenedor de tarjetas
-const cardsContainer = document.getElementById('cards-container');
+// Función para manejar el click en los botones "more information"
+function handleMoreInfoClick(event) {
+    const card = event.target.closest('.card');
+    if (!card) return;
 
-// Crear una nueva tarjeta
-const card = document.createElement('div');
-card.classList.add('card');
+    const destinationName = card.querySelector('h3').textContent;
+    let destinationPage = '';
 
-// Agregar contenido a la tarjeta
-card.innerHTML = `
-    <div class="card-image">
-        <img src="https://via.placeholder.com/300x200" alt="Destino">
-    </div>
-    <div class="card-content">
-        <h3>Destino Ejemplo</h3>
-        <p>Una descripción breve del destino turístico.</p>
-    </div>
-`;
+    switch (destinationName) {
+        case 'Playa Estrella':
+            destinationPage = 'playa-estrella.html';
+            break;
+        case 'Playa Veracruz':
+            destinationPage = 'playa-veracruz.html';
+            break;
+        // Agregar más casos según sea necesario
+    }
 
-// Insertar la tarjeta en el contenedor
-cardsContainer.appendChild(card);
+    if (destinationPage) {
+        window.location.href = destinationPage;
+    }
+}
+
+// Agregar listener a todos los botones "more information"
+document.addEventListener('DOMContentLoaded', () => {
+    const moreInfoButtons = document.querySelectorAll('.learn-more');
+    moreInfoButtons.forEach(button => {
+        button.addEventListener('click', handleMoreInfoClick);
+    });
+});
