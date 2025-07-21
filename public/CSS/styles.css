@@ -207,6 +207,21 @@ body {
     position: relative;
 }
 
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    z-index: 1;
+    pointer-events: none;
+}
+.hero-content, .floating-icons, .wave-container {
+    position: relative;
+    z-index: 2;
+}
+
 .hero-content {
     z-index: 1;
     max-width: 800px;
