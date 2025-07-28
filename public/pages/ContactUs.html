@@ -6,38 +6,21 @@
     <title>Contact Us - Trivel Panama</title>
     <link rel="stylesheet" href="../CSS/styles.css">
     <link rel="stylesheet" href="../CSS/contact.css">
+    <link rel="stylesheet" href="../CSS/components.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-content {
+            margin-top: 80px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Fixed Header -->
-    <header class="header">
-        <div class="logo">
-            <a href="../index.html" class="logo-link">
-                <img src="../assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
-                <span class="logo-text">Trivel Panama</span>
-            </a>
-        </div>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav class="nav-menu">
-            <ul>
-                <li><a href="../index.html#home">Home</a></li>
-                <li><a href="../index.html#destinations">Destinations</a></li>
-                <li><a href="carrusel.html">Gallery</a></li>
-                <li><a href="ContactUs.html">Contact</a></li>
-                <li><a href="destinations.html">All Destinations</a></li>
-                <li><a href="FAQs.html">FAQs</a></li>
-            </ul>
-        </nav>
-        <div id="auth-area"></div>
-    </header>
+    <!-- Contenedor para el header -->
+    <div id="header-component"></div>
 
     <!-- Hero Section -->
-    <section class="contact-hero">
+    <section class="contact-hero page-content">
         <div class="hero-content">
             <h1>Contact Us</h1>
             <p>We're here to help you plan your next adventure in Panama</p>
@@ -100,17 +83,17 @@
                     </form>
                 </div>
 
-                <!-- Contact Info -->
+                <!-- Contact Information -->
                 <div class="contact-info-container">
-                    <h2>Contact Information</h2>
+                    <h2>Get in Touch</h2>
                     <div class="contact-info">
                         <div class="info-item">
                             <div class="info-icon">
-                                <i class="fas fa-envelope"></i>
+                                <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div class="info-content">
-                                <h3>Email Address</h3>
-                                <p>trivelpanama@gmail.com</p>
+                                <h3>Address</h3>
+                                <p>Centro Supérate San Miguelito<br>Fundación Alberto Motta<br>Panama City, Panama</p>
                             </div>
                         </div>
                         <div class="info-item">
@@ -118,21 +101,19 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="info-content">
-                                <h3>Phone Numbers</h3>
-                                <div class="phone-numbers">
-                                    <p>+507 6697-4157</p>
-                                    <p>+507 6528-4401</p>
-                                </div>
+                                <h3>Phone</h3>
+                                <p>+507 123-4567</p>
+                                <p>+507 987-6543</p>
                             </div>
                         </div>
                         <div class="info-item">
                             <div class="info-icon">
-                                <i class="fas fa-map-marker-alt"></i>
+                                <i class="fas fa-envelope"></i>
                             </div>
                             <div class="info-content">
-                                <h3>Address</h3>
-                                <p>San Miguelito, Villa Guadalupe Calle E</p>
-                                <p>Panama City, Panama</p>
+                                <h3>Email</h3>
+                                <p>info@trivelpanama.com</p>
+                                <p>support@trivelpanama.com</p>
                             </div>
                         </div>
                         <div class="info-item">
@@ -142,103 +123,46 @@
                             <div class="info-content">
                                 <h3>Business Hours</h3>
                                 <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-                                <p>Saturday: 9:00 AM - 2:00 PM</p>
+                                <p>Saturday: 9:00 AM - 4:00 PM</p>
+                                <p>Sunday: Closed</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Social Media -->
+                    
+                    <!-- Social Media Links -->
                     <div class="social-media-section">
-                                                                                                                                        <h3>Follow Us on Social Media</h3>
-                                                                                                                                        <div class="social-links">
-                                                                                                                                            <a href="#" class="social-link facebook">
-                                                                                                                                                <i class="fab fa-facebook-f"></i>
-                                                                                                                                                <span>Facebook</span>
-                                                                                                                                            </a>
-                                                                                                                                            <a href="https://maps.app.goo.gl/CdCdkpbyUDDmsrWM9" class="social-link instagram">
-                                                                                                                                                <i class="fab fa-instagram"></i>
-                                                                                                                                                <span>Instagram</span>
-                                                                                                                                            </a>
-                                                                                                                                                                             <a href="#" class="social-link tiktok">
-                                                                                                                                                <i class="fab fa-tiktok"></i>
-                                                                                                                                                <span>TikTok</span>
-                                                                                                                                            </a>
-                                                                                                                                            <a href="#" class="social-link whatsapp">
-                                                                                                                                                <i class="fab fa-whatsapp"></i>
-                                <span>WhatsApp</span>
+                        <h3>Follow Us</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="https://www.instagram.com/trivelpanama?utm_source=ig_web_button_share_sheet&igsh=MTdyeGJ1OTZrazBtcQ==" class="social-link instagram">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="#" class="social-link tiktok">
+                                <i class="fab fa-tiktok"></i>
+                                <span>TikTok</span>
                             </a>
                         </div>
-                    </div>
-
-                    <!-- FAQ Button -->
-                    <div class="faq-section">
-                        <h3>Have Questions?</h3>
-                        <p>Check our frequently asked questions section for quick answers.</p>
-                        <a href="FAQs.html" class="faq-btn">
-                            <i class="fas fa-question-circle"></i>
-                            View Frequently Asked Questions
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-wave"></div>
-        <div class="footer-content">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h3>Trivel Panama</h3>
-                    <p>Your gateway to the best experiences in Panama. Discover paradise beaches, vibrant culture, and unforgettable adventures.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#destinations">Destinations</a></li>
-                        <li><a href="index.html#gallery">Gallery</a></li>
-                        <li><a href="ContactUs.html">Contact</a></li>
-                        <li><a href="FAQs.html">FAQs</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Popular Destinations</h3>
-                    <ul>
-                        <li><a href="#">Bocas del Toro</a></li>
-                        <li><a href="#">San Blas</a></li>
-                        <li><a href="#">Playa Venao</a></li>
-                        <li><a href="#">Isla Grande</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <ul class="contact-list">
-                        <li><i class="fas fa-envelope"></i> trivelpanama@gmail.com</li>
-                        <li><i class="fas fa-phone"></i> +507 6697-4157</li>
-                        <li><i class="fas fa-map-marker-alt"></i> San Miguelito, Calle E, Panama</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Trivel Panama. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Contenedor para el footer -->
+    <div id="footer-component"></div>
 
-    <!-- Success Modal -->
-    <div id="successModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="success-content">
-                <i class="fas fa-check-circle"></i>
-                <h3>Message Sent!</h3>
-                <p>Thank you for contacting us. We'll get back to you soon.</p>
-            </div>
-        </div>
-    </div>
-
+    <!-- Scripts -->
+    <script src="../components/components.js"></script>
     <script src="../JS/contact.js"></script>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="../JS/firebaseConfig.js"></script>
 </body>
 </html>

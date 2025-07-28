@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Trivel</title>
-    <link rel="stylesheet" href="../css/auth.css">
+    <title>Registro - Trivel Panamá</title>
+    <link rel="stylesheet" href="../CSS/auth.css">
+    <link rel="stylesheet" href="../CSS/components.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-content {
+            margin-top: 80px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
+    <!-- Contenedor para el header -->
+    <div id="header-component"></div>
+
+    <div class="container page-content">
         <div class="form-container">
             <div class="form-header">
                 <h1>Crear Cuenta</h1>
@@ -39,6 +49,12 @@
             </div>
         </div>
     </div>
+
+    <!-- Contenedor para el footer -->
+    <div id="footer-component"></div>
+
+    <!-- Scripts -->
+    <script src="../components/components.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="../JS/firebaseConfig.js"></script>
