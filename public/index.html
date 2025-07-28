@@ -3,252 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trivel Panamá - Discover Panama's Hidden Gems</title>
+    <title>Trivel Panamá - Descubre Paraísos</title>
     <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="CSS/carousel.css">
     <link rel="stylesheet" href="CSS/dynamic-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        a { color: inherit; text-decoration: none; }
+        a:visited { color: inherit; }
+        a:hover { color: var(--accent-color); }
+        html, body { background: var(--background-color); }
+    </style>
 </head>
 <body>
-    <!-- Fixed Header -->
-    <header class="header">
-        <div class="logo">
-            <a href="#" class="logo-link">
-                <img src="assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
-                <span class="logo-text">Trivel Panama</span>
+    <div class="section-decor shape1"></div>
+    <div class="section-decor shape2"></div>
+    <div class="section-decor shape3"></div>
+    <div class="creative-phrase" style="top: 7%;">"Viajar es vivir dos veces."</div>
+    <div class="creative-phrase" style="top: 45%;">"Panamá: Donde cada día es una aventura."</div>
+    <div class="creative-phrase" style="bottom: 8%;">"Descubre, explora, sueña."</div>
+    <!-- Iconos flotantes turísticos -->
+    <div class="floating-tourist-icons">
+        <span class="tourist-icon" style="top:12%;left:8%;"><i class="fas fa-suitcase-rolling"></i></span>
+        <span class="tourist-icon" style="top:22%;right:7%;"><i class="fas fa-plane-departure"></i></span>
+        <span class="tourist-icon" style="top:60%;left:5%;"><i class="fas fa-umbrella-beach"></i></span>
+        <span class="tourist-icon" style="bottom:18%;right:10%;"><i class="fas fa-map-marked-alt"></i></span>
+        <span class="tourist-icon" style="top:35%;left:50%;"><i class="fas fa-camera-retro"></i></span>
+        <span class="tourist-icon" style="bottom:12%;left:20%;"><i class="fas fa-water"></i></span>
+        <span class="tourist-icon" style="bottom:6%;right:20%;"><i class="fas fa-palm-tree"></i></span>
+    </div>
+
+
+    <!-- HEADER MODERNO -->
+    <header class="header modern-header">
+        <div class="logo creative-logo">
+            <a href="index.html" class="logo-link">
+                <img src="assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img pulse-animation">
+                <span class="logo-text gradient-text">Trivel Panama</span>
             </a>
         </div>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav class="nav-menu">
+        <nav class="nav-menu modern-nav">
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="pages/carrusel.html">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="pages/destinations.html">All Destinations</a></li>
-                <li><a href="pages/FAQs.html">FAQs</a></li>
-                <li><a href="#comments">Comments</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="pages/destinations.html"><i class="fas fa-map-marked-alt"></i> Destinos</a></li>
+                <li><a href="pages/FAQs.html"><i class="fas fa-question-circle"></i> FAQs</a></li>
+                <li><a href="pages/ContactUs.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+                <li><a href="pages/login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
             </ul>
         </nav>
         <div id="auth-area"></div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-overlay"></div>
-        <!-- Floating Icons Background -->
-        <div class="floating-icons">
-            <div class="floating-icon" data-speed="2">
-                <i class="fas fa-palm-tree"></i>
+    <!-- CARRUSEL IMPACTANTE -->
+    <section class="carousel-section" id="home">
+        <div class="carousel-container creative-carousel">
+            <button class="carousel-button prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-slide">
+                <div class="carousel-slide-item">
+                    <img src="assets/img/home.png" class="carousel-image active" alt="Panama Paradise">
+                    <div class="image-caption">
+                        <h3 class="gradient-text">Bienvenido a Panamá</h3>
+                        <p>Descubre cultura vibrante, playas de ensueño y aventuras inolvidables.</p>
+                    </div>
+                </div>
+                <div class="carousel-slide-item">
+                    <img src="assets/img/BocasToro.jpeg" class="carousel-image" alt="Bocas del Toro">
+                    <div class="image-caption">
+                        <h3>Bocas del Toro</h3>
+                        <p>Encanto caribeño, aguas cristalinas y vida marina vibrante.</p>
+                    </div>
+                </div>
+                <div class="carousel-slide-item">
+                    <img src="assets/img/Red Frog Beach.jpg" class="carousel-image" alt="Red Frog Beach">
+                    <div class="image-caption">
+                        <h3>Red Frog Beach</h3>
+                        <p>Relájate en arenas doradas y explora selvas tropicales.</p>
+                    </div>
+                </div>
+                <div class="carousel-slide-item">
+                    <img src="assets/img/venao.jpg" class="carousel-image" alt="Playa Venao">
+                    <div class="image-caption">
+                        <h3>Playa Venao</h3>
+                        <p>Olas perfectas y atardeceres de postal en el Pacífico.</p>
+                    </div>
+                </div>
+                <div class="carousel-slide-item">
+                    <img src="assets/img/Taboga Island.jpeg" class="carousel-image" alt="Taboga Island">
+                    <div class="image-caption">
+                        <h3>Isla Taboga</h3>
+                        <p>La Isla de las Flores, a minutos de la ciudad.</p>
+                    </div>
+                </div>
             </div>
-            <div class="floating-icon" data-speed="1.5">
-                <i class="fas fa-sun"></i>
-            </div>
-            <div class="floating-icon" data-speed="3">
-                <i class="fas fa-water"></i>
-            </div>
-            <div class="floating-icon" data-speed="2.5">
-                <i class="fas fa-mountain"></i>
-            </div>
-            <div class="floating-icon" data-speed="1.8">
-                <i class="fas fa-fish"></i>
-            </div>
-            <div class="floating-icon" data-speed="2.2">
-                <i class="fas fa-ship"></i>
-            </div>
-            <div class="floating-icon" data-speed="1.3">
-                <i class="fas fa-compass"></i>
-            </div>
-            <div class="floating-icon" data-speed="2.7">
-                <i class="fas fa-umbrella-beach"></i>
-            </div>
+
+            <button class="carousel-button next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
         </div>
-        
-        <div class="hero-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <h1>Discover Panama's Hidden Gems</h1>
-            <p class="hero-subtitle">Experience the beauty of paradise</p>
-            <button class="cta-button">
-                <span><a href="pages/destinations.html">Explore Now</span>
-                <i class="fas fa-arrow-right"></i>
-            </button>
-        </div>
-        <div class="wave-container">
-            <div class="wave"></div>
+        <div class="carousel-hero-content enhanced-hero-content">
+            <div class="hero-badge"><i class="fas fa-star"></i> Recomendado por viajeros</div>
+            <h1 class="gradient-text hero-title">Descubre los Tesoros de Panamá</h1>
+            <div class="hero-underline"></div>
+            <p class="hero-subtitle">Vive la belleza del paraíso</p>
+            <p class="hero-inspiration"><i class="fas fa-quote-left"></i> "Cada rincón es una nueva aventura, cada ola una historia por contar." <i class="fas fa-quote-right"></i></p>
+            <a href="#gallery" class="cta-button creative-cta hero-cta"> <i class="fas fa-compass"></i> Explora Ahora <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="about-content">
-            <div class="about-text">
-                <h2>About Us</h2>
-                <p class="subtitle">Your travel companion in Panama</p>
-                <div class="about-description">
-                    <p>At Trivel Panama, we are passionate about showcasing the beauty and diversity of our country. From the crystal clear Caribbean beaches to the perfect Pacific waves, we help you discover the most incredible destinations.</p>
-                </div>
-            </div>
-            <div class="about-image">
-                <img src="assets/img/about-us.jpg" alt="Our Team">
-                <div class="floating-card">
-                    <i class="fas fa-map-marked-alt"></i>
-                    <h3>Explore with Us</h3>
-                    <p>Discover the magic of Panama</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Destinations -->
-    <section id="destinations" class="destinations">
-        <h2>Featured Destinations</h2>
-        <div class="destination-cards">
-            <div class="card">
-                <div class="card-image">
-                    <img src="assets/img/BocasToro.jpeg" alt="Bocas del Toro">
-                    <div class="card-icon">
+    <!-- EXPERIENCIAS DESTACADAS -->
+    <section class="featured-experiences">
+        <div class="experiences-container">
+            <h2 class="gradient-text">Experiencias Únicas</h2>
+            <p class="experiences-subtitle">Descubre lo que hace especial a Panamá</p>
+            <div class="experiences-grid">
+                <div class="experience-card">
+                    <div class="experience-icon">
                         <i class="fas fa-water"></i>
                     </div>
-                </div>
-                <div class="card-content">
-                    <h3><i class="fas fa-map-marker-alt"></i> Bocas del Toro</h3>
-                    <p>Experience the Caribbean charm with crystal clear waters and vibrant marine life.</p>
-                    <button class="learn-more" onclick="window.location.href='pages/destinations.html'">
-                        <span>Learn More</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-image">
-                    <img src="assets/img/SanBlas.jpg" alt="Guna Yala">
-                    <div class="card-icon">
-                        <i class="fas fa-island-tropical"></i>
+                    <h3>Playas Paradisíacas</h3>
+                    <p>Desde el Caribe hasta el Pacífico, más de 1,500 km de costa por explorar</p>
+                    <div class="experience-stats">
+                        <span><i class="fas fa-map-marker-alt"></i> 1,500+ km costa</span>
+                        <span><i class="fas fa-umbrella-beach"></i> 100+ playas</span>
                     </div>
                 </div>
-                <div class="card-content">
-                    <h3><i class="fas fa-map-marker-alt"></i> Guna Yala</h3>
-                    <p>Discover pristine islands and rich indigenous culture in this tropical paradise.</p>
-                    <button class="learn-more" onclick="window.location.href='pages/destinations.html'">
-                        <span>Learn More</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-image">
-                    <img src="assets/img/venao.jpg" alt="Playa Venao">
-                    <div class="card-icon">
-                        <i class="fas fa-surfing"></i>
+                <div class="experience-card">
+                    <div class="experience-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3>Naturaleza Salvaje</h3>
+                    <p>Selvas tropicales, parques nacionales y biodiversidad única en el mundo</p>
+                    <div class="experience-stats">
+                        <span><i class="fas fa-leaf"></i> 40% bosques</span>
+                        <span><i class="fas fa-dna"></i> 10,000+ especies</span>
                     </div>
                 </div>
-                <div class="card-content">
-                    <h3><i class="fas fa-map-marker-alt"></i> Playa Venao</h3>
-                    <p>Perfect waves and stunning sunsets await at this Pacific coast gem.</p>
-                    <button class="learn-more" onclick="window.location.href='pages/destinations.html'">
-                        <span>Learn More</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
+                <div class="experience-card">
+                    <div class="experience-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <h3>Cultura Vibrante</h3>
+                    <p>Historia rica, gastronomía local y gente hospitalaria que te hará sentir en casa</p>
+                    <div class="experience-stats">
+                        <span><i class="fas fa-users"></i> 7 culturas</span>
+                        <span><i class="fas fa-utensils"></i> 500+ platos</span>
+                    </div>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3>Aventuras Marinas</h3>
+                    <p>Buceo, snorkel, pesca deportiva y cruceros por el Canal de Panamá</p>
+                    <div class="experience-stats">
+                        <span><i class="fas fa-fish"></i> 1,000+ especies</span>
+                        <span><i class="fas fa-anchor"></i> 2 océanos</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
-        <h2>Beach Gallery</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="assets/img/Starfish Beach.jpeg" alt="Beach 1">
-                <div class="overlay">
-                    <h3>Starfish Beach</h3>
+    <!-- ABOUT US PROFESIONAL Y VISUAL -->
+    <section id="about" class="about modern-about">
+        <div class="about-bg-decor"></div>
+        <div class="about-content">
+            <div class="about-text">
+                <h2 class="gradient-text">Sobre Nosotros</h2>
+                <p class="subtitle">Tu compañero de viaje en Panamá</p>
+                <div class="about-description">
+                    <p>En Trivel Panama, creemos que cada viaje es una historia. Nacimos de la pasión por explorar y compartir los tesoros ocultos de Panamá con el mundo.</p>
+                    <p class="about-mission"><i class="fas fa-heart"></i> <b>Misión:</b> Inspirar a viajeros a descubrir la cultura, naturaleza y aventura de Panamá, creando recuerdos inolvidables.</p>
+                    <p class="about-values"><i class="fas fa-hands-helping"></i> <b>Valores:</b> Hospitalidad, autenticidad, sostenibilidad y pasión por el servicio.</p>
                 </div>
-            </div>
-            <div class="gallery-item">
-                <img src="assets/img/Red Frog Beach.jpg" alt="Beach 2">
-                <div class="overlay">
-                    <h3>Red Frog Beach</h3>
+                <div class="about-services">
+                    <div class="service-card"><i class="fas fa-map-signs"></i><span>Guías Locales</span></div>
+                    <div class="service-card"><i class="fas fa-bus"></i><span>Tours Personalizados</span></div>
+                    <div class="service-card"><i class="fas fa-leaf"></i><span>Eco Experiencias</span></div>
+                    <div class="service-card"><i class="fas fa-users"></i><span>Atención 24/7</span></div>
                 </div>
+                <div class="about-quote">"Viajar es la única cosa que compras y te hace más rico."</div>
             </div>
-            <div class="gallery-item">
-                <img src="assets/img/Isla Grande.jpg" alt="Beach 4">
-                <div class="overlay">
-                    <h3>Isla Grande</h3>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="assets/img/Taboga Island.jpeg" alt="Beach 5">
-                <div class="overlay">
-                    <h3>Taboga Island</h3>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="assets/img/Contadora Island.jpeg" alt="Beach 6">
-                <div class="overlay">
-                    <h3>Contadora Island</h3>
+            <div class="about-image">
+                <img src="assets/img/about-us.jpg" alt="Nuestro Equipo" class="about-img creative-img about-img-circle">
+                <div class="about-icons-row">
+                    <span class="about-icon"><i class="fas fa-map-marked-alt"></i></span>
+                    <span class="about-icon"><i class="fas fa-umbrella-beach"></i></span>
+                    <span class="about-icon"><i class="fas fa-leaf"></i></span>
+                    <span class="about-icon"><i class="fas fa-users"></i></span>
+                    <span class="about-icon"><i class="fas fa-camera-retro"></i></span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Carousel Vertical -->
-    <section id="comments" class="testimonials-carousel vertical-carousel">
+    <!-- GALERÍA CREATIVA DE PLAYAS - CARRUSEL INFINITO -->
+    <section id="gallery" class="gallery creative-gallery">
+        <h2 class="gradient-text">Beach Gallery</h2>
+        <div class="infinite-carousel-container">
+            <div class="infinite-carousel-track">
+                <!-- Primer set de imágenes -->
+                <div class="gallery-item creative-gallery-item infinite-carousel-item">
+                    <img src="assets/img/Starfish Beach.jpeg" alt="Starfish Beach">
+                    <div class="overlay"><h3>Starfish Beach</h3></div>
+                </div>
+                <div class="gallery-item creative-gallery-item infinite-carousel-item">
+                    <img src="assets/img/Red Frog Beach.jpg" alt="Red Frog Beach">
+                    <div class="overlay"><h3>Red Frog Beach</h3></div>
+                </div>
+                <div class="gallery-item creative-gallery-item infinite-carousel-item">
+                    <img src="assets/img/Isla Grande.jpg" alt="Isla Grande">
+                    <div class="overlay"><h3>Isla Grande</h3></div>
+                </div>
+                <div class="gallery-item creative-gallery-item infinite-carousel-item">
+                    <img src="assets/img/Taboga Island.jpeg" alt="Taboga Island">
+                    <div class="overlay"><h3>Taboga Island</h3></div>
+                </div>
+                <div class="gallery-item creative-gallery-item infinite-carousel-item">
+                    <img src="assets/img/Contadora Island.jpeg" alt="Contadora Island">
+                    <div class="overlay"><h3>Contadora Island</h3></div>
+                </div>
+                <div class="gallery-item creative-gallery-item infinite-carousel-item">
+                    <img src="assets/img/SanBlas.jpg" alt="San Blas">
+                    <div class="overlay"><h3>San Blas</h3></div>
+                </div>
+                <div class="gallery-item creative-gallery-item infinite-carousel-item">
+                    <img src="assets/img/Venao.jpg" alt="Playa Venao">
+                    <div class="overlay"><h3>Playa Venao</h3></div>
+                </div>
+                <!-- Segundo set de imágenes (duplicado para efecto infinito) -->
+                <div class="gallery-item creative-gallery-item infinite-carousel-item">
+                    <img src="assets/img/Starfish Beach.jpeg" alt="Starfish Beach">
+                    <div class="overlay"><h3>Starfish Beach</h3></div>
+                </div>
+                <div class="gallery-item creative-gallery-item infinite-carousel-item">
+                    <img src="assets/img/Red Frog Beach.jpg" alt="Red Frog Beach">
+                    <div class="overlay"><h3>Red Frog Beach</h3></div>
+                </div>
+                <div class="gallery-item creative-gallery-item infinite-carousel-item">
+                    <img src="assets/img/Isla Grande.jpg" alt="Isla Grande">
+                    <div class="overlay"><h3>Isla Grande</h3></div>
+                </div>
+                <div class="gallery-item creative-gallery-item infinite-carousel-item">
+                    <img src="assets/img/Taboga Island.jpeg" alt="Taboga Island">
+                    <div class="overlay"><h3>Taboga Island</h3></div>
+                </div>
+                <div class="gallery-item creative-gallery-item infinite-carousel-item">
+                    <img src="assets/img/Contadora Island.jpeg" alt="Contadora Island">
+                    <div class="overlay"><h3>Contadora Island</h3></div>
+                </div>
+                <div class="gallery-item creative-gallery-item infinite-carousel-item">
+                    <img src="assets/img/SanBlas.jpg" alt="San Blas">
+                    <div class="overlay"><h3>San Blas</h3></div>
+                </div>
+                <div class="gallery-item creative-gallery-item infinite-carousel-item">
+                    <img src="assets/img/Venao.jpg" alt="Playa Venao">
+                    <div class="overlay"><h3>Playa Venao</h3></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POR QUÉ ELEGIRNOS -->
+    <section class="why-choose-us">
+        <div class="why-choose-container">
+            <h2 class="gradient-text">¿Por qué elegir Trivel Panama?</h2>
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Seguridad Garantizada</h3>
+                    <p>Protocolos de seguridad certificados y seguros de viaje incluidos en todos nuestros paquetes</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Atención Personalizada</h3>
+                    <p>Guías locales expertos que conocen cada rincón y te brindan una experiencia auténtica</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Precios Transparentes</h3>
+                    <p>Sin cargos ocultos. Precios claros y competitivos con la mejor relación calidad-precio</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Flexibilidad Total</h3>
+                    <p>Reservas modificables, cancelaciones gratuitas y itinerarios personalizables</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Certificación Oficial</h3>
+                    <p>Empresa certificada por el Ministerio de Turismo de Panamá y asociaciones internacionales</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Turismo Sostenible</h3>
+                    <p>Comprometidos con la conservación del medio ambiente y el desarrollo de comunidades locales</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS DESTACADOS -->
+    <section id="comments" class="testimonials-carousel vertical-carousel creative-testimonials">
         <div class="testimonials-bg-decor"></div>
-        <h2>What Our Travelers Say</h2>
+        <h2 class="gradient-text">Lo que dicen nuestros viajeros</h2>
         <div class="carousel-container-vertical">
             <button class="carousel-btn up" aria-label="Previous testimonial"><i class="fas fa-chevron-up"></i></button>
             <div class="carousel-track-vertical">
                 <div class="testimonial-vertical">
-                    <div class="testimonial-content">
+                    <div class="testimonial-content creative-testimonial-content">
                         <span class="quote-icon"><i class="fas fa-quote-left"></i></span>
-                        <p>"Trivel Panama made my vacation unforgettable! The beaches were breathtaking and the service was top-notch."</p>
+                        <p>"¡Trivel Panama hizo mi viaje inolvidable! Las playas son espectaculares y el servicio excelente."</p>
                         <div class="testimonial-author">
                             <div class="author-img-wrapper">
                                 <img src="assets/img/Starfish Beach.jpeg" alt="Maria G.">
                             </div>
                             <div class="author-info">
                                 <span class="author-name">Maria G.</span>
-                                <span class="author-role">Traveler</span>
+                                <span class="author-role">Viajera</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-vertical">
-                    <div class="testimonial-content">
+                    <div class="testimonial-content creative-testimonial-content">
                         <span class="quote-icon"><i class="fas fa-quote-left"></i></span>
-                        <p>"I discovered places I never knew existed. Highly recommended for anyone visiting Panama!"</p>
+                        <p>"¡Descubrí lugares que no sabía que existían! Lo recomiendo a todos los que visiten Panamá."</p>
                         <div class="testimonial-author">
                             <div class="author-img-wrapper">
                                 <img src="assets/img/Red Frog Beach.jpg" alt="John D.">
                             </div>
                             <div class="author-info">
                                 <span class="author-name">John D.</span>
-                                <span class="author-role">Adventurer</span>
+                                <span class="author-role">Aventurero</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-vertical">
-                    <div class="testimonial-content">
+                    <div class="testimonial-content creative-testimonial-content">
                         <span class="quote-icon"><i class="fas fa-quote-left"></i></span>
-                        <p>"The team was so friendly and helpful. Every detail was taken care of. Can't wait to come back!"</p>
+                        <p>"El equipo fue muy amable y atento. ¡Cada detalle estuvo cuidado!"</p>
                         <div class="testimonial-author">
                             <div class="author-img-wrapper">
                                 <img src="assets/img/Isla Grande.jpg" alt="Lucía P.">
                             </div>
                             <div class="author-info">
                                 <span class="author-name">Lucía Pascal</span>
-                                <span class="author-role">Explorer</span>
+                                <span class="author-role">Exploradora</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-vertical">
-                    <div class="testimonial-content">
+                    <div class="testimonial-content creative-testimonial-content">
                         <span class="quote-icon"><i class="fas fa-quote-left"></i></span>
-                        <p>"Best travel experience ever. The recommendations were spot on and the tours were amazing."</p>
+                        <p>"La mejor experiencia de viaje. Las recomendaciones fueron perfectas y los tours increíbles."</p>
                         <div class="testimonial-author">
                             <div class="author-img-wrapper">
                                 <img src="assets/img/Taboga Island.jpeg" alt="Pedro R.">
@@ -256,66 +377,6 @@
                             <div class="author-info">
                                 <span class="author-name">Pedro R.</span>
                                 <span class="author-role">Globetrotter</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-vertical">
-                    <div class="testimonial-content">
-                        <span class="quote-icon"><i class="fas fa-quote-left"></i></span>
-                        <p>"A magical experience! I discovered Panama's culture and nature like never before. Thank you, Trivel!"</p>
-                        <div class="testimonial-author">
-                            <div class="author-img-wrapper">
-                                <img src="assets/img/Contadora Island.jpeg" alt="Jonathan Sanchez">
-                            </div>
-                            <div class="author-info">
-                                <span class="author-name">Jonathan Sanchez</span>
-                                <span class="author-role">Nature Lover</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-vertical">
-                    <div class="testimonial-content">
-                        <span class="quote-icon"><i class="fas fa-quote-left"></i></span>
-                        <p>"The best trip of my life. Everything was perfectly organized and the team was amazing."</p>
-                        <div class="testimonial-author">
-                            <div class="author-img-wrapper">
-                                <img src="assets/img/BocasToro.jpeg" alt="Juan Morales">
-                            </div>
-                            <div class="author-info">
-                                <span class="author-name">Juan Morales</span>
-                                <span class="author-role">Adventurer</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-vertical">
-                    <div class="testimonial-content">
-                        <span class="quote-icon"><i class="fas fa-quote-left"></i></span>
-                        <p>"Trivel Panama exceeded all my expectations. I will come back soon with my family!"</p>
-                        <div class="testimonial-author">
-                            <div class="author-img-wrapper">
-                                <img src="assets/img/Red Frog Beach.jpg" alt="Damaris Vasquez">
-                            </div>
-                            <div class="author-info">
-                                <span class="author-name">Damaris Vasquez</span>
-                                <span class="author-role">Family Traveler</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-vertical">
-                    <div class="testimonial-content">
-                        <span class="quote-icon"><i class="fas fa-quote-left"></i></span>
-                        <p>"Every destination was a surprise. The personalized attention made all the difference."</p>
-                        <div class="testimonial-author">
-                            <div class="author-img-wrapper">
-                                <img src="assets/img/Isla Grande.jpg" alt="Laramie Miranda">
-                            </div>
-                            <div class="author-info">
-                                <span class="author-name">Laramie Miranda</span>
-                                <span class="author-role">Explorer</span>
                             </div>
                         </div>
                     </div>
@@ -328,193 +389,102 @@
             <span class="dot-vertical"></span>
             <span class="dot-vertical"></span>
             <span class="dot-vertical"></span>
-            <span class="dot-vertical"></span>
-            <span class="dot-vertical"></span>
-            <span class="dot-vertical"></span>
-            <span class="dot-vertical"></span>
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <div class="newsletter-content">
-            <div class="newsletter-header">
-                <div class="newsletter-icon">
-                    <i class="fas fa-envelope-open-text"></i>
-                </div>
-                <h2>Stay Updated</h2>
-                <p>Subscribe to our newsletter and be the first to know about our latest adventures and exclusive offers!</p>
-            </div>
-            <form class="newsletter-form">
-                <div class="form-group">
-                    <div class="input-wrapper">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Your Name" required>
-                    </div>
-                    <div class="input-wrapper">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Your Email" required>
-                    </div>
-                </div>
-                <div class="textarea-wrapper">
-                    <i class="fas fa-comment"></i>
-                    <textarea placeholder="Send us a message (optional)"></textarea>
-                </div>
-                <button type="submit" class="subscribe-btn">
-                    <span>Subscribe Now</span>
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </form>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="contact-header">
-            <div class="contact-icon">
-                <i class="fas fa-headset"></i>
-            </div>
-            <h2>Contact Us</h2>
-            <p>Get in touch with us for your next adventure</p>
-        </div>
-        <div class="contact-content">
-            <div class="contact-info">
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-envelope"></i>
+    <!-- ESTADÍSTICAS NUEVAS -->
+    <section class="new-stats-section">
+        <div class="new-stats-container">
+            <h2 class="new-stats-title">Nuestros Logros</h2>
+            <p class="new-stats-subtitle">La confianza de miles de viajeros nos respalda</p>
+            <div class="new-stats-grid">
+                <div class="new-stat-item">
+                    <div class="new-stat-icon">
+                        <i class="fas fa-users"></i>
                     </div>
-                    <div class="info-text">
-                        <h4>Email</h4>
-                        <p>info@trivelpanama.com</p>
-                    </div>
+                    <div class="new-stat-number" id="stat1">50,000</div>
+                    <div class="new-stat-label">Viajeros Satisfechos</div>
                 </div>
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-phone"></i>
+                <div class="new-stat-item">
+                    <div class="new-stat-icon">
+                        <i class="fas fa-map-marked-alt"></i>
                     </div>
-                    <div class="info-text">
-                        <h4>Phone</h4>
-                        <p>+507 123-4567</p>
-                    </div>
+                    <div class="new-stat-number" id="stat2">150</div>
+                    <div class="new-stat-label">Destinos Únicos</div>
                 </div>
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                <div class="new-stat-item">
+                    <div class="new-stat-icon">
+                        <i class="fas fa-heart"></i>
                     </div>
-                    <div class="info-text">
-                        <h4>Location</h4>
-                        <p>Panama City, Panama</p>
-                    </div>
+                    <div class="new-stat-number" id="stat3">98</div>
+                    <div class="new-stat-label">% Satisfacción</div>
                 </div>
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-clock"></i>
+                <div class="new-stat-item">
+                    <div class="new-stat-icon">
+                        <i class="fas fa-award"></i>
                     </div>
-                    <div class="info-text">
-                        <h4>Hours</h4>
-                        <p>Mon-Fri: 9AM-6PM</p>
-                    </div>
-                </div>
-            </div>
-            <div class="social-media">
-                <h4>Follow Us</h4>
-                <div class="social-icons">
-                    <a href="#" class="social-icon" title="Facebook">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="https://www.instagram.com/trivelpanama?utm_source=ig_web_button_share_sheet&igsh=MTdyeGJ1OTZrazBtcQ==" class="social-icon" title="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="social-icon" title="TikTok">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                    <a href="#" class="social-icon" title="WhatsApp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
+                    <div class="new-stat-number" id="stat4">10</div>
+                    <div class="new-stat-label">Años de Experiencia</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Enhanced Footer -->
-    <footer class="footer">
-        <div class="footer-wave"></div>
-        <div class="footer-content">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h3>Trivel Panama</h3>
-                    <p>Your gateway to the best experiences in Panama. Discover paradise beaches, vibrant culture, and unforgettable adventures.</p>
+    <!-- FOOTER MINIMALISTA Y MODERNO -->
+    <footer class="footer creative-footer minimal-footer">
+        <div class="footer-content minimal-footer-content">
+            <div class="footer-main-row">
+                <div class="footer-logo-col">
+                    <img src="assets/img/Logo.png" alt="Trivel Panama Logo" class="footer-logo-img">
+                    <span class="footer-brand gradient-text">Trivel Panama</span>
                 </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
+                <div class="footer-links-col">
+                    <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#destinations">Destinations</a></li>
                         <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="pages/ContactUs.html">Contact</a></li>
-                        <li><a href="pages/FAQs.html">FAQs</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Popular Destinations</h3>
-                    <ul>
-                        <li><a href="#">Bocas del Toro</a></li>
-                        <li><a href="#">San Blas</a></li>
-                        <li><a href="#">Playa Venao</a></li>
-                        <li><a href="#">Panama City</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <ul class="contact-list">
-                        <li><i class="fas fa-envelope"></i> info@trivelpanama.com</li>
-                        <li><i class="fas fa-phone"></i> +507 123-4567</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Panama City, Panama</li>
-                    </ul>
-                    <div class="social-media">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/trivelpanama?utm_source=ig_web_button_share_sheet&igsh=MTdyeGJ1OTZrazBtcQ==" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-                    </div>
+                <div class="footer-social-col">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/trivelpanama?utm_source=ig_web_button_share_sheet&igsh=MTdyeGJ1OTZrazBtcQ==" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>Your adventure begins here.</p>
-                <p>&copy; 2024 Trivel Panama. All rights reserved.</p>
+            <div class="footer-bottom minimal-footer-bottom">
+                <p class="footer-claim">Tu aventura comienza aquí.</p>
+                <p class="footer-copyright">&copy; 2024 Trivel Panama.</p>
+                <div class="footer-legal-links">
+                    <a href="#" class="legal-link">Política de Privacidad</a>
+                    <span class="legal-separator">|</span>
+                    <a href="#" class="legal-link">Política de Cookies</a>
+                    <span class="legal-separator">|</span>
+                    <a href="#" class="legal-link">Términos y Condiciones</a>
+                    <span class="legal-separator">|</span>
+                    <a href="#" class="legal-link">Aviso Legal</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Auth Modal -->
-    <div class="modal" id="authModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="auth-tabs">
-                <button class="tab-btn active" data-tab="login">Loginn</button>
-                <button class="tab-btn" data-tab="register">Register</button>
-            </div>
-            <div class="tab-content" id="login">
-                <form class="auth-form">
-                    <input type="email" placeholder="Email" required>
-                    <input type="password" placeholder="Password" required>
-                    <button type="submit">Login</button>
-                </form>
-            </div>
-            <div class="tab-content" id="register">
-                <form class="auth-form">
-                    <input type="text" placeholder="Full Name" required>
-                    <input type="email" placeholder="Email" required>
-                    <input type="password" placeholder="Password" required>
-                    <input type="password" placeholder="Confirm Password" required>
-                    <button type="submit">Register</button>
-                </form>
-            </div>
+    <!-- BLOQUE FLOTANTE EXPLORA CON NOSOTROS SIEMPRE VISIBLE -->
+    <div class="floating-card creative-card floating-explore-card" id="exploreWithUsCard">
+        <button class="close-explore-card" aria-label="Cerrar" onclick="document.getElementById('exploreWithUsCard').style.display='none';event.stopPropagation();">&times;</button>
+        <i class="fas fa-globe-americas"></i>
+        <h3>Explora con Nosotros</h3>
+        <p>Descubre la magia de Panamá</p>
+        <div class="explore-icons">
+            <i class="fas fa-map-marked-alt"></i>
+            <i class="fas fa-umbrella-beach"></i>
+            <i class="fas fa-camera-retro"></i>
         </div>
+        <div class="explore-phrase">"¡Tu próxima aventura comienza aquí!"</div>
     </div>
-
     <script src="JS/main.js"></script>
     <script src="JS/dynamic-icons.js"></script>
+    <script src="JS/carousel.js"></script>
+
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
