@@ -6,26 +6,21 @@
     <title>Bocas del Toro - Trivel Panamá</title>
     <link rel="stylesheet" href="../CSS/destination-detail.css">
     <link rel="stylesheet" href="../CSS/destinations.css">
+    <link rel="stylesheet" href="../CSS/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-content {
+            margin-top: 80px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Fixed Header -->
-    <header class="header">
-        <div class="logo">
-            <a href="../index.html" class="logo-link">
-                <span class="logo-text">Trivel Panamá</span>
-            </a>
-        </div>
-        <nav class="nav-menu">
-            <a href="../index.html">Inicio</a>
-            <a href="../pages/destinations.html">Destinos</a>
-            <a href="../pages/experiences.html">Experiencias</a>
-            <a href="../pages/contact.html">Contacto</a>
-        </nav>
-        <button class="auth-btn">Iniciar Sesión</button>
-    </header>
+    <!-- Contenedor para el header -->
+    <div id="header-component"></div>
 
     <!-- Hero Section -->
-    <section class="destination-hero">
+    <section class="destination-hero page-content">
         <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=1600" alt="Bocas del Toro">
         <div class="hero-content">
             <h1>Bocas del Toro</h1>
@@ -100,67 +95,62 @@
                         </div>
                     </div>
                     <div class="nearby-item">
-                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Caribbean Hideaway">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=200" alt="Caribbean Lodge">
                         <div class="nearby-info">
-                            <h3>Caribbean Hideaway</h3>
-                            <p>4 estrellas | Vista al mar | Piscina | Restaurante</p>
-                            <span class="distance">A 600m</span>
+                            <h3>Caribbean Lodge</h3>
+                            <p>4 estrellas | Vista al mar | Restaurante | Bar</p>
+                            <span class="distance">A 800m</span>
                         </div>
                     </div>
                     <div class="nearby-item">
-                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=200" alt="Bocas Breeze">
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=200" alt="Bocas Hostel">
                         <div class="nearby-info">
-                            <h3>Bocas Breeze</h3>
-                            <p>3 estrellas | Vista al mar | Piscina | WiFi</p>
-                            <span class="distance">A 700m</span>
+                            <h3>Bocas Hostel</h3>
+                            <p>Hostel | Ambiente joven | Cocina compartida | WiFi</p>
+                            <span class="distance">A 1.2km</span>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="activities-section">
+                <h2>Actividades Recomendadas</h2>
+                <div class="activities-grid">
+                    <div class="activity-item">
+                        <i class="fas fa-swimming-pool"></i>
+                        <h3>Snorkeling</h3>
+                        <p>Explora los arrecifes de coral y la vida marina</p>
+                    </div>
+                    <div class="activity-item">
+                        <i class="fas fa-ship"></i>
+                        <h3>Paseos en barco</h3>
+                        <p>Recorre las islas del archipiélago</p>
+                    </div>
+                    <div class="activity-item">
+                        <i class="fas fa-hiking"></i>
+                        <h3>Senderismo</h3>
+                        <p>Explora la selva tropical</p>
+                    </div>
+                    <div class="activity-item">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Gastronomía local</h3>
+                        <p>Prueba la cocina caribeña auténtica</p>
                     </div>
                 </div>
             </section>
         </div>
     </main>
 
-    <!-- Enhanced Footer -->
-    <footer class="footer">
-        <div class="footer-wave"></div>
-        <div class="footer-content">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h3>Trivel Panamá</h3>
-                    <p>Tu agencia de viajes local en Panamá</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Destinos</h3>
-                    <ul>
-                        <li><a href="playa-estrella.html">Playa Estrella</a></li>
-                        <li><a href="playa-veracruz.html">Playa Veracruz</a></li>
-                        <li><a href="bocas-del-toro.html">Bocas del Toro</a></li>
-                        <li><a href="san-blas.html">San Blas</a></li>
-                        <li><a href="playa-venao.html">Playa Venao</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contacto</h3>
-                    <ul>
-                        <li><a href="tel:+50712345678">+507 123-45678</a></li>
-                        <li><a href="mailto:info@trivelpanama.com">info@trivelpanama.com</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Síguenos</h3>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Trivel Panamá. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Contenedor para el footer -->
+    <div id="footer-component"></div>
 
-    <script src="../JS/alldestinations.js"></script>
+    <!-- Scripts -->
+    <script src="../components/components.js"></script>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="../JS/firebaseConfig.js"></script>
 </body>
 </html>

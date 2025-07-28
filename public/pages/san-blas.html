@@ -6,26 +6,21 @@
     <title>San Blas - Trivel Panamá</title>
     <link rel="stylesheet" href="../CSS/destination-detail.css">
     <link rel="stylesheet" href="../CSS/destinations.css">
+    <link rel="stylesheet" href="../CSS/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-content {
+            margin-top: 80px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Fixed Header -->
-    <header class="header">
-        <div class="logo">
-            <a href="../index.html" class="logo-link">
-                <span class="logo-text">Trivel Panamá</span>
-            </a>
-        </div>
-        <nav class="nav-menu">
-            <a href="../index.html">Inicio</a>
-            <a href="../pages/destinations.html">Destinos</a>
-            <a href="../pages/experiences.html">Experiencias</a>
-            <a href="../pages/contact.html">Contacto</a>
-        </nav>
-        <button class="auth-btn">Iniciar Sesión</button>
-    </header>
+    <!-- Contenedor para el header -->
+    <div id="header-component"></div>
 
     <!-- Hero Section -->
-    <section class="destination-hero">
+    <section class="destination-hero page-content">
         <img src="../assets/img/SanBlas.jpg" alt="San Blas">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -88,47 +83,16 @@
         </div>
     </main>
 
-    <!-- Enhanced Footer -->
-    <footer class="footer">
-        <div class="footer-wave"></div>
-        <div class="footer-content">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h3>Trivel Panamá</h3>
-                    <p>Tu agencia de viajes local en Panamá</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Destinos</h3>
-                    <ul>
-                        <li><a href="playa-estrella.html">Playa Estrella</a></li>
-                        <li><a href="playa-veracruz.html">Playa Veracruz</a></li>
-                        <li><a href="bocas-del-toro.html">Bocas del Toro</a></li>
-                        <li><a href="san-blas.html">San Blas</a></li>
-                        <li><a href="playa-venao.html">Playa Venao</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contacto</h3>
-                    <ul>
-                        <li><a href="tel:+50712345678">+507 123-45678</a></li>
-                        <li><a href="mailto:info@trivelpanama.com">info@trivelpanama.com</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Síguenos</h3>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Trivel Panamá. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Contenedor para el footer -->
+    <div id="footer-component"></div>
 
-    <script src="../JS/alldestinations.js"></script>
+    <!-- Scripts -->
+    <script src="../components/components.js"></script>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="../JS/firebaseConfig.js"></script>
 </body>
 </html>
