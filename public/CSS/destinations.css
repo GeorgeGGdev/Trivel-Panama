@@ -1,21 +1,40 @@
 /* Global Styles */
-.learn-more {
-    background: var(--gradient-orange);
-    color: white;
+/* Book Now Button Styles */
+.book-now-button {
+    background: var(--gradient-blue);
+    color: white !important;
     border: none;
-    padding: 0.5rem 1.2rem;
+    padding: 0.6rem 1.4rem;
     border-radius: 25px;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3);
     text-decoration: none;
     display: inline-block;
-    width: 100%;
-    max-width: 150px;
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 130px;
+    margin: 0 auto;
+    border: 2px solid transparent;
+    white-space: nowrap;
+    line-height: 1.2;
+}
+
+.book-now-button:hover {
+    background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4);
+    border-color: white;
+}
+
+.book-now-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(26, 115, 232, 0.3);
 }
 
 .learn-more:hover {
@@ -34,6 +53,7 @@
     --primary-color: #1a73e8;
     --secondary-color: #4285f4;
     --accent-color: #ef5c1d;
+    --accent1-color: #000000;
     --accent2-color: #000000;
     --accent-color-light: #ff8533;
     --text-color: #202124;
@@ -52,7 +72,7 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background: linear-gradient(135deg, #ff6b00 0%, #1a73e8 100%);
+    background: linear-gradient(135deg, #104282 0%, #1a73e8 100%);
     min-height: 100vh;
 }
 
@@ -129,12 +149,18 @@ body {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, #ff6b00 0%, #1a73e8 100%);
+    background: url('https://elblogdelviajero.com/wp-content/uploads/2021/03/ccimage-shutterstock_216642919.jpg') no-repeat center center;
+    background-size: cover;
     color: white;
     padding: 8rem 5% 4rem;
     text-align: center;
     position: relative;
     z-index: 1;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-section::before {
@@ -152,15 +178,15 @@ body {
 .hero-section h1 {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-    background: linear-gradient(135deg, white 0%, #ff6b00 100%);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.999);
+    background: linear-gradient(135deg, rgb(184, 182, 182) 0%, #000000 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .explore-btn {
     background: white;
-    color: #ff6b00;
+    color: #1848d8;
     border: none;
     padding: 1rem 2rem;
     border-radius: 30px;
@@ -170,7 +196,7 @@ body {
 }
 
 .explore-btn:hover {
-    background: #ff8533;
+    background: #1848d8;
     color: white;
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4);
@@ -193,7 +219,7 @@ body {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
-    color: var(--accent-color);
+    color: var(--accent1-color);
     position: relative;
 }
 
