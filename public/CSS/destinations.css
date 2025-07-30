@@ -1,7 +1,7 @@
 /* Global Styles */
 /* Book Now Button Styles */
 .book-now-button {
-    background: var(--gradient-blue);
+    background: #1a73e8;
     color: white !important;
     border: none;
     padding: 0.6rem 1.4rem;
@@ -10,7 +10,6 @@
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3);
     text-decoration: none;
     display: inline-block;
     text-align: center;
@@ -26,26 +25,22 @@
 }
 
 .book-now-button:hover {
-    background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+    background: #0d47a1;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4);
     border-color: white;
 }
 
 .book-now-button:active {
     transform: translateY(0);
-    box-shadow: 0 2px 10px rgba(26, 115, 232, 0.3);
 }
 
 .learn-more:hover {
-    background: linear-gradient(135deg, #ff8533 0%, #ff6b00 100%);
+    background: #ff6b00;
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4);
 }
 
 .learn-more:active {
     transform: translateY(0);
-    box-shadow: 0 2px 10px rgba(255, 107, 0, 0.3);
 }
 
 /* Global Styles */
@@ -60,19 +55,19 @@
     --light-text: #fff;
     --background-color: #f8f9fa;
     --transition: all 0.3s ease;
-    --gradient-blue: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
-    --gradient-orange: linear-gradient(135deg, #ff6b00 0%, #ff8533 100%);
-    --gradient-light: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    --gradient-card: linear-gradient(135deg, rgba(255,107,0,0.1) 0%, rgba(26,115,232,0.1) 100%);
-    --gradient-header: linear-gradient(135deg, #ff6b00 0%, #1a73e8 100%);
-    --gradient-footer: linear-gradient(135deg, #1a73e8 0%, #ff6b00 100%);
+    --solid-blue: #1a73e8;
+    --solid-orange: #ff6b00;
+    --solid-light: #ffffff;
+    --solid-card: rgba(255,107,0,0.1);
+    --solid-header: #ff6b00;
+    --solid-footer: #1a73e8;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background: linear-gradient(135deg, #104282 0%, #1a73e8 100%);
+    background: #1a73e8;
     min-height: 100vh;
 }
 
@@ -101,7 +96,6 @@ body {
 
 .logo-text:hover {
     transform: scale(1.05);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     color: var(--primary-color);
 }
 
@@ -120,7 +114,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--gradient-orange);
+    background: var(--solid-orange);
     transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -129,7 +123,7 @@ body {
 }
 
 .auth-btn {
-    background: var(--gradient-orange);
+    background: var(--solid-orange);
     color: white;
     border: none;
     padding: 0.8rem 1.5rem;
@@ -138,13 +132,11 @@ body {
     transition: var(--transition);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
 }
 
 .auth-btn:hover {
-    background: linear-gradient(135deg, #ff8533 0%, #ff6b00 100%);
+    background: #ff8533;
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4);
 }
 
 /* Hero Section */
@@ -178,10 +170,7 @@ body {
 .hero-section h1 {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.999);
-    background: linear-gradient(135deg, rgb(184, 182, 182) 0%, #000000 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #ffffff;
 }
 
 .explore-btn {
@@ -192,14 +181,12 @@ body {
     border-radius: 30px;
     font-weight: 600;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 107, 0, 0.2);
 }
 
 .explore-btn:hover {
     background: #1848d8;
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4);
 }
 
 /* Destinations Section */
@@ -231,7 +218,7 @@ body {
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
-    background: var(--gradient-orange);
+    background: var(--solid-orange);
     border-radius: 2px;
 }
 
@@ -245,7 +232,7 @@ body {
 
 .filter-btn {
     background: white;
-    color: var(--accent-color);
+    color: var(--accent1-color);
     border: 2px solid var(--accent-color);
     padding: 0.8rem 1.5rem;
     border-radius: 25px;
@@ -254,10 +241,9 @@ body {
 }
 
 .filter-btn.active {
-    background: var(--gradient-orange);
+    background: var(--solid-orange);
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
 }
 
 .card {
@@ -282,7 +268,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--gradient-card);
+    background: var(--solid-blue);
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: -1;
@@ -306,7 +292,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(0deg, rgba(0,0,0,0.3) 0%, transparent 100%);
+    background: rgba(0,0,0,0.3);
 }
 
 .card-content {
@@ -341,21 +327,34 @@ body {
     background: var(--primary-color);
     color: white;
     border: none;
-    padding: 0.5rem 1.2rem;
+    padding: 0.6rem 1.4rem;
     border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    min-width: 120px;
+    text-align: center;
 }
 
 .learn-more:hover {
-    background: #1557b0;
-    transform: translateY(-2px);
-    box-shadow: 0 3px 10px rgba(26, 115, 232, 0.3);
+    background: #0d47a1;
+    transform: translateY(-3px);
+}
+
+.learn-more:active {
+    transform: translateY(0);
 }
 
 /* Footer */
 .footer {
-    background: var(--gradient-footer);
+    background: var(--solid-footer);
     color: white;
     padding: 4rem 0 2rem;
     position: relative;
@@ -363,7 +362,7 @@ body {
 }
 
 :root {
-    --gradient-footer: linear-gradient(135deg, #1a73e8 0%, #ff6b00 100%);
+    --solid-footer: #1a73e8;
 }
 
 .footer-wave {
@@ -581,7 +580,7 @@ body {
 }
 
 .auth-btn {
-    background: var(--gradient-orange);
+    background: var(--solid-orange);
     color: white;
     border: none;
     padding: 0.8rem 1.5rem;
@@ -590,7 +589,6 @@ body {
     transition: var(--transition);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
 }
 
 .auth-btn::after {
@@ -612,9 +610,8 @@ body {
 }
 
 .auth-btn:hover {
-    background: linear-gradient(135deg, #ff8533 0%, #ff6b00 100%);
+    background: #ff8533;
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4);
 }
 
 .destinations {
@@ -656,7 +653,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--gradient-blue);
+    background: var(--solid-blue);
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: -1;
