@@ -3,488 +3,763 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trivel Panamá - Descubre Paraísos</title>
+    <title>Trivel Panamá - Descubre el Paraíso</title>
+    <meta name="description" content="Descubre los destinos más exclusivos de Panamá con Trivel Panamá. Playas, cultura, aventura y experiencias únicas para turistas.">
     <link rel="stylesheet" href="CSS/styles.css">
-    <link rel="stylesheet" href="CSS/carousel.css">
     <link rel="stylesheet" href="CSS/dynamic-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        a { color: inherit; text-decoration: none; }
-        a:visited { color: inherit; }
-        a:hover { color: var(--accent-color); }
-        html, body { background: var(--background-color); }
+      /* Estilos adicionales para el rediseño */
+      .search-bar { max-width: 500px; margin: 2rem auto 0 auto; display: flex; box-shadow: 0 4px 24px rgba(26,115,232,0.07); border-radius: 30px; overflow: hidden; background: #fff; }
+      .search-bar input { flex: 1; border: none; padding: 1rem 1.5rem; font-size: 1.1rem; border-radius: 30px 0 0 30px; outline: none; }
+      .search-bar button { background: var(--gradient-orange); color: #fff; border: none; padding: 0 2rem; font-size: 1.1rem; border-radius: 0 30px 30px 0; cursor: pointer; transition: background 0.3s; }
+      .search-bar button:hover { background: var(--accent-color); }
+      .stats { display: flex; justify-content: center; gap: 3rem; margin: 3rem 0 2rem 0; }
+      .stat-item { background: #fff; border-radius: 18px; box-shadow: 0 4px 24px rgba(26,115,232,0.07); padding: 2rem 2.5rem; text-align: center; }
+      .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--accent-color); }
+      .stat-label { color: var(--primary-color); font-size: 1.1rem; margin-top: 0.5rem; }
+      .why-choose { background: var(--gradient-light); padding: 5rem 0; }
+      .why-choose-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 2.5rem; margin-top: 2.5rem; }
+      .why-choose-item { background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(26,115,232,0.07); padding: 2rem 1.5rem; max-width: 260px; text-align: center; transition: transform 0.2s; }
+      .why-choose-item:hover { transform: translateY(-8px) scale(1.04); }
+      .why-choose-item i { font-size: 2.2rem; color: var(--primary-color); margin-bottom: 1rem; }
+      .why-choose-item h4 { color: var(--accent-color); margin-bottom: 0.5rem; font-size: 1.1rem; }
+      .map-section { background: #f8f9fa; padding: 4rem 0; text-align: center; }
+      .map-section h2 { margin-bottom: 2rem; }
+      .map-iframe { width: 100%; max-width: 900px; height: 350px; border: none; border-radius: 18px; box-shadow: 0 4px 24px rgba(26,115,232,0.07); margin: 0 auto; }
+      .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 9999; }
+      .whatsapp-float a { display: flex; align-items: center; background: #25d366; color: #fff; padding: 0.8rem 1.3rem; border-radius: 30px; font-size: 1.2rem; box-shadow: 0 4px 24px rgba(37,211,102,0.15); text-decoration: none; transition: background 0.2s; }
+      .whatsapp-float a:hover { background: #128c7e; }
+      .whatsapp-float i { font-size: 1.5rem; margin-right: 0.7rem; }
     </style>
 </head>
 <body>
-    <div class="section-decor shape1"></div>
-    <div class="section-decor shape2"></div>
-    <div class="section-decor shape3"></div>
-    <div class="creative-phrase" style="top: 7%;">"Viajar es vivir dos veces."</div>
-    <div class="creative-phrase" style="top: 45%;">"Panamá: Donde cada día es una aventura."</div>
-    <div class="creative-phrase" style="bottom: 8%;">"Descubre, explora, sueña."</div>
-    <!-- Iconos flotantes turísticos -->
-    <div class="floating-tourist-icons">
-        <span class="tourist-icon" style="top:12%;left:8%;"><i class="fas fa-suitcase-rolling"></i></span>
-        <span class="tourist-icon" style="top:22%;right:7%;"><i class="fas fa-plane-departure"></i></span>
-        <span class="tourist-icon" style="top:60%;left:5%;"><i class="fas fa-umbrella-beach"></i></span>
-        <span class="tourist-icon" style="bottom:18%;right:10%;"><i class="fas fa-map-marked-alt"></i></span>
-        <span class="tourist-icon" style="top:35%;left:50%;"><i class="fas fa-camera-retro"></i></span>
-        <span class="tourist-icon" style="bottom:12%;left:20%;"><i class="fas fa-water"></i></span>
-        <span class="tourist-icon" style="bottom:6%;right:20%;"><i class="fas fa-palm-tree"></i></span>
-    </div>
-
-
-    <!-- HEADER MODERNO -->
-    <header class="header modern-header">
-        <div class="logo creative-logo">
-            <a href="index.html" class="logo-link">
-                <img src="assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img pulse-animation">
-                <span class="logo-text gradient-text">Trivel Panama</span>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="logo">
+            <a href="#" class="logo-link">
+                <img src="assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
+                <span class="logo-text">Trivel Panama</span>
             </a>
         </div>
-        <nav class="nav-menu modern-nav">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu">
             <ul>
-                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="pages/destinations.html"><i class="fas fa-map-marked-alt"></i> Destinos</a></li>
-                <li><a href="pages/FAQs.html"><i class="fas fa-question-circle"></i> FAQs</a></li>
-                <li><a href="pages/ContactUs.html"><i class="fas fa-envelope"></i> Contacto</a></li>
-                <li><a href="pages/login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="pages/carrusel.html">Gallery</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#why-choose">Why Us?</a></li>
+                <li><a href="#comments">Testimonials</a></li>
             </ul>
         </nav>
         <div id="auth-area"></div>
     </header>
 
-    <!-- CARRUSEL IMPACTANTE -->
-    <section class="carousel-section" id="home">
-        <div class="carousel-container creative-carousel">
-            <button class="carousel-button prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
-            <div class="carousel-slide">
-                <div class="carousel-slide-item">
-                    <img src="assets/img/home.png" class="carousel-image active" alt="Panama Paradise">
-                    <div class="image-caption">
-                        <h3 class="gradient-text">Bienvenido a Panamá</h3>
-                        <p>Descubre cultura vibrante, playas de ensueño y aventuras inolvidables.</p>
-                    </div>
-                </div>
-                <div class="carousel-slide-item">
-                    <img src="assets/img/BocasToro.jpeg" class="carousel-image" alt="Bocas del Toro">
-                    <div class="image-caption">
-                        <h3>Bocas del Toro</h3>
-                        <p>Encanto caribeño, aguas cristalinas y vida marina vibrante.</p>
-                    </div>
-                </div>
-                <div class="carousel-slide-item">
-                    <img src="assets/img/Red Frog Beach.jpg" class="carousel-image" alt="Red Frog Beach">
-                    <div class="image-caption">
-                        <h3>Red Frog Beach</h3>
-                        <p>Relájate en arenas doradas y explora selvas tropicales.</p>
-                    </div>
-                </div>
-                <div class="carousel-slide-item">
-                    <img src="assets/img/venao.jpg" class="carousel-image" alt="Playa Venao">
-                    <div class="image-caption">
-                        <h3>Playa Venao</h3>
-                        <p>Olas perfectas y atardeceres de postal en el Pacífico.</p>
-                    </div>
-                </div>
-                <div class="carousel-slide-item">
-                    <img src="assets/img/Taboga Island.jpeg" class="carousel-image" alt="Taboga Island">
-                    <div class="image-caption">
-                        <h3>Isla Taboga</h3>
-                        <p>La Isla de las Flores, a minutos de la ciudad.</p>
-                    </div>
-                </div>
+    <!-- Hero Section Mejorado con Carrusel -->
+    <section id="home" class="hero" style="position:relative; overflow:hidden;">
+        <div class="hero-carousel" style="width:100vw; height:100vh; position:relative;">
+            <div class="hero-slide" style="background:url('assets/img/BocasToro.jpeg') center/cover no-repeat; width:100vw; height:100vh; position:absolute; top:0; left:0; opacity:1; transition:opacity 1s;"></div>
+            <div class="hero-slide" style="background:url('assets/img/Red Frog Beach.jpg') center/cover no-repeat; width:100vw; height:100vh; position:absolute; top:0; left:0; opacity:0; transition:opacity 1s;"></div>
+            <div class="hero-slide" style="background:url('assets/img/venao.jpg') center/cover no-repeat; width:100vw; height:100vh; position:absolute; top:0; left:0; opacity:0; transition:opacity 1s;"></div>
+            <div class="hero-overlay"></div>
+            <div class="floating-icons">
+                <div class="floating-icon" data-speed="2"><i class="fas fa-palm-tree"></i></div>
+                <div class="floating-icon" data-speed="1.5"><i class="fas fa-sun"></i></div>
+                <div class="floating-icon" data-speed="3"><i class="fas fa-water"></i></div>
+                <div class="floating-icon" data-speed="2.5"><i class="fas fa-mountain"></i></div>
+                <div class="floating-icon" data-speed="1.8"><i class="fas fa-fish"></i></div>
+                <div class="floating-icon" data-speed="2.2"><i class="fas fa-ship"></i></div>
+                <div class="floating-icon" data-speed="1.3"><i class="fas fa-compass"></i></div>
+                <div class="floating-icon" data-speed="2.7"><i class="fas fa-umbrella-beach"></i></div>
             </div>
-
-            <button class="carousel-button next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
-        </div>
-        <div class="carousel-hero-content enhanced-hero-content">
-            <div class="hero-badge"><i class="fas fa-star"></i> Recomendado por viajeros</div>
-            <h1 class="gradient-text hero-title">Descubre los Tesoros de Panamá</h1>
-            <div class="hero-underline"></div>
-            <p class="hero-subtitle">Vive la belleza del paraíso</p>
-            <p class="hero-inspiration"><i class="fas fa-quote-left"></i> "Cada rincón es una nueva aventura, cada ola una historia por contar." <i class="fas fa-quote-right"></i></p>
-            <a href="#gallery" class="cta-button creative-cta hero-cta"> <i class="fas fa-compass"></i> Explora Ahora <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </section>
-
-    <!-- EXPERIENCIAS DESTACADAS -->
-    <section class="featured-experiences">
-        <div class="experiences-container">
-            <h2 class="gradient-text">Experiencias Únicas</h2>
-            <p class="experiences-subtitle">Descubre lo que hace especial a Panamá</p>
-            <div class="experiences-grid">
-                <div class="experience-card">
-                    <div class="experience-icon">
-                        <i class="fas fa-water"></i>
-                    </div>
-                    <h3>Playas Paradisíacas</h3>
-                    <p>Desde el Caribe hasta el Pacífico, más de 1,500 km de costa por explorar</p>
-                    <div class="experience-stats">
-                        <span><i class="fas fa-map-marker-alt"></i> 1,500+ km costa</span>
-                        <span><i class="fas fa-umbrella-beach"></i> 100+ playas</span>
-                    </div>
+            <div class="hero-content" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; position:relative; z-index:2; height:100vh; max-width:700px; margin:0 auto; text-align:center; padding-bottom:7vh;">
+                <h1 id="heroTitle" style="font-size:2.9rem; font-weight:800; text-shadow:2px 2px 16px rgba(26,115,232,0.18); letter-spacing:1px; max-width:100%; line-height:1.1;">Vive Panamá como nunca antes</h1>
+                <p id="heroSubtitle" class="hero-subtitle" style="font-size:1.25rem; margin-bottom:1.7rem; color:#fff; text-shadow:1px 1px 8px rgba(0,0,0,0.18); max-width:100%; line-height:1.3;">Viajes exclusivos, playas paradisíacas y experiencias auténticas</p>
+                <form class="search-bar" id="searchForm" style="margin-bottom:1.2rem;">
+                    <input type="text" id="searchInput" placeholder="Busca tu destino soñado..." autocomplete="off">
+                    <button type="submit"><i class="fas fa-search"></i> Buscar</button>
+                </form>
+                <div style="display:flex; gap:1rem; margin-bottom:1.2rem; justify-content:center; flex-wrap:wrap;">
+                    <button class="cta-button" style="font-size:0.95rem; padding:0.7rem 1.5rem;">
+                        <span><a href="pages/destinations.html" style="color:white;text-decoration:none;">Explora Ahora</a></span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="cta-button" style="font-size:0.95rem; background:var(--gradient-blue); padding:0.7rem 1.5rem;">
+                        <span><a href="#cotizar" style="color:white;text-decoration:none;">Cotizar</a></span>
+                        <i class="fas fa-comments-dollar"></i>
+                    </button>
                 </div>
-                <div class="experience-card">
-                    <div class="experience-icon">
-                        <i class="fas fa-tree"></i>
+                <div style="display:flex; gap:0.7rem; justify-content:center; align-items:center; margin-top:0.7rem;">
+                    <div class="badge-anim" style="background:rgba(255,255,255,0.85); border-radius:10px; padding:0.4rem 0.9rem; color:#1a365d; font-weight:600; font-size:0.92rem; display:flex; align-items:center; gap:0.5rem; box-shadow:0 2px 8px rgba(26,115,232,0.08);">
+                        <i class="fas fa-star" style="color:var(--accent-color);"></i> Experiencias Premium
                     </div>
-                    <h3>Naturaleza Salvaje</h3>
-                    <p>Selvas tropicales, parques nacionales y biodiversidad única en el mundo</p>
-                    <div class="experience-stats">
-                        <span><i class="fas fa-leaf"></i> 40% bosques</span>
-                        <span><i class="fas fa-dna"></i> 10,000+ especies</span>
+                    <div class="badge-anim" style="background:rgba(255,255,255,0.85); border-radius:10px; padding:0.4rem 0.9rem; color:#1a365d; font-weight:600; font-size:0.92rem; display:flex; align-items:center; gap:0.5rem; box-shadow:0 2px 8px rgba(26,115,232,0.08);">
+                        <i class="fas fa-user-friends" style="color:var(--primary-color);"></i> Atención Personalizada
                     </div>
-                </div>
-                <div class="experience-card">
-                    <div class="experience-icon">
-                        <i class="fas fa-city"></i>
-                    </div>
-                    <h3>Cultura Vibrante</h3>
-                    <p>Historia rica, gastronomía local y gente hospitalaria que te hará sentir en casa</p>
-                    <div class="experience-stats">
-                        <span><i class="fas fa-users"></i> 7 culturas</span>
-                        <span><i class="fas fa-utensils"></i> 500+ platos</span>
-                    </div>
-                </div>
-                <div class="experience-card">
-                    <div class="experience-icon">
-                        <i class="fas fa-ship"></i>
-                    </div>
-                    <h3>Aventuras Marinas</h3>
-                    <p>Buceo, snorkel, pesca deportiva y cruceros por el Canal de Panamá</p>
-                    <div class="experience-stats">
-                        <span><i class="fas fa-fish"></i> 1,000+ especies</span>
-                        <span><i class="fas fa-anchor"></i> 2 océanos</span>
+                    <div class="badge-anim" style="background:rgba(255,255,255,0.85); border-radius:10px; padding:0.4rem 0.9rem; color:#1a365d; font-weight:600; font-size:0.92rem; display:flex; align-items:center; gap:0.5rem; box-shadow:0 2px 8px rgba(26,115,232,0.08);">
+                        <i class="fas fa-leaf" style="color:var(--accent-color);"></i> Turismo Sostenible
                     </div>
                 </div>
             </div>
         </div>
+        <div class="wave-container">
+            <div class="wave"></div>
+        </div>
     </section>
 
-    <!-- ABOUT US PROFESIONAL Y VISUAL -->
-    <section id="about" class="about modern-about">
-        <div class="about-bg-decor"></div>
-        <div class="about-content">
-            <div class="about-text">
-                <h2 class="gradient-text">Sobre Nosotros</h2>
-                <p class="subtitle">Tu compañero de viaje en Panamá</p>
+    <script>
+    // Hero Carousel automático
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    const heroTitles = [
+        'Vive Panamá como nunca antes',
+        'Descubre playas de ensueño',
+        'Aventuras y cultura en cada rincón'
+    ];
+    const heroSubtitles = [
+        'Viajes exclusivos, playas paradisíacas y experiencias auténticas',
+        'Sumérgete en aguas cristalinas y paisajes inolvidables',
+        'Explora, disfruta y crea recuerdos únicos con Trivel Panamá'
+    ];
+    let heroIndex = 0;
+    function showHeroSlide(idx) {
+        heroSlides.forEach((slide, i) => {
+            slide.style.opacity = (i === idx) ? '1' : '0';
+        });
+        document.getElementById('heroTitle').textContent = heroTitles[idx];
+        document.getElementById('heroSubtitle').textContent = heroSubtitles[idx];
+    }
+    setInterval(() => {
+        heroIndex = (heroIndex + 1) % heroSlides.length;
+        showHeroSlide(heroIndex);
+    }, 5000);
+    showHeroSlide(0);
+    </script>
+
+    <!-- Stats Section -->
+    <section class="stats" aria-label="Estadísticas de Trivel Panamá">
+        <div class="stat-item">
+            <div class="stat-number" data-count="1200">0</div>
+            <div class="stat-label">Turistas Felices</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" data-count="35">0</div>
+            <div class="stat-label">Destinos Únicos</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" data-count="150">0</div>
+            <div class="stat-label">Experiencias</div>
+        </div>
+    </section>
+
+    <!-- About Section Mejorado -->
+    <section id="about" class="about reveal">
+        <div class="about-content" style="align-items:center;">
+            <div class="about-text" style="padding:2.5rem 2rem;">
+                <h2 style="font-size:2.7rem; color:var(--primary-color); font-weight:700;">¿Quiénes somos?</h2>
+                <p class="subtitle" style="font-size:1.2rem; color:var(--accent-color); margin-bottom:1.5rem;">Expertos en crear recuerdos inolvidables</p>
                 <div class="about-description">
-                    <p>En Trivel Panama, creemos que cada viaje es una historia. Nacimos de la pasión por explorar y compartir los tesoros ocultos de Panamá con el mundo.</p>
-                    <p class="about-mission"><i class="fas fa-heart"></i> <b>Misión:</b> Inspirar a viajeros a descubrir la cultura, naturaleza y aventura de Panamá, creando recuerdos inolvidables.</p>
-                    <p class="about-values"><i class="fas fa-hands-helping"></i> <b>Valores:</b> Hospitalidad, autenticidad, sostenibilidad y pasión por el servicio.</p>
+                    <p style="font-size:1.15rem; color:#333; margin-bottom:1.5rem;">En <b>Trivel Panamá</b> nos dedicamos a mostrarte lo mejor de nuestro país. Somos un equipo apasionado por el turismo, la cultura y la naturaleza, comprometidos con brindarte experiencias auténticas, seguras y sostenibles. Nuestro objetivo es que vivas Panamá como un local, con el respaldo de expertos y la calidez de amigos.</p>
+                    <ul style="list-style:none; padding:0; margin:0;">
+                        <li style="margin-bottom:0.7rem;"><i class="fas fa-check-circle" style="color:var(--accent-color); margin-right:0.7rem;"></i> Asesoría personalizada para cada viajero</li>
+                        <li style="margin-bottom:0.7rem;"><i class="fas fa-check-circle" style="color:var(--accent-color); margin-right:0.7rem;"></i> Selección exclusiva de destinos y actividades</li>
+                        <li style="margin-bottom:0.7rem;"><i class="fas fa-check-circle" style="color:var(--accent-color); margin-right:0.7rem;"></i> Compromiso con la sostenibilidad y las comunidades</li>
+                        <li><i class="fas fa-check-circle" style="color:var(--accent-color); margin-right:0.7rem;"></i> Soporte 24/7 durante tu viaje</li>
+                    </ul>
                 </div>
-                <div class="about-services">
-                    <div class="service-card"><i class="fas fa-map-signs"></i><span>Guías Locales</span></div>
-                    <div class="service-card"><i class="fas fa-bus"></i><span>Tours Personalizados</span></div>
-                    <div class="service-card"><i class="fas fa-leaf"></i><span>Eco Experiencias</span></div>
-                    <div class="service-card"><i class="fas fa-users"></i><span>Atención 24/7</span></div>
-                </div>
-                <div class="about-quote">"Viajar es la única cosa que compras y te hace más rico."</div>
             </div>
-            <div class="about-image">
-                <img src="assets/img/about-us.jpg" alt="Nuestro Equipo" class="about-img creative-img about-img-circle">
-                <div class="about-icons-row">
-                    <span class="about-icon"><i class="fas fa-map-marked-alt"></i></span>
-                    <span class="about-icon"><i class="fas fa-umbrella-beach"></i></span>
-                    <span class="about-icon"><i class="fas fa-leaf"></i></span>
-                    <span class="about-icon"><i class="fas fa-users"></i></span>
-                    <span class="about-icon"><i class="fas fa-camera-retro"></i></span>
+            <div class="about-image" style="position:relative;">
+                <img src="assets/img/about-us.jpg" alt="Nuestro equipo" style="border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.18); width:100%; max-width:420px;">
+                <div class="floating-card" style="position:absolute; bottom:-20px; right:-20px; background:white; padding:1.5rem; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
+                    <i class="fas fa-map-marked-alt" style="font-size:2rem; color:var(--accent-color); margin-bottom:1rem;"></i>
+                    <h3 style="color:var(--primary-color);">Explora con Nosotros</h3>
+                    <p style="color:#444;">Descubre la magia de Panamá</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- GALERÍA CREATIVA DE PLAYAS - CARRUSEL INFINITO -->
-    <section id="gallery" class="gallery creative-gallery">
-        <h2 class="gradient-text">Beach Gallery</h2>
-        <div class="infinite-carousel-container">
-            <div class="infinite-carousel-track">
-                <!-- Primer set de imágenes -->
-                <div class="gallery-item creative-gallery-item infinite-carousel-item">
-                    <img src="assets/img/Starfish Beach.jpeg" alt="Starfish Beach">
-                    <div class="overlay"><h3>Starfish Beach</h3></div>
+    <!-- Featured Destinations -->
+    <section id="destinations" class="destinations reveal">
+        <h2 style="font-size:2.5rem; text-align:center; margin-bottom:2.5rem; letter-spacing:1px;">Destinos Destacados</h2>
+        <div class="destination-cards" style="gap:2.5rem;">
+            <div class="card" style="overflow:visible; position:relative; transition:transform 0.3s, box-shadow 0.3s;">
+                <div class="card-image" style="position:relative;">
+                    <img src="assets/img/BocasToro.jpeg" alt="Bocas del Toro" style="border-radius:18px 18px 0 0; box-shadow:0 4px 18px rgba(26,115,232,0.10);">
+                    <div class="card-icon pulse-animation" style="top:20px; right:20px; background:var(--gradient-blue); color:#fff; font-size:1.5rem;"><i class="fas fa-water"></i></div>
+                    <span style="position:absolute; bottom:12px; left:12px; background:rgba(26,115,232,0.85); color:#fff; padding:0.4rem 1.1rem; border-radius:12px; font-size:1rem; font-weight:600; box-shadow:0 2px 8px rgba(26,115,232,0.10);">Caribe</span>
                 </div>
-                <div class="gallery-item creative-gallery-item infinite-carousel-item">
-                    <img src="assets/img/Red Frog Beach.jpg" alt="Red Frog Beach">
-                    <div class="overlay"><h3>Red Frog Beach</h3></div>
+                <div class="card-content" style="padding:2rem 1.5rem 1.5rem 1.5rem;">
+                    <h3 style="font-size:1.3rem; color:var(--primary-color); margin-bottom:0.7rem;"><i class="fas fa-map-marker-alt"></i> Bocas del Toro</h3>
+                    <p style="color:#444; margin-bottom:1.2rem;">Encanto caribeño, aguas cristalinas y vida marina vibrante.</p>
+                    <ul style="list-style:none; padding:0; margin-bottom:1.2rem;">
+                        <li style="margin-bottom:0.4rem;"><i class="fas fa-umbrella-beach" style="color:var(--accent-color); margin-right:0.5rem;"></i> Playas paradisíacas</li>
+                        <li style="margin-bottom:0.4rem;"><i class="fas fa-fish" style="color:var(--accent-color); margin-right:0.5rem;"></i> Snorkel y buceo</li>
+                        <li><i class="fas fa-cocktail" style="color:var(--accent-color); margin-right:0.5rem;"></i> Vida nocturna</li>
+                    </ul>
+                    <button class="learn-more" onclick="window.location.href='pages/destinations.html'" style="font-size:1.1rem;">
+                        <span>Ver más</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
-                <div class="gallery-item creative-gallery-item infinite-carousel-item">
-                    <img src="assets/img/Isla Grande.jpg" alt="Isla Grande">
-                    <div class="overlay"><h3>Isla Grande</h3></div>
+            </div>
+            <div class="card" style="overflow:visible; position:relative; transition:transform 0.3s, box-shadow 0.3s;">
+                <div class="card-image" style="position:relative;">
+                    <img src="assets/img/SanBlas.jpg" alt="Guna Yala" style="border-radius:18px 18px 0 0; box-shadow:0 4px 18px rgba(26,115,232,0.10);">
+                    <div class="card-icon pulse-animation" style="top:20px; right:20px; background:var(--gradient-orange); color:#fff; font-size:1.5rem;"><i class="fas fa-island-tropical"></i></div>
+                    <span style="position:absolute; bottom:12px; left:12px; background:rgba(255,107,0,0.85); color:#fff; padding:0.4rem 1.1rem; border-radius:12px; font-size:1rem; font-weight:600; box-shadow:0 2px 8px rgba(255,107,0,0.10);">Islas</span>
                 </div>
-                <div class="gallery-item creative-gallery-item infinite-carousel-item">
-                    <img src="assets/img/Taboga Island.jpeg" alt="Taboga Island">
-                    <div class="overlay"><h3>Taboga Island</h3></div>
+                <div class="card-content" style="padding:2rem 1.5rem 1.5rem 1.5rem;">
+                    <h3 style="font-size:1.3rem; color:var(--primary-color); margin-bottom:0.7rem;"><i class="fas fa-map-marker-alt"></i> Guna Yala</h3>
+                    <p style="color:#444; margin-bottom:1.2rem;">Islas vírgenes y cultura indígena en un paraíso tropical.</p>
+                    <ul style="list-style:none; padding:0; margin-bottom:1.2rem;">
+                        <li style="margin-bottom:0.4rem;"><i class="fas fa-ship" style="color:var(--accent-color); margin-right:0.5rem;"></i> Navegación y tours</li>
+                        <li style="margin-bottom:0.4rem;"><i class="fas fa-users" style="color:var(--accent-color); margin-right:0.5rem;"></i> Cultura Guna</li>
+                        <li><i class="fas fa-leaf" style="color:var(--accent-color); margin-right:0.5rem;"></i> Naturaleza virgen</li>
+                    </ul>
+                    <button class="learn-more" onclick="window.location.href='pages/destinations.html'" style="font-size:1.1rem;">
+                        <span>Ver más</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
-                <div class="gallery-item creative-gallery-item infinite-carousel-item">
-                    <img src="assets/img/Contadora Island.jpeg" alt="Contadora Island">
-                    <div class="overlay"><h3>Contadora Island</h3></div>
+            </div>
+            <div class="card" style="overflow:visible; position:relative; transition:transform 0.3s, box-shadow 0.3s;">
+                <div class="card-image" style="position:relative;">
+                    <img src="assets/img/venao.jpg" alt="Playa Venao" style="border-radius:18px 18px 0 0; box-shadow:0 4px 18px rgba(26,115,232,0.10);">
+                    <div class="card-icon pulse-animation" style="top:20px; right:20px; background:var(--gradient-blue); color:#fff; font-size:1.5rem;"><i class="fas fa-surfing"></i></div>
+                    <span style="position:absolute; bottom:12px; left:12px; background:rgba(26,115,232,0.85); color:#fff; padding:0.4rem 1.1rem; border-radius:12px; font-size:1rem; font-weight:600; box-shadow:0 2px 8px rgba(26,115,232,0.10);">Pacífico</span>
                 </div>
-                <div class="gallery-item creative-gallery-item infinite-carousel-item">
-                    <img src="assets/img/SanBlas.jpg" alt="San Blas">
-                    <div class="overlay"><h3>San Blas</h3></div>
-                </div>
-                <div class="gallery-item creative-gallery-item infinite-carousel-item">
-                    <img src="assets/img/Venao.jpg" alt="Playa Venao">
-                    <div class="overlay"><h3>Playa Venao</h3></div>
-                </div>
-                <!-- Segundo set de imágenes (duplicado para efecto infinito) -->
-                <div class="gallery-item creative-gallery-item infinite-carousel-item">
-                    <img src="assets/img/Starfish Beach.jpeg" alt="Starfish Beach">
-                    <div class="overlay"><h3>Starfish Beach</h3></div>
-                </div>
-                <div class="gallery-item creative-gallery-item infinite-carousel-item">
-                    <img src="assets/img/Red Frog Beach.jpg" alt="Red Frog Beach">
-                    <div class="overlay"><h3>Red Frog Beach</h3></div>
-                </div>
-                <div class="gallery-item creative-gallery-item infinite-carousel-item">
-                    <img src="assets/img/Isla Grande.jpg" alt="Isla Grande">
-                    <div class="overlay"><h3>Isla Grande</h3></div>
-                </div>
-                <div class="gallery-item creative-gallery-item infinite-carousel-item">
-                    <img src="assets/img/Taboga Island.jpeg" alt="Taboga Island">
-                    <div class="overlay"><h3>Taboga Island</h3></div>
-                </div>
-                <div class="gallery-item creative-gallery-item infinite-carousel-item">
-                    <img src="assets/img/Contadora Island.jpeg" alt="Contadora Island">
-                    <div class="overlay"><h3>Contadora Island</h3></div>
-                </div>
-                <div class="gallery-item creative-gallery-item infinite-carousel-item">
-                    <img src="assets/img/SanBlas.jpg" alt="San Blas">
-                    <div class="overlay"><h3>San Blas</h3></div>
-                </div>
-                <div class="gallery-item creative-gallery-item infinite-carousel-item">
-                    <img src="assets/img/Venao.jpg" alt="Playa Venao">
-                    <div class="overlay"><h3>Playa Venao</h3></div>
+                <div class="card-content" style="padding:2rem 1.5rem 1.5rem 1.5rem;">
+                    <h3 style="font-size:1.3rem; color:var(--primary-color); margin-bottom:0.7rem;"><i class="fas fa-map-marker-alt"></i> Playa Venao</h3>
+                    <p style="color:#444; margin-bottom:1.2rem;">Olas perfectas y atardeceres inolvidables en la costa pacífica.</p>
+                    <ul style="list-style:none; padding:0; margin-bottom:1.2rem;">
+                        <li style="margin-bottom:0.4rem;"><i class="fas fa-surfing" style="color:var(--accent-color); margin-right:0.5rem;"></i> Surf y deportes acuáticos</li>
+                        <li style="margin-bottom:0.4rem;"><i class="fas fa-sun" style="color:var(--accent-color); margin-right:0.5rem;"></i> Atardeceres únicos</li>
+                        <li><i class="fas fa-music" style="color:var(--accent-color); margin-right:0.5rem;"></i> Festivales y vida local</li>
+                    </ul>
+                    <button class="learn-more" onclick="window.location.href='pages/destinations.html'" style="font-size:1.1rem;">
+                        <span>Ver más</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- POR QUÉ ELEGIRNOS -->
-    <section class="why-choose-us">
-        <div class="why-choose-container">
-            <h2 class="gradient-text">¿Por qué elegir Trivel Panama?</h2>
-            <div class="reasons-grid">
-                <div class="reason-card">
-                    <div class="reason-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Seguridad Garantizada</h3>
-                    <p>Protocolos de seguridad certificados y seguros de viaje incluidos en todos nuestros paquetes</p>
+    <!-- Galería avanzada con filtros -->
+    <section id="gallery" class="gallery reveal">
+        <h2>Galería de Playas</h2>
+        <div id="galleryFilters" style="display:flex; gap:1rem; justify-content:center; margin-bottom:2rem; flex-wrap:wrap;">
+            <button class="gallery-filter-btn" data-filter="all" style="background:var(--gradient-blue); color:#fff; border:none; border-radius:8px; padding:0.5rem 1.2rem; font-size:1rem; font-weight:500; cursor:pointer;">Todos</button>
+            <button class="gallery-filter-btn" data-filter="playa" style="background:#fff; color:var(--primary-color); border:1.5px solid var(--primary-color); border-radius:8px; padding:0.5rem 1.2rem; font-size:1rem; font-weight:500; cursor:pointer;">Playa</button>
+            <button class="gallery-filter-btn" data-filter="isla" style="background:#fff; color:var(--accent-color); border:1.5px solid var(--accent-color); border-radius:8px; padding:0.5rem 1.2rem; font-size:1rem; font-weight:500; cursor:pointer;">Isla</button>
+            <button class="gallery-filter-btn" data-filter="ciudad" style="background:#fff; color:#444; border:1.5px solid #bbb; border-radius:8px; padding:0.5rem 1.2rem; font-size:1rem; font-weight:500; cursor:pointer;">Ciudad</button>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+            <div class="gallery-item" data-type="playa" onclick="openLightbox(0)">
+                <img src="assets/img/Starfish Beach.jpeg" alt="Starfish Beach">
+                <div class="overlay"><h3>Starfish Beach</h3></div>
+            </div>
+            <div class="gallery-item" data-type="playa" onclick="openLightbox(1)">
+                <img src="assets/img/Red Frog Beach.jpg" alt="Red Frog Beach">
+                <div class="overlay"><h3>Red Frog Beach</h3></div>
+            </div>
+            <div class="gallery-item" data-type="isla" onclick="openLightbox(2)">
+                <img src="assets/img/Isla Grande.jpg" alt="Isla Grande">
+                <div class="overlay"><h3>Isla Grande</h3></div>
+            </div>
+            <div class="gallery-item" data-type="isla" onclick="openLightbox(3)">
+                <img src="assets/img/Taboga Island.jpeg" alt="Taboga Island">
+                <div class="overlay"><h3>Taboga Island</h3></div>
+            </div>
+            <div class="gallery-item" data-type="isla" onclick="openLightbox(4)">
+                <img src="assets/img/Contadora Island.jpeg" alt="Contadora Island">
+                <div class="overlay"><h3>Contadora Island</h3></div>
+            </div>
+            <div class="gallery-item" data-type="ciudad" onclick="openLightbox(5)">
+                <img src="assets/img/home.png" alt="Panama City">
+                <div class="overlay"><h3>Panama City</h3></div>
+            </div>
+        </div>
+    </section>
+    <!-- Lightbox mejorado -->
+    <div id="lightboxModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); z-index:3000; align-items:center; justify-content:center;">
+        <span onclick="closeLightbox()" style="position:absolute; top:30px; right:40px; color:#fff; font-size:2.5rem; cursor:pointer; z-index:3010;">&times;</span>
+        <button onclick="prevLightbox()" style="position:absolute; left:30px; top:50%; transform:translateY(-50%); background:none; border:none; color:#fff; font-size:2.5rem; cursor:pointer; z-index:3010;">&#10094;</button>
+        <img id="lightboxImg" src="" alt="" style="max-width:90vw; max-height:80vh; border-radius:18px; box-shadow:0 8px 32px rgba(26,115,232,0.18);">
+        <button onclick="nextLightbox()" style="position:absolute; right:30px; top:50%; transform:translateY(-50%); background:none; border:none; color:#fff; font-size:2.5rem; cursor:pointer; z-index:3010;">&#10095;</button>
+        <div id="lightboxCaption" style="color:#fff; text-align:center; margin-top:1.5rem; font-size:1.3rem; font-weight:500;"></div>
+    </div>
+    <script>
+    const galleryImages = [
+        {src: 'assets/img/Starfish Beach.jpeg', caption: 'Starfish Beach'},
+        {src: 'assets/img/Red Frog Beach.jpg', caption: 'Red Frog Beach'},
+        {src: 'assets/img/Isla Grande.jpg', caption: 'Isla Grande'},
+        {src: 'assets/img/Taboga Island.jpeg', caption: 'Taboga Island'},
+        {src: 'assets/img/Contadora Island.jpeg', caption: 'Contadora Island'},
+        {src: 'assets/img/home.png', caption: 'Panama City'}
+    ];
+    let currentLightbox = 0;
+    function openLightbox(idx) {
+        currentLightbox = idx;
+        document.getElementById('lightboxModal').style.display = 'flex';
+        updateLightbox();
+        document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+        document.getElementById('lightboxModal').style.display = 'none';
+        document.body.style.overflow = '';
+    }
+    function prevLightbox() {
+        currentLightbox = (currentLightbox - 1 + galleryImages.length) % galleryImages.length;
+        updateLightbox();
+    }
+    function nextLightbox() {
+        currentLightbox = (currentLightbox + 1) % galleryImages.length;
+        updateLightbox();
+    }
+    function updateLightbox() {
+        const img = document.getElementById('lightboxImg');
+        const caption = document.getElementById('lightboxCaption');
+        img.src = galleryImages[currentLightbox].src;
+        img.alt = galleryImages[currentLightbox].caption;
+        caption.textContent = galleryImages[currentLightbox].caption;
+    }
+    document.addEventListener('keydown', function(e) {
+        if(document.getElementById('lightboxModal').style.display === 'flex') {
+            if(e.key === 'ArrowLeft') prevLightbox();
+            if(e.key === 'ArrowRight') nextLightbox();
+            if(e.key === 'Escape') closeLightbox();
+        }
+    });
+    // Filtros de galería
+    const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+    filterBtns.forEach(btn => {
+        btn.onclick = function() {
+            filterBtns.forEach(b=>b.style.background='#fff');
+            filterBtns.forEach(b=>b.style.color=b.dataset.filter==='playa'? 'var(--primary-color)':b.dataset.filter==='isla'?'var(--accent-color)':b.dataset.filter==='ciudad'?'#444':'var(--primary-color)');
+            this.style.background = this.dataset.filter==='all'? 'var(--gradient-blue)' : (this.dataset.filter==='playa'? 'var(--gradient-blue)':this.dataset.filter==='isla'?'var(--gradient-orange)':this.dataset.filter==='ciudad'?'#bbb':'#fff');
+            this.style.color = '#fff';
+            const type = this.dataset.filter;
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                if(type==='all'||item.dataset.type===type) item.style.display='block';
+                else item.style.display='none';
+            });
+        };
+    });
+    // Slider horizontal en móvil
+    if(window.innerWidth<700) {
+        const grid = document.getElementById('galleryGrid');
+        grid.style.display = 'flex';
+        grid.style.overflowX = 'auto';
+        grid.style.gap = '1.2rem';
+        grid.style.scrollSnapType = 'x mandatory';
+        document.querySelectorAll('.gallery-item').forEach(item=>{
+            item.style.minWidth = '220px';
+            item.style.scrollSnapAlign = 'center';
+        });
+    }
+    </script>
+
+    <!-- Testimonio del día destacado -->
+    <section class="reveal" style="background:var(--gradient-light); padding:2.5rem 0 1.5rem 0; text-align:center;">
+        <div style="max-width:520px; margin:0 auto; background:#fff; border-radius:18px; box-shadow:0 8px 32px rgba(26,54,93,0.13); padding:2.2rem 1.5rem;">
+            <span class="quote-icon" style="font-size:2.2rem; color:var(--accent-color); opacity:0.25;"><i class="fas fa-quote-left"></i></span>
+            <p style="font-size:1.18rem; color:#1a365d; margin-bottom:1.2rem; font-style:italic;">"La mejor experiencia de viaje. Las recomendaciones fueron perfectas y los tours increíbles."</p>
+            <div style="display:flex; align-items:center; gap:18px; justify-content:center;">
+                <div style="width:56px; height:56px; border-radius:50%; border:3px solid var(--accent-color); overflow:hidden; background:#e0e7ef;">
+                    <img src="assets/img/Taboga Island.jpeg" alt="Pedro R." style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
                 </div>
-                <div class="reason-card">
-                    <div class="reason-icon">
-                        <i class="fas fa-hand-holding-heart"></i>
-                    </div>
-                    <h3>Atención Personalizada</h3>
-                    <p>Guías locales expertos que conocen cada rincón y te brindan una experiencia auténtica</p>
+                <div style="text-align:left;">
+                    <span style="font-weight:700; color:var(--primary-color); font-size:1.05rem;">Pedro R.</span><br>
+                    <span style="font-size:0.98rem; color:var(--accent-color); font-weight:500;">Globetrotter</span>
                 </div>
-                <div class="reason-card">
-                    <div class="reason-icon">
-                        <i class="fas fa-dollar-sign"></i>
+            </div>
+        </div>
+        <button id="moreTestimonialsBtn" style="margin-top:1.5rem; background:var(--gradient-blue); color:#fff; border:none; border-radius:8px; padding:0.7rem 1.5rem; font-size:1rem; font-weight:600; cursor:pointer;">Ver más testimonios</button>
+    </section>
+    <!-- Modal de testimonios -->
+    <div id="testimonialsModal" style="display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.18); z-index:4002; align-items:center; justify-content:center;">
+        <div style="background:#fff; border-radius:18px; box-shadow:0 8px 32px rgba(26,54,93,0.13); padding:2.2rem 2rem; max-width:95vw; width:420px; position:relative; max-height:90vh; overflow-y:auto;">
+            <button onclick="document.getElementById('testimonialsModal').style.display='none'" style="position:absolute; top:18px; right:18px; background:none; border:none; color:#888; font-size:1.3rem; cursor:pointer;">&times;</button>
+            <h3 style="color:var(--primary-color); font-size:1.3rem; margin-bottom:1.2rem;">Más testimonios</h3>
+            <div id="allTestimonials">
+                <!-- Aquí se pueden duplicar los testimonios existentes o agregar más -->
+                <div style="margin-bottom:1.2rem;">
+                    <span class="quote-icon" style="font-size:1.1rem; color:var(--accent-color); opacity:0.25;"><i class="fas fa-quote-left"></i></span>
+                    <span style="font-size:1rem; color:#1a365d; font-style:italic;">"¡Trivel Panamá hizo de mis vacaciones una experiencia inolvidable! Las playas fueron espectaculares y el servicio excelente."</span>
+                    <div style="display:flex; align-items:center; gap:10px; margin-top:0.5rem;">
+                        <img src="assets/img/Starfish Beach.jpeg" alt="Maria G." style="width:36px; height:36px; border-radius:50%; border:2px solid var(--accent-color);">
+                        <span style="font-weight:600; color:var(--primary-color); font-size:0.98rem;">Maria G.</span>
                     </div>
-                    <h3>Precios Transparentes</h3>
-                    <p>Sin cargos ocultos. Precios claros y competitivos con la mejor relación calidad-precio</p>
                 </div>
-                <div class="reason-card">
-                    <div class="reason-icon">
-                        <i class="fas fa-clock"></i>
+                <div style="margin-bottom:1.2rem;">
+                    <span class="quote-icon" style="font-size:1.1rem; color:var(--accent-color); opacity:0.25;"><i class="fas fa-quote-left"></i></span>
+                    <span style="font-size:1rem; color:#1a365d; font-style:italic;">"¡Descubrí lugares que nunca imaginé! Lo recomiendo a todos los que visiten Panamá."</span>
+                    <div style="display:flex; align-items:center; gap:10px; margin-top:0.5rem;">
+                        <img src="assets/img/Red Frog Beach.jpg" alt="John D." style="width:36px; height:36px; border-radius:50%; border:2px solid var(--accent-color);">
+                        <span style="font-weight:600; color:var(--primary-color); font-size:0.98rem;">John D.</span>
                     </div>
-                    <h3>Flexibilidad Total</h3>
-                    <p>Reservas modificables, cancelaciones gratuitas y itinerarios personalizables</p>
                 </div>
-                <div class="reason-card">
-                    <div class="reason-icon">
-                        <i class="fas fa-award"></i>
+                <div style="margin-bottom:1.2rem;">
+                    <span class="quote-icon" style="font-size:1.1rem; color:var(--accent-color); opacity:0.25;"><i class="fas fa-quote-left"></i></span>
+                    <span style="font-size:1rem; color:#1a365d; font-style:italic;">"El equipo fue muy amable y atento. ¡Cada detalle estuvo cuidado!"</span>
+                    <div style="display:flex; align-items:center; gap:10px; margin-top:0.5rem;">
+                        <img src="assets/img/Isla Grande.jpg" alt="Lucía P." style="width:36px; height:36px; border-radius:50%; border:2px solid var(--accent-color);">
+                        <span style="font-weight:600; color:var(--primary-color); font-size:0.98rem;">Lucía Pascal</span>
                     </div>
-                    <h3>Certificación Oficial</h3>
-                    <p>Empresa certificada por el Ministerio de Turismo de Panamá y asociaciones internacionales</p>
                 </div>
-                <div class="reason-card">
-                    <div class="reason-icon">
-                        <i class="fas fa-leaf"></i>
+                <div style="margin-bottom:1.2rem;">
+                    <span class="quote-icon" style="font-size:1.1rem; color:var(--accent-color); opacity:0.25;"><i class="fas fa-quote-left"></i></span>
+                    <span style="font-size:1rem; color:#1a365d; font-style:italic;">"¡Una experiencia mágica! Descubrí la cultura y naturaleza de Panamá como nunca antes."</span>
+                    <div style="display:flex; align-items:center; gap:10px; margin-top:0.5rem;">
+                        <img src="assets/img/Contadora Island.jpeg" alt="Jonathan Sanchez" style="width:36px; height:36px; border-radius:50%; border:2px solid var(--accent-color);">
+                        <span style="font-weight:600; color:var(--primary-color); font-size:0.98rem;">Jonathan Sanchez</span>
                     </div>
-                    <h3>Turismo Sostenible</h3>
-                    <p>Comprometidos con la conservación del medio ambiente y el desarrollo de comunidades locales</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    document.getElementById('moreTestimonialsBtn').onclick = function() {
+        document.getElementById('testimonialsModal').style.display = 'flex';
+    };
+    </script>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-choose" class="why-choose reveal">
+        <div class="container">
+            <h2 style="text-align:center;">¿Por qué elegir Trivel Panamá?</h2>
+            <div class="why-choose-list">
+                <div class="why-choose-item">
+                    <i class="fas fa-star"></i>
+                    <h4>Experiencias Exclusivas</h4>
+                    <p>Acceso a destinos y actividades únicas, seleccionadas para ti.</p>
+                </div>
+                <div class="why-choose-item">
+                    <i class="fas fa-users"></i>
+                    <h4>Atención Personalizada</h4>
+                    <p>Asesoría y soporte en cada paso de tu viaje.</p>
+                </div>
+                <div class="why-choose-item">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Turismo Sostenible</h4>
+                    <p>Compromiso con la naturaleza y las comunidades locales.</p>
+                </div>
+                <div class="why-choose-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Confianza y Seguridad</h4>
+                    <p>Viaja con tranquilidad, nosotros nos encargamos de todo.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- TESTIMONIOS DESTACADOS -->
-    <section id="comments" class="testimonials-carousel vertical-carousel creative-testimonials">
+    <!-- Testimonials Carousel Vertical -->
+    <section id="comments" class="testimonials-carousel vertical-carousel reveal">
         <div class="testimonials-bg-decor"></div>
-        <h2 class="gradient-text">Lo que dicen nuestros viajeros</h2>
+        <h2 style="font-size:2.3rem; text-align:center; margin-bottom:2.2rem; letter-spacing:1px; color:var(--primary-color); font-weight:800;">Lo que dicen nuestros viajeros</h2>
         <div class="carousel-container-vertical">
-            <button class="carousel-btn up" aria-label="Previous testimonial"><i class="fas fa-chevron-up"></i></button>
+            <button class="carousel-btn up" aria-label="Anterior testimonio"><i class="fas fa-chevron-up"></i></button>
             <div class="carousel-track-vertical">
                 <div class="testimonial-vertical">
-                    <div class="testimonial-content creative-testimonial-content">
-                        <span class="quote-icon"><i class="fas fa-quote-left"></i></span>
-                        <p>"¡Trivel Panama hizo mi viaje inolvidable! Las playas son espectaculares y el servicio excelente."</p>
-                        <div class="testimonial-author">
-                            <div class="author-img-wrapper">
-                                <img src="assets/img/Starfish Beach.jpeg" alt="Maria G.">
+                    <div class="testimonial-content" style="background: #fff; border-radius: 28px; box-shadow: 0 8px 32px rgba(26,54,93,0.13); border: 2.5px solid #1a365d22; padding: 48px 38px 38px 38px; max-width: 520px; margin: 0 auto; position: relative; text-align: left;">
+                        <span class="quote-icon" style="font-size:3rem; color:var(--accent-color); left: 24px; top: 18px; opacity: 0.25; z-index: 1;"><i class="fas fa-quote-left"></i></span>
+                        <p style="font-size:1.25rem; color:#1a365d; margin-bottom:28px; font-style:italic; position:relative; z-index:2;"><span style="color:var(--accent-color); font-weight:700; font-size:1.3rem;">" </span>¡Trivel Panamá hizo de mis vacaciones una experiencia inolvidable! Las playas fueron espectaculares y el servicio excelente.<span style="color:var(--accent-color); font-weight:700; font-size:1.3rem;">"</span></p>
+                        <div class="testimonial-author" style="display:flex; align-items:center; gap:22px; margin-top:10px;">
+                            <div class="author-img-wrapper" style="width:80px; height:80px; border-radius:50%; border:4px solid var(--accent-color); box-shadow:0 2px 8px rgba(59,178,208,0.13); overflow:hidden; background:#e0e7ef;">
+                                <img src="assets/img/Starfish Beach.jpeg" alt="Maria G." style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
                             </div>
                             <div class="author-info">
-                                <span class="author-name">Maria G.</span>
-                                <span class="author-role">Viajera</span>
+                                <span class="author-name" style="font-weight:700; color:var(--primary-color); font-size:1.15rem; letter-spacing:0.5px;">Maria G.</span>
+                                <span class="author-role" style="font-size:1.05rem; color:var(--accent-color); font-weight:500; margin-top:2px; display:block;">Viajera</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-vertical">
-                    <div class="testimonial-content creative-testimonial-content">
-                        <span class="quote-icon"><i class="fas fa-quote-left"></i></span>
-                        <p>"¡Descubrí lugares que no sabía que existían! Lo recomiendo a todos los que visiten Panamá."</p>
-                        <div class="testimonial-author">
-                            <div class="author-img-wrapper">
-                                <img src="assets/img/Red Frog Beach.jpg" alt="John D.">
+                    <div class="testimonial-content" style="background: #fff; border-radius: 28px; box-shadow: 0 8px 32px rgba(26,54,93,0.13); border: 2.5px solid #1a365d22; padding: 48px 38px 38px 38px; max-width: 520px; margin: 0 auto; position: relative; text-align: left;">
+                        <span class="quote-icon" style="font-size:3rem; color:var(--accent-color); left: 24px; top: 18px; opacity: 0.25; z-index: 1;"><i class="fas fa-quote-left"></i></span>
+                        <p style="font-size:1.25rem; color:#1a365d; margin-bottom:28px; font-style:italic; position:relative; z-index:2;"><span style="color:var(--accent-color); font-weight:700; font-size:1.3rem;">" </span>¡Descubrí lugares que nunca imaginé! Lo recomiendo a todos los que visiten Panamá.<span style="color:var(--accent-color); font-weight:700; font-size:1.3rem;">"</span></p>
+                        <div class="testimonial-author" style="display:flex; align-items:center; gap:22px; margin-top:10px;">
+                            <div class="author-img-wrapper" style="width:80px; height:80px; border-radius:50%; border:4px solid var(--accent-color); box-shadow:0 2px 8px rgba(59,178,208,0.13); overflow:hidden; background:#e0e7ef;">
+                                <img src="assets/img/Red Frog Beach.jpg" alt="John D." style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
                             </div>
                             <div class="author-info">
-                                <span class="author-name">John D.</span>
-                                <span class="author-role">Aventurero</span>
+                                <span class="author-name" style="font-weight:700; color:var(--primary-color); font-size:1.15rem; letter-spacing:0.5px;">John D.</span>
+                                <span class="author-role" style="font-size:1.05rem; color:var(--accent-color); font-weight:500; margin-top:2px; display:block;">Aventurero</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-vertical">
-                    <div class="testimonial-content creative-testimonial-content">
-                        <span class="quote-icon"><i class="fas fa-quote-left"></i></span>
-                        <p>"El equipo fue muy amable y atento. ¡Cada detalle estuvo cuidado!"</p>
-                        <div class="testimonial-author">
-                            <div class="author-img-wrapper">
-                                <img src="assets/img/Isla Grande.jpg" alt="Lucía P.">
+                    <div class="testimonial-content" style="background: #fff; border-radius: 28px; box-shadow: 0 8px 32px rgba(26,54,93,0.13); border: 2.5px solid #1a365d22; padding: 48px 38px 38px 38px; max-width: 520px; margin: 0 auto; position: relative; text-align: left;">
+                        <span class="quote-icon" style="font-size:3rem; color:var(--accent-color); left: 24px; top: 18px; opacity: 0.25; z-index: 1;"><i class="fas fa-quote-left"></i></span>
+                        <p style="font-size:1.25rem; color:#1a365d; margin-bottom:28px; font-style:italic; position:relative; z-index:2;"><span style="color:var(--accent-color); font-weight:700; font-size:1.3rem;">" </span>El equipo fue muy amable y atento. ¡Cada detalle estuvo cuidado!<span style="color:var(--accent-color); font-weight:700; font-size:1.3rem;">"</span></p>
+                        <div class="testimonial-author" style="display:flex; align-items:center; gap:22px; margin-top:10px;">
+                            <div class="author-img-wrapper" style="width:80px; height:80px; border-radius:50%; border:4px solid var(--accent-color); box-shadow:0 2px 8px rgba(59,178,208,0.13); overflow:hidden; background:#e0e7ef;">
+                                <img src="assets/img/Isla Grande.jpg" alt="Lucía P." style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
                             </div>
                             <div class="author-info">
-                                <span class="author-name">Lucía Pascal</span>
-                                <span class="author-role">Exploradora</span>
+                                <span class="author-name" style="font-weight:700; color:var(--primary-color); font-size:1.15rem; letter-spacing:0.5px;">Lucía Pascal</span>
+                                <span class="author-role" style="font-size:1.05rem; color:var(--accent-color); font-weight:500; margin-top:2px; display:block;">Exploradora</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-vertical">
-                    <div class="testimonial-content creative-testimonial-content">
-                        <span class="quote-icon"><i class="fas fa-quote-left"></i></span>
-                        <p>"La mejor experiencia de viaje. Las recomendaciones fueron perfectas y los tours increíbles."</p>
-                        <div class="testimonial-author">
-                            <div class="author-img-wrapper">
-                                <img src="assets/img/Taboga Island.jpeg" alt="Pedro R.">
+                    <div class="testimonial-content" style="background: #fff; border-radius: 28px; box-shadow: 0 8px 32px rgba(26,54,93,0.13); border: 2.5px solid #1a365d22; padding: 48px 38px 38px 38px; max-width: 520px; margin: 0 auto; position: relative; text-align: left;">
+                        <span class="quote-icon" style="font-size:3rem; color:var(--accent-color); left: 24px; top: 18px; opacity: 0.25; z-index: 1;"><i class="fas fa-quote-left"></i></span>
+                        <p style="font-size:1.25rem; color:#1a365d; margin-bottom:28px; font-style:italic; position:relative; z-index:2;"><span style="color:var(--accent-color); font-weight:700; font-size:1.3rem;">" </span>La mejor experiencia de viaje. Las recomendaciones fueron perfectas y los tours increíbles.<span style="color:var(--accent-color); font-weight:700; font-size:1.3rem;">"</span></p>
+                        <div class="testimonial-author" style="display:flex; align-items:center; gap:22px; margin-top:10px;">
+                            <div class="author-img-wrapper" style="width:80px; height:80px; border-radius:50%; border:4px solid var(--accent-color); box-shadow:0 2px 8px rgba(59,178,208,0.13); overflow:hidden; background:#e0e7ef;">
+                                <img src="assets/img/Taboga Island.jpeg" alt="Pedro R." style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
                             </div>
                             <div class="author-info">
-                                <span class="author-name">Pedro R.</span>
-                                <span class="author-role">Globetrotter</span>
+                                <span class="author-name" style="font-weight:700; color:var(--primary-color); font-size:1.15rem; letter-spacing:0.5px;">Pedro R.</span>
+                                <span class="author-role" style="font-size:1.05rem; color:var(--accent-color); font-weight:500; margin-top:2px; display:block;">Globetrotter</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-vertical">
+                    <div class="testimonial-content" style="background: #fff; border-radius: 28px; box-shadow: 0 8px 32px rgba(26,54,93,0.13); border: 2.5px solid #1a365d22; padding: 48px 38px 38px 38px; max-width: 520px; margin: 0 auto; position: relative; text-align: left;">
+                        <span class="quote-icon" style="font-size:3rem; color:var(--accent-color); left: 24px; top: 18px; opacity: 0.25; z-index: 1;"><i class="fas fa-quote-left"></i></span>
+                        <p style="font-size:1.25rem; color:#1a365d; margin-bottom:28px; font-style:italic; position:relative; z-index:2;"><span style="color:var(--accent-color); font-weight:700; font-size:1.3rem;">" </span>¡Una experiencia mágica! Descubrí la cultura y naturaleza de Panamá como nunca antes.<span style="color:var(--accent-color); font-weight:700; font-size:1.3rem;">"</span></p>
+                        <div class="testimonial-author" style="display:flex; align-items:center; gap:22px; margin-top:10px;">
+                            <div class="author-img-wrapper" style="width:80px; height:80px; border-radius:50%; border:4px solid var(--accent-color); box-shadow:0 2px 8px rgba(59,178,208,0.13); overflow:hidden; background:#e0e7ef;">
+                                <img src="assets/img/Contadora Island.jpeg" alt="Jonathan Sanchez" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+                            </div>
+                            <div class="author-info">
+                                <span class="author-name" style="font-weight:700; color:var(--primary-color); font-size:1.15rem; letter-spacing:0.5px;">Jonathan Sanchez</span>
+                                <span class="author-role" style="font-size:1.05rem; color:var(--accent-color); font-weight:500; margin-top:2px; display:block;">Amante de la Naturaleza</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-vertical">
+                    <div class="testimonial-content" style="background: #fff; border-radius: 28px; box-shadow: 0 8px 32px rgba(26,54,93,0.13); border: 2.5px solid #1a365d22; padding: 48px 38px 38px 38px; max-width: 520px; margin: 0 auto; position: relative; text-align: left;">
+                        <span class="quote-icon" style="font-size:3rem; color:var(--accent-color); left: 24px; top: 18px; opacity: 0.25; z-index: 1;"><i class="fas fa-quote-left"></i></span>
+                        <p style="font-size:1.25rem; color:#1a365d; margin-bottom:28px; font-style:italic; position:relative; z-index:2;"><span style="color:var(--accent-color); font-weight:700; font-size:1.3rem;">" </span>El mejor viaje de mi vida. Todo estuvo perfectamente organizado y el equipo fue increíble.<span style="color:var(--accent-color); font-weight:700; font-size:1.3rem;">"</span></p>
+                        <div class="testimonial-author" style="display:flex; align-items:center; gap:22px; margin-top:10px;">
+                            <div class="author-img-wrapper" style="width:80px; height:80px; border-radius:50%; border:4px solid var(--accent-color); box-shadow:0 2px 8px rgba(59,178,208,0.13); overflow:hidden; background:#e0e7ef;">
+                                <img src="assets/img/BocasToro.jpeg" alt="Juan Morales" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+                            </div>
+                            <div class="author-info">
+                                <span class="author-name" style="font-weight:700; color:var(--primary-color); font-size:1.15rem; letter-spacing:0.5px;">Juan Morales</span>
+                                <span class="author-role" style="font-size:1.05rem; color:var(--accent-color); font-weight:500; margin-top:2px; display:block;">Aventurero</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-vertical">
+                    <div class="testimonial-content" style="background: #fff; border-radius: 28px; box-shadow: 0 8px 32px rgba(26,54,93,0.13); border: 2.5px solid #1a365d22; padding: 48px 38px 38px 38px; max-width: 520px; margin: 0 auto; position: relative; text-align: left;">
+                        <span class="quote-icon" style="font-size:3rem; color:var(--accent-color); left: 24px; top: 18px; opacity: 0.25; z-index: 1;"><i class="fas fa-quote-left"></i></span>
+                        <p style="font-size:1.25rem; color:#1a365d; margin-bottom:28px; font-style:italic; position:relative; z-index:2;"><span style="color:var(--accent-color); font-weight:700; font-size:1.3rem;">" </span>Trivel Panamá superó todas mis expectativas. ¡Volveré pronto con mi familia!<span style="color:var(--accent-color); font-weight:700; font-size:1.3rem;">"</span></p>
+                        <div class="testimonial-author" style="display:flex; align-items:center; gap:22px; margin-top:10px;">
+                            <div class="author-img-wrapper" style="width:80px; height:80px; border-radius:50%; border:4px solid var(--accent-color); box-shadow:0 2px 8px rgba(59,178,208,0.13); overflow:hidden; background:#e0e7ef;">
+                                <img src="assets/img/Red Frog Beach.jpg" alt="Damaris Vasquez" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+                            </div>
+                            <div class="author-info">
+                                <span class="author-name" style="font-weight:700; color:var(--primary-color); font-size:1.15rem; letter-spacing:0.5px;">Damaris Vasquez</span>
+                                <span class="author-role" style="font-size:1.05rem; color:var(--accent-color); font-weight:500; margin-top:2px; display:block;">Viajera en Familia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-vertical">
+                    <div class="testimonial-content" style="background: #fff; border-radius: 28px; box-shadow: 0 8px 32px rgba(26,54,93,0.13); border: 2.5px solid #1a365d22; padding: 48px 38px 38px 38px; max-width: 520px; margin: 0 auto; position: relative; text-align: left;">
+                        <span class="quote-icon" style="font-size:3rem; color:var(--accent-color); left: 24px; top: 18px; opacity: 0.25; z-index: 1;"><i class="fas fa-quote-left"></i></span>
+                        <p style="font-size:1.25rem; color:#1a365d; margin-bottom:28px; font-style:italic; position:relative; z-index:2;"><span style="color:var(--accent-color); font-weight:700; font-size:1.3rem;">" </span>Cada destino fue una sorpresa. La atención personalizada marcó la diferencia.<span style="color:var(--accent-color); font-weight:700; font-size:1.3rem;">"</span></p>
+                        <div class="testimonial-author" style="display:flex; align-items:center; gap:22px; margin-top:10px;">
+                            <div class="author-img-wrapper" style="width:80px; height:80px; border-radius:50%; border:4px solid var(--accent-color); box-shadow:0 2px 8px rgba(59,178,208,0.13); overflow:hidden; background:#e0e7ef;">
+                                <img src="assets/img/Isla Grande.jpg" alt="Laramie Miranda" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+                            </div>
+                            <div class="author-info">
+                                <span class="author-name" style="font-weight:700; color:var(--primary-color); font-size:1.15rem; letter-spacing:0.5px;">Laramie Miranda</span>
+                                <span class="author-role" style="font-size:1.05rem; color:var(--accent-color); font-weight:500; margin-top:2px; display:block;">Exploradora</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button class="carousel-btn down" aria-label="Next testimonial"><i class="fas fa-chevron-down"></i></button>
+            <button class="carousel-btn down" aria-label="Siguiente testimonio"><i class="fas fa-chevron-down"></i></button>
         </div>
         <div class="carousel-dots-vertical">
             <span class="dot-vertical active"></span>
             <span class="dot-vertical"></span>
             <span class="dot-vertical"></span>
             <span class="dot-vertical"></span>
+            <span class="dot-vertical"></span>
+            <span class="dot-vertical"></span>
+            <span class="dot-vertical"></span>
+            <span class="dot-vertical"></span>
         </div>
     </section>
 
-
-    <!-- ESTADÍSTICAS NUEVAS -->
-    <section class="new-stats-section">
-        <div class="new-stats-container">
-            <h2 class="new-stats-title">Nuestros Logros</h2>
-            <p class="new-stats-subtitle">La confianza de miles de viajeros nos respalda</p>
-            <div class="new-stats-grid">
-                <div class="new-stat-item">
-                    <div class="new-stat-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="new-stat-number" id="stat1">50,000</div>
-                    <div class="new-stat-label">Viajeros Satisfechos</div>
-                </div>
-                <div class="new-stat-item">
-                    <div class="new-stat-icon">
-                        <i class="fas fa-map-marked-alt"></i>
-                    </div>
-                    <div class="new-stat-number" id="stat2">150</div>
-                    <div class="new-stat-label">Destinos Únicos</div>
-                </div>
-                <div class="new-stat-item">
-                    <div class="new-stat-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <div class="new-stat-number" id="stat3">98</div>
-                    <div class="new-stat-label">% Satisfacción</div>
-                </div>
-                <div class="new-stat-item">
-                    <div class="new-stat-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <div class="new-stat-number" id="stat4">10</div>
-                    <div class="new-stat-label">Años de Experiencia</div>
-                </div>
+    <!-- Newsletter Section -->
+    <section class="newsletter reveal">
+        <div class="newsletter-content" style="background: #fff; border-radius: 22px; box-shadow: 0 4px 24px rgba(26,115,232,0.07); padding: 3rem 2rem; max-width: 600px; margin: 0 auto;">
+            <div class="newsletter-header" style="margin-bottom:2.2rem;">
+                <div class="newsletter-icon pulse-animation" style="width:90px; height:90px; font-size:2.3rem; margin-bottom:1.2rem;"><i class="fas fa-envelope-open-text"></i></div>
+                <h2 style="font-size:2rem; color:var(--primary-color); margin-bottom:0.7rem;">¡Recibe Novedades!</h2>
+                <p style="color:#444; font-size:1.1rem;">Suscríbete y sé el primero en enterarte de nuestras aventuras y ofertas exclusivas.</p>
             </div>
+            <ul style="list-style:none; display:flex; flex-wrap:wrap; gap:1.2rem; justify-content:center; margin-bottom:2rem; padding:0;">
+                <li style="background:var(--gradient-blue); color:#fff; border-radius:12px; padding:0.5rem 1.2rem; font-size:1rem; display:flex; align-items:center; gap:0.5rem;"><i class="fas fa-gift"></i> Ofertas exclusivas</li>
+                <li style="background:var(--gradient-orange); color:#fff; border-radius:12px; padding:0.5rem 1.2rem; font-size:1rem; display:flex; align-items:center; gap:0.5rem;"><i class="fas fa-bolt"></i> Novedades antes que nadie</li>
+                <li style="background:var(--gradient-blue); color:#fff; border-radius:12px; padding:0.5rem 1.2rem; font-size:1rem; display:flex; align-items:center; gap:0.5rem;"><i class="fas fa-heart"></i> Consejos de viaje</li>
+            </ul>
+            <form class="newsletter-form" style="gap:1.2rem;">
+                <div class="form-group" style="gap:1.2rem;">
+                    <div class="input-wrapper" style="position:relative;">
+                        <i class="fas fa-user" style="position:absolute; left:15px; top:50%; transform:translateY(-50%); color:#666; z-index:2;"></i>
+                        <input type="text" placeholder="Tu Nombre" required style="padding-left:45px;">
+                    </div>
+                    <div class="input-wrapper" style="position:relative;">
+                        <i class="fas fa-envelope" style="position:absolute; left:15px; top:50%; transform:translateY(-50%); color:#666; z-index:2;"></i>
+                        <input type="email" placeholder="Tu Email" required style="padding-left:45px;">
+                    </div>
+                </div>
+                <div class="textarea-wrapper" style="position:relative;">
+                    <i class="fas fa-comment" style="position:absolute; left:15px; top:20px; color:#666; z-index:2;"></i>
+                    <textarea placeholder="Déjanos un mensaje (opcional)" style="padding-left:45px;"></textarea>
+                </div>
+                <button type="submit" class="subscribe-btn pulse-animation" style="display:flex; align-items:center; justify-content:center; gap:10px; font-size:1.1rem; background:var(--gradient-orange); color:#fff; border:none; border-radius:8px; padding:1rem 2rem; font-weight:600; cursor:pointer; transition:background 0.3s; margin-top:1rem;">
+                    <span>Suscribirme</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
         </div>
     </section>
 
-    <!-- FOOTER MINIMALISTA Y MODERNO -->
-    <footer class="footer creative-footer minimal-footer">
-        <div class="footer-content minimal-footer-content">
-            <div class="footer-main-row">
-                <div class="footer-logo-col">
-                    <img src="assets/img/Logo.png" alt="Trivel Panama Logo" class="footer-logo-img">
-                    <span class="footer-brand gradient-text">Trivel Panama</span>
+    <!-- Enhanced Footer -->
+    <footer class="footer">
+        <div class="footer-wave"></div>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Trivel Panama</h3>
+                    <p>Tu puerta de entrada a las mejores experiencias en Panamá. Descubre playas paradisíacas, cultura vibrante y aventuras inolvidables.</p>
+                    <div style="margin-top:1.2rem; display:flex; gap:1.2rem; align-items:center;">
+                        <img src="assets/img/Logo.png" alt="Logo Trivel Panama" style="height:38px; border-radius:8px; box-shadow:0 2px 8px rgba(26,115,232,0.10);">
+                        <span style="font-size:1.1rem; color:var(--accent-color); font-weight:600;">#ViajaConTrivel</span>
+                    </div>
                 </div>
-                <div class="footer-links-col">
-                    <ul class="footer-links">
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#destinations">Destinos</a></li>
+                        <li><a href="#gallery">Galería</a></li>
+                        <li><a href="#about">Sobre Nosotros</a></li>
+                        <li><a href="#why-choose">¿Por qué elegirnos?</a></li>
                     </ul>
                 </div>
-                <div class="footer-social-col">
-                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/trivelpanama?utm_source=ig_web_button_share_sheet&igsh=MTdyeGJ1OTZrazBtcQ==" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                <div class="footer-section">
+                    <h3>Destinos Populares</h3>
+                    <ul>
+                        <li><a href="#">Bocas del Toro</a></li>
+                        <li><a href="#">San Blas</a></li>
+                        <li><a href="#">Playa Venao</a></li>
+                        <li><a href="#">Panama City</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-envelope"></i> info@trivelpanama.com</li>
+                        <li><i class="fas fa-phone"></i> +507 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Panama City, Panama</li>
+                    </ul>
+                    <div class="social-media" style="margin-top:1.2rem;">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/trivelpanama?utm_source=ig_web_button_share_sheet&igsh=MTdyeGJ1OTZrazBtcQ==" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom minimal-footer-bottom">
-                <p class="footer-claim">Tu aventura comienza aquí.</p>
-                <p class="footer-copyright">&copy; 2024 Trivel Panama.</p>
-                <div class="footer-legal-links">
-                    <a href="#" class="legal-link">Política de Privacidad</a>
-                    <span class="legal-separator">|</span>
-                    <a href="#" class="legal-link">Política de Cookies</a>
-                    <span class="legal-separator">|</span>
-                    <a href="#" class="legal-link">Términos y Condiciones</a>
-                    <span class="legal-separator">|</span>
-                    <a href="#" class="legal-link">Aviso Legal</a>
+            <div style="margin:2.5rem 0 1.5rem 0; display:flex; flex-wrap:wrap; gap:2.5rem; justify-content:center; align-items:center;">
+                <div class="sello-anim" style="display:flex; align-items:center; gap:0.7rem; background:#fff; border-radius:12px; padding:0.7rem 1.3rem; box-shadow:0 2px 8px rgba(26,115,232,0.08);">
+                    <i class="fas fa-shield-alt" style="color:var(--primary-color); font-size:1.3rem;"></i>
+                    <span style="color:var(--primary-color); font-weight:600;">Sitio Seguro</span>
                 </div>
+                <div class="sello-anim" style="display:flex; align-items:center; gap:0.7rem; background:#fff; border-radius:12px; padding:0.7rem 1.3rem; box-shadow:0 2px 8px rgba(26,115,232,0.08);">
+                    <i class="fas fa-award" style="color:var(--accent-color); font-size:1.3rem;"></i>
+                    <span style="color:var(--accent-color); font-weight:600;">Top Rated 2024</span>
+                </div>
+                <div class="sello-anim" style="display:flex; align-items:center; gap:0.7rem; background:#fff; border-radius:12px; padding:0.7rem 1.3rem; box-shadow:0 2px 8px rgba(26,115,232,0.08);">
+                    <i class="fas fa-handshake" style="color:var(--primary-color); font-size:1.3rem;"></i>
+                    <span style="color:var(--primary-color); font-weight:600;">Partner: Panama Tours</span>
+                </div>
+                <div class="sello-anim" style="display:flex; align-items:center; gap:0.7rem; background:#fff; border-radius:12px; padding:0.7rem 1.3rem; box-shadow:0 2px 8px rgba(26,115,232,0.08);">
+                    <i class="fas fa-leaf" style="color:var(--accent-color); font-size:1.3rem;"></i>
+                    <span style="color:var(--accent-color); font-weight:600;">Eco Friendly</span>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Tu aventura comienza aquí.</p>
+                <p>&copy; 2024 Trivel Panama. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <!-- BLOQUE FLOTANTE EXPLORA CON NOSOTROS SIEMPRE VISIBLE -->
-    <div class="floating-card creative-card floating-explore-card" id="exploreWithUsCard">
-        <button class="close-explore-card" aria-label="Cerrar" onclick="document.getElementById('exploreWithUsCard').style.display='none';event.stopPropagation();">&times;</button>
-        <i class="fas fa-globe-americas"></i>
-        <h3>Explora con Nosotros</h3>
-        <p>Descubre la magia de Panamá</p>
-        <div class="explore-icons">
-            <i class="fas fa-map-marked-alt"></i>
-            <i class="fas fa-umbrella-beach"></i>
-            <i class="fas fa-camera-retro"></i>
-        </div>
-        <div class="explore-phrase">"¡Tu próxima aventura comienza aquí!"</div>
+    <!-- Barra de Notificaciones/Promociones -->
+    <div id="promoBar" style="width:100%; background:var(--gradient-orange); color:#fff; text-align:center; padding:0.7rem 0; font-size:1.05rem; font-weight:500; letter-spacing:0.5px; position:fixed; top:0; left:0; z-index:3001; box-shadow:0 2px 8px rgba(255,107,0,0.08); transition:top 0.6s cubic-bezier(.4,0,.2,1);">
+        <span>¡Reserva ahora y obtén <b>10% de descuento</b> en tu primera experiencia con Trivel Panamá!</span>
+        <button id="closePromoBar" style="background:none; border:none; color:#fff; font-size:1.3rem; margin-left:1.5rem; cursor:pointer;">&times;</button>
     </div>
+    <script>
+    function hidePromoBar() {
+        document.getElementById('promoBar').style.top = '-70px';
+    }
+    setTimeout(hidePromoBar, 5000);
+    document.getElementById('closePromoBar').onclick = hidePromoBar;
+    </script>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float pulse-animation" style="animation:pulse 1.7s infinite;">
+        <a href="https://wa.me/5071234567" target="_blank" rel="noopener" title="Contáctanos por WhatsApp">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+    </div>
+    <style>
+    @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(37,211,102,0.3);} 70%{box-shadow:0 0 0 12px rgba(37,211,102,0);} 100%{box-shadow:0 0 0 0 rgba(37,211,102,0);} }
+    </style>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="register">Register</button>
+            </div>
+            <div class="tab-content" id="login">
+                <form class="auth-form">
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+            <div class="tab-content" id="register">
+                <form class="auth-form">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Confirm Password" required>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="JS/main.js"></script>
     <script src="JS/dynamic-icons.js"></script>
-    <script src="JS/carousel.js"></script>
-
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
@@ -534,93 +809,391 @@
             }
         });
     });
+    // Buscador de destinos (demo)
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const value = document.getElementById('searchInput').value.trim().toLowerCase();
+        if (!value) {
+            alert('Por favor, ingresa un destino para buscar.');
+            return;
+        }
+        // Aquí puedes redirigir a la página de resultados o filtrar destinos
+        window.location.href = 'pages/destinations.html?search=' + encodeURIComponent(value);
+    });
+    </script>
+    <script>
+    // Lightbox para galería
+    const galleryImages = [
+        {src: 'assets/img/Starfish Beach.jpeg', caption: 'Starfish Beach'},
+        {src: 'assets/img/Red Frog Beach.jpg', caption: 'Red Frog Beach'},
+        {src: 'assets/img/Isla Grande.jpg', caption: 'Isla Grande'},
+        {src: 'assets/img/Taboga Island.jpeg', caption: 'Taboga Island'},
+        {src: 'assets/img/Contadora Island.jpeg', caption: 'Contadora Island'},
+        {src: 'assets/img/home.png', caption: 'Panama City'}
+    ];
+    let currentLightbox = 0;
+    function openLightbox(idx) {
+        currentLightbox = idx;
+        document.getElementById('lightboxModal').style.display = 'flex';
+        updateLightbox();
+        document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+        document.getElementById('lightboxModal').style.display = 'none';
+        document.body.style.overflow = '';
+    }
+    function prevLightbox() {
+        currentLightbox = (currentLightbox - 1 + galleryImages.length) % galleryImages.length;
+        updateLightbox();
+    }
+    function nextLightbox() {
+        currentLightbox = (currentLightbox + 1) % galleryImages.length;
+        updateLightbox();
+    }
+    function updateLightbox() {
+        const img = document.getElementById('lightboxImg');
+        const caption = document.getElementById('lightboxCaption');
+        img.src = galleryImages[currentLightbox].src;
+        img.alt = galleryImages[currentLightbox].caption;
+        caption.textContent = galleryImages[currentLightbox].caption;
+    }
+    document.addEventListener('keydown', function(e) {
+        if(document.getElementById('lightboxModal').style.display === 'flex') {
+            if(e.key === 'ArrowLeft') prevLightbox();
+            if(e.key === 'ArrowRight') nextLightbox();
+            if(e.key === 'Escape') closeLightbox();
+        }
+    });
+    // Filtros de galería
+    const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+    filterBtns.forEach(btn => {
+        btn.onclick = function() {
+            filterBtns.forEach(b=>b.style.background='#fff');
+            filterBtns.forEach(b=>b.style.color=b.dataset.filter==='playa'? 'var(--primary-color)':b.dataset.filter==='isla'?'var(--accent-color)':b.dataset.filter==='ciudad'?'#444':'var(--primary-color)');
+            this.style.background = this.dataset.filter==='all'? 'var(--gradient-blue)' : (this.dataset.filter==='playa'? 'var(--gradient-blue)':this.dataset.filter==='isla'?'var(--gradient-orange)':this.dataset.filter==='ciudad'?'#bbb':'#fff');
+            this.style.color = '#fff';
+            const type = this.dataset.filter;
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                if(type==='all'||item.dataset.type===type) item.style.display='block';
+                else item.style.display='none';
+            });
+        };
+    });
+    // Slider horizontal en móvil
+    if(window.innerWidth<700) {
+        const grid = document.getElementById('galleryGrid');
+        grid.style.display = 'flex';
+        grid.style.overflowX = 'auto';
+        grid.style.gap = '1.2rem';
+        grid.style.scrollSnapType = 'x mandatory';
+        document.querySelectorAll('.gallery-item').forEach(item=>{
+            item.style.minWidth = '220px';
+            item.style.scrollSnapAlign = 'center';
+        });
+    }
+    </script>
+    <script>
+    // Mejorar dinamismo visual de otras secciones
+    // Destinos destacados: animación al hacer hover
+    document.querySelectorAll('.destination-cards .card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-12px) scale(1.03)';
+            card.style.boxShadow = '0 12px 32px rgba(26,115,232,0.18)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1)';
+            card.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+        });
+    });
+    // Galería: animación de zoom suave
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.style.transform = 'scale(1.07)';
+            item.style.boxShadow = '0 10px 24px rgba(255,107,0,0.18)';
+        });
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = 'scale(1)';
+            item.style.boxShadow = '0 5px 15px rgba(26,115,232,0.1)';
+        });
+    });
+    // Testimonios: resaltar al pasar mouse
+    const testimonials = document.querySelectorAll('.testimonial-content');
+    testimonials.forEach(tc => {
+        tc.addEventListener('mouseenter', () => {
+            tc.style.boxShadow = '0 16px 40px rgba(255,107,0,0.18)';
+            tc.style.transform = 'scale(1.03)';
+        });
+        tc.addEventListener('mouseleave', () => {
+            tc.style.boxShadow = '0 8px 32px rgba(26,54,93,0.13)';
+            tc.style.transform = 'scale(1)';
+        });
+    });
+    </script>
+    <script>
+    // Sección Cotiza tu Viaje
+    document.getElementById('cotizarForm').onsubmit = function(e) {
+        e.preventDefault();
+        document.getElementById('cotizarMsg').style.display = 'block';
+        document.getElementById('cotizarMsg').textContent = '¡Gracias! Pronto recibirás tu cotización personalizada.';
+        setTimeout(()=>{document.getElementById('cotizarMsg').style.display='none';}, 5000);
+        this.reset();
+    };
+    </script>
+    <script>
+    // Animaciones de entrada (scroll reveal)
+    function revealOnScroll() {
+        const reveals = document.querySelectorAll('.reveal');
+        for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const elementTop = reveals[i].getBoundingClientRect().top;
+            const elementVisible = 120;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add('active');
+            } else {
+                reveals[i].classList.remove('active');
+            }
+        }
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('DOMContentLoaded', revealOnScroll);
+    </script>
+    <style>
+    .reveal { opacity:0; transform:translateY(40px); transition:all 0.7s cubic-bezier(.4,0,.2,1); }
+    .reveal.active { opacity:1; transform:translateY(0); }
+    </style>
+    <!-- Mejoras visuales y microinteracciones globales -->
+    <style>
+    /* Parallax para hero y secciones visuales */
+    .hero-carousel, .hero-slide { will-change: background-position; }
+    @media (min-width: 900px) {
+      .hero-slide { background-attachment: fixed !important; }
+    }
+    /* Microinteracciones globales */
+    .cta-button, .learn-more, .subscribe-btn, .carousel-btn, .social-icon, .card, .gallery-item, .footer-section ul li a, .badge-anim {
+      transition: all 0.25s cubic-bezier(.4,0,.2,1);
+    }
+    .cta-button:active, .learn-more:active, .subscribe-btn:active, .carousel-btn:active, .social-icon:active {
+      transform: scale(0.97);
+      filter: brightness(0.95);
+    }
+    .card:hover, .gallery-item:hover {
+      box-shadow: 0 16px 40px rgba(26,115,232,0.13), 0 2px 8px rgba(255,107,0,0.08);
+      transform: translateY(-8px) scale(1.03);
+    }
+    .footer-section ul li a:hover {
+      color: var(--accent-color);
+      padding-left: 8px;
+    }
+    .badge-anim {
+      animation: badgePulse 2.5s infinite;
+    }
+    @keyframes badgePulse {
+      0%,100%{box-shadow:0 0 0 0 rgba(26,115,232,0.08);} 50%{box-shadow:0 0 0 8px rgba(26,115,232,0.13);}
+    }
+    .sello-anim {
+      animation: selloWobble 3.5s infinite;
+    }
+    @keyframes selloWobble {
+      0%,100%{transform:rotate(0);} 20%{transform:rotate(-3deg);} 40%{transform:rotate(2deg);} 60%{transform:rotate(-2deg);} 80%{transform:rotate(1deg);}
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    </style>
+    <script>
+    // Variables globales para hero carrusel y animaciones
+    var heroTitles = [
+      'Vive Panamá como nunca antes',
+      'Descubre playas de ensueño',
+      'Aventuras y cultura en cada rincón'
+    ];
+    var heroSubtitles = [
+      'Viajes exclusivos, playas paradisíacas y experiencias auténticas',
+      'Sumérgete en aguas cristalinas y paisajes inolvidables',
+      'Explora, disfruta y crea recuerdos únicos con Trivel Panamá'
+    ];
+    var heroIndex = 0;
+    var heroSlides = document.querySelectorAll('.hero-slide');
+    var heroInterval;
+
+    // Parallax efecto para hero
+    window.addEventListener('scroll', function() {
+      let scrollY = window.scrollY;
+      heroSlides.forEach(slide => {
+        slide.style.backgroundPositionY = (scrollY * 0.3) + 'px';
+      });
+    });
+    // Hero carrusel: controles manuales y automáticos
+    function showHeroSlide(idx) {
+      heroSlides.forEach((slide, i) => {
+        slide.style.opacity = (i === idx) ? '1' : '0';
+      });
+      document.getElementById('heroTitle').textContent = heroTitles[idx];
+      document.getElementById('heroSubtitle').textContent = heroSubtitles[idx];
+    }
+    heroInterval = setInterval(() => {
+      heroIndex = (heroIndex + 1) % heroSlides.length;
+      showHeroSlide(heroIndex);
+    }, 5000);
+    showHeroSlide(0);
+    // Controles manuales
+    if(!document.getElementById('heroPrev')) {
+      const prevBtn = document.createElement('button');
+      prevBtn.id = 'heroPrev';
+      prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+      prevBtn.className = 'carousel-btn';
+      prevBtn.style.position = 'absolute'; prevBtn.style.left = '30px'; prevBtn.style.top = '50%'; prevBtn.style.transform = 'translateY(-50%)'; prevBtn.style.zIndex = '10';
+      prevBtn.onclick = function() {
+        heroIndex = (heroIndex - 1 + heroSlides.length) % heroSlides.length;
+        showHeroSlide(heroIndex);
+        clearInterval(heroInterval); heroInterval = setInterval(() => { heroIndex = (heroIndex + 1) % heroSlides.length; showHeroSlide(heroIndex); }, 5000);
+      };
+      document.querySelector('.hero-carousel').appendChild(prevBtn);
+      const nextBtn = document.createElement('button');
+      nextBtn.id = 'heroNext';
+      nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+      nextBtn.className = 'carousel-btn';
+      nextBtn.style.position = 'absolute'; nextBtn.style.right = '30px'; nextBtn.style.top = '50%'; nextBtn.style.transform = 'translateY(-50%)'; nextBtn.style.zIndex = '10';
+      nextBtn.onclick = function() {
+        heroIndex = (heroIndex + 1) % heroSlides.length;
+        showHeroSlide(heroIndex);
+        clearInterval(heroInterval); heroInterval = setInterval(() => { heroIndex = (heroIndex + 1) % heroSlides.length; showHeroSlide(heroIndex); }, 5000);
+      };
+      document.querySelector('.hero-carousel').appendChild(nextBtn);
+    }
+    // Animación sutil en badges y sellos
+    const badges = document.querySelectorAll('.badge-anim');
+    badges.forEach(b => b.classList.add('badge-anim'));
+    const sellos = document.querySelectorAll('.sello-anim');
+    sellos.forEach(s => s.classList.add('sello-anim'));
+
+    // Transición suave entre secciones
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+    // Menú sticky y hamburguesa mejorada
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.header');
+      if(window.scrollY > 40) {
+        header.style.boxShadow = '0 2px 12px rgba(26,115,232,0.10)';
+        header.style.background = 'rgba(255,255,255,0.97)';
+      } else {
+        header.style.boxShadow = '';
+        header.style.background = '';
+      }
+    });
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      }
+    });
+    </script>
+
+    <!-- Botón flotante 'Ir arriba' -->
+    <button id="scrollTopBtn" style="display:none; position:fixed; bottom:100px; right:30px; z-index:3002; background:var(--gradient-blue); color:#fff; border:none; border-radius:50%; width:48px; height:48px; font-size:1.5rem; box-shadow:0 4px 16px rgba(26,115,232,0.13); cursor:pointer; transition:opacity 0.3s; align-items:center; justify-content:center;"><i class="fas fa-arrow-up"></i></button>
+    <script>
+    window.addEventListener('scroll', function() {
+      const btn = document.getElementById('scrollTopBtn');
+      if(window.scrollY > 300) { btn.style.display = 'flex'; btn.style.opacity = '1'; } else { btn.style.opacity = '0'; setTimeout(()=>{btn.style.display='none';},300); }
+    });
+    document.getElementById('scrollTopBtn').onclick = function() {
+      window.scrollTo({top:0, behavior:'smooth'});
+    };
+    </script>
+
+    <!-- Chatbot ficticio -->
+    <div id="chatbotBubble" style="position:fixed; bottom:30px; right:30px; z-index:3003;">
+      <button id="openChatbot" style="background:var(--gradient-orange); color:#fff; border:none; border-radius:50%; width:56px; height:56px; font-size:2rem; box-shadow:0 4px 16px rgba(255,107,0,0.13); cursor:pointer; display:flex; align-items:center; justify-content:center;"><i class="fas fa-comment-dots"></i></button>
+      <div id="chatbotModal" style="display:none; position:absolute; bottom:70px; right:0; width:320px; background:#fff; border-radius:18px; box-shadow:0 8px 32px rgba(26,115,232,0.13); padding:1.2rem;">
+        <div style="display:flex; align-items:center; gap:0.7rem; margin-bottom:1rem;">
+          <i class="fas fa-robot" style="font-size:1.5rem; color:var(--primary-color);"></i>
+          <span style="font-weight:600; color:var(--primary-color);">TrivelBot</span>
+          <button onclick="document.getElementById('chatbotModal').style.display='none'" style="margin-left:auto; background:none; border:none; color:#888; font-size:1.3rem; cursor:pointer;">&times;</button>
+        </div>
+        <div style="font-size:1rem; color:#333; margin-bottom:1rem;">¡Hola! ¿En qué puedo ayudarte hoy?<br>Selecciona una opción:</div>
+        <button onclick="alert('Te ayudamos a cotizar tu viaje.');" style="width:100%; margin-bottom:0.5rem; background:var(--gradient-blue); color:#fff; border:none; border-radius:8px; padding:0.7rem; font-size:1rem; cursor:pointer;">Cotizar viaje</button>
+        <button onclick="alert('Aquí tienes información de destinos.');" style="width:100%; margin-bottom:0.5rem; background:var(--gradient-orange); color:#fff; border:none; border-radius:8px; padding:0.7rem; font-size:1rem; cursor:pointer;">Ver destinos</button>
+        <button onclick="alert('Puedes escribirnos a info@trivelpanama.com');" style="width:100%; background:#f8f9fa; color:var(--primary-color); border:none; border-radius:8px; padding:0.7rem; font-size:1rem; cursor:pointer;">Contacto</button>
+      </div>
+    </div>
+    <script>
+    document.getElementById('openChatbot').onclick = function() {
+      const modal = document.getElementById('chatbotModal');
+      modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
+    };
+    </script>
+
+    <!-- Pop-up de bienvenida/oferta especial -->
+    <div id="welcomePopup" style="display:none; position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); background:#fff; border-radius:18px; box-shadow:0 8px 32px rgba(255,107,0,0.13); z-index:4000; padding:2.2rem 2rem; max-width:90vw; text-align:center;">
+      <h3 style="color:var(--primary-color); font-size:1.4rem; margin-bottom:0.7rem;">¡Bienvenido a Trivel Panamá!</h3>
+      <p style="color:#444; margin-bottom:1.2rem;">Reserva tu viaje hoy y recibe un <b>regalo especial</b> en tu primera experiencia.</p>
+      <button onclick="document.getElementById('welcomePopup').style.display='none'" style="background:var(--gradient-orange); color:#fff; border:none; border-radius:8px; padding:0.7rem 1.5rem; font-size:1rem; font-weight:600; cursor:pointer;">¡Genial!</button>
+    </div>
+    <script>
+    if(!sessionStorage.getItem('popupShown')) {
+      setTimeout(()=>{
+        document.getElementById('welcomePopup').style.display='block';
+        sessionStorage.setItem('popupShown','1');
+      }, 3500);
+    }
+    </script>
+
+    <!-- Modal de contacto rápido -->
+    <div id="contactModal" style="display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.25); z-index:4001; align-items:center; justify-content:center;">
+      <div style="background:#fff; border-radius:18px; box-shadow:0 8px 32px rgba(26,115,232,0.13); padding:2.2rem 2rem; max-width:95vw; width:350px; position:relative;">
+        <button onclick="document.getElementById('contactModal').style.display='none'" style="position:absolute; top:18px; right:18px; background:none; border:none; color:#888; font-size:1.3rem; cursor:pointer;">&times;</button>
+        <h3 style="color:var(--primary-color); font-size:1.3rem; margin-bottom:0.7rem;">Contacto rápido</h3>
+        <form id="quickContactForm" style="display:flex; flex-direction:column; gap:1rem;">
+          <input type="text" placeholder="Nombre" required style="padding:0.7rem; border-radius:8px; border:1.5px solid #e0e0e0;">
+          <input type="email" placeholder="Email" required style="padding:0.7rem; border-radius:8px; border:1.5px solid #e0e0e0;">
+          <textarea placeholder="¿En qué podemos ayudarte?" style="padding:0.7rem; border-radius:8px; border:1.5px solid #e0e0e0; min-height:60px;"></textarea>
+          <button type="submit" style="background:var(--gradient-blue); color:#fff; border:none; border-radius:8px; padding:0.8rem 1.5rem; font-size:1rem; font-weight:600; cursor:pointer;">Enviar</button>
+        </form>
+        <div id="quickContactMsg" style="margin-top:1rem; font-size:1.05rem; color:var(--primary-color); display:none;"></div>
+      </div>
+    </div>
+    <script>
+    document.getElementById('quickContactForm').onsubmit = function(e) {
+      e.preventDefault();
+      document.getElementById('quickContactMsg').style.display = 'block';
+      document.getElementById('quickContactMsg').textContent = '¡Gracias! Pronto te contactaremos.';
+      setTimeout(()=>{document.getElementById('quickContactMsg').style.display='none'; document.getElementById('contactModal').style.display='none';}, 3500);
+      this.reset();
+    };
+    </script>
+    <!-- Botón de contacto rápido en el footer -->
+    <script>
+    if(!document.getElementById('footerContactBtn')) {
+      const btn = document.createElement('button');
+      btn.id = 'footerContactBtn';
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i> Contacto rápido';
+      btn.style.background = 'var(--gradient-blue)';
+      btn.style.color = '#fff';
+      btn.style.border = 'none';
+      btn.style.borderRadius = '8px';
+      btn.style.padding = '0.7rem 1.3rem';
+      btn.style.fontSize = '1rem';
+      btn.style.fontWeight = '600';
+      btn.style.cursor = 'pointer';
+      btn.style.marginTop = '1.2rem';
+      btn.onclick = function() { document.getElementById('contactModal').style.display = 'flex'; };
+      const footer = document.querySelector('.footer-section:last-child');
+      if(footer) footer.appendChild(btn);
+    }
     </script>
 </body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
