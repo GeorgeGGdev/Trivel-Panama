@@ -1,0 +1,251 @@
+/* Estilos específicos para componentes reutilizables */
+
+/* Estilos para el contenedor de componentes */
+#header-component,
+#footer-component {
+    width: 100%;
+}
+
+/* Estilos para páginas que usan componentes */
+.page-content {
+    min-height: 60vh;
+    padding: 2rem;
+    margin-top: 80px; /* Espacio para el header fijo */
+}
+
+/* Ajustes específicos para el header component */
+#header-component .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustes específicos para el footer component */
+#footer-component .footer {
+    margin-top: auto;
+}
+
+/* Estilos para navegación activa */
+#header-component .nav-menu li.active a {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* Estilos para botones de autenticación */
+#header-component .auth-btn {
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+#header-component .auth-btn:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* Estilos para enlaces del footer */
+#footer-component .footer-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#footer-component .footer-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Estilos para iconos sociales */
+#footer-component .social-icon {
+    color: var(--text-color);
+    font-size: 20px;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+}
+
+#footer-component .social-icon:hover {
+    color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* Estilos para enlaces legales */
+#footer-component .legal-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.3s ease;
+}
+
+#footer-component .legal-link:hover {
+    color: var(--accent-color);
+}
+
+/* Responsive design para componentes */
+@media (max-width: 768px) {
+    .page-content {
+        margin-top: 60px;
+        padding: 1rem;
+    }
+    
+    #header-component .header {
+        padding: 0.5rem 1rem;
+    }
+    
+    #footer-component .footer {
+        padding: 1rem;
+    }
+}
+
+/* Animaciones para componentes */
+#header-component .logo-img {
+    transition: transform 0.3s ease;
+}
+
+#header-component .logo-img:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos para el estado de carga */
+#header-component:empty::before,
+#footer-component:empty::before {
+    content: '';
+    display: block;
+    height: 80px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Estilos para errores de carga */
+#header-component .error-message,
+#footer-component .error-message {
+    background: #ffebee;
+    color: #c62828;
+    padding: 1rem;
+    border-radius: 4px;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+/* Estilos para el logo en el footer */
+#footer-component .footer-logo-img {
+    max-height: 40px;
+    width: auto;
+}
+
+/* Estilos para el texto del footer */
+#footer-component .footer-brand {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+#footer-component .footer-claim {
+    font-style: italic;
+    color: var(--accent-color);
+}
+
+#footer-component .footer-copyright {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* Estilos para separadores legales */
+#footer-component .legal-separator {
+    color: var(--text-color);
+    opacity: 0.5;
+    margin: 0 8px;
+}
+
+/* Estilos para el menú de navegación */
+#header-component .nav-menu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+}
+
+#header-component .nav-menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#header-component .nav-menu a:hover {
+    color: var(--accent-color);
+}
+
+#header-component .nav-menu i {
+    font-size: 16px;
+}
+
+/* Estilos para el logo en el header */
+#header-component .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#header-component .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+#header-component .logo-img {
+    height: 40px;
+    width: auto;
+}
+
+#header-component .logo-text {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+/* Estilos para el área de autenticación */
+#header-component #auth-area {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Estilos para el botón de logout */
+#header-component #logout-btn {
+    background: #dc3545;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+#header-component #logout-btn:hover {
+    background: #c82333;
+    transform: translateY(-1px);
+} 

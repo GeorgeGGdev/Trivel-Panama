@@ -3,27 +3,34 @@
 /* Contact Hero Section */
 .contact-hero {
     height: 60vh;
-    background: linear-gradient(rgba(26, 115, 232, 0.8), rgba(255, 107, 0, 0.8)),
-                url('../assets/img/contact-bg.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(26, 115, 232, 0.45), rgba(255, 107, 0, 0.25)),
+                url('https://mejoresplayas.biz/wp-content/uploads/2019/02/Playa-San-Blas-Panam%C3%A1-1-1024x576.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: var(--light-text);
+    color: #fff;
     position: relative;
     margin-top: 80px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    overflow: hidden;
 }
 
 .contact-hero .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     animation: fadeInUp 1s ease;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.25), 0 1px 0 #fff2;
 }
 
 .contact-hero .hero-content p {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-bottom: 2rem;
     animation: fadeInUp 1s ease 0.2s;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    font-weight: 500;
 }
 
 /* Contact Section */
@@ -75,7 +82,10 @@
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.7rem;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
 }
 
 .form-group {
@@ -158,31 +168,15 @@
     box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4);
 }
 
-/* Contact Info */
+/* Contact Info Mejorado */
 .contact-info-container {
-    background: white;
+    background: linear-gradient(135deg, #e8f0fe 0%, #f8f9fa 100%);
     padding: 3rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 24px;
+    box-shadow: 0 10px 32px rgba(26, 115, 232, 0.10);
     position: relative;
     overflow: hidden;
-}
-
-.contact-info-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: var(--gradient-blue);
-}
-
-.contact-info-container h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: var(--text-color);
-    text-align: center;
+    animation: fadeInUp 1s;
 }
 
 .contact-info {
@@ -197,28 +191,34 @@
     align-items: flex-start;
     gap: 1rem;
     padding: 1.5rem;
-    background: #f8f9fa;
-    border-radius: 15px;
-    transition: var(--transition);
+    background: #fff;
+    border-radius: 18px;
+    transition: box-shadow 0.3s, transform 0.3s;
+    box-shadow: 0 2px 12px rgba(26, 115, 232, 0.07);
+    border: 1px solid #e0e0e0;
+    position: relative;
 }
 
 .info-item:hover {
     background: #e8f0fe;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(26, 115, 232, 0.13);
+    border-color: #b3d1fc;
 }
 
 .info-icon {
-    width: 50px;
-    height: 50px;
+    width: 54px;
+    height: 54px;
     background: var(--gradient-blue);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.12);
+    animation: pulse 2.5s infinite;
 }
 
 .info-content h3 {
@@ -248,7 +248,7 @@
     font-size: 1rem;
 }
 
-/* Social Media Section */
+/* Social Media Mejorado */
 .social-media-section {
     margin-bottom: 3rem;
 }
@@ -271,13 +271,14 @@
     align-items: center;
     gap: 0.5rem;
     padding: 1rem;
-    border-radius: 10px;
+    border-radius: 12px;
     text-decoration: none;
     color: white;
     font-weight: 500;
-    transition: var(--transition);
+    transition: transform 0.2s, box-shadow 0.2s;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .social-link::before {
@@ -312,8 +313,8 @@
 }
 
 .social-link:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 8px 24px rgba(26, 115, 232, 0.18);
 }
 
 /* FAQ Section */
@@ -336,6 +337,7 @@
     margin-bottom: 1.5rem;
 }
 
+/* FAQ Button Mejorado */
 .faq-btn {
     display: inline-flex;
     align-items: center;
@@ -346,9 +348,10 @@
     border-radius: 25px;
     text-decoration: none;
     font-weight: 600;
-    transition: var(--transition);
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.10);
 }
 
 .faq-btn::before {
@@ -371,8 +374,8 @@
 
 .faq-btn:hover {
     background: linear-gradient(135deg, #4285f4 0%, #1a73e8 100%);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(26, 115, 232, 0.4);
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 8px 24px rgba(26, 115, 232, 0.18);
 }
 
 /* Map Section */
@@ -464,4 +467,140 @@
     .info-icon {
         align-self: center;
     }
+} 
+
+/* --- Modern Icon Input Styles for Contact Form --- */
+.icon-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.icon-input .input-icon {
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #1a73e8;
+    font-size: 1.2rem;
+    pointer-events: none;
+    z-index: 2;
+    /* Ahora el icono estará dentro del input */
+}
+
+.icon-input input,
+.icon-input select,
+.icon-input textarea {
+    padding-left: 2.7rem !important;
+    border-radius: 16px !important;
+    border: 2px solid #e0e0e0;
+    background: #f8f9fa;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    font-size: 1.15rem;
+    height: 54px;
+    /* Inputs más grandes y expandidos */
+}
+
+.icon-input textarea {
+    min-height: 140px;
+    height: auto;
+    resize: vertical;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.7rem;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    font-size: 1.15rem;
+    border-radius: 16px;
+    background: #f8f9fa;
+    border: 2px solid #e0e0e0;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    height: 54px;
+}
+
+.contact-form textarea {
+    min-height: 140px;
+    height: auto;
+}
+
+/* Eliminar labels para inputs con iconos */
+.icon-input label {
+    display: none;
+} 
+
+/* Footer Mejorado */
+.footer {
+    background: var(--gradient-blue);
+    color: white;
+    padding: 3rem 5% 1rem;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 -4px 24px rgba(26, 115, 232, 0.10);
+}
+
+.footer-section h3 {
+    color: white;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--accent-color);
+}
+
+.footer-section ul li a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: color 0.2s, padding-left 0.2s;
+}
+
+.footer-section ul li a:hover {
+    color: var(--accent-color);
+    padding-left: 5px;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.contact-list i {
+    color: var(--accent-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    margin: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.8);
 } 
