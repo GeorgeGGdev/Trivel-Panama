@@ -38,8 +38,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: white;
     padding: 1rem 5%;
     display: flex;
     justify-content: space-between;
@@ -63,12 +62,12 @@ body {
 .logo-text {
     font-size: 1.8rem;
     font-weight: 700;
+    color: var(--text-color);
     transition: var(--transition);
 }
 
 .logo-text:hover {
-    transform: scale(1.05);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    color: var(--primary-color);
 }
 
 .nav-menu ul {
@@ -83,21 +82,23 @@ body {
     font-weight: 500;
     transition: var(--transition);
     position: relative;
+    padding: 0.5rem 1rem;
 }
 
 .nav-menu a::after {
     content: '';
     position: absolute;
-    bottom: -5px;
-    left: 0;
+    bottom: -2px;
+    left: 50%;
     width: 0;
     height: 2px;
-    background: var(--accent-color);
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+    transform: translateX(-50%);
 }
 
 .nav-menu a:hover::after {
-    width: 100%;
+    width: 80%;
 }
 
 .auth-btn {
