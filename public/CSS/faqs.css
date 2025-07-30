@@ -3,27 +3,31 @@
 /* FAQ Hero Section */
 .faq-hero {
     height: 60vh;
-    background: linear-gradient(rgba(26, 115, 232, 0.8), rgba(255, 107, 0, 0.8)),
-                url('../assets/img/faq-bg.jpg') center/cover no-repeat;
+    background: url('https://www.viajar365.com/wp-content/uploads/2021/02/bocas-del-toro.jpg') center/cover no-repeat;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     text-align: center;
     color: var(--light-text);
     position: relative;
     margin-top: 80px;
+    padding-top: 15vh;
+    border-radius: 0 0 30px 30px;
+    overflow: hidden;
 }
 
 .faq-hero .hero-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
+    font-size: 4rem;
+    margin-bottom: 0.2rem;
     animation: fadeInUp 1s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .faq-hero .hero-content p {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin-bottom: 2rem;
     animation: fadeInUp 1s ease 0.2s;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 /* FAQ Navigation */
@@ -360,7 +364,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
     .faq-hero .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
     
     .nav-tabs {
@@ -398,11 +402,11 @@
 
 @media (max-width: 480px) {
     .faq-hero .hero-content h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
     
     .faq-hero .hero-content p {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
     
     .nav-tab {
@@ -485,4 +489,28 @@
     font-size: 0.8rem;
     font-weight: 500;
     margin-bottom: 1rem;
+}
+
+/* Image Border Styles */
+img {
+    border-bottom: 3px solid var(--primary-color);
+    border-radius: 0 0 8px 8px;
+}
+
+.logo-img {
+    border-bottom: 2px solid var(--primary-color);
+    border-radius: 0 0 5px 5px;
+}
+
+/* FAQ Icons - Blue Color */
+.faq-navigation .nav-tab i,
+.faq-question i,
+.cta-btn i,
+.contact-list i {
+    color: var(--primary-color) !important;
+}
+
+.faq-navigation .nav-tab:hover i,
+.faq-navigation .nav-tab.active i {
+    color: white !important;
 } 

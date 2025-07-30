@@ -7,24 +7,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabContents = document.querySelectorAll('.tab-content');
 
     // Show modal
-    authBtn.addEventListener('click', () => {
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    });
+    if (authBtn && modal) {
+        authBtn.addEventListener('click', () => {
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+    }
 
     // Close modal
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    });
-
-    // Close modal when clicking outside
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
+    if (closeModal && modal) {
+        closeModal.addEventListener('click', () => {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
-        }
-    });
+        });
+    }
+
+    // Close modal when clicking outside
+    if (modal) {
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
 
     // Tab switching
     tabBtns.forEach(btn => {
@@ -36,7 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add active class to clicked button and corresponding content
             btn.classList.add('active');
             const tabId = btn.getAttribute('data-tab');
-            document.getElementById(tabId).classList.add('active');
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
         });
     });
 
@@ -131,37 +140,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Insert message into the form
         const form = type === 'success' ? loginForm : registerForm;
-        form.insertBefore(messageElement, form.firstChild);
+        if (form) {
+            form.insertBefore(messageElement, form.firstChild);
 
-        // Remove message after 3 seconds
-        setTimeout(() => {
-            messageElement.remove();
-        }, 3000);
+            // Remove message after 3 seconds
+            setTimeout(() => {
+                messageElement.remove();
+            }, 3000);
+        }
     }
 
     // Header scroll effect
     let lastScroll = 0;
     const header = document.querySelector('.header');
 
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
+    if (header) {
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
 
-        if (currentScroll <= 0) {
-            header.classList.remove('scroll-up');
-            return;
-        }
+            if (currentScroll <= 0) {
+                header.classList.remove('scroll-up');
+                return;
+            }
 
-        if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
-            // Scroll down
-            header.classList.remove('scroll-up');
-            header.classList.add('scroll-down');
-        } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
-            // Scroll up
-            header.classList.remove('scroll-down');
-            header.classList.add('scroll-up');
-        }
-        lastScroll = currentScroll;
-    });
+            if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
+                // Scroll down
+                header.classList.remove('scroll-up');
+                header.classList.add('scroll-down');
+            } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
+                // Scroll up
+                header.classList.remove('scroll-down');
+                header.classList.add('scroll-up');
+            }
+            lastScroll = currentScroll;
+        });
+    }
 
     // Initialize first tab as active
     if (tabBtns.length > 0) {
@@ -173,65 +186,65 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-menu a');
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-
-    // Close menu when clicking a link
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
         });
-    });
 
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        }
-    });
+        // Close menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    }
 
     // Stats Counter Animation
     const stats = document.querySelectorAll('.stat-number');
 
-    const animateStats = () => {
-        stats.forEach(stat => {
-            const target = parseInt(stat.getAttribute('data-count'));
-            const duration = 2000; // 2 seconds
-            const step = target / (duration / 16); // 60fps
-            let current = 0;
+    // Function to animate value from start to end
+    function animateValue(element, start, end, duration) {
+        const range = end - start;
+        const increment = range / (duration / 16); // 60fps
+        let current = start;
 
-            const updateCount = () => {
-                current += step;
-                if (current < target) {
-                    stat.textContent = Math.floor(current);
-                    requestAnimationFrame(updateCount);
-                } else {
-                    stat.textContent = target;
-                }
-            };
+        const updateCount = () => {
+            current += increment;
+            if (current < end) {
+                element.textContent = Math.floor(current);
+                requestAnimationFrame(updateCount);
+            } else {
+                element.textContent = end;
+            }
+        };
 
-            updateCount();
-        });
-    };
+        updateCount();
+    }
 
     // Intersection Observer for stats animation
-    const observer = new IntersectionObserver((entries) => {
+    const statsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                animateStats();
-                observer.unobserve(entry.target);
+                const target = parseInt(entry.target.getAttribute('data-count'));
+                animateValue(entry.target, 0, target, 2000);
+                statsObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.5 });
 
-    const statsSection = document.querySelector('.stats');
-    if (statsSection) {
-        observer.observe(statsSection);
-    }
+    stats.forEach(stat => {
+        statsObserver.observe(stat);
+    });
 
     // Add parallax effect to hero section with enhanced smoothness
     const hero = document.querySelector('.hero');
@@ -368,201 +381,191 @@ document.addEventListener('DOMContentLoaded', () => {
         animateWave();
     }
 
-    // Add animation to stats
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = parseInt(entry.target.getAttribute('data-count'));
-                animateValue(entry.target, 0, target, 2000);
-                statsObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    stats.forEach(stat => {
-        statsObserver.observe(stat);
-    });
-
+    // ===== CAROUSEL FUNCTIONALITY =====
+    
     // 3D Testimonial Carousel Logic
-    (function() {
-        const testimonials = document.querySelectorAll('.testimonial-3d');
-        const leftArrow = document.querySelector('.carousel-3d-arrow.left');
-        const rightArrow = document.querySelector('.carousel-3d-arrow.right');
-        if (!testimonials.length || !leftArrow || !rightArrow) {
-            console.error('No se encontraron los elementos del carrusel 3D.');
-            return;
-        }
-        let current = 0;
+    const testimonials3D = document.querySelectorAll('.testimonial-3d');
+    const leftArrow = document.querySelector('.carousel-3d-arrow.left');
+    const rightArrow = document.querySelector('.carousel-3d-arrow.right');
+    
+    if (testimonials3D.length && leftArrow && rightArrow) {
+        let current3D = 0;
 
         function update3DCarousel() {
-            testimonials.forEach((t, i) => {
+            testimonials3D.forEach((t, i) => {
                 t.classList.remove('active', 'left', 'right');
-                if (i === current) {
+                if (i === current3D) {
                     t.classList.add('active');
-                } else if (i === (current - 1 + testimonials.length) % testimonials.length) {
+                } else if (i === (current3D - 1 + testimonials3D.length) % testimonials3D.length) {
                     t.classList.add('left');
-                } else if (i === (current + 1) % testimonials.length) {
+                } else if (i === (current3D + 1) % testimonials3D.length) {
                     t.classList.add('right');
                 }
             });
-            console.log('update3DCarousel', current);
         }
 
         leftArrow.addEventListener('click', () => {
-            current = (current - 1 + testimonials.length) % testimonials.length;
+            current3D = (current3D - 1 + testimonials3D.length) % testimonials3D.length;
             update3DCarousel();
         });
+        
         rightArrow.addEventListener('click', () => {
-            current = (current + 1) % testimonials.length;
+            current3D = (current3D + 1) % testimonials3D.length;
             update3DCarousel();
         });
 
         // Swipe support for mobile
         const track = document.querySelector('.carousel-3d-track');
-        let startX = 0;
-        track.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-        });
-        track.addEventListener('touchend', (e) => {
-            let endX = e.changedTouches[0].clientX;
-            if (endX - startX > 50) leftArrow.click();
-            else if (startX - endX > 50) rightArrow.click();
-        });
+        if (track) {
+            let startX = 0;
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+            track.addEventListener('touchend', (e) => {
+                let endX = e.changedTouches[0].clientX;
+                if (endX - startX > 50) leftArrow.click();
+                else if (startX - endX > 50) rightArrow.click();
+            });
+        }
 
-        // Inicializar
+        // Initialize
         update3DCarousel();
-    })();
-}); 
+    }
 
-// === Testimonials Carousel Logic Mejorado ===
-document.addEventListener('DOMContentLoaded', function() {
-  const testimonials = document.querySelectorAll('.testimonial');
-  const prevBtn = document.querySelector('.carousel-btn.prev');
-  const nextBtn = document.querySelector('.carousel-btn.next');
-  const dots = document.querySelectorAll('.carousel-dots .dot');
-  let current = 0;
-  let interval;
+    // Regular Testimonials Carousel Logic
+    const testimonials = document.querySelectorAll('.testimonial');
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    
+    if (testimonials.length && prevBtn && nextBtn && dots.length) {
+        let current = 0;
+        let interval;
 
-  function showTestimonial(idx) {
-    testimonials.forEach((t, i) => {
-      if (i === idx) {
-        t.classList.add('active');
-        t.style.zIndex = 2;
-      } else {
-        t.classList.remove('active');
-        t.style.zIndex = 1;
-      }
-    });
-    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-    current = idx;
-  }
+        function showTestimonial(idx) {
+            testimonials.forEach((t, i) => {
+                if (i === idx) {
+                    t.classList.add('active');
+                    t.style.zIndex = 2;
+                } else {
+                    t.classList.remove('active');
+                    t.style.zIndex = 1;
+                }
+            });
+            dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+            current = idx;
+        }
 
-  function nextTestimonial() {
-    let next = (current + 1) % testimonials.length;
-    showTestimonial(next);
-  }
+        function nextTestimonial() {
+            let next = (current + 1) % testimonials.length;
+            showTestimonial(next);
+        }
 
-  function prevTestimonial() {
-    let prev = (current - 1 + testimonials.length) % testimonials.length;
-    showTestimonial(prev);
-  }
+        function prevTestimonial() {
+            let prev = (current - 1 + testimonials.length) % testimonials.length;
+            showTestimonial(prev);
+        }
 
-  function startAutoSlide() {
-    interval = setInterval(nextTestimonial, 5000);
-  }
+        function startAutoSlide() {
+            interval = setInterval(nextTestimonial, 5000);
+        }
 
-  function stopAutoSlide() {
-    clearInterval(interval);
-  }
+        function stopAutoSlide() {
+            clearInterval(interval);
+        }
 
-  if (prevBtn && nextBtn && dots.length) {
-    prevBtn.addEventListener('click', () => {
-      prevTestimonial();
-      stopAutoSlide();
-      startAutoSlide();
-    });
-    nextBtn.addEventListener('click', () => {
-      nextTestimonial();
-      stopAutoSlide();
-      startAutoSlide();
-    });
-    dots.forEach((dot, idx) => {
-      dot.addEventListener('click', () => {
-        showTestimonial(idx);
-        stopAutoSlide();
+        prevBtn.addEventListener('click', () => {
+            prevTestimonial();
+            stopAutoSlide();
+            startAutoSlide();
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            nextTestimonial();
+            stopAutoSlide();
+            startAutoSlide();
+        });
+        
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                showTestimonial(idx);
+                stopAutoSlide();
+                startAutoSlide();
+            });
+        });
+        
+        showTestimonial(0);
         startAutoSlide();
-      });
-    });
-    showTestimonial(0);
-    startAutoSlide();
-  }
-}); 
+    }
 
-// === Vertical Testimonials Carousel Logic ===
-document.addEventListener('DOMContentLoaded', function() {
-  const testimonials = document.querySelectorAll('.carousel-track-vertical .testimonial-vertical');
-  const upBtn = document.querySelector('.carousel-btn.up');
-  const downBtn = document.querySelector('.carousel-btn.down');
-  const dots = document.querySelectorAll('.carousel-dots-vertical .dot-vertical');
-  let current = 0;
-  let interval;
+    // Vertical Testimonials Carousel Logic
+    const testimonialsVertical = document.querySelectorAll('.carousel-track-vertical .testimonial-vertical');
+    const upBtn = document.querySelector('.carousel-btn.up');
+    const downBtn = document.querySelector('.carousel-btn.down');
+    const dotsVertical = document.querySelectorAll('.carousel-dots-vertical .dot-vertical');
+    
+    if (testimonialsVertical.length && upBtn && downBtn && dotsVertical.length) {
+        let currentVertical = 0;
+        let intervalVertical;
 
-  function updateVerticalCarousel(idx) {
-    testimonials.forEach((t, i) => {
-      t.classList.remove('center', 'above', 'below');
-      t.style.zIndex = 1;
-      if (i === idx) {
-        t.classList.add('center');
-        t.style.zIndex = 3;
-      } else if (i === (idx - 1 + testimonials.length) % testimonials.length) {
-        t.classList.add('above');
-        t.style.zIndex = 2;
-      } else if (i === (idx + 1) % testimonials.length) {
-        t.classList.add('below');
-        t.style.zIndex = 2;
-      }
-    });
-    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-    current = idx;
-  }
+        function updateVerticalCarousel(idx) {
+            testimonialsVertical.forEach((t, i) => {
+                t.classList.remove('center', 'above', 'below');
+                t.style.zIndex = 1;
+                if (i === idx) {
+                    t.classList.add('center');
+                    t.style.zIndex = 3;
+                } else if (i === (idx - 1 + testimonialsVertical.length) % testimonialsVertical.length) {
+                    t.classList.add('above');
+                    t.style.zIndex = 2;
+                } else if (i === (idx + 1) % testimonialsVertical.length) {
+                    t.classList.add('below');
+                    t.style.zIndex = 2;
+                }
+            });
+            dotsVertical.forEach((d, i) => d.classList.toggle('active', i === idx));
+            currentVertical = idx;
+        }
 
-  function nextVertical() {
-    let next = (current + 1) % testimonials.length;
-    updateVerticalCarousel(next);
-  }
+        function nextVertical() {
+            let next = (currentVertical + 1) % testimonialsVertical.length;
+            updateVerticalCarousel(next);
+        }
 
-  function prevVertical() {
-    let prev = (current - 1 + testimonials.length) % testimonials.length;
-    updateVerticalCarousel(prev);
-  }
+        function prevVertical() {
+            let prev = (currentVertical - 1 + testimonialsVertical.length) % testimonialsVertical.length;
+            updateVerticalCarousel(prev);
+        }
 
-  function startAutoSlideVertical() {
-    interval = setInterval(nextVertical, 5000);
-  }
+        function startAutoSlideVertical() {
+            intervalVertical = setInterval(nextVertical, 5000);
+        }
 
-  function stopAutoSlideVertical() {
-    clearInterval(interval);
-  }
+        function stopAutoSlideVertical() {
+            clearInterval(intervalVertical);
+        }
 
-  if (upBtn && downBtn && dots.length) {
-    upBtn.addEventListener('click', () => {
-      prevVertical();
-      stopAutoSlideVertical();
-      startAutoSlideVertical();
-    });
-    downBtn.addEventListener('click', () => {
-      nextVertical();
-      stopAutoSlideVertical();
-      startAutoSlideVertical();
-    });
-    dots.forEach((dot, idx) => {
-      dot.addEventListener('click', () => {
-        updateVerticalCarousel(idx);
-        stopAutoSlideVertical();
+        upBtn.addEventListener('click', () => {
+            prevVertical();
+            stopAutoSlideVertical();
+            startAutoSlideVertical();
+        });
+        
+        downBtn.addEventListener('click', () => {
+            nextVertical();
+            stopAutoSlideVertical();
+            startAutoSlideVertical();
+        });
+        
+        dotsVertical.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                updateVerticalCarousel(idx);
+                stopAutoSlideVertical();
+                startAutoSlideVertical();
+            });
+        });
+        
+        updateVerticalCarousel(0);
         startAutoSlideVertical();
-      });
-    });
-    updateVerticalCarousel(0);
-    startAutoSlideVertical();
-  }
+    }
 }); 
