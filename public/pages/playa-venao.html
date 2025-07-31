@@ -4,28 +4,257 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Playa Venao - Trivel Panamá</title>
-    <link rel="stylesheet" href="../CSS/destination-detail.css">
+    <meta name="description" content="Descubre Playa Venao, el paraíso del surf en Panamá. Olas perfectas, atardeceres espectaculares y experiencias únicas con Trivel Panamá.">
+    <link rel="stylesheet" href="../CSS/styles.css">
     <link rel="stylesheet" href="../CSS/destinations.css">
-    <link rel="stylesheet" href="../CSS/components.css">
+    <link rel="stylesheet" href="../CSS/dynamic-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .page-content {
             margin-top: 80px;
         }
+        
+        /* Hero Section para Playa Venao */
+        .destination-hero {
+            background: url('../assets/img/venao.jpg') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .destination-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,107,53,0.3), rgba(26,115,232,0.2));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            padding: 0 2rem;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 0.8rem 2.5rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 25px rgba(255,107,53,0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 2rem;
+            text-shadow: 3px 3px 25px rgba(0,0,0,0.6);
+            letter-spacing: -2px;
+            animation: slideInUp 1s ease-out;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
+            line-height: 1.7;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Contenido Principal */
+        .destination-content {
+            background: #f8f9fa;
+            padding: 6rem 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .destination-info {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .destination-info h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        
+        .destination-info p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .nearby-section {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .nearby-section h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .nearby-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .nearby-item {
+            background: #f8f9fa;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nearby-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .nearby-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .nearby-info {
+            padding: 1.5rem;
+        }
+        
+        .nearby-info h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .nearby-info p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .distance {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .destination-info h2 {
+                font-size: 2rem;
+            }
+            
+            .nearby-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .nearby-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Contenedor para el header -->
-    <div id="header-component"></div>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="logo">
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
+                <span class="logo-text">Trivel Panama</span>
+            </a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="carrusel.html">Gallery</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="FAQs.html">FAQs</a></li>
+            </ul>
+        </nav>
+        <div id="auth-area"></div>
+    </header>
 
     <!-- Hero Section -->
     <section class="destination-hero page-content">
-        <img src="../assets/img/venao.jpg" alt="Playa Venao">
-        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Playa Venao</h1>
-            <p>El Paraíso del Surf en Panamá</p>
+            <div class="hero-badge">
+                <i class="fas fa-water" style="margin-right: 0.5rem;"></i>Paraíso del Surf
+            </div>
+            <h1 class="hero-title">Playa Venao</h1>
+            <p class="hero-subtitle">Olas perfectas y atardeceres espectaculares en esta joya de la costa Pacífica de Panamá</p>
         </div>
     </section>
 
@@ -34,25 +263,25 @@
         <div class="container">
             <section class="destination-info">
                 <h2>Surfea en Playa Venao</h2>
-                <p>Olas perfectas y atardeceres espectaculares en esta joya de la costa Pacífica. Playa Venao es el destino ideal para surfistas y amantes de la naturaleza.</p>
+                <p>Playa Venao es el destino ideal para surfistas y amantes de la naturaleza. Con olas perfectas durante todo el año, arena dorada y un ambiente bohemio único, este paraíso costero te ofrece una experiencia inolvidable en el Pacífico panameño.</p>
             </section>
 
             <section class="nearby-section">
                 <h2>Restaurantes Cercanos</h2>
                 <div class="nearby-grid">
                     <div class="nearby-item">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=200" alt="Restaurante 1">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400" alt="El Breakpoint">
                         <div class="nearby-info">
                             <h3>El Breakpoint</h3>
-                            <p>Cocina del Pacífico y bar de surf</p>
+                            <p>Cocina del Pacífico y bar de surf con ambiente relajado</p>
                             <span class="distance">A 150m</span>
                         </div>
                     </div>
                     <div class="nearby-item">
-                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Restaurante 2">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400" alt="Sunset Beach">
                         <div class="nearby-info">
                             <h3>Sunset Beach</h3>
-                            <p>Cocina internacional y vista al mar</p>
+                            <p>Cocina internacional y vista espectacular al mar</p>
                             <span class="distance">A 300m</span>
                         </div>
                     </div>
@@ -63,7 +292,7 @@
                 <h2>Hoteles Recomendados</h2>
                 <div class="nearby-grid">
                     <div class="nearby-item">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=200" alt="Hotel 1">
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400" alt="Venao Surf Resort">
                         <div class="nearby-info">
                             <h3>Venao Surf Resort</h3>
                             <p>4 estrellas | Playa privada | Escuela de surf</p>
@@ -71,7 +300,7 @@
                         </div>
                     </div>
                     <div class="nearby-item">
-                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Hotel 2">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400" alt="Beach Break Lodge">
                         <div class="nearby-info">
                             <h3>Beach Break Lodge</h3>
                             <p>3 estrellas | Vista al mar | Piscina</p>
@@ -83,16 +312,126 @@
         </div>
     </main>
 
-    <!-- Contenedor para el footer -->
-    <div id="footer-component"></div>
+    <!-- Footer Minimalista -->
+    <footer style="background: #000; color: #fff; padding: 2.5rem 0 1.5rem 0; position: relative;">
+        <div style="max-width: 1000px; margin: 0 auto; padding: 0 2rem;">
+            <!-- Sección principal -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2rem;">
+                <!-- Logo y redes sociales -->
+                <div>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <img src="../assets/img/Logo.png" alt="Trivel Panama" style="height: 45px; border-radius: 8px;">
+                        <div>
+                            <h3 style="font-size: 1.5rem; font-weight: 600; margin: 0; color: #fff;">Trivel Panama</h3>
+                            <span style="color: #ff6b35; font-size: 0.8rem; font-weight: 500;">#ViajaConTrivel</span>
+                        </div>
+                    </div>
+                    <p style="color: #ccc; line-height: 1.6; margin-bottom: 1rem; font-size: 0.9rem; max-width: 280px;">
+                        Descubre la magia de Panamá con experiencias únicas y memorables.
+                    </p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="https://facebook.com/trivelpanama" target="_blank" style="color: #fff; font-size: 1.1rem; transition: color 0.3s; opacity: 0.7;" onmouseover="this.style.opacity='1'; this.style.color='#1877f2'" onmouseout="this.style.opacity='0.7'; this.style.color='#fff'"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/trivelpanama" target="_blank" style="color: #fff; font-size: 1.1rem; transition: color 0.3s; opacity: 0.7;" onmouseover="this.style.opacity='1'; this.style.color='#e4405f'" onmouseout="this.style.opacity='0.7'; this.style.color='#fff'"><i class="fab fa-instagram"></i></a>
+                        <a href="https://tiktok.com/@trivelpanama" target="_blank" style="color: #fff; font-size: 1.1rem; transition: color 0.3s; opacity: 0.7;" onmouseover="this.style.opacity='1'; this.style.color='#ff6b35'" onmouseout="this.style.opacity='0.7'; this.style.color='#fff'"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Enlaces rápidos -->
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Enlaces</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem;"><a href="../index.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Home</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="destinations.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Destinos</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="carrusel.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Galería</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="ContactUs.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Destinos -->
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Destinos</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem;"><a href="bocas-del-toro.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Bocas del Toro</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="san-blas.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">San Blas</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="playa-venao.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Playa Venao</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="playa-estrella.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Playa Estrella</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contacto -->
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Contacto</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">info@trivelpanama.com</li>
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">+507 123-4567</li>
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">Panama City, Panama</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Línea divisoria -->
+            <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 1.5rem 0;"></div>
+            
+            <!-- Información legal y certificaciones -->
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                    <a href="#" style="color: #999; text-decoration: none; font-size: 0.8rem; transition: color 0.3s;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#999'">Privacidad</a>
+                    <a href="#" style="color: #999; text-decoration: none; font-size: 0.8rem; transition: color 0.3s;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#999'">Cookies</a>
+                    <a href="#" style="color: #999; text-decoration: none; font-size: 0.8rem; transition: color 0.3s;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#999'">Términos</a>
+                </div>
+                
+                <!-- Certificaciones -->
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <i class="fas fa-shield-alt" style="color: #ff6b35; font-size: 0.9rem;" title="Sitio Seguro"></i>
+                    <i class="fas fa-award" style="color: #ff6b35; font-size: 0.9rem;" title="Top Rated"></i>
+                    <i class="fas fa-leaf" style="color: #ff6b35; font-size: 0.9rem;" title="Eco Friendly"></i>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div style="text-align: center; padding-top: 1rem;">
+                <p style="color: #666; font-size: 0.8rem; margin: 0;">
+                    &copy; 2024 Trivel Panama | 
+                    <span style="color: #ff6b35; font-weight: 500;">Tu aventura comienza aquí</span>
+                </p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Scripts -->
-    <script src="../components/components.js"></script>
+    <script src="../JS/destinations.js"></script>
     
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="../JS/firebaseConfig.js"></script>
+
+    <!-- Scripts del header -->
+    <script>
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.header');
+      if(window.scrollY > 40) {
+        header.style.boxShadow = '0 2px 12px rgba(26,115,232,0.10)';
+        header.style.background = 'rgba(255,255,255,0.97)';
+      } else {
+        header.style.boxShadow = '';
+        header.style.background = '';
+      }
+    });
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      }
+    });
+    </script>
 </body>
 </html>

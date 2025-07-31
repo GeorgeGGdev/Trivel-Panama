@@ -4,15 +4,465 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - Trivel Panamá</title>
-    <meta name="description" content="Descubre los destinos más exclusivos de Panamá con Trivel Panamá. Playas, cultura, aventura y experiencias únicas para turistas.">
+    <meta name="description" content="Inicia sesión en Trivel Panamá y descubre los destinos más exclusivos. Acceso seguro y rápido a tu cuenta.">
     <link rel="stylesheet" href="../CSS/styles.css">
     <link rel="stylesheet" href="../CSS/auth.css">
     <link rel="stylesheet" href="../CSS/dynamic-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
         .page-content {
             margin-top: 80px;
+            flex: 1;
+        }
+        
+        /* Login Page Background */
+        .login-background {
+            min-height: calc(100vh - 80px);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+        
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        .floating-element:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            top: 30%;
+            right: 30%;
+            animation-delay: 1s;
+        }
+        
+        .floating-element:nth-child(5) {
+            width: 70px;
+            height: 70px;
+            bottom: 30%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        /* Login Container */
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
+            max-width: 450px;
+            width: 100%;
+            margin: 0 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideInUp 0.8s ease-out;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Logo Section */
+        .login-logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .login-logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .login-logo h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        
+        .login-logo p {
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        /* Form Styling */
+        .login-form {
+            margin-top: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .form-group input::placeholder {
+            color: #999;
+        }
+        
+        /* Password Input with Icon */
+        .password-input {
+            position: relative;
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .password-toggle:hover {
+            color: #667eea;
+        }
+        
+        /* Form Options */
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .remember-me input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+            accent-color: #667eea;
+        }
+        
+        .forgot-password {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .forgot-password:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        
+        /* Submit Button */
+        .login-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .login-btn:hover::before {
+            left: 100%;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .login-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        /* Social Login */
+        .social-login {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .social-login p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #e1e5e9;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-btn.facebook:hover {
+            border-color: #1877f2;
+            color: #1877f2;
+        }
+        
+        .social-btn.google:hover {
+            border-color: #db4437;
+            color: #db4437;
+        }
+        
+        .social-btn.apple:hover {
+            border-color: #000;
+            color: #000;
+        }
+        
+        /* Register Link */
+        .register-link {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e1e5e9;
+        }
+        
+        .register-link p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .register-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .register-link a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        
+        /* Loading Animation */
+        .loading {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ffffff;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 0.5rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Error/Success Messages */
+        .message {
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            display: none;
+        }
+        
+        .message.error {
+            background: rgba(244, 67, 54, 0.1);
+            color: #f44336;
+            border: 1px solid rgba(244, 67, 54, 0.2);
+        }
+        
+        .message.success {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4caf50;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+        }
+        
+        /* Footer Styling */
+        .login-footer {
+            background: #000;
+            color: #fff;
+            padding: 2.5rem 0 1.5rem 0;
+            margin-top: auto;
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .login-container {
+                margin: 0 1rem;
+                padding: 2rem;
+            }
+            
+            .login-logo h1 {
+                font-size: 2rem;
+            }
+            
+            .form-options {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .social-buttons {
+                flex-wrap: wrap;
+            }
+            
+            .login-footer {
+                padding: 2rem 0 1rem 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 1.5rem;
+            }
+            
+            .login-logo h1 {
+                font-size: 1.8rem;
+            }
+            
+            .form-group input {
+                padding: 0.8rem 1rem;
+            }
+            
+            .login-btn {
+                padding: 1rem;
+            }
+            
+            .login-footer {
+                padding: 1.5rem 0 1rem 0;
+            }
         }
     </style>
 </head>
@@ -42,21 +492,50 @@
         <div id="auth-area"></div>
     </header>
 
-    <div class="container page-content">
-        <div class="form-container">
-            <div class="form-header">
-                <h1 style="color: #fff; text-shadow: 0 2px 8px #000, 0 0 2px #333;">Iniciar Sesión</h1>
-                <p style="color: #e0e0e0; text-shadow: 0 1px 4px #000;">Bienvenido de nuevo a Trivel</p>
+    <!-- Login Background with Floating Elements -->
+    <div class="login-background page-content">
+        <!-- Floating Elements -->
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        
+        <!-- Login Container -->
+        <div class="login-container">
+            <!-- Logo Section -->
+            <div class="login-logo">
+                <img src="../assets/img/Logo.png" alt="Trivel Panama">
+                <h1>Bienvenido</h1>
+                <p>Inicia sesión en tu cuenta</p>
             </div>
-            <form id="loginForm" class="auth-form">
+            
+            <!-- Messages -->
+            <div id="message" class="message"></div>
+            
+            <!-- Login Form -->
+            <form id="loginForm" class="login-form">
                 <div class="form-group">
-                    <label for="email">Correo Electrónico</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="email">
+                        <i class="fas fa-envelope" style="margin-right: 0.5rem; color: #667eea;"></i>
+                        Correo Electrónico
+                    </label>
+                    <input type="email" id="email" name="email" placeholder="tu@email.com" required>
                 </div>
+                
                 <div class="form-group">
-                    <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" required>
+                    <label for="password">
+                        <i class="fas fa-lock" style="margin-right: 0.5rem; color: #667eea;"></i>
+                        Contraseña
+                    </label>
+                    <div class="password-input">
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword()">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
                 </div>
+                
                 <div class="form-options">
                     <label class="remember-me">
                         <input type="checkbox" id="remember" name="remember">
@@ -64,17 +543,39 @@
                     </label>
                     <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
                 </div>
-                <button type="submit" class="btn-primary">Iniciar Sesión</button>
+                
+                <button type="submit" class="login-btn">
+                    <span>Iniciar Sesión</span>
+                    <div class="loading"></div>
+                </button>
             </form>
-            <div class="form-footer">
-                <p>¿No tienes una cuenta? <a href="register.html" style="color:#4CAF50;font-weight:600;">Regístrate aquí</a></p>
+            
+            <!-- Social Login -->
+            <div class="social-login">
+                <p>O continúa con</p>
+                <div class="social-buttons">
+                    <div class="social-btn facebook" title="Continuar con Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="social-btn google" title="Continuar con Google">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <div class="social-btn apple" title="Continuar con Apple">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Register Link -->
+            <div class="register-link">
+                <p>¿No tienes una cuenta? <a href="register.html">Regístrate aquí</a></p>
             </div>
         </div>
     </div>
 
     <!-- Footer Minimalista -->
-    <footer style="background: #000; color: #fff; padding: 2.5rem 0 1.5rem 0; position: relative;">
-        <div style="max-width: 1000px; margin: 0 auto; padding: 0 2rem;">
+    <footer class="login-footer">
+        <div style="max-width: 1000px; margin: 0 auto; padding: 0 2rem; width: 100%;">
             <!-- Sección principal -->
             <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2rem;">
                 <!-- Logo y redes sociales -->
@@ -188,6 +689,68 @@
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
       }
+    });
+    
+    // Password Toggle Function
+    function togglePassword() {
+        const passwordInput = document.getElementById('password');
+        const toggleBtn = document.querySelector('.password-toggle i');
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            toggleBtn.classList.remove('fa-eye');
+            toggleBtn.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            toggleBtn.classList.remove('fa-eye-slash');
+            toggleBtn.classList.add('fa-eye');
+        }
+    }
+    
+    // Enhanced Form Submission
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const submitBtn = this.querySelector('.login-btn');
+        const loading = submitBtn.querySelector('.loading');
+        const btnText = submitBtn.querySelector('span');
+        
+        // Show loading state
+        submitBtn.disabled = true;
+        loading.style.display = 'inline-block';
+        btnText.textContent = 'Iniciando sesión...';
+        
+        // Simulate form processing (replace with actual authentication)
+        setTimeout(() => {
+            // Reset button state
+            submitBtn.disabled = false;
+            loading.style.display = 'none';
+            btnText.textContent = 'Iniciar Sesión';
+            
+            // Show success message
+            showMessage('¡Bienvenido de vuelta!', 'success');
+        }, 2000);
+    });
+    
+    // Message display function
+    function showMessage(text, type) {
+        const messageDiv = document.getElementById('message');
+        messageDiv.textContent = text;
+        messageDiv.className = `message ${type}`;
+        messageDiv.style.display = 'block';
+        
+        setTimeout(() => {
+            messageDiv.style.display = 'none';
+        }, 5000);
+    }
+    
+    // Social login handlers
+    document.querySelectorAll('.social-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const platform = this.classList.contains('facebook') ? 'Facebook' : 
+                           this.classList.contains('google') ? 'Google' : 'Apple';
+            showMessage(`Iniciando sesión con ${platform}...`, 'success');
+        });
     });
     </script>
 </body>
