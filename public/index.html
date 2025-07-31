@@ -10,12 +10,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+      /* FIX PARA EXPANSIÓN - TAMAÑO FIJO COMPLETO */
+      html, body {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      
+      * {
+        box-sizing: border-box;
+      }
+      
+      /* Control total del viewport */
+      .hero, .hero-carousel, .hero-slide {
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+      }
+      
+      /* Prevenir expansión en scroll */
+      .hero-carousel {
+        overflow: hidden;
+      }
+      
+      .hero-slide {
+        overflow: hidden;
+      }
+      
       /* Estilos adicionales para el rediseño */
       .search-bar { max-width: 500px; margin: 2rem auto 0 auto; display: flex; box-shadow: 0 4px 24px rgba(26,115,232,0.07); border-radius: 30px; overflow: hidden; background: #fff; }
       .search-bar input { flex: 1; border: none; padding: 1rem 1.5rem; font-size: 1.1rem; border-radius: 30px 0 0 30px; outline: none; }
       .search-bar button { background: var(--gradient-orange); color: #fff; border: none; padding: 0 2rem; font-size: 1.1rem; border-radius: 0 30px 30px 0; cursor: pointer; transition: background 0.3s; }
       .search-bar button:hover { background: var(--accent-color); }
-      .stats { display: flex; justify-content: center; gap: 3rem; margin: 3rem 0 2rem 0; }
+      .stats { display: flex; justify-content: center; gap: 3rem; margin: 3rem 0 2rem 0; margin-top: 4rem; padding-top: 3rem; }
       .stat-item { background: #fff; border-radius: 18px; box-shadow: 0 4px 24px rgba(26,115,232,0.07); padding: 2rem 2.5rem; text-align: center; }
       .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--accent-color); }
       .stat-label { color: var(--primary-color); font-size: 1.1rem; margin-top: 0.5rem; }
@@ -52,7 +82,6 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="pages/destinations.html">Destinations</a></li>
-                <li><a href="pages/carrusel.html">Gallery</a></li>
                 <li><a href="pages/ContactUs.html">Contact Us</a></li>
                 <li><a href="pages/FAQs.html">FAQs</a></li>
             </ul>
@@ -140,8 +169,11 @@
     showHeroSlide(0);
     </script>
 
+    <!-- Separador visual -->
+    <div style="height: 2rem; background: linear-gradient(to bottom, transparent, #f8f9fa); margin-top: 2rem;"></div>
+
     <!-- Stats Section -->
-    <section class="stats" aria-label="Estadísticas de Trivel Panamá">
+    <section class="stats" aria-label="Estadísticas de Trivel Panamá" style="margin-top: 4rem; padding-top: 3rem;">
         <div class="stat-item">
             <div class="stat-number" data-count="1200">0</div>
             <div class="stat-label">Turistas Felices</div>
@@ -1103,11 +1135,25 @@
     var heroSlides = document.querySelectorAll('.hero-slide');
     var heroInterval;
 
-    // Parallax efecto para hero
+    // Prevenir expansión y scroll horizontal
+    window.addEventListener('scroll', function() {
+      // Prevenir scroll horizontal
+      if (window.scrollX !== 0) {
+        window.scrollTo(0, window.scrollY);
+      }
+      
+      // Mantener tamaños fijos
+      document.body.style.width = '100%';
+      document.body.style.maxWidth = '100vw';
+      document.documentElement.style.width = '100%';
+      document.documentElement.style.maxWidth = '100vw';
+    });
+    
+    // Parallax efecto para hero (reducido para evitar expansión)
     window.addEventListener('scroll', function() {
       let scrollY = window.scrollY;
       heroSlides.forEach(slide => {
-        slide.style.backgroundPositionY = (scrollY * 0.3) + 'px';
+        slide.style.backgroundPositionY = (scrollY * 0.1) + 'px';
       });
     });
     // Hero carrusel: controles manuales y automáticos
@@ -1175,6 +1221,33 @@
         header.style.boxShadow = '';
         header.style.background = '';
       }
+      
+      // Control adicional para prevenir expansión
+      const hero = document.querySelector('.hero');
+      const heroCarousel = document.querySelector('.hero-carousel');
+      if (hero) hero.style.width = '100%';
+      if (heroCarousel) heroCarousel.style.width = '100%';
+    });
+    
+    // Inicialización para fijar tamaños
+    document.addEventListener('DOMContentLoaded', function() {
+      // Forzar tamaños fijos al cargar
+      document.body.style.width = '100%';
+      document.body.style.maxWidth = '100vw';
+      document.documentElement.style.width = '100%';
+      document.documentElement.style.maxWidth = '100vw';
+      
+      // Control de elementos hero
+      const hero = document.querySelector('.hero');
+      const heroCarousel = document.querySelector('.hero-carousel');
+      const heroSlides = document.querySelectorAll('.hero-slide');
+      
+      if (hero) hero.style.width = '100%';
+      if (heroCarousel) heroCarousel.style.width = '100%';
+      heroSlides.forEach(slide => {
+        slide.style.width = '100%';
+        slide.style.maxWidth = '100vw';
+      });
     });
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
