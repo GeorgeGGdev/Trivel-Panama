@@ -41,14 +41,122 @@
       }
       
       /* Estilos adicionales para el rediseño */
-      .search-bar { max-width: 500px; margin: 2rem auto 0 auto; display: flex; box-shadow: 0 4px 24px rgba(26,115,232,0.07); border-radius: 30px; overflow: hidden; background: #fff; }
-      .search-bar input { flex: 1; border: none; padding: 1rem 1.5rem; font-size: 1.1rem; border-radius: 30px 0 0 30px; outline: none; }
-      .search-bar button { background: var(--gradient-orange); color: #fff; border: none; padding: 0 2rem; font-size: 1.1rem; border-radius: 0 30px 30px 0; cursor: pointer; transition: background 0.3s; }
+      .search-bar { max-width: 800px; margin: 2rem auto 0 auto; display: flex; box-shadow: 0 4px 24px rgba(26,115,232,0.07); border-radius: 30px; overflow: hidden; background: #fff; }
+      .search-bar input { flex: 1; border: none; padding: 1.2rem 1.8rem; font-size: 1.2rem; border-radius: 30px 0 0 30px; outline: none; }
+      .search-bar button { background: var(--gradient-orange); color: #fff; border: none; padding: 0 2.5rem; font-size: 1.2rem; border-radius: 0 30px 30px 0; cursor: pointer; transition: background 0.3s; }
       .search-bar button:hover { background: var(--accent-color); }
-      .stats { display: flex; justify-content: center; gap: 3rem; margin: 3rem 0 2rem 0; margin-top: 4rem; padding-top: 3rem; }
-      .stat-item { background: #fff; border-radius: 18px; box-shadow: 0 4px 24px rgba(26,115,232,0.07); padding: 2rem 2.5rem; text-align: center; }
-      .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--accent-color); }
-      .stat-label { color: var(--primary-color); font-size: 1.1rem; margin-top: 0.5rem; }
+      /* Estilos para la sección de estadísticas mejorada */
+      .stats-enhanced {
+        position: relative;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      }
+      
+      .stat-card {
+        background: white;
+        border-radius: 16px;
+        padding: 1.8rem 1.5rem;
+        text-align: center;
+        box-shadow: 0 6px 24px rgba(26,115,232,0.08);
+        border: 1px solid rgba(26,115,232,0.1);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .stat-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 36px rgba(26,115,232,0.15);
+      }
+      
+      .stat-card:nth-child(even) {
+        box-shadow: 0 6px 24px rgba(255,107,0,0.08);
+        border: 1px solid rgba(255,107,0,0.1);
+      }
+      
+      .stat-card:nth-child(even):hover {
+        box-shadow: 0 12px 36px rgba(255,107,0,0.15);
+      }
+      
+      .stat-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        transition: all 0.3s ease;
+      }
+      
+      .stat-card:hover .stat-icon {
+        transform: scale(1.1);
+      }
+      
+      .stat-number {
+        font-size: 2.8rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.3rem;
+        transition: all 0.3s ease;
+      }
+      
+      .stat-label {
+        font-size: 1rem;
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+      }
+      
+      .stat-description {
+        font-size: 0.85rem;
+        color: #666;
+        line-height: 1.4;
+      }
+      
+      .cta-stats {
+        background: var(--gradient-orange);
+        color: white;
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(255,107,0,0.2);
+      }
+      
+      .cta-stats:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(255,107,0,0.3);
+        background: var(--accent-color);
+      }
+      
+      /* Responsive para estadísticas */
+      @media (max-width: 768px) {
+        .stats-enhanced {
+          padding: 2rem 1rem;
+        }
+        
+        .stat-card {
+          padding: 1.5rem 1rem;
+        }
+        
+        .stat-number {
+          font-size: 2.2rem;
+        }
+        
+        .stat-label {
+          font-size: 0.9rem;
+        }
+        
+        .stat-description {
+          font-size: 0.8rem;
+        }
+      }
       .why-choose { background: var(--gradient-light); padding: 5rem 0; }
       .why-choose-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 2.5rem; margin-top: 2.5rem; }
       .why-choose-item { background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(26,115,232,0.07); padding: 2rem 1.5rem; max-width: 260px; text-align: center; transition: transform 0.2s; }
@@ -62,6 +170,109 @@
       .whatsapp-float a { display: flex; align-items: center; background: #25d366; color: #fff; padding: 0.8rem 1.3rem; border-radius: 30px; font-size: 1.2rem; box-shadow: 0 4px 24px rgba(37,211,102,0.15); text-decoration: none; transition: background 0.2s; }
       .whatsapp-float a:hover { background: #128c7e; }
       .whatsapp-float i { font-size: 1.5rem; margin-right: 0.7rem; }
+      
+      /* Estilos para botones de autenticación en el header */
+      .auth-buttons {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+      
+      .auth-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 1.2rem;
+        border: none;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        font-family: 'Poppins', sans-serif;
+      }
+      
+      .login-btn {
+        background: transparent;
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+      }
+      
+      .login-btn:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+      }
+      
+      .register-btn {
+        background: var(--gradient-orange);
+        color: white;
+      }
+      
+      .register-btn:hover {
+        background: var(--accent-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+      }
+      
+      .auth-btn i {
+        font-size: 0.8rem;
+      }
+      
+      /* Estilos para información del usuario cuando está logueado */
+      .user-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      
+      .user-name {
+        font-weight: 600;
+        color: var(--primary-color);
+        font-size: 0.9rem;
+      }
+      
+      .logout-btn {
+        background: #dc3545;
+        color: white;
+        border: none;
+      }
+      
+      .logout-btn:hover {
+        background: #c82333;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+      }
+      
+      /* Responsive para móviles */
+      @media (max-width: 768px) {
+        .auth-buttons {
+          gap: 0.5rem;
+        }
+        
+        .auth-btn {
+          padding: 0.5rem 1rem;
+          font-size: 0.8rem;
+        }
+        
+        .auth-btn span {
+          display: none;
+        }
+        
+        .auth-btn i {
+          font-size: 1rem;
+        }
+        
+        .user-info {
+          gap: 0.5rem;
+        }
+        
+        .user-name {
+          font-size: 0.8rem;
+        }
+      }
     </style>
 </head>
 <body>
@@ -86,7 +297,16 @@
                 <li><a href="pages/FAQs.html">FAQs</a></li>
             </ul>
         </nav>
-        <div id="auth-area"></div>
+        <div class="auth-buttons">
+            <button id="loginBtn" class="auth-btn login-btn">
+                <i class="fas fa-sign-in-alt"></i>
+                Iniciar Sesión
+            </button>
+            <button id="registerBtn" class="auth-btn register-btn">
+                <i class="fas fa-user-plus"></i>
+                Registrarse
+            </button>
+        </div>
     </header>
 
     <!-- Hero Section Mejorado con Carrusel -->
@@ -143,50 +363,34 @@
 
     <script>
     // Hero Carousel automático
-    const heroSlides = document.querySelectorAll('.hero-slide');
-    const heroTitles = [
+    window.heroSlides = document.querySelectorAll('.hero-slide');
+    window.heroTitles = [
         'Vive Panamá como nunca antes',
         'Descubre playas de ensueño',
         'Aventuras y cultura en cada rincón'
     ];
-    const heroSubtitles = [
+    window.heroSubtitles = [
         'Viajes exclusivos, playas paradisíacas y experiencias auténticas',
         'Sumérgete en aguas cristalinas y paisajes inolvidables',
         'Explora, disfruta y crea recuerdos únicos con Trivel Panamá'
     ];
-    let heroIndex = 0;
+    window.heroIndex = 0;
     function showHeroSlide(idx) {
-        heroSlides.forEach((slide, i) => {
+        window.heroSlides.forEach((slide, i) => {
             slide.style.opacity = (i === idx) ? '1' : '0';
         });
-        document.getElementById('heroTitle').textContent = heroTitles[idx];
-        document.getElementById('heroSubtitle').textContent = heroSubtitles[idx];
+        document.getElementById('heroTitle').textContent = window.heroTitles[idx];
+        document.getElementById('heroSubtitle').textContent = window.heroSubtitles[idx];
     }
     setInterval(() => {
-        heroIndex = (heroIndex + 1) % heroSlides.length;
-        showHeroSlide(heroIndex);
+        window.heroIndex = (window.heroIndex + 1) % window.heroSlides.length;
+        showHeroSlide(window.heroIndex);
     }, 5000);
     showHeroSlide(0);
     </script>
 
     <!-- Separador visual -->
     <div style="height: 2rem; background: linear-gradient(to bottom, transparent, #f8f9fa); margin-top: 2rem;"></div>
-
-    <!-- Stats Section -->
-    <section class="stats" aria-label="Estadísticas de Trivel Panamá" style="margin-top: 4rem; padding-top: 3rem;">
-        <div class="stat-item">
-            <div class="stat-number" data-count="1200">0</div>
-            <div class="stat-label">Turistas Felices</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number" data-count="35">0</div>
-            <div class="stat-label">Destinos Únicos</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number" data-count="150">0</div>
-            <div class="stat-label">Experiencias</div>
-        </div>
-    </section>
 
     <!-- Featured Destinations -->
     <section id="destinations" class="destinations reveal">
@@ -206,7 +410,7 @@
                         <li style="margin-bottom:0.4rem;"><i class="fas fa-fish" style="color:var(--accent-color); margin-right:0.5rem;"></i> Snorkel y buceo</li>
                         <li><i class="fas fa-cocktail" style="color:var(--accent-color); margin-right:0.5rem;"></i> Vida nocturna</li>
                     </ul>
-                    <button class="learn-more" onclick="window.location.href='pages/destinations.html'" style="font-size:1.1rem;">
+                    <button class="learn-more" onclick="window.location.href='pages/bocas-del-toro.html'" style="font-size:1.1rem;">
                         <span>Ver más</span>
                         <i class="fas fa-arrow-right"></i>
                     </button>
@@ -226,7 +430,7 @@
                         <li style="margin-bottom:0.4rem;"><i class="fas fa-users" style="color:var(--accent-color); margin-right:0.5rem;"></i> Cultura Guna</li>
                         <li><i class="fas fa-leaf" style="color:var(--accent-color); margin-right:0.5rem;"></i> Naturaleza virgen</li>
                     </ul>
-                    <button class="learn-more" onclick="window.location.href='pages/destinations.html'" style="font-size:1.1rem;">
+                    <button class="learn-more" onclick="window.location.href='pages/san-blas.html'" style="font-size:1.1rem;">
                         <span>Ver más</span>
                         <i class="fas fa-arrow-right"></i>
                     </button>
@@ -246,12 +450,94 @@
                         <li style="margin-bottom:0.4rem;"><i class="fas fa-sun" style="color:var(--accent-color); margin-right:0.5rem;"></i> Atardeceres únicos</li>
                         <li><i class="fas fa-music" style="color:var(--accent-color); margin-right:0.5rem;"></i> Festivales y vida local</li>
                     </ul>
-                    <button class="learn-more" onclick="window.location.href='pages/destinations.html'" style="font-size:1.1rem;">
+                    <button class="learn-more" onclick="window.location.href='pages/playa-venao.html'" style="font-size:1.1rem;">
                         <span>Ver más</span>
                         <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Stats Section Mejorada -->
+    <section class="stats-enhanced" aria-label="Estadísticas de Trivel Panamá" style="margin-top: 3rem; padding: 2.5rem 0; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); position: relative; overflow: hidden;">
+        <!-- Elementos decorativos de fondo -->
+        <div style="position: absolute; top: -30px; left: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(26,115,232,0.1) 0%, transparent 70%); border-radius: 50%;"></div>
+        <div style="position: absolute; bottom: -20px; right: -20px; width: 100px; height: 100px; background: radial-gradient(circle, rgba(255,107,0,0.1) 0%, transparent 70%); border-radius: 50%;"></div>
+        
+        <!-- Título de la sección -->
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <h2 style="font-size: 2rem; color: var(--primary-color); font-weight: 700; margin-bottom: 0.5rem; position: relative;">
+                Nuestros Números Hablan
+                <span style="position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: var(--gradient-orange); border-radius: 2px;"></span>
+            </h2>
+            <p style="font-size: 1rem; color: #666; max-width: 500px; margin: 0 auto; line-height: 1.5;">
+                Más de una década creando experiencias inolvidables en Panamá
+            </p>
+        </div>
+        
+        <!-- Contenedor de estadísticas -->
+        <div style="max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+            
+            <!-- Estadística 1: Turistas Felices -->
+            <div class="stat-card" style="background: white; border-radius: 16px; padding: 1.8rem 1.5rem; text-align: center; box-shadow: 0 6px 24px rgba(26,115,232,0.08); border: 1px solid rgba(26,115,232,0.1); transition: all 0.4s ease; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient-blue);"></div>
+                <div class="stat-icon" style="width: 60px; height: 60px; background: var(--gradient-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 6px 18px rgba(26,115,232,0.2);">
+                    <i class="fas fa-smile" style="font-size: 1.5rem; color: white;"></i>
+                </div>
+                <div class="stat-number" data-count="1200" style="font-size: 2.8rem; font-weight: 800; color: var(--primary-color); margin-bottom: 0.3rem; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">0</div>
+                <div class="stat-label" style="font-size: 1rem; color: var(--primary-color); font-weight: 600; margin-bottom: 0.3rem;">Turistas Felices</div>
+                <div class="stat-description" style="font-size: 0.85rem; color: #666; line-height: 1.4;">
+                    Viajeros que han confiado en nosotros
+                </div>
+            </div>
+            
+            <!-- Estadística 2: Destinos Únicos -->
+            <div class="stat-card" style="background: white; border-radius: 16px; padding: 1.8rem 1.5rem; text-align: center; box-shadow: 0 6px 24px rgba(255,107,0,0.08); border: 1px solid rgba(255,107,0,0.1); transition: all 0.4s ease; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient-orange);"></div>
+                <div class="stat-icon" style="width: 60px; height: 60px; background: var(--gradient-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 6px 18px rgba(255,107,0,0.2);">
+                    <i class="fas fa-map-marked-alt" style="font-size: 1.5rem; color: white;"></i>
+                </div>
+                <div class="stat-number" data-count="35" style="font-size: 2.8rem; font-weight: 800; color: var(--primary-color); margin-bottom: 0.3rem; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">0</div>
+                <div class="stat-label" style="font-size: 1rem; color: var(--primary-color); font-weight: 600; margin-bottom: 0.3rem;">Destinos Únicos</div>
+                <div class="stat-description" style="font-size: 0.85rem; color: #666; line-height: 1.4;">
+                    Lugares mágicos descubiertos para ti
+                </div>
+            </div>
+            
+            <!-- Estadística 3: Experiencias -->
+            <div class="stat-card" style="background: white; border-radius: 16px; padding: 1.8rem 1.5rem; text-align: center; box-shadow: 0 6px 24px rgba(26,115,232,0.08); border: 1px solid rgba(26,115,232,0.1); transition: all 0.4s ease; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient-blue);"></div>
+                <div class="stat-icon" style="width: 60px; height: 60px; background: var(--gradient-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 6px 18px rgba(26,115,232,0.2);">
+                    <i class="fas fa-star" style="font-size: 1.5rem; color: white;"></i>
+                </div>
+                <div class="stat-number" data-count="150" style="font-size: 2.8rem; font-weight: 800; color: var(--primary-color); margin-bottom: 0.3rem; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">0</div>
+                <div class="stat-label" style="font-size: 1rem; color: var(--primary-color); font-weight: 600; margin-bottom: 0.3rem;">Experiencias</div>
+                <div class="stat-description" style="font-size: 0.85rem; color: #666; line-height: 1.4;">
+                    Momentos inolvidables creados
+                </div>
+            </div>
+            
+            <!-- Estadística 4: Años de Experiencia -->
+            <div class="stat-card" style="background: white; border-radius: 16px; padding: 1.8rem 1.5rem; text-align: center; box-shadow: 0 6px 24px rgba(255,107,0,0.08); border: 1px solid rgba(255,107,0,0.1); transition: all 0.4s ease; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient-orange);"></div>
+                <div class="stat-icon" style="width: 60px; height: 60px; background: var(--gradient-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 6px 18px rgba(255,107,0,0.2);">
+                    <i class="fas fa-trophy" style="font-size: 1.5rem; color: white;"></i>
+                </div>
+                <div class="stat-number" data-count="12" style="font-size: 2.8rem; font-weight: 800; color: var(--primary-color); margin-bottom: 0.3rem; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">0</div>
+                <div class="stat-label" style="font-size: 1rem; color: var(--primary-color); font-weight: 600; margin-bottom: 0.3rem;">Años de Experiencia</div>
+                <div class="stat-description" style="font-size: 0.85rem; color: #666; line-height: 1.4;">
+                    Más de una década de experiencia
+                </div>
+            </div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div style="text-align: center; margin-top: 2rem;">
+            <button class="cta-stats" style="background: var(--gradient-orange); color: white; border: none; padding: 0.8rem 2rem; border-radius: 25px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(255,107,0,0.2);">
+                <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>
+                Únete a Nuestra Aventura
+            </button>
         </div>
     </section>
 
@@ -419,7 +705,8 @@
         <div id="lightboxCaption" style="color:#fff; text-align:center; margin-top:1.5rem; font-size:1.3rem; font-weight:500;"></div>
     </div>
     <script>
-    const galleryImages = [
+    // Global variables for lightbox
+    window.galleryImages = [
         {src: 'assets/img/Starfish Beach.jpeg', caption: 'Starfish Beach'},
         {src: 'assets/img/Red Frog Beach.jpg', caption: 'Red Frog Beach'},
         {src: 'assets/img/Isla Grande.jpg', caption: 'Isla Grande'},
@@ -427,9 +714,11 @@
         {src: 'assets/img/Contadora Island.jpeg', caption: 'Contadora Island'},
         {src: 'assets/img/home.png', caption: 'Panama City'}
     ];
-    let currentLightbox = 0;
+    window.currentLightbox = 0;
+    
+    // Lightbox functions
     function openLightbox(idx) {
-        currentLightbox = idx;
+        window.currentLightbox = idx;
         document.getElementById('lightboxModal').style.display = 'flex';
         updateLightbox();
         document.body.style.overflow = 'hidden';
@@ -439,19 +728,19 @@
         document.body.style.overflow = '';
     }
     function prevLightbox() {
-        currentLightbox = (currentLightbox - 1 + galleryImages.length) % galleryImages.length;
+        window.currentLightbox = (window.currentLightbox - 1 + window.galleryImages.length) % window.galleryImages.length;
         updateLightbox();
     }
     function nextLightbox() {
-        currentLightbox = (currentLightbox + 1) % galleryImages.length;
+        window.currentLightbox = (window.currentLightbox + 1) % window.galleryImages.length;
         updateLightbox();
     }
     function updateLightbox() {
         const img = document.getElementById('lightboxImg');
         const caption = document.getElementById('lightboxCaption');
-        img.src = galleryImages[currentLightbox].src;
-        img.alt = galleryImages[currentLightbox].caption;
-        caption.textContent = galleryImages[currentLightbox].caption;
+        img.src = window.galleryImages[window.currentLightbox].src;
+        img.alt = window.galleryImages[window.currentLightbox].caption;
+        caption.textContent = window.galleryImages[window.currentLightbox].caption;
     }
     document.addEventListener('keydown', function(e) {
         if(document.getElementById('lightboxModal').style.display === 'flex') {
@@ -461,11 +750,11 @@
         }
     });
     // Filtros de galería
-    const filterBtns = document.querySelectorAll('.gallery-filter-btn');
-    filterBtns.forEach(btn => {
+    const galleryFilterBtns2 = document.querySelectorAll('.gallery-filter-btn');
+    galleryFilterBtns2.forEach(btn => {
         btn.onclick = function() {
-            filterBtns.forEach(b=>b.style.background='#fff');
-            filterBtns.forEach(b=>b.style.color=b.dataset.filter==='playa'? 'var(--primary-color)':b.dataset.filter==='isla'?'var(--accent-color)':b.dataset.filter==='ciudad'?'#444':'var(--primary-color)');
+            galleryFilterBtns2.forEach(b=>b.style.background='#fff');
+            galleryFilterBtns2.forEach(b=>b.style.color=b.dataset.filter==='playa'? 'var(--primary-color)':b.dataset.filter==='isla'?'var(--accent-color)':b.dataset.filter==='ciudad'?'#444':'var(--primary-color)');
             this.style.background = this.dataset.filter==='all'? 'var(--gradient-blue)' : (this.dataset.filter==='playa'? 'var(--gradient-blue)':this.dataset.filter==='isla'?'var(--gradient-orange)':this.dataset.filter==='ciudad'?'#bbb':'#fff');
             this.style.color = '#fff';
             const type = this.dataset.filter;
@@ -883,14 +1172,25 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="JS/firebaseConfig.js"></script>
     <script>
-    // Mostrar botón de login o nombre de usuario
+    // Funcionalidad de autenticación en el header
     document.addEventListener('DOMContentLoaded', function() {
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const authButtons = document.querySelector('.auth-buttons');
+        
+        // Event listeners para los botones
+        loginBtn.addEventListener('click', function() {
+            window.location.href = 'pages/login.html';
+        });
+        
+        registerBtn.addEventListener('click', function() {
+            window.location.href = 'pages/register.html';
+        });
+        
+        // Verificar estado de autenticación
         firebase.auth().onAuthStateChanged(async function(user) {
-            const authArea = document.getElementById('auth-area');
-            if (!authArea) return;
-            authArea.innerHTML = '';
             if (user) {
-                // Obtener nombre desde Firestore
+                // Usuario está logueado - mostrar información del usuario
                 try {
                     const db = firebase.firestore();
                     const userDoc = await db.collection('users').doc(user.uid).get();
@@ -907,27 +1207,125 @@
                         }
                         displayName = shortEmail;
                     }
-                    authArea.innerHTML = `<span style=\"font-weight:600;\">${displayName}</span> <button id=\"logout-btn\" class=\"auth-btn\" style=\"margin-left:10px;\">Cerrar sesión</button>`;
-                    document.getElementById('logout-btn').onclick = function() {
+                    
+                    authButtons.innerHTML = `
+                        <div class="user-info">
+                            <span class="user-name">${displayName}</span>
+                            <button id="logoutBtn" class="auth-btn logout-btn">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Cerrar Sesión
+                            </button>
+                        </div>
+                    `;
+                    
+                    document.getElementById('logoutBtn').addEventListener('click', function() {
                         firebase.auth().signOut().then(function() {
-                            window.location.href = 'pages/login.html';
+                            window.location.reload();
                         });
-                    };
+                    });
                 } catch (e) {
-                    authArea.innerHTML = `<span>${user.email}</span> <button id="logout-btn" class="auth-btn" style="margin-left:10px;">Cerrar sesión</button>`;
-                    document.getElementById('logout-btn').onclick = function() {
-                        firebase.auth().signOut();
-                        window.location.reload();
-                    };
+                    authButtons.innerHTML = `
+                        <div class="user-info">
+                            <span class="user-name">${user.email}</span>
+                            <button id="logoutBtn" class="auth-btn logout-btn">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Cerrar Sesión
+                            </button>
+                        </div>
+                    `;
+                    
+                    document.getElementById('logoutBtn').addEventListener('click', function() {
+                        firebase.auth().signOut().then(function() {
+                            window.location.reload();
+                        });
+                    });
                 }
             } else {
-                // Calcular la ruta correcta al login según la ubicación
-                const loginPath = window.location.pathname.includes('/pages/') ? 'login.html' : 'pages/login.html';
-                authArea.innerHTML = `<a href="${loginPath}" class="auth-btn">Iniciar Sesión</a>`;
+                // Usuario no está logueado - mostrar botones de login y registro
+                authButtons.innerHTML = `
+                    <button id="loginBtn" class="auth-btn login-btn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Iniciar Sesión
+                    </button>
+                    <button id="registerBtn" class="auth-btn register-btn">
+                        <i class="fas fa-user-plus"></i>
+                        Registrarse
+                    </button>
+                `;
+                
+                // Re-attach event listeners
+                document.getElementById('loginBtn').addEventListener('click', function() {
+                    window.location.href = 'pages/login.html';
+                });
+                
+                document.getElementById('registerBtn').addEventListener('click', function() {
+                    window.location.href = 'pages/register.html';
+                });
             }
         });
     });
-    // Buscador de destinos (demo)
+    // Animación de contadores para estadísticas
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200; // Velocidad de animación
+        
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-count'));
+            const increment = target / speed;
+            let current = 0;
+            
+            const updateCounter = () => {
+                if (current < target) {
+                    current += increment;
+                    counter.textContent = Math.ceil(current);
+                    setTimeout(updateCounter, 10);
+                } else {
+                    counter.textContent = target;
+                }
+            };
+            
+            updateCounter();
+        });
+    }
+    
+    // Función para verificar si el elemento está en viewport
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+    
+    // Observador de intersección para animar contadores cuando están visibles
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+    
+    // Observar la sección de estadísticas
+    const statsSection = document.querySelector('.stats-enhanced');
+    if (statsSection) {
+        observer.observe(statsSection);
+    }
+    
+    // Funcionalidad del botón CTA de estadísticas
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctaStatsBtn = document.querySelector('.cta-stats');
+        if (ctaStatsBtn) {
+            ctaStatsBtn.addEventListener('click', function() {
+                window.location.href = 'pages/ContactUs.html';
+            });
+        }
+    });
+    
+    // Buscador de destinos funcional
     document.getElementById('searchForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const value = document.getElementById('searchInput').value.trim().toLowerCase();
@@ -935,46 +1333,44 @@
             alert('Por favor, ingresa un destino para buscar.');
             return;
         }
-        // Aquí puedes redirigir a la página de resultados o filtrar destinos
-        window.location.href = 'pages/destinations.html?search=' + encodeURIComponent(value);
+        
+        // Mapeo de destinos disponibles
+        const destinations = {
+            'bocas del toro': 'pages/bocas-del-toro.html',
+            'bocas': 'pages/bocas-del-toro.html',
+            'san blas': 'pages/san-blas.html',
+            'guna yala': 'pages/san-blas.html',
+            'playa venao': 'pages/playa-venao.html',
+            'venao': 'pages/playa-venao.html',
+            'playa estrella': 'pages/playa-estrella.html',
+            'starfish beach': 'pages/playa-estrella.html',
+            'taboga': 'pages/destinations.html',
+            'contadora': 'pages/destinations.html',
+            'isla grande': 'pages/destinations.html',
+            'red frog beach': 'pages/destinations.html',
+            'panama city': 'pages/destinations.html',
+            'ciudad de panama': 'pages/destinations.html'
+        };
+        
+        // Buscar coincidencias
+        let foundDestination = null;
+        for (const [key, url] of Object.entries(destinations)) {
+            if (value.includes(key) || key.includes(value)) {
+                foundDestination = url;
+                break;
+            }
+        }
+        
+        if (foundDestination) {
+            window.location.href = foundDestination;
+        } else {
+            // Si no encuentra coincidencia exacta, ir a la página de destinos
+            window.location.href = 'pages/destinations.html?search=' + encodeURIComponent(value);
+        }
     });
     </script>
     <script>
-    // Lightbox para galería
-    const galleryImages = [
-        {src: 'assets/img/Starfish Beach.jpeg', caption: 'Starfish Beach'},
-        {src: 'assets/img/Red Frog Beach.jpg', caption: 'Red Frog Beach'},
-        {src: 'assets/img/Isla Grande.jpg', caption: 'Isla Grande'},
-        {src: 'assets/img/Taboga Island.jpeg', caption: 'Taboga Island'},
-        {src: 'assets/img/Contadora Island.jpeg', caption: 'Contadora Island'},
-        {src: 'assets/img/home.png', caption: 'Panama City'}
-    ];
-    let currentLightbox = 0;
-    function openLightbox(idx) {
-        currentLightbox = idx;
-        document.getElementById('lightboxModal').style.display = 'flex';
-        updateLightbox();
-        document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox() {
-        document.getElementById('lightboxModal').style.display = 'none';
-        document.body.style.overflow = '';
-    }
-    function prevLightbox() {
-        currentLightbox = (currentLightbox - 1 + galleryImages.length) % galleryImages.length;
-        updateLightbox();
-    }
-    function nextLightbox() {
-        currentLightbox = (currentLightbox + 1) % galleryImages.length;
-        updateLightbox();
-    }
-    function updateLightbox() {
-        const img = document.getElementById('lightboxImg');
-        const caption = document.getElementById('lightboxCaption');
-        img.src = galleryImages[currentLightbox].src;
-        img.alt = galleryImages[currentLightbox].caption;
-        caption.textContent = galleryImages[currentLightbox].caption;
-    }
+    // Lightbox para galería - funciones adicionales
     document.addEventListener('keydown', function(e) {
         if(document.getElementById('lightboxModal').style.display === 'flex') {
             if(e.key === 'ArrowLeft') prevLightbox();
@@ -983,11 +1379,11 @@
         }
     });
     // Filtros de galería
-    const filterBtns = document.querySelectorAll('.gallery-filter-btn');
-    filterBtns.forEach(btn => {
+    const galleryFilterBtns1 = document.querySelectorAll('.gallery-filter-btn');
+    galleryFilterBtns1.forEach(btn => {
         btn.onclick = function() {
-            filterBtns.forEach(b=>b.style.background='#fff');
-            filterBtns.forEach(b=>b.style.color=b.dataset.filter==='playa'? 'var(--primary-color)':b.dataset.filter==='isla'?'var(--accent-color)':b.dataset.filter==='ciudad'?'#444':'var(--primary-color)');
+            galleryFilterBtns1.forEach(b=>b.style.background='#fff');
+            galleryFilterBtns1.forEach(b=>b.style.color=b.dataset.filter==='playa'? 'var(--primary-color)':b.dataset.filter==='isla'?'var(--accent-color)':b.dataset.filter==='ciudad'?'#444':'var(--primary-color)');
             this.style.background = this.dataset.filter==='all'? 'var(--gradient-blue)' : (this.dataset.filter==='playa'? 'var(--gradient-blue)':this.dataset.filter==='isla'?'var(--gradient-orange)':this.dataset.filter==='ciudad'?'#bbb':'#fff');
             this.style.color = '#fff';
             const type = this.dataset.filter;
@@ -1121,18 +1517,6 @@
     </style>
     <script>
     // Variables globales para hero carrusel y animaciones
-    var heroTitles = [
-      'Vive Panamá como nunca antes',
-      'Descubre playas de ensueño',
-      'Aventuras y cultura en cada rincón'
-    ];
-    var heroSubtitles = [
-      'Viajes exclusivos, playas paradisíacas y experiencias auténticas',
-      'Sumérgete en aguas cristalinas y paisajes inolvidables',
-      'Explora, disfruta y crea recuerdos únicos con Trivel Panamá'
-    ];
-    var heroIndex = 0;
-    var heroSlides = document.querySelectorAll('.hero-slide');
     var heroInterval;
 
     // Prevenir expansión y scroll horizontal
@@ -1158,42 +1542,18 @@
     });
     // Hero carrusel: controles manuales y automáticos
     function showHeroSlide(idx) {
-      heroSlides.forEach((slide, i) => {
+      window.heroSlides.forEach((slide, i) => {
         slide.style.opacity = (i === idx) ? '1' : '0';
       });
-      document.getElementById('heroTitle').textContent = heroTitles[idx];
-      document.getElementById('heroSubtitle').textContent = heroSubtitles[idx];
+      document.getElementById('heroTitle').textContent = window.heroTitles[idx];
+      document.getElementById('heroSubtitle').textContent = window.heroSubtitles[idx];
     }
     heroInterval = setInterval(() => {
-      heroIndex = (heroIndex + 1) % heroSlides.length;
-      showHeroSlide(heroIndex);
+      window.heroIndex = (window.heroIndex + 1) % window.heroSlides.length;
+      showHeroSlide(window.heroIndex);
     }, 5000);
     showHeroSlide(0);
-    // Controles manuales
-    if(!document.getElementById('heroPrev')) {
-      const prevBtn = document.createElement('button');
-      prevBtn.id = 'heroPrev';
-      prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
-      prevBtn.className = 'carousel-btn';
-      prevBtn.style.position = 'absolute'; prevBtn.style.left = '30px'; prevBtn.style.top = '50%'; prevBtn.style.transform = 'translateY(-50%)'; prevBtn.style.zIndex = '10';
-      prevBtn.onclick = function() {
-        heroIndex = (heroIndex - 1 + heroSlides.length) % heroSlides.length;
-        showHeroSlide(heroIndex);
-        clearInterval(heroInterval); heroInterval = setInterval(() => { heroIndex = (heroIndex + 1) % heroSlides.length; showHeroSlide(heroIndex); }, 5000);
-      };
-      document.querySelector('.hero-carousel').appendChild(prevBtn);
-      const nextBtn = document.createElement('button');
-      nextBtn.id = 'heroNext';
-      nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
-      nextBtn.className = 'carousel-btn';
-      nextBtn.style.position = 'absolute'; nextBtn.style.right = '30px'; nextBtn.style.top = '50%'; nextBtn.style.transform = 'translateY(-50%)'; nextBtn.style.zIndex = '10';
-      nextBtn.onclick = function() {
-        heroIndex = (heroIndex + 1) % heroSlides.length;
-        showHeroSlide(heroIndex);
-        clearInterval(heroInterval); heroInterval = setInterval(() => { heroIndex = (heroIndex + 1) % heroSlides.length; showHeroSlide(heroIndex); }, 5000);
-      };
-      document.querySelector('.hero-carousel').appendChild(nextBtn);
-    }
+    // Controles manuales removidos - carrusel automático únicamente
     // Animación sutil en badges y sellos
     const badges = document.querySelectorAll('.badge-anim');
     badges.forEach(b => b.classList.add('badge-anim'));
