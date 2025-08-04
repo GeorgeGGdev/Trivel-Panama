@@ -157,12 +157,164 @@
           font-size: 0.8rem;
         }
       }
-      .why-choose { background: var(--gradient-light); padding: 5rem 0; }
-      .why-choose-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 2.5rem; margin-top: 2.5rem; }
-      .why-choose-item { background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(26,115,232,0.07); padding: 2rem 1.5rem; max-width: 260px; text-align: center; transition: transform 0.2s; }
-      .why-choose-item:hover { transform: translateY(-8px) scale(1.04); }
-      .why-choose-item i { font-size: 2.2rem; color: var(--primary-color); margin-bottom: 1rem; }
-      .why-choose-item h4 { color: var(--accent-color); margin-bottom: 0.5rem; font-size: 1.1rem; }
+      /* About Us Section Styles */
+      .about-us {
+        background: #f8f9fa;
+        padding: 4rem 0;
+        position: relative;
+      }
+      
+      .about-us .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 2;
+      }
+      
+      .about-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      
+      .about-header h2 {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      
+      .about-underline {
+        width: 80px;
+        height: 4px;
+        background: var(--accent-color);
+        margin: 0 auto;
+        border-radius: 2px;
+      }
+      
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        margin-bottom: 3rem;
+      }
+      
+      .about-text h3 {
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+      
+      .about-text p {
+        font-size: 1.1rem;
+        color: #555;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+      
+      .about-text p:last-child {
+        margin-bottom: 0;
+      }
+      
+      .about-image {
+        text-align: center;
+      }
+      
+      .about-image img {
+        width: 100%;
+        max-width: 400px;
+        height: 300px;
+        border-radius: 20px;
+        object-fit: cover;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+      }
+      
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+      
+      .feature-card {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        border: 1px solid #e9ecef;
+        transition: all 0.3s ease;
+      }
+      
+      .feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+      }
+      
+      .feature-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      }
+      
+      .feature-icon.primary {
+        background: var(--primary-color);
+      }
+      
+      .feature-icon.accent {
+        background: var(--accent-color);
+      }
+      
+      .feature-icon i {
+        font-size: 1.8rem;
+        color: white;
+      }
+      
+      .feature-card h4 {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      
+      .feature-card p {
+        color: #666;
+        line-height: 1.6;
+      }
+      
+      /* Responsive for About Us */
+      @media (max-width: 768px) {
+        .about-us {
+          padding: 3rem 0;
+        }
+        
+        .about-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        
+        .about-header h2 {
+          font-size: 2rem;
+        }
+        
+        .about-text h3 {
+          font-size: 1.5rem;
+        }
+        
+        .about-text p {
+          font-size: 1rem;
+        }
+        
+        .feature-card {
+          padding: 1.5rem;
+        }
+      }
       .map-section { background: #f8f9fa; padding: 4rem 0; text-align: center; }
       .map-section h2 { margin-bottom: 2rem; }
       .map-iframe { width: 100%; max-width: 900px; height: 350px; border: none; border-radius: 18px; box-shadow: 0 4px 24px rgba(26,115,232,0.07); margin: 0 auto; }
@@ -665,32 +817,7 @@
     });
     </script>
 
-    <!-- About Section Mejorado -->
-    <section id="about" class="about reveal">
-        <div class="about-content" style="align-items:center;">
-            <div class="about-text" style="padding:2.5rem 2rem;">
-                <h2 style="font-size:2.7rem; color:var(--primary-color); font-weight:700;">¿Quiénes somos?</h2>
-                <p class="subtitle" style="font-size:1.2rem; color:var(--accent-color); margin-bottom:1.5rem;">Expertos en crear recuerdos inolvidables</p>
-                <div class="about-description">
-                    <p style="font-size:1.15rem; color:#333; margin-bottom:1.5rem;">En <b>Trivel Panamá</b> nos dedicamos a mostrarte lo mejor de nuestro país. Somos un equipo apasionado por el turismo, la cultura y la naturaleza, comprometidos con brindarte experiencias auténticas, seguras y sostenibles. Nuestro objetivo es que vivas Panamá como un local, con el respaldo de expertos y la calidez de amigos.</p>
-                    <ul style="list-style:none; padding:0; margin:0;">
-                        <li style="margin-bottom:0.7rem;"><i class="fas fa-check-circle" style="color:var(--accent-color); margin-right:0.7rem;"></i> Asesoría personalizada para cada viajero</li>
-                        <li style="margin-bottom:0.7rem;"><i class="fas fa-check-circle" style="color:var(--accent-color); margin-right:0.7rem;"></i> Selección exclusiva de destinos y actividades</li>
-                        <li style="margin-bottom:0.7rem;"><i class="fas fa-check-circle" style="color:var(--accent-color); margin-right:0.7rem;"></i> Compromiso con la sostenibilidad y las comunidades</li>
-                        <li><i class="fas fa-check-circle" style="color:var(--accent-color); margin-right:0.7rem;"></i> Soporte 24/7 durante tu viaje</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="about-image" style="position:relative;">
-                <img src="assets/img/about-us.jpg" alt="Nuestro equipo" style="border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.18); width:100%; max-width:420px;">
-                <div class="floating-card" style="position:absolute; bottom:-20px; right:-20px; background:white; padding:1.5rem; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
-                    <i class="fas fa-map-marked-alt" style="font-size:2rem; color:var(--accent-color); margin-bottom:1rem;"></i>
-                    <h3 style="color:var(--primary-color);">Explora con Nosotros</h3>
-                    <p style="color:#444;">Descubre la magia de Panamá</p>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
 
 
@@ -780,30 +907,59 @@
 
 
 
-    <!-- Why Choose Us Section -->
-    <section id="why-choose" class="why-choose reveal">
+    <!-- About Us Section -->
+    <section id="about-us" class="about-us reveal">
         <div class="container">
-            <h2 style="text-align:center;">¿Por qué elegir Trivel Panamá?</h2>
-            <div class="why-choose-list">
-                <div class="why-choose-item">
-                    <i class="fas fa-star"></i>
-                    <h4>Experiencias Exclusivas</h4>
-                    <p>Acceso a destinos y actividades únicas, seleccionadas para ti.</p>
+            <!-- Main heading -->
+            <div class="about-header">
+                <h2>Quienes Somos</h2>
+                <div class="about-underline"></div>
+            </div>
+            
+            <!-- Main content -->
+            <div class="about-content">
+                <!-- Text content -->
+                <div class="about-text">
+                    <h3>Tu Experiencia de Viaje en Panamá</h3>
+                    <p>
+                        Somos especialistas en crear experiencias únicas que conectan a los viajeros con la auténtica belleza de Panamá. 
+                        Nuestro equipo local conoce cada rincón del país y te guía hacia los destinos más extraordinarios.
+                    </p>
+                    <p>
+                        Desde playas paradisíacas hasta aventuras en la selva, diseñamos itinerarios personalizados que se adaptan a tus sueños de viaje.
+                    </p>
                 </div>
-                <div class="why-choose-item">
-                    <i class="fas fa-users"></i>
-                    <h4>Atención Personalizada</h4>
-                    <p>Asesoría y soporte en cada paso de tu viaje.</p>
+                
+                <!-- Image -->
+                <div class="about-image">
+                    <img src="assets/img/home.png" alt="Panamá">
                 </div>
-                <div class="why-choose-item">
-                    <i class="fas fa-leaf"></i>
-                    <h4>Turismo Sostenible</h4>
-                    <p>Compromiso con la naturaleza y las comunidades locales.</p>
+            </div>
+            
+            <!-- Features grid -->
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon primary">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>Experiencias Únicas</h4>
+                    <p>Destinos seleccionados que van más allá de lo turístico.</p>
                 </div>
-                <div class="why-choose-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <h4>Confianza y Seguridad</h4>
-                    <p>Viaja con tranquilidad, nosotros nos encargamos de todo.</p>
+                
+                <div class="feature-card">
+                    <div class="feature-icon accent">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Atención Personal</h4>
+                    <p>Soporte dedicado durante todo tu viaje.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon primary">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4>Turismo Responsable</h4>
+                    <p>Compromiso con la naturaleza y comunidades locales.</p>
                 </div>
             </div>
         </div>
