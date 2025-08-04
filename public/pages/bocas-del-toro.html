@@ -15,6 +15,75 @@
             margin-top: 80px;
         }
         
+        /* Estilos para botones de autenticación en el header */
+        .auth-buttons {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+        }
+        .auth-btn {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.6rem 1.2rem;
+          border: none;
+          border-radius: 25px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-decoration: none;
+          font-family: 'Poppins', sans-serif;
+        }
+        .login-btn {
+          background: transparent;
+          color: var(--primary-color);
+          border: 2px solid var(--primary-color);
+        }
+        .login-btn:hover {
+          background: var(--primary-color);
+          color: white;
+          transform: translateY(-2px);
+        }
+        .register-btn {
+          background: var(--primary-color);
+          color: white;
+        }
+        .register-btn:hover {
+          background: var(--accent-color);
+          transform: translateY(-2px);
+        }
+        .user-info {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          color: var(--primary-color);
+        }
+        .user-name {
+          font-weight: 600;
+          font-size: 0.9rem;
+        }
+        .logout-btn {
+          background: var(--accent-color);
+          color: white;
+          border: none;
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          font-size: 0.8rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .logout-btn:hover {
+          background: #e55a2b;
+          transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+          .auth-btn span { display: none; }
+          .auth-btn i { font-size: 1rem; }
+          .user-info { gap: 0.5rem; }
+          .user-name { font-size: 0.8rem; }
+        }
+        
         /* Hero Section para Bocas del Toro */
         .destination-hero {
             background: url('https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=1600') center/cover no-repeat;
@@ -341,7 +410,16 @@
                     <li><a href="FAQs.html">FAQs</a></li>
             </ul>
         </nav>
-        <div id="auth-area"></div>
+        <div class="auth-buttons">
+            <button id="loginBtn" class="auth-btn login-btn">
+                <i class="fas fa-sign-in-alt"></i>
+                Iniciar Sesión
+            </button>
+            <button id="registerBtn" class="auth-btn register-btn">
+                <i class="fas fa-user-plus"></i>
+                Registrarse
+            </button>
+        </div>
     </header>
 
     <!-- Hero Section -->

@@ -315,6 +315,393 @@
           padding: 1.5rem;
         }
       }
+      
+      /* Enhanced Newsletter Section */
+      .newsletter-enhanced {
+        background: #f8f9fa;
+        padding: 5rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .newsletter-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 3;
+      }
+      
+      /* Floating background elements */
+      .newsletter-bg-elements {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+      
+      .floating-icon {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: rgba(26, 115, 232, 0.3);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        animation: float 6s ease-in-out infinite;
+        opacity: 0.3;
+        z-index: 1;
+      }
+      
+      .floating-icon:nth-child(1) {
+        top: 20%;
+        left: 10%;
+      }
+      
+      .floating-icon:nth-child(2) {
+        top: 60%;
+        right: 15%;
+      }
+      
+      .floating-icon:nth-child(3) {
+        bottom: 20%;
+        left: 20%;
+      }
+      
+      @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(5deg); }
+      }
+      
+      /* Main content */
+      .newsletter-main {
+        background: white;
+        border-radius: 24px;
+        padding: 3rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+      }
+      
+      /* Header */
+      .newsletter-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+      
+      .newsletter-icon-wrapper {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+      }
+      
+      .newsletter-icon {
+        width: 100px;
+        height: 100px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: white;
+        position: relative;
+        z-index: 2;
+        animation: pulse 2s ease-in-out infinite;
+      }
+      
+      .icon-glow {
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        opacity: 0.2;
+        z-index: 1;
+        animation: glow 2s ease-in-out infinite alternate;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+      
+      @keyframes glow {
+        0% { opacity: 0.3; transform: scale(1); }
+        100% { opacity: 0.6; transform: scale(1.1); }
+      }
+      
+      .newsletter-header h2 {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      
+      .newsletter-header p {
+        font-size: 1.1rem;
+        color: #666;
+        line-height: 1.6;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      
+      /* Benefits showcase */
+      .benefits-showcase {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 2.5rem;
+        flex-wrap: wrap;
+      }
+      
+      .benefit-item {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 1rem 1.5rem;
+        background: rgba(26, 115, 232, 0.1);
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      
+      .benefit-item:hover {
+        transform: translateY(-3px);
+        background: rgba(26, 115, 232, 0.15);
+        box-shadow: 0 8px 25px rgba(26, 115, 232, 0.2);
+      }
+      
+      .benefit-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+      }
+      
+      .benefit-item span {
+        font-weight: 600;
+        color: var(--primary-color);
+        font-size: 0.95rem;
+      }
+      
+      /* Enhanced form */
+      .newsletter-form-enhanced {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+      
+      .input-group {
+        position: relative;
+      }
+      
+      .input-group.full-width {
+        grid-column: 1 / -1;
+      }
+      
+      .input-icon {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+        z-index: 2;
+        transition: color 0.3s ease;
+      }
+      
+      .input-group.full-width .input-icon {
+        top: 1.5rem;
+        transform: none;
+      }
+      
+      .input-group input,
+      .input-group textarea {
+        width: 100%;
+        padding: 1.2rem 1rem 1.2rem 3rem;
+        border: 2px solid #e9ecef;
+        border-radius: 16px;
+        font-size: 1rem;
+        background: #f8f9fa;
+        transition: all 0.3s ease;
+        font-family: inherit;
+      }
+      
+      .input-group.full-width textarea {
+        min-height: 120px;
+        resize: vertical;
+        padding-top: 1.5rem;
+      }
+      
+      .input-group input:focus,
+      .input-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        background: white;
+        box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.1);
+      }
+      
+      .input-group input:focus + .input-icon,
+      .input-group textarea:focus + .input-icon {
+        color: var(--primary-color);
+      }
+      
+      .input-focus-border {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--accent-color);
+        transition: width 0.3s ease;
+        border-radius: 0 0 16px 16px;
+      }
+      
+      .input-group input:focus ~ .input-focus-border,
+      .input-group textarea:focus ~ .input-focus-border {
+        width: 100%;
+      }
+      
+      /* Enhanced button */
+      .subscribe-btn-enhanced {
+        position: relative;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 16px;
+        padding: 1.2rem 2.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        margin-top: 1rem;
+      }
+      
+      .subscribe-btn-enhanced:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 40px rgba(26, 115, 232, 0.3);
+      }
+      
+      .subscribe-btn-enhanced:active {
+        transform: translateY(-1px);
+      }
+      
+      .btn-glow {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.5s ease;
+      }
+      
+      .subscribe-btn-enhanced:hover .btn-glow {
+        left: 100%;
+      }
+      
+      .btn-icon {
+        transition: transform 0.3s ease;
+      }
+      
+      .subscribe-btn-enhanced:hover .btn-icon {
+        transform: translateX(5px);
+      }
+      
+      /* Success message */
+      .success-message {
+        display: none;
+        text-align: center;
+        padding: 2rem;
+        background: #d4edda;
+        border-radius: 16px;
+        border: 1px solid #c3e6cb;
+        margin-top: 1rem;
+      }
+      
+      .success-message.show {
+        display: block;
+        animation: slideIn 0.5s ease;
+      }
+      
+      @keyframes slideIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .success-icon {
+        font-size: 3rem;
+        color: #28a745;
+        margin-bottom: 1rem;
+      }
+      
+      .success-message h3 {
+        color: #155724;
+        margin-bottom: 0.5rem;
+      }
+      
+      .success-message p {
+        color: #155724;
+        opacity: 0.8;
+      }
+      
+      /* Responsive design for newsletter */
+      @media (max-width: 768px) {
+        .newsletter-enhanced {
+          padding: 3rem 0;
+        }
+        
+        .newsletter-main {
+          padding: 2rem;
+        }
+        
+        .newsletter-header h2 {
+          font-size: 2rem;
+        }
+        
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        
+        .benefits-showcase {
+          flex-direction: column;
+          align-items: center;
+        }
+        
+        .benefit-item {
+          width: 100%;
+          max-width: 300px;
+        }
+        
+        .floating-icon {
+          display: none;
+        }
+      }
       .map-section { background: #f8f9fa; padding: 4rem 0; text-align: center; }
       .map-section h2 { margin-bottom: 2rem; }
       .map-iframe { width: 100%; max-width: 900px; height: 350px; border: none; border-radius: 18px; box-shadow: 0 4px 24px rgba(26,115,232,0.07); margin: 0 auto; }
@@ -478,7 +865,7 @@
                 <div class="floating-icon" data-speed="1.3"><i class="fas fa-compass"></i></div>
                 <div class="floating-icon" data-speed="2.7"><i class="fas fa-umbrella-beach"></i></div>
             </div>
-            <div class="hero-content" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; position:relative; z-index:2; height:100vh; max-width:700px; margin:0 auto; text-align:center; padding-bottom:7vh;">
+            <div class="hero-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; position:relative; z-index:2; height:100vh; max-width:700px; margin:0 auto; text-align:center; padding-bottom:0; margin-top: 5vh;">
                 <h1 id="heroTitle" style="font-size:2.9rem; font-weight:800; text-shadow:2px 2px 16px rgba(26,115,232,0.18); letter-spacing:1px; max-width:100%; line-height:1.1;">Vive Panamá como nunca antes</h1>
                 <p id="heroSubtitle" class="hero-subtitle" style="font-size:1.25rem; margin-bottom:1.7rem; color:#fff; text-shadow:1px 1px 8px rgba(0,0,0,0.18); max-width:100%; line-height:1.3;">Viajes exclusivos, playas paradisíacas y experiencias auténticas</p>
                 <form class="search-bar" id="searchForm" style="margin-bottom:1.2rem;">
@@ -495,17 +882,7 @@
                         <i class="fas fa-comments-dollar"></i>
                     </button>
                 </div>
-                <div style="display:flex; gap:0.7rem; justify-content:center; align-items:center; margin-top:0.7rem;">
-                    <div class="badge-anim" style="background:rgba(255,255,255,0.85); border-radius:10px; padding:0.4rem 0.9rem; color:#1a365d; font-weight:600; font-size:0.92rem; display:flex; align-items:center; gap:0.5rem; box-shadow:0 2px 8px rgba(26,115,232,0.08);">
-                        <i class="fas fa-star" style="color:var(--accent-color);"></i> Experiencias Premium
-                    </div>
-                    <div class="badge-anim" style="background:rgba(255,255,255,0.85); border-radius:10px; padding:0.4rem 0.9rem; color:#1a365d; font-weight:600; font-size:0.92rem; display:flex; align-items:center; gap:0.5rem; box-shadow:0 2px 8px rgba(26,115,232,0.08);">
-                        <i class="fas fa-user-friends" style="color:var(--primary-color);"></i> Atención Personalizada
-                    </div>
-                    <div class="badge-anim" style="background:rgba(255,255,255,0.85); border-radius:10px; padding:0.4rem 0.9rem; color:#1a365d; font-weight:600; font-size:0.92rem; display:flex; align-items:center; gap:0.5rem; box-shadow:0 2px 8px rgba(26,115,232,0.08);">
-                        <i class="fas fa-leaf" style="color:var(--accent-color);"></i> Turismo Sostenible
-                    </div>
-                </div>
+
             </div>
         </div>
         <div class="wave-container">
@@ -1107,39 +1484,102 @@
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter reveal">
-        <div class="newsletter-content" style="background: #fff; border-radius: 22px; box-shadow: 0 4px 24px rgba(26,115,232,0.07); padding: 3rem 2rem; max-width: 600px; margin: 0 auto;">
-            <div class="newsletter-header" style="margin-bottom:2.2rem;">
-                <div class="newsletter-icon pulse-animation" style="width:90px; height:90px; font-size:2.3rem; margin-bottom:1.2rem;"><i class="fas fa-envelope-open-text"></i></div>
-                <h2 style="font-size:2rem; color:var(--primary-color); margin-bottom:0.7rem;">¡Recibe Novedades!</h2>
-                <p style="color:#444; font-size:1.1rem;">Suscríbete y sé el primero en enterarte de nuestras aventuras y ofertas exclusivas.</p>
+    <!-- Newsletter Section Enhanced -->
+    <section class="newsletter-enhanced reveal">
+        <div class="newsletter-container">
+            <!-- Background decorative elements -->
+            <div class="newsletter-bg-elements">
+                <div class="floating-icon" style="animation-delay: 0s;">
+                    <i class="fas fa-plane"></i>
+                </div>
+                <div class="floating-icon" style="animation-delay: 2s;">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <div class="floating-icon" style="animation-delay: 4s;">
+                    <i class="fas fa-camera"></i>
+                </div>
             </div>
-            <ul style="list-style:none; display:flex; flex-wrap:wrap; gap:1.2rem; justify-content:center; margin-bottom:2rem; padding:0;">
-                <li style="background:var(--gradient-blue); color:#fff; border-radius:12px; padding:0.5rem 1.2rem; font-size:1rem; display:flex; align-items:center; gap:0.5rem;"><i class="fas fa-gift"></i> Ofertas exclusivas</li>
-                <li style="background:var(--gradient-orange); color:#fff; border-radius:12px; padding:0.5rem 1.2rem; font-size:1rem; display:flex; align-items:center; gap:0.5rem;"><i class="fas fa-bolt"></i> Novedades antes que nadie</li>
-                <li style="background:var(--gradient-blue); color:#fff; border-radius:12px; padding:0.5rem 1.2rem; font-size:1rem; display:flex; align-items:center; gap:0.5rem;"><i class="fas fa-heart"></i> Consejos de viaje</li>
-            </ul>
-            <form class="newsletter-form" style="gap:1.2rem;">
-                <div class="form-group" style="gap:1.2rem;">
-                    <div class="input-wrapper" style="position:relative;">
-                        <i class="fas fa-user" style="position:absolute; left:15px; top:50%; transform:translateY(-50%); color:#666; z-index:2;"></i>
-                        <input type="text" placeholder="Tu Nombre" required style="padding-left:45px;">
+            
+            <!-- Main content -->
+            <div class="newsletter-main">
+                <div class="newsletter-header">
+                    <div class="newsletter-icon-wrapper">
+                        <div class="newsletter-icon">
+                            <i class="fas fa-envelope-open-text"></i>
+                        </div>
+                        <div class="icon-glow"></div>
                     </div>
-                    <div class="input-wrapper" style="position:relative;">
-                        <i class="fas fa-envelope" style="position:absolute; left:15px; top:50%; transform:translateY(-50%); color:#666; z-index:2;"></i>
-                        <input type="email" placeholder="Tu Email" required style="padding-left:45px;">
+                    <h2>¡Recibe Novedades!</h2>
+                    <p>Únete a nuestra comunidad y descubre las mejores experiencias de Panamá antes que nadie</p>
+                </div>
+                
+                <!-- Benefits showcase -->
+                <div class="benefits-showcase">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <span>Ofertas Exclusivas</span>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <span>Novedades Primero</span>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <span>Consejos de Viaje</span>
                     </div>
                 </div>
-                <div class="textarea-wrapper" style="position:relative;">
-                    <i class="fas fa-comment" style="position:absolute; left:15px; top:20px; color:#666; z-index:2;"></i>
-                    <textarea placeholder="Déjanos un mensaje (opcional)" style="padding-left:45px;"></textarea>
+                
+                <!-- Newsletter form -->
+                <form class="newsletter-form-enhanced">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <div class="input-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <input type="text" placeholder="Tu Nombre" required>
+                            <div class="input-focus-border"></div>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <input type="email" placeholder="Tu Email" required>
+                            <div class="input-focus-border"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group full-width">
+                        <div class="input-icon">
+                            <i class="fas fa-comment"></i>
+                        </div>
+                        <textarea placeholder="Déjanos un mensaje (opcional)"></textarea>
+                        <div class="input-focus-border"></div>
+                    </div>
+                    
+                    <button type="submit" class="subscribe-btn-enhanced">
+                        <span class="btn-text">Suscribirme</span>
+                        <span class="btn-icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </form>
+                
+                <!-- Success message (hidden by default) -->
+                <div class="success-message" id="newsletterSuccess">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>¡Gracias por suscribirte!</h3>
+                    <p>Pronto recibirás nuestras mejores novedades</p>
                 </div>
-                <button type="submit" class="subscribe-btn pulse-animation" style="display:flex; align-items:center; justify-content:center; gap:10px; font-size:1.1rem; background:var(--gradient-orange); color:#fff; border:none; border-radius:8px; padding:1rem 2rem; font-weight:600; cursor:pointer; transition:background 0.3s; margin-top:1rem;">
-                    <span>Suscribirme</span>
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </form>
+            </div>
         </div>
     </section>
 
@@ -1237,7 +1677,7 @@
     </style>
 
     <!-- Barra de Notificaciones/Promociones -->
-    <div id="promoBar" style="width:100%; background:var(--gradient-orange); color:#fff; text-align:center; padding:0.7rem 0; font-size:1.05rem; font-weight:500; letter-spacing:0.5px; position:fixed; top:0; left:0; z-index:3001; box-shadow:0 2px 8px rgba(255,107,0,0.08); transition:top 0.6s cubic-bezier(.4,0,.2,1);">
+    <div id="promoBar" style="width:100%; background:var(--gradient-orange); color:#fff; text-align:center; padding:0.7rem 0; font-size:1.05rem; font-weight:500; letter-spacing:0.5px; position:fixed; top:-70px; left:0; z-index:3001; box-shadow:0 2px 8px rgba(255,107,0,0.08); transition:top 0.6s cubic-bezier(.4,0,.2,1);">
         <span>¡Reserva ahora y obtén <b>10% de descuento</b> en tu primera experiencia con Trivel Panamá!</span>
         <button id="closePromoBar" style="background:none; border:none; color:#fff; font-size:1.3rem; margin-left:1.5rem; cursor:pointer;">&times;</button>
     </div>
@@ -1245,7 +1685,16 @@
     function hidePromoBar() {
         document.getElementById('promoBar').style.top = '-70px';
     }
-    setTimeout(hidePromoBar, 2000);
+    
+    function showPromoBar() {
+        document.getElementById('promoBar').style.top = '0';
+        // Ocultar después de 5 segundos
+        setTimeout(hidePromoBar, 5000);
+    }
+    
+    // Mostrar la barra después de 5 segundos
+    setTimeout(showPromoBar, 5000);
+    
     document.getElementById('closePromoBar').onclick = hidePromoBar;
     </script>
 
@@ -1479,6 +1928,57 @@
                 window.location.href = 'pages/ContactUs.html';
             });
         }
+        
+        // Newsletter form functionality
+        const newsletterForm = document.querySelector('.newsletter-form-enhanced');
+        const successMessage = document.getElementById('newsletterSuccess');
+        
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const name = newsletterForm.querySelector('input[type="text"]').value;
+                const email = newsletterForm.querySelector('input[type="email"]').value;
+                const message = newsletterForm.querySelector('textarea').value;
+                
+                // Basic validation
+                if (!name || !email) {
+                    alert('Por favor, completa los campos requeridos.');
+                    return;
+                }
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Por favor, ingresa un email válido.');
+                    return;
+                }
+                
+                // Hide form and show success message
+                newsletterForm.style.display = 'none';
+                successMessage.classList.add('show');
+                
+                // Optional: Reset form after 3 seconds
+                setTimeout(() => {
+                    newsletterForm.style.display = 'flex';
+                    successMessage.classList.remove('show');
+                    newsletterForm.reset();
+                }, 5000);
+            });
+        }
+        
+        // Add hover effects to benefit items
+        const benefitItems = document.querySelectorAll('.benefit-item');
+        benefitItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
     });
     
     // Buscador de destinos funcional
@@ -1800,16 +2300,27 @@
       <button onclick="document.getElementById('welcomePopup').style.display='none'" style="background:var(--gradient-orange); color:#fff; border:none; border-radius:8px; padding:0.7rem 1.5rem; font-size:1rem; font-weight:600; cursor:pointer;">¡Genial!</button>
     </div>
     <script>
-    if(!sessionStorage.getItem('popupShown')) {
-      setTimeout(()=>{
-        document.getElementById('welcomePopup').style.display='block';
-        sessionStorage.setItem('popupShown','1');
+    // Función para mostrar el popup
+    function showWelcomePopup() {
+      const popup = document.getElementById('welcomePopup');
+      if (popup) {
+        popup.style.display = 'block';
         // Ocultar el popup después de 3 segundos
-        setTimeout(()=>{
-          document.getElementById('welcomePopup').style.display='none';
+        setTimeout(() => {
+          popup.style.display = 'none';
         }, 3000);
-      }, 1000);
+      }
     }
+    
+    // Mostrar popup inmediatamente al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+      showWelcomePopup();
+    });
+    
+    // Mostrar popup cada 20 minutos (1,200,000 ms)
+    setInterval(() => {
+      showWelcomePopup();
+    }, 1200000);
     </script>
 
     <!-- Modal de contacto rápido -->
