@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Propiedad - Trivel Panamá</title>
+    <meta name="description" content="Registra tu propiedad en Trivel Panamá y conéctate con viajeros de todo el mundo.">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+        }
+        
+        .page-content {
+            margin-top: 80px;
+            flex: 1;
+            padding: 2rem 0;
+        }
+        
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo img {
+            height: 40px;
+            border-radius: 8px;
+        }
+        
+        .logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+        
+        /* Main Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Form Container */
+        .form-container {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        /* Form Grid */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .form-section {
+            margin-bottom: 2rem;
+        }
+        
+        .form-section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        /* Form Groups */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        /* Full Width Fields */
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        /* File Upload */
+        .file-upload {
+            border: 2px dashed #e1e5e9;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .file-upload:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+        
+        .file-upload i {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .file-upload p {
+            color: #666;
+            margin: 0;
+        }
+        
+        /* Submit Button */
+        .submit-section {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #f0f0f0;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 3rem 0 2rem 0;
+            margin-top: auto;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section p,
+        .footer-section li {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: #ff6b35;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 1.5rem;
+            text-align: center;
+        }
+        
+        .footer-bottom p {
+            color: #999;
+            font-size: 0.8rem;
+            margin: 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-container {
+                padding: 2rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-container {
+                padding: 0 1rem;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="../assets/img/Logo.png" alt="Trivel Panama">
+                <span>Trivel Panama</span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="destinations.html">Destinos</a></li>
+                    <li><a href="ContactUs.html">Contacto</a></li>
+                    <li><a href="FAQs.html">FAQs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="page-content">
+        <div class="main-container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>Registra tu Propiedad</h1>
+                <p>Conecta con viajeros de todo el mundo y maximiza el potencial de tu propiedad. Completa el formulario y comienza a recibir reservas.</p>
+            </div>
+
+            <!-- Form Container -->
+            <div class="form-container">
+                <form id="propertyForm">
+                    <!-- Información Básica -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-info-circle" style="color: #667eea; margin-right: 0.5rem;"></i>Información Básica</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="propertyName">Nombre de la Propiedad *</label>
+                                <input type="text" id="propertyName" name="propertyName" required placeholder="Ej: Villa Marina Paradise">
+                            </div>
+                            <div class="form-group">
+                                <label for="propertyType">Tipo de Propiedad *</label>
+                                <select id="propertyType" name="propertyType" required>
+                                    <option value="">Selecciona el tipo</option>
+                                    <option value="casa">Casa</option>
+                                    <option value="apartamento">Apartamento</option>
+                                    <option value="villa">Villa</option>
+                                    <option value="cabaña">Cabaña</option>
+                                    <option value="hostal">Hostal</option>
+                                    <option value="hotel">Hotel</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Ubicación *</label>
+                                <input type="text" id="location" name="location" required placeholder="Ciudad, Provincia">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Dirección Completa *</label>
+                                <input type="text" id="address" name="address" required placeholder="Dirección exacta">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detalles de la Propiedad -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-home" style="color: #667eea; margin-right: 0.5rem;"></i>Detalles de la Propiedad</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="bedrooms">Habitaciones *</label>
+                                <input type="number" id="bedrooms" name="bedrooms" required min="1" placeholder="Número de habitaciones">
+                            </div>
+                            <div class="form-group">
+                                <label for="bathrooms">Baños *</label>
+                                <input type="number" id="bathrooms" name="bathrooms" required min="1" placeholder="Número de baños">
+                            </div>
+                            <div class="form-group">
+                                <label for="capacity">Capacidad (Personas) *</label>
+                                <input type="number" id="capacity" name="capacity" required min="1" placeholder="Máximo de huéspedes">
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Precio por Noche *</label>
+                                <input type="number" id="price" name="price" required min="1" placeholder="USD">
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="description">Descripción de la Propiedad *</label>
+                            <textarea id="description" name="description" required placeholder="Describe tu propiedad, sus características únicas, servicios incluidos, etc."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Amenidades -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-star" style="color: #667eea; margin-right: 0.5rem;"></i>Amenidades</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="amenities">Amenidades Principales</label>
+                                <select id="amenities" name="amenities" multiple>
+                                    <option value="wifi">WiFi</option>
+                                    <option value="air-conditioning">Aire Acondicionado</option>
+                                    <option value="kitchen">Cocina</option>
+                                    <option value="parking">Estacionamiento</option>
+                                    <option value="pool">Piscina</option>
+                                    <option value="beach-access">Acceso a Playa</option>
+                                    <option value="tv">TV</option>
+                                    <option value="laundry">Lavandería</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="additionalAmenities">Amenidades Adicionales</label>
+                                <textarea id="additionalAmenities" name="additionalAmenities" placeholder="Otras amenidades que ofreces..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Información de Contacto -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-user" style="color: #667eea; margin-right: 0.5rem;"></i>Información de Contacto</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="ownerName">Nombre del Propietario *</label>
+                                <input type="text" id="ownerName" name="ownerName" required placeholder="Tu nombre completo">
+                            </div>
+                            <div class="form-group">
+                                <label for="ownerEmail">Email *</label>
+                                <input type="email" id="ownerEmail" name="ownerEmail" required placeholder="tu@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="ownerPhone">Teléfono *</label>
+                                <input type="tel" id="ownerPhone" name="ownerPhone" required placeholder="+507 123-4567">
+                            </div>
+                            <div class="form-group">
+                                <label for="ownerWhatsapp">WhatsApp (Opcional)</label>
+                                <input type="tel" id="ownerWhatsapp" name="ownerWhatsapp" placeholder="+507 123-4567">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fotos -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-camera" style="color: #667eea; margin-right: 0.5rem;"></i>Fotos de la Propiedad</h3>
+                        <div class="form-group full-width">
+                            <div class="file-upload">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Arrastra y suelta las fotos aquí o haz clic para seleccionar</p>
+                                <input type="file" id="propertyPhotos" name="propertyPhotos" multiple accept="image/*" style="display: none;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Términos y Condiciones -->
+                    <div class="form-section">
+                        <div class="form-group full-width">
+                            <label style="display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" id="terms" name="terms" required style="width: auto; margin-top: 0.2rem;">
+                                <span style="font-size: 0.9rem; color: #666;">
+                                    Acepto los <a href="#" style="color: #667eea;">Términos y Condiciones</a> y la <a href="#" style="color: #667eea;">Política de Privacidad</a> de Trivel Panama
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Section -->
+                    <div class="submit-section">
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>
+                            Registrar Propiedad
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Trivel Panama</h4>
+                    <p>Descubre la magia de Panamá con experiencias únicas y memorables. Conectamos viajeros con las mejores propiedades del país.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="#" style="margin-right: 1rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="margin-right: 1rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinos</a></li>
+                        <li><a href="ContactUs.html">Contacto</a></li>
+                        <li><a href="FAQs.html">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Destinos</h4>
+                    <ul>
+                        <li><a href="bocas-del-toro.html">Bocas del Toro</a></li>
+                        <li><a href="san-blas.html">San Blas</a></li>
+                        <li><a href="playa-venao.html">Playa Venao</a></li>
+                        <li><a href="playa-estrella.html">Playa Estrella</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li>info@trivelpanama.com</li>
+                        <li>+507 123-4567</li>
+                        <li>Panama City, Panama</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Publica con nosotros</h4>
+                    <ul>
+                        <li><a href="registrar-propiedad.html">Registrar Propiedad</a></li>
+                        <li>Conecta con viajeros</li>
+                        <li>Maximiza tus ingresos</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Trivel Panama | Tu aventura comienza aquí</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // File upload functionality
+        const fileUpload = document.querySelector('.file-upload');
+        const fileInput = document.getElementById('propertyPhotos');
+        
+        fileUpload.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        fileUpload.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            fileUpload.style.borderColor = '#667eea';
+            fileUpload.style.background = 'rgba(102, 126, 234, 0.1)';
+        });
+        
+        fileUpload.addEventListener('dragleave', () => {
+            fileUpload.style.borderColor = '#e1e5e9';
+            fileUpload.style.background = 'transparent';
+        });
+        
+        fileUpload.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileInput.files = e.dataTransfer.files;
+            fileUpload.style.borderColor = '#e1e5e9';
+            fileUpload.style.background = 'transparent';
+        });
+        
+        // Form submission
+        document.getElementById('propertyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por registrar tu propiedad! Nos pondremos en contacto contigo pronto.');
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if(window.scrollY > 40) {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html> 
