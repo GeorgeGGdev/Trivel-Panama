@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reservas - Trivel Panamá</title>
+    <meta name="description" content="Sistema de gestión de reservas para viajes a Bocas del Toro con Trivel Panamá.">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/destination-detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-content {
+            margin-top: 80px;
+        }
+        
+        /* Estilos para botones de autenticación en el header */
+        .auth-buttons {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+        }
+        .auth-btn {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.6rem 1.2rem;
+          border: none;
+          border-radius: 25px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-decoration: none;
+          font-family: 'Poppins', sans-serif;
+        }
+        .login-btn {
+          background: transparent;
+          color: var(--primary-color);
+          border: 2px solid var(--primary-color);
+        }
+        .login-btn:hover {
+          background: var(--primary-color);
+          color: white;
+          transform: translateY(-2px);
+        }
+        .register-btn {
+          background: var(--primary-color);
+          color: white;
+        }
+        .register-btn:hover {
+          background: var(--accent-color);
+          transform: translateY(-2px);
+        }
+        .user-info {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          color: var(--primary-color);
+        }
+        .user-name {
+          font-weight: 600;
+          font-size: 0.9rem;
+        }
+        .logout-btn {
+          background: var(--accent-color);
+          color: white;
+          border: none;
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          font-size: 0.8rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .logout-btn:hover {
+          background: #e55a2b;
+          transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+          .auth-btn span { display: none; }
+          .auth-btn i { font-size: 1rem; }
+          .user-info { gap: 0.5rem; }
+          .user-name { font-size: 0.8rem; }
+        }
+        
+        /* Estilos para el sistema CRUD */
+        .crud-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .crud-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .crud-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .crud-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .crud-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .crud-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 115, 232, 0.4);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #28a745, #20c997);
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, #ffc107, #fd7e14);
+        }
+        
+        .btn-warning:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #dc3545, #e74c3c);
+        }
+        
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+        }
+        
+        .crud-table {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .table-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem;
+        }
+        
+        .table-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+        }
+        
+        .crud-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .crud-table th {
+            background: #f8f9fa;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-color);
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .crud-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            color: var(--text-color);
+        }
+        
+        .crud-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-pendiente {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-confirmada {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-cancelada {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .action-btn {
+            padding: 0.4rem 0.8rem;
+            border: none;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+        
+        .close:hover {
+            color: var(--accent-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .crud-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .crud-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="logo">
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
+                <span class="logo-text">Trivel Panama</span>
+            </a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="FAQs.html">FAQs</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button id="loginBtn" class="auth-btn login-btn">
+                <i class="fas fa-sign-in-alt"></i>
+                Iniciar Sesión
+            </button>
+            <button id="registerBtn" class="auth-btn register-btn">
+                <i class="fas fa-user-plus"></i>
+                Registrarse
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-content">
+        <div class="crud-container">
+            <!-- Header -->
+            <div class="crud-header">
+                <h1><i class="fas fa-calendar-alt"></i> Sistema de Reservas</h1>
+                <p>Gestiona todas las reservas para viajes a Bocas del Toro y otros destinos de Panamá</p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="crud-actions">
+                <button class="crud-btn btn-primary" onclick="openModal('add')">
+                    <i class="fas fa-plus"></i>
+                    Nueva Reserva
+                </button>
+                <button class="crud-btn btn-success" onclick="exportData()">
+                    <i class="fas fa-download"></i>
+                    Exportar
+                </button>
+                <button class="crud-btn btn-warning" onclick="refreshData()">
+                    <i class="fas fa-sync-alt"></i>
+                    Actualizar
+                </button>
+            </div>
+
+            <!-- Table -->
+            <div class="crud-table">
+                <div class="table-header">
+                    <h2><i class="fas fa-list"></i> Lista de Reservas</h2>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Cliente</th>
+                                <th>Destino</th>
+                                <th>Fecha</th>
+                                <th>Personas</th>
+                                <th>Estado</th>
+                                <th>Precio</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reservasTable">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for Add/Edit -->
+    <div id="reservaModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Nueva Reserva</h2>
+            <form id="reservaForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cliente">Nombre del Cliente</label>
+                        <input type="text" id="cliente" name="cliente" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="destino">Destino</label>
+                        <select id="destino" name="destino" required>
+                            <option value="">Seleccionar destino</option>
+                            <option value="Bocas del Toro">Bocas del Toro</option>
+                            <option value="San Blas">San Blas</option>
+                            <option value="Playa Venao">Playa Venao</option>
+                            <option value="Playa Estrella">Playa Estrella</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha">Fecha de Viaje</label>
+                        <input type="date" id="fecha" name="fecha" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="personas">Número de Personas</label>
+                        <input type="number" id="personas" name="personas" min="1" max="20" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="estado">Estado</label>
+                        <select id="estado" name="estado" required>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Confirmada">Confirmada</option>
+                            <option value="Cancelada">Cancelada</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio Total</label>
+                    <input type="number" id="precio" name="precio" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="notas">Notas Adicionales</label>
+                    <textarea id="notas" name="notas" rows="3"></textarea>
+                </div>
+                <div class="crud-actions">
+                    <button type="submit" class="crud-btn btn-success">
+                        <i class="fas fa-save"></i>
+                        Guardar
+                    </button>
+                    <button type="button" class="crud-btn btn-danger" onclick="closeModal()">
+                        <i class="fas fa-times"></i>
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: #000; color: #fff; padding: 2.5rem 0 1.5rem 0; margin-top: 4rem;">
+        <div style="max-width: 1000px; margin: 0 auto; padding: 0 2rem;">
+            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2rem;">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <img src="../assets/img/Logo.png" alt="Trivel Panama" style="height: 45px; border-radius: 8px;">
+                        <div>
+                            <h3 style="font-size: 1.5rem; font-weight: 600; margin: 0; color: #fff;">Trivel Panama</h3>
+                            <span style="color: #ff6b35; font-size: 0.8rem; font-weight: 500;">#ViajaConTrivel</span>
+                        </div>
+                    </div>
+                    <p style="color: #ccc; line-height: 1.6; margin-bottom: 1rem; font-size: 0.9rem; max-width: 280px;">
+                        Descubre la magia de Panamá con experiencias únicas y memorables.
+                    </p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="https://facebook.com/trivelpanama" target="_blank" style="color: #fff; font-size: 1.1rem; transition: color 0.3s; opacity: 0.7;" onmouseover="this.style.opacity='1'; this.style.color='#1877f2'" onmouseout="this.style.opacity='0.7'; this.style.color='#fff'"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/trivelpanama" target="_blank" style="color: #fff; font-size: 1.1rem; transition: color 0.3s; opacity: 0.7;" onmouseover="this.style.opacity='1'; this.style.color='#e4405f'" onmouseout="this.style.opacity='0.7'; this.style.color='#fff'"><i class="fab fa-instagram"></i></a>
+                        <a href="https://tiktok.com/@trivelpanama" target="_blank" style="color: #fff; font-size: 1.1rem; transition: color 0.3s; opacity: 0.7;" onmouseover="this.style.opacity='1'; this.style.color='#ff6b35'" onmouseout="this.style.opacity='0.7'; this.style.color='#fff'"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Enlaces</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem;"><a href="../index.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Home</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="destinations.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Destinos</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="ContactUs.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Destinos</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem;"><a href="bocas-del-toro.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Bocas del Toro</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="san-blas.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">San Blas</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="playa-venao.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Playa Venao</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="playa-estrella.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Playa Estrella</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Contacto</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">info@trivelpanama.com</li>
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">+507 123-4567</li>
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">Panama City, Panama</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 1.5rem 0;"></div>
+            
+            <div style="text-align: center; padding-top: 1rem;">
+                <p style="color: #666; font-size: 0.8rem; margin: 0;">
+                    &copy; 2024 Trivel Panama | 
+                    <span style="color: #ff6b35; font-weight: 500;">Tu aventura comienza aquí</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Sample data for demonstration
+        let reservas = [
+            {
+                id: 1,
+                cliente: "María González",
+                email: "maria@email.com",
+                destino: "Bocas del Toro",
+                fecha: "2024-03-15",
+                personas: 4,
+                estado: "Confirmada",
+                precio: 1200.00,
+                notas: "Habitación con vista al mar"
+            },
+            {
+                id: 2,
+                cliente: "Carlos Rodríguez",
+                email: "carlos@email.com",
+                destino: "San Blas",
+                fecha: "2024-03-20",
+                personas: 2,
+                estado: "Pendiente",
+                precio: 800.00,
+                notas: "Tour de snorkeling incluido"
+            },
+            {
+                id: 3,
+                cliente: "Ana Martínez",
+                email: "ana@email.com",
+                destino: "Playa Venao",
+                fecha: "2024-03-25",
+                personas: 6,
+                estado: "Cancelada",
+                precio: 1800.00,
+                notas: "Grupo familiar"
+            }
+        ];
+
+        let editingId = null;
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadReservas();
+        });
+
+        // Load reservations into table
+        function loadReservas() {
+            const tableBody = document.getElementById('reservasTable');
+            tableBody.innerHTML = '';
+
+            reservas.forEach(reserva => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${reserva.id}</td>
+                    <td>${reserva.cliente}</td>
+                    <td>${reserva.destino}</td>
+                    <td>${formatDate(reserva.fecha)}</td>
+                    <td>${reserva.personas}</td>
+                    <td><span class="status-badge status-${reserva.estado.toLowerCase()}">${reserva.estado}</span></td>
+                    <td>$${reserva.precio.toFixed(2)}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="action-btn btn-warning" onclick="editReserva(${reserva.id})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="action-btn btn-danger" onclick="deleteReserva(${reserva.id})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('es-ES', options);
+        }
+
+        // Open modal
+        function openModal(type, id = null) {
+            const modal = document.getElementById('reservaModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const form = document.getElementById('reservaForm');
+
+            if (type === 'add') {
+                modalTitle.textContent = 'Nueva Reserva';
+                form.reset();
+                editingId = null;
+            } else if (type === 'edit') {
+                modalTitle.textContent = 'Editar Reserva';
+                const reserva = reservas.find(r => r.id === id);
+                if (reserva) {
+                    fillForm(reserva);
+                    editingId = id;
+                }
+            }
+
+            modal.style.display = 'block';
+        }
+
+        // Close modal
+        function closeModal() {
+            const modal = document.getElementById('reservaModal');
+            modal.style.display = 'none';
+            editingId = null;
+        }
+
+        // Fill form with data
+        function fillForm(reserva) {
+            document.getElementById('cliente').value = reserva.cliente;
+            document.getElementById('email').value = reserva.email;
+            document.getElementById('destino').value = reserva.destino;
+            document.getElementById('fecha').value = reserva.fecha;
+            document.getElementById('personas').value = reserva.personas;
+            document.getElementById('estado').value = reserva.estado;
+            document.getElementById('precio').value = reserva.precio;
+            document.getElementById('notas').value = reserva.notas || '';
+        }
+
+        // Edit reservation
+        function editReserva(id) {
+            openModal('edit', id);
+        }
+
+        // Delete reservation
+        function deleteReserva(id) {
+            if (confirm('¿Estás seguro de que quieres eliminar esta reserva?')) {
+                reservas = reservas.filter(r => r.id !== id);
+                loadReservas();
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('reservaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const reservaData = {
+                cliente: formData.get('cliente'),
+                email: formData.get('email'),
+                destino: formData.get('destino'),
+                fecha: formData.get('fecha'),
+                personas: parseInt(formData.get('personas')),
+                estado: formData.get('estado'),
+                precio: parseFloat(formData.get('precio')),
+                notas: formData.get('notas')
+            };
+
+            if (editingId) {
+                // Update existing reservation
+                const index = reservas.findIndex(r => r.id === editingId);
+                if (index !== -1) {
+                    reservas[index] = { ...reservas[index], ...reservaData };
+                }
+            } else {
+                // Add new reservation
+                const newId = Math.max(...reservas.map(r => r.id)) + 1;
+                reservas.push({
+                    id: newId,
+                    ...reservaData
+                });
+            }
+
+            loadReservas();
+            closeModal();
+        });
+
+        // Export data
+        function exportData() {
+            const dataStr = JSON.stringify(reservas, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'reservas.json';
+            link.click();
+        }
+
+        // Refresh data
+        function refreshData() {
+            loadReservas();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('reservaModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if(window.scrollY > 40) {
+                header.style.boxShadow = '0 2px 12px rgba(26,115,232,0.10)';
+                header.style.background = 'rgba(255,255,255,0.97)';
+            } else {
+                header.style.boxShadow = '';
+                header.style.background = '';
+            }
+        });
+
+        // Mobile menu
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html> 

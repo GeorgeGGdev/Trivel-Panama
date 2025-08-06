@@ -162,6 +162,71 @@
             }
         }
         
+        /* Estilos para el botón de reserva */
+        .reserva-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+        
+        .reserva-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff8c42, #ff6b35);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+        
+        .reserva-btn:hover::before {
+            left: 0;
+        }
+        
+        .reserva-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.6);
+        }
+        
+        .reserva-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        .reserva-btn i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .reserva-btn:hover i {
+            transform: translateX(3px);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .reserva-btn {
+            animation: slideInUp 1s ease-out 0.6s both, float 3s ease-in-out infinite 2s;
+        }
+        
         /* Contenido Principal */
         .destination-content {
             background: #f8f9fa;
@@ -385,6 +450,12 @@
             .highlights {
                 grid-template-columns: 1fr;
             }
+            
+            .reserva-btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                margin-top: 1rem;
+            }
         }
     </style>
 </head>
@@ -431,6 +502,10 @@
             </div>
             <h1 class="hero-title">Bocas del Toro</h1>
             <p class="hero-subtitle">El archipiélago de ensueño que combina naturaleza exuberante, cultura única y experiencias inolvidables</p>
+            <a href="reserva-crud.html" class="reserva-btn">
+                <i class="fas fa-calendar-alt"></i>
+                Reserva Ahora!
+            </a>
         </div>
     </section>
 

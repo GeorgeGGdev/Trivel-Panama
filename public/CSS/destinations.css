@@ -141,7 +141,7 @@ body {
 
 /* Hero Section */
 .hero-section {
-    background: url('https://elblogdelviajero.com/wp-content/uploads/2021/03/ccimage-shutterstock_216642919.jpg') no-repeat center center;
+    background: url('https://mokumsurfclub.com/wp-content/uploads/2019/05/playa_estrellas_bocas_del_toro_panama-scaled.jpg') no-repeat center center;
     background-size: cover;
     color: white;
     padding: 8rem 5% 4rem;
@@ -162,7 +162,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('../assets/img/background-pattern.png');
+    background: url('https://mokumsurfclub.com/wp-content/uploads/2019/05/playa_estrellas_bocas_del_toro_panama-scaled.jpg');
     opacity: 0.1;
     z-index: -1;
 }
