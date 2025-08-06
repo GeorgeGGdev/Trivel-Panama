@@ -216,6 +216,59 @@
             margin: 0;
         }
         
+        .file-upload.drag-over {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+        
+        .image-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .image-preview-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .image-preview-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+        
+        .upload-status {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        
+        .upload-progress {
+            width: 100%;
+            height: 4px;
+            background: #e1e5e9;
+            border-radius: 2px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+        
+        .upload-progress-bar {
+            height: 100%;
+            background: #ff6b35;
+            width: 0%;
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+        
         /* Submit Button */
         .submit-section {
             text-align: center;
@@ -359,6 +412,7 @@
                 <ul class="nav-menu">
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="destinations.html">Destinos</a></li>
+                    <li><a href="marketplace.html">Marketplace</a></li>
                     <li><a href="ContactUs.html">Contacto</a></li>
                     <li><a href="FAQs.html">FAQs</a></li>
                 </ul>
@@ -485,13 +539,17 @@
 
                     <!-- Fotos -->
                     <div class="form-section">
-                        <h3><i class="fas fa-camera" style="color: #667eea; margin-right: 0.5rem;"></i>Fotos de la Propiedad</h3>
+                        <h3><i class="fas fa-camera" style="color: #667eea; margin-right: 0.5rem;"></i>Fotos de la Propiedad (Máximo 2 imágenes)</h3>
                         <div class="form-group full-width">
                             <div class="file-upload">
                                 <i class="fas fa-cloud-upload-alt"></i>
                                 <p>Arrastra y suelta las fotos aquí o haz clic para seleccionar</p>
-                                <input type="file" id="propertyPhotos" name="propertyPhotos" multiple accept="image/*" style="display: none;">
+                                <input type="file" id="propertyImages" name="propertyImages" multiple accept="image/*" style="display: none;">
                             </div>
+                            <div class="upload-progress">
+                                <div class="upload-progress-bar" id="uploadProgress"></div>
+                            </div>
+                            <div class="image-preview" id="imagePreview"></div>
                         </div>
                     </div>
 
@@ -573,46 +631,261 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="../JS/main.js"></script>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="../JS/firebaseConfig.js"></script>
+
+    <!-- Property Registration Script -->
     <script>
-        // File upload functionality
-        const fileUpload = document.querySelector('.file-upload');
-        const fileInput = document.getElementById('propertyPhotos');
-        
-        fileUpload.addEventListener('click', () => {
-            fileInput.click();
-        });
-        
-        fileUpload.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            fileUpload.style.borderColor = '#667eea';
-            fileUpload.style.background = 'rgba(102, 126, 234, 0.1)';
-        });
-        
-        fileUpload.addEventListener('dragleave', () => {
-            fileUpload.style.borderColor = '#e1e5e9';
-            fileUpload.style.background = 'transparent';
-        });
-        
-        fileUpload.addEventListener('drop', (e) => {
-            e.preventDefault();
-            fileInput.files = e.dataTransfer.files;
-            fileUpload.style.borderColor = '#e1e5e9';
-            fileUpload.style.background = 'transparent';
-        });
-        
-        // Form submission
-        document.getElementById('propertyForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('¡Gracias por registrar tu propiedad! Nos pondremos en contacto contigo pronto.');
-        });
-        
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            if(window.scrollY > 40) {
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
-            } else {
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('propertyForm');
+            const fileInput = document.getElementById('propertyImages');
+            const imagePreview = document.getElementById('imagePreview');
+            const uploadProgress = document.getElementById('uploadProgress');
+            const submitBtn = document.querySelector('.submit-btn');
+            
+            let uploadedImages = [];
+            let selectedFiles = [];
+            const maxImages = 2;
+            const imgbbApiKey = 'c6d5cf2f0988f4b01b52597647a62865';
+            
+            // Initialize Firebase
+            if (typeof firebase === 'undefined') {
+                console.error('Firebase not loaded');
+                alert('Error: Firebase no está cargado. Por favor, recarga la página.');
+                return;
+            }
+            
+            // Test Firebase connection
+            try {
+                const db = firebase.firestore();
+                console.log('Firebase Firestore connected successfully');
+            } catch (error) {
+                console.error('Error connecting to Firestore:', error);
+                alert('Error conectando a Firebase. Por favor, recarga la página.');
+                return;
+            }
+            
+            // File input change handler
+            fileInput.addEventListener('change', function(e) {
+                const files = Array.from(e.target.files);
+                selectedFiles = files;
+                
+                if (files.length > maxImages) {
+                    alert(`Máximo ${maxImages} imágenes permitidas`);
+                    fileInput.value = '';
+                    selectedFiles = [];
+                    return;
+                }
+                
+                // Clear previous previews
+                imagePreview.innerHTML = '';
+                uploadedImages = [];
+                
+                // Show preview and upload each image
+                files.forEach((file, index) => {
+                    if (file.type.startsWith('image/')) {
+                        // Create preview
+                        const preview = document.createElement('div');
+                        preview.className = 'image-preview-item';
+                        preview.innerHTML = `
+                            <img src="${URL.createObjectURL(file)}" alt="Preview ${index + 1}">
+                            <div class="upload-status">Subiendo...</div>
+                        `;
+                        imagePreview.appendChild(preview);
+                        
+                        // Upload to imgbb
+                        uploadToImgbb(file, index);
+                    }
+                });
+            });
+            
+            // Upload image to imgbb
+            function uploadToImgbb(file, index) {
+                const formData = new FormData();
+                formData.append('image', file);
+                formData.append('key', imgbbApiKey);
+                
+                fetch('https://api.imgbb.com/1/upload', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('ImgBB response:', data);
+                    if (data.success) {
+                        uploadedImages[index] = data.data.url;
+                        
+                        // Update preview status
+                        const previewItem = imagePreview.children[index];
+                        const statusDiv = previewItem.querySelector('.upload-status');
+                        statusDiv.innerHTML = '<i class="fas fa-check" style="color: #28a745;"></i> Subido';
+                        statusDiv.style.color = '#28a745';
+                        
+                        // Update progress
+                        const progress = ((uploadedImages.filter(url => url).length / selectedFiles.length) * 100);
+                        uploadProgress.style.width = progress + '%';
+                        
+                        if (uploadedImages.filter(url => url).length === selectedFiles.length) {
+                            uploadProgress.style.backgroundColor = '#28a745';
+                        }
+                    } else {
+                        throw new Error('Upload failed: ' + (data.error?.message || 'Unknown error'));
+                    }
+                })
+                .catch(error => {
+                    console.error('Error uploading image:', error);
+                    const previewItem = imagePreview.children[index];
+                    const statusDiv = previewItem.querySelector('.upload-status');
+                    statusDiv.innerHTML = '<i class="fas fa-times" style="color: #dc3545;"></i> Error';
+                    statusDiv.style.color = '#dc3545';
+                });
+            }
+            
+            // Form submission
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+                
+                // Check if images are uploaded
+                if (selectedFiles.length > 0 && uploadedImages.filter(url => url).length === 0) {
+                    alert('Por favor, espera a que las imágenes se suban completamente antes de enviar el formulario.');
+                    return;
+                }
+                
+                // Disable submit button
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 0.5rem;"></i>Guardando...';
+                
+                try {
+                    // Get form data
+                    const formData = new FormData(form);
+                    
+                    // Handle amenities properly
+                    const amenitiesSelect = document.getElementById('amenities');
+                    let selectedAmenities = [];
+                    if (amenitiesSelect) {
+                        selectedAmenities = Array.from(amenitiesSelect.selectedOptions).map(option => option.value);
+                    }
+                    
+                    const propertyData = {
+                        propertyName: formData.get('propertyName'),
+                        propertyType: formData.get('propertyType'),
+                        location: formData.get('location'),
+                        address: formData.get('address'),
+                        bedrooms: parseInt(formData.get('bedrooms')),
+                        bathrooms: parseInt(formData.get('bathrooms')),
+                        capacity: parseInt(formData.get('capacity')),
+                        price: parseFloat(formData.get('price')),
+                        description: formData.get('description'),
+                        amenities: selectedAmenities,
+                        additionalAmenities: formData.get('additionalAmenities'),
+                        ownerName: formData.get('ownerName'),
+                        ownerEmail: formData.get('ownerEmail'),
+                        ownerPhone: formData.get('ownerPhone'),
+                        ownerWhatsapp: formData.get('ownerWhatsapp'),
+                        images: uploadedImages.filter(url => url), // Only include successfully uploaded images
+                        createdAt: new Date(),
+                        status: 'pending' // For admin approval
+                    };
+                    
+                    console.log('Property data to save:', propertyData);
+                    
+                    // Validate required fields
+                    if (!propertyData.propertyName || !propertyData.propertyType || !propertyData.location || 
+                        !propertyData.address || !propertyData.ownerName || !propertyData.ownerEmail || 
+                        !propertyData.ownerPhone) {
+                        throw new Error('Por favor, completa todos los campos obligatorios.');
+                    }
+                    
+                    // Save to Firebase
+                    const db = firebase.firestore();
+                    const docRef = await db.collection('Properties').add(propertyData);
+                    
+                    console.log('Property saved with ID:', docRef.id);
+                    
+                    // Show success message
+                    alert('¡Propiedad registrada exitosamente! Te contactaremos pronto.');
+                    
+                    // Reset form
+                    form.reset();
+                    imagePreview.innerHTML = '';
+                    uploadedImages = [];
+                    selectedFiles = [];
+                    uploadProgress.style.width = '0%';
+                    uploadProgress.style.backgroundColor = '#ff6b35';
+                    
+                } catch (error) {
+                    console.error('Error saving property:', error);
+                    alert('Error al guardar la propiedad: ' + error.message + '. Por favor, intenta de nuevo.');
+                } finally {
+                    // Re-enable submit button
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>Registrar Propiedad';
+                }
+            });
+            
+            // Drag and drop functionality
+            const dropZone = document.querySelector('.file-upload');
+            
+            // Click handler for file upload
+            dropZone.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, preventDefaults, false);
+            });
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropZone.addEventListener(eventName, highlight, false);
+            });
+            
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, unhighlight, false);
+            });
+            
+            function highlight(e) {
+                dropZone.classList.add('drag-over');
+            }
+            
+            function unhighlight(e) {
+                dropZone.classList.remove('drag-over');
+            }
+            
+            dropZone.addEventListener('drop', handleDrop, false);
+            
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                
+                if (files.length > maxImages) {
+                    alert(`Máximo ${maxImages} imágenes permitidas`);
+                    return;
+                }
+                
+                fileInput.files = files;
+                fileInput.dispatchEvent(new Event('change'));
             }
         });
     </script>

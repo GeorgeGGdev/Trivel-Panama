@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Firebase - Trivel Panamá</title>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="JS/firebaseConfig.js"></script>
+</head>
+<body>
+    <h1>Test Firebase Connection</h1>
+    <button onclick="testFirebase()">Test Firebase</button>
+    <button onclick="testImgbb()">Test ImgBB</button>
+    <div id="result"></div>
+
+    <script>
+        function testFirebase() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing Firebase...';
+            
+            try {
+                const db = firebase.firestore();
+                console.log('Firebase Firestore connected successfully');
+                resultDiv.innerHTML = '✅ Firebase connection successful!';
+            } catch (error) {
+                console.error('Error connecting to Firestore:', error);
+                resultDiv.innerHTML = '❌ Firebase connection failed: ' + error.message;
+            }
+        }
+        
+        function testImgbb() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing ImgBB...';
+            
+            // Create a simple test image (1x1 pixel)
+            const canvas = document.createElement('canvas');
+            canvas.width = 1;
+            canvas.height = 1;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = 'red';
+            ctx.fillRect(0, 0, 1, 1);
+            
+            canvas.toBlob(function(blob) {
+                const formData = new FormData();
+                formData.append('image', blob, 'test.png');
+                formData.append('key', 'c6d5cf2f0988f4b01b52597647a62865');
+                
+                fetch('https://api.imgbb.com/1/upload', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('ImgBB response:', data);
+                    if (data.success) {
+                        resultDiv.innerHTML = '✅ ImgBB upload successful! URL: ' + data.data.url;
+                    } else {
+                        resultDiv.innerHTML = '❌ ImgBB upload failed: ' + (data.error?.message || 'Unknown error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error uploading to ImgBB:', error);
+                    resultDiv.innerHTML = '❌ ImgBB upload failed: ' + error.message;
+                });
+            });
+        }
+    </script>
+</body>
+</html> 
