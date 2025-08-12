@@ -80,7 +80,7 @@
         }
         
         .nav-menu a:hover {
-            color: #667eea;
+            color: #0066cc;
         }
         
         /* Main Container */
@@ -102,7 +102,7 @@
             font-weight: 800;
             color: #333;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #0066cc, #0099ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -115,8 +115,162 @@
             margin: 0 auto;
             line-height: 1.6;
         }
-        
-        /* Empty Content */
+
+        /* Properties Grid */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .property-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .property-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #0066cc, #0099ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .property-content {
+            padding: 1.5rem;
+        }
+
+        .property-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-location {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .property-location i {
+            color: #0066cc;
+        }
+
+        .property-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .property-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .property-detail i {
+            color: #0066cc;
+            width: 16px;
+        }
+
+        .property-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0066cc;
+            margin-bottom: 1rem;
+        }
+
+        .property-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .property-amenities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .amenity-tag {
+            background: #f0f8ff;
+            color: #0066cc;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .contact-button {
+            width: 100%;
+            background: linear-gradient(45deg, #0066cc, #0099ff);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 102, 204, 0.3);
+        }
+
+        /* Loading and Empty States */
+        .loading-state {
+            text-align: center;
+            padding: 4rem;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #0066cc;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 2rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .empty-content {
             background: white;
             border-radius: 20px;
@@ -128,7 +282,7 @@
         
         .empty-content i {
             font-size: 4rem;
-            color: #667eea;
+            color: #0066cc;
             margin-bottom: 2rem;
         }
         
@@ -146,10 +300,52 @@
             margin: 0 auto;
             line-height: 1.6;
         }
+
+        /* Filters */
+        .filters-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            padding: 0.8rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .filter-group select:focus,
+        .filter-group input:focus {
+            outline: none;
+            border-color: #0066cc;
+        }
         
         /* Footer */
         .footer {
-            background: #333;
+            background: #000;
             color: white;
             padding: 3rem 0 2rem 0;
             margin-top: auto;
@@ -203,7 +399,7 @@
         }
         
         .footer-bottom {
-            border-top: 1px solid #444;
+            border-top: 1px solid #333;
             padding-top: 1.5rem;
             text-align: center;
         }
@@ -218,6 +414,10 @@
         @media (max-width: 768px) {
             .page-header h1 {
                 font-size: 2rem;
+            }
+            
+            .properties-grid {
+                grid-template-columns: 1fr;
             }
             
             .empty-content {
@@ -239,6 +439,10 @@
             
             .nav-menu {
                 display: none;
+            }
+
+            .filters-grid {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -286,11 +490,53 @@
                 <p>Explora propiedades únicas y encuentra tu próximo destino en Panamá.</p>
             </div>
 
-            <!-- Empty Content -->
-            <div class="empty-content">
-                <i class="fas fa-store"></i>
-                <h2>Marketplace en Construcción</h2>
-                <p>Estamos trabajando para traerte las mejores propiedades de Panamá. Pronto podrás explorar y reservar directamente desde nuestro marketplace.</p>
+            <!-- Filters Section -->
+            <div class="filters-section">
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label for="location-filter">Ubicación</label>
+                        <select id="location-filter">
+                            <option value="">Todas las ubicaciones</option>
+                            <option value="Bocas del Toro">Bocas del Toro</option>
+                            <option value="San Blas">San Blas</option>
+                            <option value="Playa Venao">Playa Venao</option>
+                            <option value="Playa Estrella">Playa Estrella</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="type-filter">Tipo de Propiedad</label>
+                        <select id="type-filter">
+                            <option value="">Todos los tipos</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Apartamento">Apartamento</option>
+                            <option value="Villa">Villa</option>
+                            <option value="Cabaña">Cabaña</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="price-filter">Precio máximo</label>
+                        <input type="number" id="price-filter" placeholder="Precio máximo">
+                    </div>
+                    <div class="filter-group">
+                        <label for="guests-filter">Huéspedes</label>
+                        <select id="guests-filter">
+                            <option value="">Cualquier número</option>
+                            <option value="1-2">1-2 personas</option>
+                            <option value="3-4">3-4 personas</option>
+                            <option value="5-6">5-6 personas</option>
+                            <option value="7+">7+ personas</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Properties Container -->
+            <div id="properties-container">
+                <!-- Loading State -->
+                <div class="loading-state" id="loading-state">
+                    <div class="loading-spinner"></div>
+                    <h3>Cargando propiedades...</h3>
+                </div>
             </div>
         </div>
     </div>
@@ -344,12 +590,140 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Trivel Panama | Tu aventura comienza aquí</p>
+                <p>&copy; 2025 Trivel Panama | Tu aventura comienza aquí</p>
             </div>
         </div>
     </footer>
 
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="../JS/firebaseConfig.js"></script>
+
     <!-- Scripts -->
     <script src="../JS/main.js"></script>
+    <script>
+        // Initialize Firebase
+        if (typeof firebase === 'undefined') {
+            console.error('Firebase not loaded');
+            document.getElementById('loading-state').innerHTML = '<div class="empty-content"><i class="fas fa-exclamation-triangle"></i><h2>Error de Conexión</h2><p>No se pudo conectar con la base de datos. Por favor, recarga la página.</p></div>';
+        }
+
+        // Load properties from Firebase
+        async function loadProperties() {
+            try {
+                const db = firebase.firestore();
+                const propertiesSnapshot = await db.collection('Properties').get();
+                
+                const propertiesContainer = document.getElementById('properties-container');
+                const loadingState = document.getElementById('loading-state');
+                
+                if (propertiesSnapshot.empty) {
+                    propertiesContainer.innerHTML = `
+                        <div class="empty-content">
+                            <i class="fas fa-store"></i>
+                            <h2>No hay propiedades disponibles</h2>
+                            <p>Aún no hay propiedades registradas en nuestro marketplace. Sé el primero en registrar tu propiedad.</p>
+                            <a href="registrar-propiedad.html" class="contact-button" style="display: inline-block; text-decoration: none; margin-top: 1rem;">Registrar Propiedad</a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                let propertiesHTML = '<div class="properties-grid">';
+                
+                propertiesSnapshot.forEach(doc => {
+                    const property = doc.data();
+                    const amenities = property.amenities ? property.amenities.split(',').slice(0, 3) : [];
+                    
+                    propertiesHTML += `
+                        <div class="property-card">
+                            <div class="property-image">
+                                ${property.imageUrl ? `<img src="${property.imageUrl}" alt="${property.propertyName}">` : '<i class="fas fa-home"></i>'}
+                            </div>
+                            <div class="property-content">
+                                <h3 class="property-title">${property.propertyName || 'Propiedad sin nombre'}</h3>
+                                <div class="property-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    ${property.location || 'Ubicación no especificada'}
+                                </div>
+                                <div class="property-details">
+                                    <div class="property-detail">
+                                        <i class="fas fa-users"></i>
+                                        ${property.maxGuests || 'N/A'} huéspedes
+                                    </div>
+                                    <div class="property-detail">
+                                        <i class="fas fa-bed"></i>
+                                        ${property.bedrooms || 'N/A'} habitaciones
+                                    </div>
+                                    <div class="property-detail">
+                                        <i class="fas fa-home"></i>
+                                        ${property.propertyType || 'N/A'}
+                                    </div>
+                                    <div class="property-detail">
+                                        <i class="fas fa-bath"></i>
+                                        ${property.bathrooms || 'N/A'} baños
+                                    </div>
+                                </div>
+                                <div class="property-price">$${property.pricePerNight || 'N/A'}/noche</div>
+                                <p class="property-description">${property.description || 'Sin descripción disponible.'}</p>
+                                ${amenities.length > 0 ? `
+                                    <div class="property-amenities">
+                                        ${amenities.map(amenity => `<span class="amenity-tag">${amenity.trim()}</span>`).join('')}
+                                    </div>
+                                ` : ''}
+                                <button class="contact-button" onclick="contactOwner('${property.ownerEmail || ''}', '${property.propertyName || ''}')">
+                                    <i class="fas fa-envelope"></i> Contactar Propietario
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                propertiesHTML += '</div>';
+                propertiesContainer.innerHTML = propertiesHTML;
+                
+            } catch (error) {
+                console.error('Error loading properties:', error);
+                document.getElementById('properties-container').innerHTML = `
+                    <div class="empty-content">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h2>Error al cargar propiedades</h2>
+                        <p>Hubo un problema al cargar las propiedades. Por favor, intenta de nuevo más tarde.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Contact owner function
+        function contactOwner(email, propertyName) {
+            if (email) {
+                window.location.href = `mailto:${email}?subject=Consulta sobre ${propertyName}`;
+            } else {
+                alert('Información de contacto no disponible para esta propiedad.');
+            }
+        }
+
+        // Filter properties
+        function filterProperties() {
+            // This function can be implemented later for filtering functionality
+            console.log('Filtering properties...');
+        }
+
+        // Add event listeners for filters
+        document.addEventListener('DOMContentLoaded', function() {
+            const filters = ['location-filter', 'type-filter', 'price-filter', 'guests-filter'];
+            filters.forEach(filterId => {
+                const filter = document.getElementById(filterId);
+                if (filter) {
+                    filter.addEventListener('change', filterProperties);
+                }
+            });
+        });
+
+        // Load properties when page loads
+        document.addEventListener('DOMContentLoaded', loadProperties);
+    </script>
 </body>
 </html> 
