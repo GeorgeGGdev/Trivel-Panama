@@ -342,6 +342,26 @@
             outline: none;
             border-color: #0066cc;
         }
+
+        .clear-filters-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .clear-filters-btn:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
         
         /* Footer */
         .footer {
@@ -517,16 +537,22 @@
                         <label for="price-filter">Precio máximo</label>
                         <input type="number" id="price-filter" placeholder="Precio máximo">
                     </div>
-                    <div class="filter-group">
-                        <label for="guests-filter">Huéspedes</label>
-                        <select id="guests-filter">
-                            <option value="">Cualquier número</option>
-                            <option value="1-2">1-2 personas</option>
-                            <option value="3-4">3-4 personas</option>
-                            <option value="5-6">5-6 personas</option>
-                            <option value="7+">7+ personas</option>
-                        </select>
-                    </div>
+                                         <div class="filter-group">
+                         <label for="guests-filter">Huéspedes</label>
+                         <select id="guests-filter">
+                             <option value="">Cualquier número</option>
+                             <option value="1-2">1-2 personas</option>
+                             <option value="3-4">3-4 personas</option>
+                             <option value="5-6">5-6 personas</option>
+                             <option value="7+">7+ personas</option>
+                         </select>
+                     </div>
+                     <div class="filter-group">
+                         <label>&nbsp;</label>
+                         <button id="clear-filters" class="clear-filters-btn">
+                             <i class="fas fa-times"></i> Limpiar Filtros
+                         </button>
+                     </div>
                 </div>
             </div>
 
@@ -610,6 +636,9 @@
             document.getElementById('loading-state').innerHTML = '<div class="empty-content"><i class="fas fa-exclamation-triangle"></i><h2>Error de Conexión</h2><p>No se pudo conectar con la base de datos. Por favor, recarga la página.</p></div>';
         }
 
+                // Global variable to store all properties
+        let allProperties = [];
+
         // Load properties from Firebase
         async function loadProperties() {
             try {
@@ -631,58 +660,17 @@
                     return;
                 }
 
-                let propertiesHTML = '<div class="properties-grid">';
-                
+                // Store all properties globally
+                allProperties = [];
                 propertiesSnapshot.forEach(doc => {
-                    const property = doc.data();
-                    const amenities = property.amenities ? property.amenities.split(',').slice(0, 3) : [];
-                    
-                    propertiesHTML += `
-                        <div class="property-card">
-                            <div class="property-image">
-                                ${property.imageUrl ? `<img src="${property.imageUrl}" alt="${property.propertyName}">` : '<i class="fas fa-home"></i>'}
-                            </div>
-                            <div class="property-content">
-                                <h3 class="property-title">${property.propertyName || 'Propiedad sin nombre'}</h3>
-                                <div class="property-location">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    ${property.location || 'Ubicación no especificada'}
-                                </div>
-                                <div class="property-details">
-                                    <div class="property-detail">
-                                        <i class="fas fa-users"></i>
-                                        ${property.maxGuests || 'N/A'} huéspedes
-                                    </div>
-                                    <div class="property-detail">
-                                        <i class="fas fa-bed"></i>
-                                        ${property.bedrooms || 'N/A'} habitaciones
-                                    </div>
-                                    <div class="property-detail">
-                                        <i class="fas fa-home"></i>
-                                        ${property.propertyType || 'N/A'}
-                                    </div>
-                                    <div class="property-detail">
-                                        <i class="fas fa-bath"></i>
-                                        ${property.bathrooms || 'N/A'} baños
-                                    </div>
-                                </div>
-                                <div class="property-price">$${property.pricePerNight || 'N/A'}/noche</div>
-                                <p class="property-description">${property.description || 'Sin descripción disponible.'}</p>
-                                ${amenities.length > 0 ? `
-                                    <div class="property-amenities">
-                                        ${amenities.map(amenity => `<span class="amenity-tag">${amenity.trim()}</span>`).join('')}
-                                    </div>
-                                ` : ''}
-                                <button class="contact-button" onclick="contactOwner('${property.ownerEmail || ''}', '${property.propertyName || ''}')">
-                                    <i class="fas fa-envelope"></i> Contactar Propietario
-                                </button>
-                            </div>
-                        </div>
-                    `;
+                    allProperties.push({
+                        id: doc.id,
+                        ...doc.data()
+                    });
                 });
-                
-                propertiesHTML += '</div>';
-                propertiesContainer.innerHTML = propertiesHTML;
+
+                // Display all properties initially
+                displayProperties(allProperties);
                 
             } catch (error) {
                 console.error('Error loading properties:', error);
@@ -696,6 +684,84 @@
             }
         }
 
+        // Function to display properties
+        function displayProperties(properties) {
+            const propertiesContainer = document.getElementById('properties-container');
+            
+            if (properties.length === 0) {
+                propertiesContainer.innerHTML = `
+                    <div class="empty-content">
+                        <i class="fas fa-search"></i>
+                        <h2>No se encontraron propiedades</h2>
+                        <p>No hay propiedades que coincidan con los filtros seleccionados. Intenta con otros criterios.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let propertiesHTML = '<div class="properties-grid">';
+            
+            properties.forEach(property => {
+                // Handle amenities - they can be either an array or a string
+                let amenities = [];
+                if (property.amenities) {
+                    if (Array.isArray(property.amenities)) {
+                        // If amenities is already an array, use it directly
+                        amenities = property.amenities.slice(0, 3);
+                    } else if (typeof property.amenities === 'string') {
+                        // If amenities is a string, split it
+                        amenities = property.amenities.split(',').slice(0, 3);
+                    }
+                }
+                
+                propertiesHTML += `
+                    <div class="property-card">
+                        <div class="property-image">
+                            ${property.images && property.images.length > 0 ? `<img src="${property.images[0]}" alt="${property.propertyName}">` : '<i class="fas fa-home"></i>'}
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-title">${property.propertyName || 'Propiedad sin nombre'}</h3>
+                            <div class="property-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                ${property.location || 'Ubicación no especificada'}
+                            </div>
+                            <div class="property-details">
+                                <div class="property-detail">
+                                    <i class="fas fa-users"></i>
+                                    ${property.capacity || 'N/A'} huéspedes
+                                </div>
+                                <div class="property-detail">
+                                    <i class="fas fa-bed"></i>
+                                    ${property.bedrooms || 'N/A'} habitaciones
+                                </div>
+                                <div class="property-detail">
+                                    <i class="fas fa-home"></i>
+                                    ${property.propertyType || 'N/A'}
+                                </div>
+                                <div class="property-detail">
+                                    <i class="fas fa-bath"></i>
+                                    ${property.bathrooms || 'N/A'} baños
+                                </div>
+                            </div>
+                            <div class="property-price">$${property.price || 'N/A'}/noche</div>
+                            <p class="property-description">${property.description || 'Sin descripción disponible.'}</p>
+                            ${amenities.length > 0 ? `
+                                <div class="property-amenities">
+                                    ${amenities.map(amenity => `<span class="amenity-tag">${amenity.trim()}</span>`).join('')}
+                                </div>
+                            ` : ''}
+                            <button class="contact-button" onclick="contactOwner('${property.ownerEmail || ''}', '${property.propertyName || ''}')">
+                                <i class="fas fa-envelope"></i> Contactar Propietario
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            propertiesHTML += '</div>';
+            propertiesContainer.innerHTML = propertiesHTML;
+        }
+
         // Contact owner function
         function contactOwner(email, propertyName) {
             if (email) {
@@ -707,20 +773,141 @@
 
         // Filter properties
         function filterProperties() {
-            // This function can be implemented later for filtering functionality
-            console.log('Filtering properties...');
+            const locationFilter = document.getElementById('location-filter').value;
+            const typeFilter = document.getElementById('type-filter').value;
+            const priceFilter = document.getElementById('price-filter').value;
+            const guestsFilter = document.getElementById('guests-filter').value;
+
+            console.log('Filtering with:', { locationFilter, typeFilter, priceFilter, guestsFilter });
+
+            let filteredProperties = allProperties.filter(property => {
+                // Location filter
+                if (locationFilter && property.location !== locationFilter) {
+                    console.log('Filtered out by location:', property.propertyName, property.location, '!==', locationFilter);
+                    return false;
+                }
+
+                // Property type filter
+                if (typeFilter && property.propertyType !== typeFilter) {
+                    console.log('Filtered out by type:', property.propertyName, property.propertyType, '!==', typeFilter);
+                    return false;
+                }
+
+                // Price filter
+                if (priceFilter && property.price) {
+                    const maxPrice = parseFloat(priceFilter);
+                    const propertyPrice = parseFloat(property.price);
+                    if (propertyPrice > maxPrice) {
+                        console.log('Filtered out by price:', property.propertyName, propertyPrice, '>', maxPrice);
+                        return false;
+                    }
+                }
+
+                // Guests filter
+                if (guestsFilter && property.capacity) {
+                    const capacity = parseInt(property.capacity);
+                    let passesGuestFilter = false;
+                    
+                    switch (guestsFilter) {
+                        case '1-2':
+                            passesGuestFilter = (capacity >= 1 && capacity <= 2);
+                            break;
+                        case '3-4':
+                            passesGuestFilter = (capacity >= 3 && capacity <= 4);
+                            break;
+                        case '5-6':
+                            passesGuestFilter = (capacity >= 5 && capacity <= 6);
+                            break;
+                        case '7+':
+                            passesGuestFilter = (capacity >= 7);
+                            break;
+                    }
+                    
+                    if (!passesGuestFilter) {
+                        console.log('Filtered out by guests:', property.propertyName, capacity, 'not in range', guestsFilter);
+                        return false;
+                    }
+                }
+
+                console.log('Property passes all filters:', property.propertyName);
+                return true;
+            });
+
+            console.log('Filtered properties count:', filteredProperties.length);
+            console.log('Filtered properties:', filteredProperties.map(p => p.propertyName));
+
+            // Display filtered properties
+            displayProperties(filteredProperties);
         }
 
         // Add event listeners for filters
         document.addEventListener('DOMContentLoaded', function() {
-            const filters = ['location-filter', 'type-filter', 'price-filter', 'guests-filter'];
-            filters.forEach(filterId => {
-                const filter = document.getElementById(filterId);
-                if (filter) {
-                    filter.addEventListener('change', filterProperties);
-                }
-            });
+            console.log('Setting up event listeners...');
+            
+            // Set up filter event listeners
+            const locationFilter = document.getElementById('location-filter');
+            const typeFilter = document.getElementById('type-filter');
+            const priceFilter = document.getElementById('price-filter');
+            const guestsFilter = document.getElementById('guests-filter');
+            const clearFiltersBtn = document.getElementById('clear-filters');
+
+            if (locationFilter) {
+                locationFilter.addEventListener('change', function() {
+                    console.log('Location filter changed to:', this.value);
+                    filterProperties();
+                });
+            }
+
+            if (typeFilter) {
+                typeFilter.addEventListener('change', function() {
+                    console.log('Type filter changed to:', this.value);
+                    filterProperties();
+                });
+            }
+
+            if (priceFilter) {
+                priceFilter.addEventListener('input', function() {
+                    console.log('Price filter changed to:', this.value);
+                    filterProperties();
+                });
+            }
+
+            if (guestsFilter) {
+                guestsFilter.addEventListener('change', function() {
+                    console.log('Guests filter changed to:', this.value);
+                    filterProperties();
+                });
+            }
+
+            if (clearFiltersBtn) {
+                clearFiltersBtn.addEventListener('click', function() {
+                    console.log('Clear filters clicked');
+                    clearFilters();
+                });
+            }
+
+            console.log('Event listeners set up successfully');
         });
+
+        // Clear all filters
+        function clearFilters() {
+            console.log('Clearing all filters...');
+            
+            const locationFilter = document.getElementById('location-filter');
+            const typeFilter = document.getElementById('type-filter');
+            const priceFilter = document.getElementById('price-filter');
+            const guestsFilter = document.getElementById('guests-filter');
+            
+            if (locationFilter) locationFilter.value = '';
+            if (typeFilter) typeFilter.value = '';
+            if (priceFilter) priceFilter.value = '';
+            if (guestsFilter) guestsFilter.value = '';
+            
+            console.log('All filters cleared, showing all properties');
+            
+            // Display all properties
+            displayProperties(allProperties);
+        }
 
         // Load properties when page loads
         document.addEventListener('DOMContentLoaded', loadProperties);
