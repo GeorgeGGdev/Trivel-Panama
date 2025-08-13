@@ -768,7 +768,11 @@
         <div class="auth-buttons">
             <button id="loginBtn" class="auth-btn login-btn">
                 <i class="fas fa-sign-in-alt"></i>
-                Iniciar Sesión
+                <span>Iniciar Sesión</span>
+            </button>
+            <button id="registerBtn" class="auth-btn register-btn">
+                <i class="fas fa-user-plus"></i>
+                <span>Registrarse</span>
             </button>
         </div>
     </header>
@@ -1087,7 +1091,7 @@
                     <ul style="list-style: none; padding: 0; margin: 0;">
                         <li style="margin-bottom: 0.8rem;"><a href="../index.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Home</a></li>
                         <li style="margin-bottom: 0.8rem;"><a href="destinations.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Destinos</a></li>
-                        <li style="margin-bottom: 0.8rem;"><a href="destinations.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Destinos</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="marketplace.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Marketplace</a></li>
                         <li style="margin-bottom: 0.8rem;"><a href="ContactUs.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Contacto</a></li>
                     </ul>
                 </div>
@@ -1245,11 +1249,16 @@
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
         const authButtons = document.querySelector('.auth-buttons');
         
         // Event listeners para los botones
         loginBtn.addEventListener('click', function() {
             window.location.href = 'login.html';
+        });
+
+        registerBtn.addEventListener('click', function() {
+            window.location.href = 'register.html';
         });
         
         // Verificar estado de autenticación
@@ -1291,10 +1300,17 @@
                         <i class="fas fa-sign-in-alt"></i>
                         Iniciar Sesión
                     </button>
+                    <button id="registerBtn" class="auth-btn register-btn">
+                        <i class="fas fa-user-plus"></i>
+                        Registrarse
+                    </button>
                 `;
                 // Re-attach event listeners for newly created buttons
                 document.getElementById('loginBtn').addEventListener('click', function() {
                     window.location.href = 'login.html';
+                });
+                document.getElementById('registerBtn').addEventListener('click', function() {
+                    window.location.href = 'register.html';
                 });
             }
         });
