@@ -740,6 +740,145 @@
                 padding: 2rem 1.5rem;
             }
         }
+
+        /* Provincias: estilos de secciones y pestañas */
+        .province-section {
+            background: #fff;
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+        .province-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .province-cover {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .province-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .province-title {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #333;
+        }
+        .province-subtitle {
+            margin: 0.25rem 0 0 0;
+            color: #777;
+        }
+        .province-tabs {
+            display: flex;
+            gap: 0.8rem;
+            margin: 1rem 0 1.2rem 0;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            background: #fff;
+            color: #555;
+            border: 2px solid #e9ecef;
+            padding: 0.6rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .tab-btn.active, .tab-btn:hover {
+            background: #ff6b35;
+            color: #fff;
+            border-color: #ff6b35;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(255,107,53,0.3);
+        }
+        .tab-content { margin-bottom: 1.5rem; }
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; }
+        .map-embed {
+            width: 100%;
+            height: 360px;
+            border: 0;
+            border-radius: 16px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+        }
+        .time-chip {
+            display: inline-block;
+            margin-top: 0.5rem;
+            background: rgba(26,115,232,0.08);
+            color: #1a73e8;
+            font-weight: 700;
+            padding: 0.35rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+        }
+        /* Modal de cotización */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .modal {
+            background: #fff;
+            border-radius: 20px;
+            width: 95%;
+            max-width: 560px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+            overflow: hidden;
+            animation: fadeInUp 0.4s ease;
+        }
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid #eee;
+        }
+        .modal-title { font-size: 1.1rem; font-weight: 800; }
+        .modal-close {
+            background: transparent;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #666;
+        }
+        .modal-body { padding: 1.25rem; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-weight: 700; margin-bottom: 0.4rem; font-size: 0.95rem; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 0.9rem;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+        }
+        .modal-footer { padding: 0 1.25rem 1.25rem 1.25rem; }
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #ff6b35, #fd7e14);
+            color: #fff;
+            border: none;
+            padding: 1rem 1.25rem;
+            border-radius: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(255,107,53,0.35); }
     </style>
 </head>
 <body>
@@ -1049,6 +1188,64 @@
                 </div>
             </div>
 
+            <!-- Provincias de Panamá -->
+            <div class="section-header" style="margin-top: 2rem;">
+                <div class="section-badge">
+                    <i class="fas fa-flag" style="margin-right: 0.5rem;"></i>Provincias de Panamá
+                </div>
+                <h2 class="section-title">Playas por Provincia</h2>
+                <p class="section-description">Explora las playas más famosas de cada provincia. Encuentra información detallada, ubicación en el mapa y cotiza tu viaje en segundos.</p>
+            </div>
+
+            <div id="provinces-container" class="container-new" style="padding: 0;">
+                <!-- Render dinámico -->
+            </div>
+
+            <!-- Modal de Cotización -->
+            <div class="modal-overlay" id="quoteModal">
+                <div class="modal">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modalTitle">Cotizar viaje</h4>
+                        <button class="modal-close" id="modalClose" aria-label="Cerrar">✕</button>
+                    </div>
+                    <form id="quoteForm">
+                        <div class="modal-body">
+                            <input type="hidden" id="provinceField" name="province">
+                            <input type="hidden" id="beachField" name="beach">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="startDate">Fecha de viaje</label>
+                                    <input type="date" id="startDate" name="startDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="duration">Duración (días)</label>
+                                    <input type="number" id="duration" name="duration" min="1" max="60" placeholder="4" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="travelers">Miembros del viaje</label>
+                                    <input type="number" id="travelers" name="travelers" min="1" max="20" placeholder="2" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact">Email de contacto</label>
+                                    <input type="email" id="contact" name="contact" placeholder="tu@email.com" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="notes">Notas (opcional)</label>
+                                <textarea id="notes" name="notes" rows="3" placeholder="Intereses, preferencia de hotel o transporte..."></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>Enviar solicitud
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             <!-- Call to Action -->
             <div class="cta-section">
                 <h3 class="cta-title">¿Listo para tu Aventura?</h3>
@@ -1196,6 +1393,356 @@
     <!-- Scripts completamente nuevos para destinos -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // ---------- Datos de Provincias y Playas ----------
+        const provinces = [
+            {
+                name: 'Bocas del Toro',
+                cover: '../assets/img/BocasToro.jpeg',
+                beaches: [
+                    {
+                        name: 'Playa Estrella',
+                        img: 'https://bocastours.com/wp-content/uploads/2022/03/Playa-Estrella-Bocas-del-Toro-Panama-4.webp',
+                        description: 'Aguas turquesas y arena blanca con estrellas de mar visibles en la orilla. Ideal para familias y para nadar en calma. Tiempo estimado desde Tocumen: 1h vuelo + 30min taxi acuático.',
+                        map: 'https://www.google.com/maps?q=Playa+Estrella+Bocas+del+Toro&output=embed'
+                    },
+                    {
+                        name: 'Red Frog Beach',
+                        img: '../assets/img/Red Frog Beach.jpg',
+                        description: 'Playa icónica con selva tropical y senderos. Perfecta para fotos y relajación. Tiempo estimado desde Tocumen: 1h vuelo + 35min lancha.',
+                        map: 'https://www.google.com/maps?q=Red+Frog+Beach&output=embed'
+                    },
+                    {
+                        name: 'Starfish Beach',
+                        img: '../assets/img/Starfish Beach.jpeg',
+                        description: 'Conocida por la gran cantidad de estrellas de mar y aguas tranquilas. Tiempo estimado desde Tocumen: 1h vuelo + 40min transporte local.',
+                        map: 'https://www.google.com/maps?q=Starfish+Beach+Bocas&output=embed'
+                    }
+                ]
+            },
+            {
+                name: 'Panamá',
+                cover: '../assets/img/home.png',
+                beaches: [
+                    {
+                        name: 'Playa Veracruz',
+                        img: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/02/6c/85/a7/filename-vera-cruz-beach.jpg?w=1200&h=-1&s=1',
+                        description: 'A solo minutos de la ciudad, con restaurantes de mariscos y vista al skyline. Tiempo estimado desde Tocumen: 40-55min por carretera.',
+                        map: 'https://www.google.com/maps?q=Playa+Veracruz+Panama&output=embed'
+                    },
+                    {
+                        name: 'Isla Taboga',
+                        img: '../assets/img/Taboga Island.jpeg',
+                        description: 'La Isla de las Flores, aguas cálidas y ambiente pintoresco. Tiempo estimado desde Tocumen: 45min carretera al muelle + 30min ferry.',
+                        map: 'https://www.google.com/maps?q=Isla+Taboga&output=embed'
+                    },
+                    {
+                        name: 'Playa Bonita',
+                        img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200',
+                        description: 'Resorts frente al mar, ideal para descansar sin salir de la ciudad. Tiempo estimado desde Tocumen: 45-60min por carretera.',
+                        map: 'https://www.google.com/maps?q=Playa+Bonita+Panama&output=embed'
+                    }
+                ]
+            },
+            {
+                name: 'Los Santos',
+                cover: '../assets/img/Venao.jpg',
+                beaches: [
+                    {
+                        name: 'Playa Venao',
+                        img: '../assets/img/Venao.jpg',
+                        description: 'Destino top para surf, con ambiente bohemio y atardeceres increíbles. Tiempo estimado desde Tocumen: 5h-6h por carretera o 1h vuelo a Chitré + 2h carretera.',
+                        map: 'https://www.google.com/maps?q=Playa+Venao+Panama&output=embed'
+                    },
+                    {
+                        name: 'Playa El Arenal (Pedasí)',
+                        img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200',
+                        description: 'Puerta a Isla Iguana; arena blanca y snorkel excepcional. Tiempo estimado desde Tocumen: 5h-6h por carretera.',
+                        map: 'https://www.google.com/maps?q=Playa+El+Arenal+Pedasi&output=embed'
+                    },
+                    {
+                        name: 'Playa Destiladeros',
+                        img: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200',
+                        description: 'Playas amplias y tranquilas cerca de Pedasí. Tiempo estimado desde Tocumen: 5h-6h por carretera.',
+                        map: 'https://www.google.com/maps?q=Playa+Destiladeros&output=embed'
+                    }
+                ]
+            },
+            {
+                name: 'Colón',
+                cover: '../assets/img/Isla Grande.jpg',
+                beaches: [
+                    {
+                        name: 'Isla Grande',
+                        img: '../assets/img/Isla Grande.jpg',
+                        description: 'Aguas caribeñas y arrecifes para snorkel, ambiente local vibrante. Tiempo estimado desde Tocumen: 2h-2h30 por carretera.',
+                        map: 'https://www.google.com/maps?q=Isla+Grande+Colon+Panama&output=embed'
+                    },
+                    {
+                        name: 'Playa La Angosta',
+                        img: 'https://images.unsplash.com/photo-1526481280698-8fcc13fd938c?w=1200',
+                        description: 'Pequeña cala de aguas transparentes en la costa atlántica. Tiempo estimado desde Tocumen: 2h20 por carretera.',
+                        map: 'https://www.google.com/maps?q=Playa+La+Angosta+Colon&output=embed'
+                    },
+                    {
+                        name: 'Portobelo (playas cercanas)',
+                        img: 'https://images.unsplash.com/photo-1526779259212-939e64788e3c?w=1200',
+                        description: 'Bahías históricas con pequeñas playas y fuerte colonial. Tiempo estimado desde Tocumen: 2h por carretera.',
+                        map: 'https://www.google.com/maps?q=Portobelo+Panama&output=embed'
+                    }
+                ]
+            },
+            {
+                name: 'Coclé',
+                cover: 'https://images.unsplash.com/photo-1493558103817-58b2924bce98?w=1200',
+                beaches: [
+                    {
+                        name: 'Playa Santa Clara',
+                        img: 'https://images.unsplash.com/photo-1493558103817-58b2924bce98?w=1200',
+                        description: 'Arena clara y mar tranquilo; excelente para familias. Tiempo estimado desde Tocumen: 1h45-2h por carretera.',
+                        map: 'https://www.google.com/maps?q=Playa+Santa+Clara+Cocle&output=embed'
+                    },
+                    {
+                        name: 'Playa Farallón / Playa Blanca',
+                        img: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=1200',
+                        description: 'Zona de resorts con actividades acuáticas y vida nocturna cercana. Tiempo estimado desde Tocumen: 2h por carretera.',
+                        map: 'https://www.google.com/maps?q=Playa+Blanca+Cocle&output=embed'
+                    },
+                    {
+                        name: 'Playa La Ermita (Antón)',
+                        img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200',
+                        description: 'Ambiente local y aguas cálidas, cerca de El Valle de Antón. Tiempo estimado desde Tocumen: 2h por carretera.',
+                        map: 'https://www.google.com/maps?q=Playa+La+Ermita+Anton&output=embed'
+                    }
+                ]
+            },
+            {
+                name: 'Panamá Oeste',
+                cover: 'https://images.unsplash.com/photo-1558981285-6f0c94958bb6?w=1200',
+                beaches: [
+                    {
+                        name: 'Punta Chame',
+                        img: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=1200',
+                        description: 'Ideal para kitesurf y largas caminatas en bancos de arena. Tiempo estimado desde Tocumen: 1h30-1h50 por carretera.',
+                        map: 'https://www.google.com/maps?q=Punta+Chame+Panama&output=embed'
+                    },
+                    {
+                        name: 'Playa Coronado',
+                        img: 'https://images.unsplash.com/photo-1493558103817-58b2924bce98?w=1200',
+                        description: 'Playa de arena negra y dorada con oferta gastronómica y hotelera. Tiempo estimado desde Tocumen: 1h30-1h50 por carretera.',
+                        map: 'https://www.google.com/maps?q=Playa+Coronado+Panama&output=embed'
+                    },
+                    {
+                        name: 'Playa Gorgona (Malibú)',
+                        img: 'https://images.unsplash.com/photo-1558981285-6f0c94958bb6?w=1200',
+                        description: 'Spot popular para surf y escapadas de fin de semana. Tiempo estimado desde Tocumen: 1h30-1h50 por carretera.',
+                        map: 'https://www.google.com/maps?q=Playa+Gorgona+Malibu+Panama&output=embed'
+                    }
+                ]
+            },
+            {
+                name: 'Chiriquí',
+                cover: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200',
+                beaches: [
+                    {
+                        name: 'Playa Las Lajas',
+                        img: 'https://images.unsplash.com/photo-1526779259212-939e64788e3c?w=1200',
+                        description: 'Kilómetros de playa tranquila y olas suaves. Tiempo estimado desde Tocumen: 6h-7h por carretera o 1h vuelo a David + 1h30 carretera.',
+                        map: 'https://www.google.com/maps?q=Playa+Las+Lajas+Chiriqui&output=embed'
+                    },
+                    {
+                        name: 'Playa La Barqueta',
+                        img: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200',
+                        description: 'Playa extensa cerca de David, ideal para caminatas. Tiempo estimado desde Tocumen: 6h-7h por carretera o vuelo a David + 40min.',
+                        map: 'https://www.google.com/maps?q=Playa+La+Barqueta+Chiriqui&output=embed'
+                    },
+                    {
+                        name: 'Isla Parida (Golfo de Chiriquí)',
+                        img: 'https://images.unsplash.com/photo-1526481280698-8fcc13fd938c?w=1200',
+                        description: 'Islas con aguas cristalinas, ideal para snorkel. Tiempo estimado desde Tocumen: vuelo a David + 1h carretera + 30-60min lancha.',
+                        map: 'https://www.google.com/maps?q=Isla+Parida+Chiriqui&output=embed'
+                    }
+                ]
+            },
+            {
+                name: 'Veraguas',
+                cover: 'https://images.unsplash.com/photo-1470214304380-aadaedcfffef?w=1200',
+                beaches: [
+                    {
+                        name: 'Santa Catalina',
+                        img: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200',
+                        description: 'Capital del surf en el Pacífico central y puerta de entrada a Coiba. Tiempo estimado desde Tocumen: 5h-6h por carretera.',
+                        map: 'https://www.google.com/maps?q=Santa+Catalina+Veraguas&output=embed'
+                    },
+                    {
+                        name: 'Playa Morrillo',
+                        img: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=1200',
+                        description: 'Olas poderosas y paisajes salvajes. Tiempo estimado desde Tocumen: 5h30-6h por carretera.',
+                        map: 'https://www.google.com/maps?q=Playa+Morrillo+Veraguas&output=embed'
+                    },
+                    {
+                        name: 'Isla Coiba (Granito de Oro)',
+                        img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200',
+                        description: 'Parque Nacional con biodiversidad única y aguas cristalinas. Tiempo estimado desde Tocumen: 5h carretera a Santa Catalina + 1-2h lancha.',
+                        map: 'https://www.google.com/maps?q=Isla+Coiba+Granito+de+Oro&output=embed'
+                    }
+                ]
+            },
+            {
+                name: 'Herrera',
+                cover: 'https://images.unsplash.com/photo-1526779259212-939e64788e3c?w=1200',
+                beaches: [
+                    {
+                        name: 'Playa El Agallito',
+                        img: 'https://images.unsplash.com/photo-1526481280698-8fcc13fd938c?w=1200',
+                        description: 'Santuario de aves y planicies intermareales en la Bahía de Parita. Tiempo estimado desde Tocumen: 4h-4h30 por carretera.',
+                        map: 'https://www.google.com/maps?q=Playa+El+Agallito+Chitre&output=embed'
+                    },
+                    {
+                        name: 'Boca Parita',
+                        img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200',
+                        description: 'Zona de manglares y costa tranquila, ideal para observar fauna. Tiempo estimado desde Tocumen: 4h-4h30 por carretera.',
+                        map: 'https://www.google.com/maps?q=Boca+Parita+Panama&output=embed'
+                    },
+                    {
+                        name: 'Playa Monagrillo',
+                        img: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200',
+                        description: 'Playas bajas y amplias cerca de Chitré. Tiempo estimado desde Tocumen: 4h por carretera.',
+                        map: 'https://www.google.com/maps?q=Playa+Monagrillo+Herrera&output=embed'
+                    }
+                ]
+            },
+            {
+                name: 'Darién',
+                cover: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=1200',
+                beaches: [
+                    {
+                        name: 'Jaqué',
+                        img: 'https://images.unsplash.com/photo-1470214304380-aadaedcfffef?w=1200',
+                        description: 'Comunidad costera con extensa playa frente al Pacífico. Tiempo estimado desde Tocumen: 1h-1h20 vuelo a Jaqué + traslados locales.',
+                        map: 'https://www.google.com/maps?q=Jaque+Darien+Panama&output=embed'
+                    },
+                    {
+                        name: 'La Palma',
+                        img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200',
+                        description: 'Capital de Darién a orillas del estuario; salida a playas cercanas. Tiempo estimado desde Tocumen: 5h-6h por carretera + tramos fluviales.',
+                        map: 'https://www.google.com/maps?q=La+Palma+Darien+Panama&output=embed'
+                    },
+                    {
+                        name: 'Garachiné',
+                        img: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200',
+                        description: 'Localidad costera con acceso a playas selváticas del Pacífico. Tiempo estimado desde Tocumen: vuelos regionales o 6h-8h combinados.',
+                        map: 'https://www.google.com/maps?q=Garachine+Darien+Panama&output=embed'
+                    }
+                ]
+            }
+        ];
+
+        function createProvinceSection(province) {
+            const section = document.createElement('section');
+            section.className = 'province-section';
+            section.innerHTML = `
+                <div class="province-header">
+                    <div class="province-cover"><img src="${province.cover}" alt="${province.name}"></div>
+                    <div>
+                        <h3 class="province-title">${province.name}</h3>
+                        <p class="province-subtitle">Tres playas imperdibles</p>
+                    </div>
+                </div>
+                <div class="province-tabs">
+                    <button class="tab-btn active" data-tab="desc">Descripción</button>
+                    <button class="tab-btn" data-tab="map">Mapa</button>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" data-pane="desc">
+                        <div class="cards-grid">
+                            ${province.beaches.map(b => `
+                                <div class="card-new" style="margin-bottom:0;">
+                                    <div class="card-image-new">
+                                        <img src="${b.img}" alt="${b.name}">
+                                        <div class="card-overlay"></div>
+                                        <div class="card-category"><i class="fas fa-umbrella-beach" style="color:#ff6b35;margin-right:0.3rem;"></i>Playa</div>
+                                    </div>
+                                    <div class="card-content-new">
+                                        <div class="card-header">
+                                            <div class="card-icon"><i class="fas fa-location-dot"></i></div>
+                                            <div>
+                                                <h3 class="card-title">${b.name}</h3>
+                                                <p class="card-subtitle">${province.name}</p>
+                                            </div>
+                                        </div>
+                                        <p class="card-description">${b.description}</p>
+                                        <span class="time-chip"><i class="fas fa-plane-departure" style="margin-right:6px;"></i>Tiempo desde Tocumen: Referencia incluida</span>
+                                        <button class="card-button quote-btn" data-province="${province.name}" data-beach="${b.name}">
+                                            <span>Cotizar viaje</span><i class="fas fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="tab-pane" data-pane="map">
+                        <iframe class="map-embed" src="${province.beaches[0].map}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            `;
+
+            // Tab handlers
+            const buttons = section.querySelectorAll('.tab-btn');
+            const panes = section.querySelectorAll('.tab-pane');
+            const iframe = section.querySelector('iframe');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    buttons.forEach(b => b.classList.remove('active'));
+                    panes.forEach(p => p.classList.remove('active'));
+                    btn.classList.add('active');
+                    const tab = btn.getAttribute('data-tab');
+                    section.querySelector(`[data-pane="${tab}"]`).classList.add('active');
+                    if (tab === 'map' && iframe && province.beaches[0]) {
+                        iframe.src = province.beaches[0].map;
+                    }
+                });
+            });
+
+            return section;
+        }
+
+        const provincesContainer = document.getElementById('provinces-container');
+        provinces.forEach(p => provincesContainer.appendChild(createProvinceSection(p)));
+
+        // ---------- Modal de cotización ----------
+        const modal = document.getElementById('quoteModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalTitle = document.getElementById('modalTitle');
+        const provinceField = document.getElementById('provinceField');
+        const beachField = document.getElementById('beachField');
+        const quoteForm = document.getElementById('quoteForm');
+
+        function openModal(province, beach) {
+            modalTitle.textContent = `Cotizar viaje: ${beach} — ${province}`;
+            provinceField.value = province;
+            beachField.value = beach;
+            modal.style.display = 'flex';
+        }
+        function closeModal() { modal.style.display = 'none'; }
+
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('.quote-btn');
+            if (btn) {
+                openModal(btn.dataset.province, btn.dataset.beach);
+            }
+        });
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+        quoteForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(quoteForm).entries());
+            console.log('Solicitud de cotización:', data);
+            alert('¡Solicitud enviada! Te contactaremos pronto por email.');
+            closeModal();
+            quoteForm.reset();
+        });
+
         // Filtros dinámicos
         const filterButtons = document.querySelectorAll('.filter-btn-new');
         const destinationCards = document.querySelectorAll('.card-new');
