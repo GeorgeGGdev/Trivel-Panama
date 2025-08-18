@@ -842,6 +842,10 @@
                 <i class="fas fa-sign-in-alt"></i>
                 Iniciar Sesión
             </button>
+            <button id="registerBtn" class="auth-btn register-btn">
+                <i class="fas fa-user-plus"></i>
+                <span>Registrarse</span>
+            </button>
         </div>
     </header>
 
@@ -1789,15 +1793,19 @@
         const loginBtn = document.getElementById('loginBtn');
         const registerBtn = document.getElementById('registerBtn');
         const authButtons = document.querySelector('.auth-buttons');
-        
+
         // Event listeners para los botones
-        loginBtn.addEventListener('click', function() {
-            window.location.href = 'pages/login.html';
-        });
-        
-        registerBtn.addEventListener('click', function() {
-            window.location.href = 'pages/register.html';
-        });
+        if (loginBtn) {
+            loginBtn.addEventListener('click', function() {
+                window.location.href = 'pages/login.html';
+            });
+        }
+
+        if (registerBtn) {
+            registerBtn.addEventListener('click', function() {
+                window.location.href = 'pages/register.html';
+            });
+        }
         
         // Verificar estado de autenticación
         firebase.auth().onAuthStateChanged(async function(user) {
@@ -1859,12 +1867,25 @@
                         <i class="fas fa-sign-in-alt"></i>
                         Iniciar Sesión
                     </button>
+                    <button id="registerBtn" class="auth-btn register-btn">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Registrarse</span>
+                    </button>
                 `;
-                
+
                 // Re-attach event listeners
-                document.getElementById('loginBtn').addEventListener('click', function() {
-                    window.location.href = 'pages/login.html';
-                });
+                const newLoginBtn = document.getElementById('loginBtn');
+                const newRegisterBtn = document.getElementById('registerBtn');
+                if (newLoginBtn) {
+                    newLoginBtn.addEventListener('click', function() {
+                        window.location.href = 'pages/login.html';
+                    });
+                }
+                if (newRegisterBtn) {
+                    newRegisterBtn.addEventListener('click', function() {
+                        window.location.href = 'pages/register.html';
+                    });
+                }
             }
         });
     });
