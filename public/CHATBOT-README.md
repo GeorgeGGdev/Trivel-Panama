@@ -55,7 +55,7 @@ Se ha implementado un chatbot inteligente con Hugging Face que aparece en todas 
 ## Configuración
 
 ### 🔑 Token de Hugging Face
-El chatbot utiliza el token: `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`
+El chatbot utiliza una variable de entorno para el token de Hugging Face. Configura `HUGGING_FACE_TOKEN` en tu entorno o reemplaza `YOUR_HUGGING_FACE_TOKEN_HERE` en el código.
 
 ### 🌐 API Endpoint
 - **Modelo**: `microsoft/DialoGPT-medium`

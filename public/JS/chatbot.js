@@ -2,8 +2,8 @@
 class TrivelChatbot {
     constructor() {
         this.isOpen = false;
-        this.token = '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';
-        this.apiUrl = 'https://api-inference.huggingface.co/models/microsoft/DialoGPT-medium';
+        this.token = window.CONFIG ? window.CONFIG.HUGGING_FACE_TOKEN : 'YOUR_HUGGING_FACE_TOKEN_HERE';
+        this.apiUrl = window.CONFIG ? window.CONFIG.HUGGING_FACE_API_URL : 'https://api-inference.huggingface.co/models/microsoft/DialoGPT-medium';
         this.conversationHistory = [];
         this.init();
     }
@@ -194,9 +194,9 @@ class TrivelChatbot {
                 body: JSON.stringify({
                     inputs: userMessage,
                     parameters: {
-                        max_length: 150,
-                        temperature: 0.7,
-                        do_sample: true
+                        max_length: window.CONFIG ? window.CONFIG.CHATBOT.maxLength : 150,
+                        temperature: window.CONFIG ? window.CONFIG.CHATBOT.temperature : 0.7,
+                        do_sample: window.CONFIG ? window.CONFIG.CHATBOT.doSample : true
                     }
                 })
             });
@@ -394,12 +394,25 @@ class TrivelChatbot {
     }
 }
 
-// Initialize chatbot when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
+// Initialize chatbot when DOM is loaded and environment variables are ready
+function initializeChatbot() {
     window.trivelChatbot = new TrivelChatbot();
     
     // Start notification timer
     setTimeout(() => {
         window.trivelChatbot.startNotificationTimer();
     }, 30000);
+}
+
+// Esperar a que las variables de entorno se carguen
+document.addEventListener('DOMContentLoaded', function() {
+    // Si las variables ya están cargadas, inicializar inmediatamente
+    if (window.CONFIG && window.CONFIG.HUGGING_FACE_TOKEN) {
+        initializeChatbot();
+    } else {
+        // Esperar a que se carguen las variables de entorno
+        window.addEventListener('envLoaded', function() {
+            initializeChatbot();
+        });
+    }
 }); 
