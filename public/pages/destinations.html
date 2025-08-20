@@ -1242,6 +1242,9 @@
                                 <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>Enviar solicitud
                             </button>
                         </div>
+                        <div id="quoteFormError" style="display:none; color:#e74c3c; font-size:0.9rem; margin-top:1rem; text-align:center; background:rgba(231,76,60,0.1); padding:0.8rem; border-radius:8px; border:1px solid rgba(231,76,60,0.2);">
+                            <i class="fas fa-exclamation-triangle"></i> Por favor, completa todos los campos requeridos
+                        </div>
                     </form>
                 </div>
             </div>
@@ -1893,6 +1896,89 @@
     });
     
     
+    </script>
+
+    <!-- Validación del formulario de cotización -->
+    <script>
+    document.getElementById('quoteForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const startDateInput = document.getElementById('startDate');
+        const durationInput = document.getElementById('duration');
+        const travelersInput = document.getElementById('travelers');
+        const contactInput = document.getElementById('contact');
+        const quoteFormError = document.getElementById('quoteFormError');
+        
+        let hasError = false;
+        
+        // Limpiar estilos previos
+        startDateInput.style.borderColor = '';
+        durationInput.style.borderColor = '';
+        travelersInput.style.borderColor = '';
+        contactInput.style.borderColor = '';
+        
+        // Validar fecha de viaje
+        if (!startDateInput.value) {
+            startDateInput.style.borderColor = '#e74c3c';
+            hasError = true;
+        }
+        
+        // Validar duración
+        if (!durationInput.value || durationInput.value < 1 || durationInput.value > 60) {
+            durationInput.style.borderColor = '#e74c3c';
+            hasError = true;
+        }
+        
+        // Validar número de viajeros
+        if (!travelersInput.value || travelersInput.value < 1 || travelersInput.value > 20) {
+            travelersInput.style.borderColor = '#e74c3c';
+            hasError = true;
+        }
+        
+        // Validar email
+        if (!contactInput.value.trim()) {
+            contactInput.style.borderColor = '#e74c3c';
+            hasError = true;
+        } else if (!isValidEmail(contactInput.value)) {
+            contactInput.style.borderColor = '#e74c3c';
+            quoteFormError.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Por favor, ingresa un email válido';
+            hasError = true;
+        }
+        
+        if (hasError) {
+            quoteFormError.style.display = 'block';
+            
+            // Ocultar el mensaje de error después de 3 segundos
+            setTimeout(() => {
+                quoteFormError.style.display = 'none';
+                startDateInput.style.borderColor = '';
+                durationInput.style.borderColor = '';
+                travelersInput.style.borderColor = '';
+                contactInput.style.borderColor = '';
+            }, 3000);
+        } else {
+            quoteFormError.style.display = 'none';
+            // Aquí puedes agregar la lógica de envío del formulario
+            alert('¡Gracias por tu solicitud de cotización! Te contactaremos pronto.');
+            this.reset();
+            // Cerrar el modal
+            document.getElementById('quoteModal').style.display = 'none';
+        }
+    });
+    
+    // Función para validar email
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+    
+    // Limpiar errores cuando el usuario empiece a escribir
+    document.getElementById('quoteForm').addEventListener('input', function(e) {
+        const quoteFormError = document.getElementById('quoteFormError');
+        if (quoteFormError.style.display === 'block') {
+            quoteFormError.style.display = 'none';
+            e.target.style.borderColor = '';
+        }
+    });
     </script>
 </body>
 </html>
