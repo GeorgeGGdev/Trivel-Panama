@@ -527,10 +527,12 @@
                         <label for="type-filter">Tipo de Propiedad</label>
                         <select id="type-filter">
                             <option value="">Todos los tipos</option>
-                            <option value="Casa">Casa</option>
-                            <option value="Apartamento">Apartamento</option>
-                            <option value="Villa">Villa</option>
-                            <option value="Cabaña">Cabaña</option>
+                            <option value="casa">Casa</option>
+                            <option value="apartamento">Apartamento</option>
+                            <option value="villa">Villa</option>
+                            <option value="cabaña">Cabaña</option>
+                            <option value="hostal">Hostal</option>
+                            <option value="hotel">Hotel</option>
                         </select>
                     </div>
                     <div class="filter-group">
@@ -553,6 +555,7 @@
                              <i class="fas fa-times"></i> Limpiar Filtros
                          </button>
                      </div>
+
                 </div>
             </div>
 
@@ -648,6 +651,8 @@
                 const propertiesContainer = document.getElementById('properties-container');
                 const loadingState = document.getElementById('loading-state');
                 
+                console.log('Properties snapshot size:', propertiesSnapshot.size);
+                
                 if (propertiesSnapshot.empty) {
                     propertiesContainer.innerHTML = `
                         <div class="empty-content">
@@ -663,11 +668,41 @@
                 // Store all properties globally
                 allProperties = [];
                 propertiesSnapshot.forEach(doc => {
-                    allProperties.push({
+                    const propertyData = {
                         id: doc.id,
                         ...doc.data()
+                    };
+                    
+                    // Normalize data to ensure consistency
+                    if (propertyData.propertyType) {
+                        propertyData.propertyType = propertyData.propertyType.toLowerCase().trim();
+                    }
+                    if (propertyData.location) {
+                        propertyData.location = propertyData.location.trim();
+                    }
+                    if (propertyData.price) {
+                        propertyData.price = parseFloat(propertyData.price) || 0;
+                    }
+                    if (propertyData.capacity) {
+                        propertyData.capacity = parseInt(propertyData.capacity) || 0;
+                    }
+                    
+                    console.log('Loaded property:', propertyData.propertyName, {
+                        type: propertyData.propertyType,
+                        location: propertyData.location,
+                        price: propertyData.price,
+                        capacity: propertyData.capacity
                     });
+                    
+                    allProperties.push(propertyData);
                 });
+
+                console.log('Total properties loaded:', allProperties.length);
+                console.log('All properties:', allProperties.map(p => ({
+                    name: p.propertyName,
+                    type: p.propertyType,
+                    location: p.location
+                })));
 
                 // Display all properties initially
                 displayProperties(allProperties);
@@ -773,30 +808,50 @@
 
         // Filter properties
         function filterProperties() {
-            const locationFilter = document.getElementById('location-filter').value;
-            const typeFilter = document.getElementById('type-filter').value;
-            const priceFilter = document.getElementById('price-filter').value;
-            const guestsFilter = document.getElementById('guests-filter').value;
+            const locationFilter = document.getElementById('location-filter').value.trim();
+            const typeFilter = document.getElementById('type-filter').value.trim();
+            const priceFilter = document.getElementById('price-filter').value.trim();
+            const guestsFilter = document.getElementById('guests-filter').value.trim();
 
             console.log('Filtering with:', { locationFilter, typeFilter, priceFilter, guestsFilter });
+            console.log('Total properties to filter:', allProperties.length);
 
             let filteredProperties = allProperties.filter(property => {
-                // Location filter
-                if (locationFilter && property.location !== locationFilter) {
-                    console.log('Filtered out by location:', property.propertyName, property.location, '!==', locationFilter);
-                    return false;
+                console.log('Checking property:', property.propertyName, {
+                    location: property.location,
+                    propertyType: property.propertyType,
+                    price: property.price,
+                    capacity: property.capacity
+                });
+
+                // Location filter - case insensitive comparison
+                if (locationFilter && property.location) {
+                    const propertyLocation = property.location.toLowerCase().trim();
+                    const filterLocation = locationFilter.toLowerCase().trim();
+                    if (propertyLocation !== filterLocation) {
+                        console.log('Filtered out by location:', property.propertyName, propertyLocation, '!==', filterLocation);
+                        return false;
+                    }
                 }
 
-                // Property type filter
-                if (typeFilter && property.propertyType !== typeFilter) {
-                    console.log('Filtered out by type:', property.propertyName, property.propertyType, '!==', typeFilter);
-                    return false;
+                // Property type filter - case insensitive comparison
+                if (typeFilter && property.propertyType) {
+                    const propertyType = property.propertyType.toLowerCase().trim();
+                    const filterType = typeFilter.toLowerCase().trim();
+                    if (propertyType !== filterType) {
+                        console.log('Filtered out by type:', property.propertyName, propertyType, '!==', filterType);
+                        return false;
+                    }
                 }
 
                 // Price filter
                 if (priceFilter && property.price) {
                     const maxPrice = parseFloat(priceFilter);
                     const propertyPrice = parseFloat(property.price);
+                    if (isNaN(maxPrice) || isNaN(propertyPrice)) {
+                        console.log('Invalid price values:', { maxPrice, propertyPrice });
+                        return false;
+                    }
                     if (propertyPrice > maxPrice) {
                         console.log('Filtered out by price:', property.propertyName, propertyPrice, '>', maxPrice);
                         return false;
@@ -806,6 +861,11 @@
                 // Guests filter
                 if (guestsFilter && property.capacity) {
                     const capacity = parseInt(property.capacity);
+                    if (isNaN(capacity)) {
+                        console.log('Invalid capacity value:', property.capacity);
+                        return false;
+                    }
+                    
                     let passesGuestFilter = false;
                     
                     switch (guestsFilter) {
@@ -904,6 +964,7 @@
             if (guestsFilter) guestsFilter.value = '';
             
             console.log('All filters cleared, showing all properties');
+            console.log('Total properties to show:', allProperties.length);
             
             // Display all properties
             displayProperties(allProperties);
