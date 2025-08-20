@@ -56,17 +56,26 @@ class EnvLoader {
     setupWindowVars() {
         // Configurar variables globales
         window.HUGGING_FACE_TOKEN = this.get('HUGGING_FACE_TOKEN');
+        window.HUGGING_FACE_API_URL = this.get('HUGGING_FACE_API_URL');
+        window.HUGGING_FACE_MODEL = this.get('HUGGING_FACE_MODEL');
         
         // Configurar objeto CONFIG global
         window.CONFIG = {
             HUGGING_FACE_TOKEN: this.get('HUGGING_FACE_TOKEN'),
-            HUGGING_FACE_API_URL: 'https://api-inference.huggingface.co/models/microsoft/DialoGPT-medium',
+            HUGGING_FACE_API_URL: this.get('HUGGING_FACE_API_URL') || 'https://api-inference.huggingface.co/models/microsoft/DialoGPT-medium',
+            HUGGING_FACE_MODEL: this.get('HUGGING_FACE_MODEL') || 'microsoft/DialoGPT-medium',
             CHATBOT: {
-                maxLength: 150,
-                temperature: 0.7,
-                doSample: true
+                maxLength: parseInt(this.get('CHATBOT_MAX_LENGTH')) || 150,
+                temperature: parseFloat(this.get('CHATBOT_TEMPERATURE')) || 0.7,
+                doSample: this.get('CHATBOT_DO_SAMPLE') === 'true' || true
             }
         };
+
+        // Log de configuración (sin mostrar el token por seguridad)
+        console.log('Configuración cargada:', {
+            ...window.CONFIG,
+            HUGGING_FACE_TOKEN: window.CONFIG.HUGGING_FACE_TOKEN ? '***CONFIGURADO***' : 'NO CONFIGURADO'
+        });
     }
 }
 

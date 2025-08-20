@@ -2,8 +2,10 @@
 class TrivelChatbot {
     constructor() {
         this.isOpen = false;
-        this.token = window.CONFIG ? window.CONFIG.HUGGING_FACE_TOKEN : 'YOUR_HUGGING_FACE_TOKEN_HERE';
-        this.apiUrl = window.CONFIG ? window.CONFIG.HUGGING_FACE_API_URL : 'https://api-inference.huggingface.co/models/microsoft/DialoGPT-medium';
+        // Usar variables de entorno cargadas por env-loader.js
+        this.token = window.HUGGING_FACE_TOKEN || window.CONFIG?.HUGGING_FACE_TOKEN || 'YOUR_HUGGING_FACE_TOKEN_HERE';
+        this.apiUrl = window.CONFIG?.HUGGING_FACE_API_URL || 'https://api-inference.huggingface.co/models/microsoft/DialoGPT-medium';
+        this.modelName = window.CONFIG?.HUGGING_FACE_MODEL || 'microsoft/DialoGPT-medium';
         this.conversationHistory = [];
         this.init();
     }
@@ -185,6 +187,12 @@ class TrivelChatbot {
 
         // Use Hugging Face API for general responses
         try {
+            // Verificar que tenemos el token antes de hacer la llamada
+            if (!this.token || this.token === 'YOUR_HUGGING_FACE_TOKEN_HERE') {
+                console.warn('Hugging Face token no configurado. Usando respuesta de fallback.');
+                return this.getFallbackResponse(userMessage);
+            }
+
             const response = await fetch(this.apiUrl, {
                 method: 'POST',
                 headers: {
@@ -194,15 +202,15 @@ class TrivelChatbot {
                 body: JSON.stringify({
                     inputs: userMessage,
                     parameters: {
-                        max_length: window.CONFIG ? window.CONFIG.CHATBOT.maxLength : 150,
-                        temperature: window.CONFIG ? window.CONFIG.CHATBOT.temperature : 0.7,
-                        do_sample: window.CONFIG ? window.CONFIG.CHATBOT.doSample : true
+                        max_length: window.CONFIG?.CHATBOT?.maxLength || 150,
+                        temperature: window.CONFIG?.CHATBOT?.temperature || 0.7,
+                        do_sample: window.CONFIG?.CHATBOT?.doSample || true
                     }
                 })
             });
 
             if (!response.ok) {
-                throw new Error('API request failed');
+                throw new Error(`API request failed: ${response.status} ${response.statusText}`);
             }
 
             const data = await response.json();

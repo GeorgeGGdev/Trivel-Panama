@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Configuración de Variables de Entorno</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .warning { background-color: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test de Configuración de Variables de Entorno</h1>
+        
+        <div class="test-section">
+            <h2>📋 Estado de Carga</h2>
+            <div id="load-status" class="status info">Cargando variables de entorno...</div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔧 Configuración Detectada</h2>
+            <div id="config-display">
+                <div class="status info">Esperando carga de configuración...</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🤖 Test del Chatbot</h2>
+            <div id="chatbot-test">
+                <div class="status info">Inicializando chatbot...</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>📝 Logs de Consola</h2>
+            <div id="console-logs">
+                <div class="status info">Los logs aparecerán aquí...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="public/JS/env-loader.js"></script>
+    <script src="public/JS/chatbot.js"></script>
+    
+    <script>
+        // Función para actualizar el estado
+        function updateStatus(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            element.className = `status ${type}`;
+            element.textContent = message;
+        }
+
+        // Función para mostrar configuración
+        function displayConfig() {
+            const configDisplay = document.getElementById('config-display');
+            const config = window.CONFIG || {};
+            
+            const configInfo = {
+                'Token de Hugging Face': config.HUGGING_FACE_TOKEN ? '✅ Configurado' : '❌ No configurado',
+                'URL de API': config.HUGGING_FACE_API_URL || '🔧 Usando valor por defecto',
+                'Modelo': config.HUGGING_FACE_MODEL || '🔧 Usando valor por defecto',
+                'Max Length': config.CHATBOT?.maxLength || '🔧 Usando valor por defecto',
+                'Temperature': config.CHATBOT?.temperature || '🔧 Usando valor por defecto',
+                'Do Sample': config.CHATBOT?.doSample || '🔧 Usando valor por defecto'
+            };
+
+            let html = '<pre>';
+            for (const [key, value] of Object.entries(configInfo)) {
+                html += `${key}: ${value}\n`;
+            }
+            html += '</pre>';
+            
+            configDisplay.innerHTML = html;
+        }
+
+        // Función para testear el chatbot
+        function testChatbot() {
+            const chatbotTest = document.getElementById('chatbot-test');
+            
+            if (window.trivelChatbot) {
+                const token = window.trivelChatbot.token;
+                const apiUrl = window.trivelChatbot.apiUrl;
+                
+                if (token && token !== 'YOUR_HUGGING_FACE_TOKEN_HERE') {
+                    updateStatus('chatbot-test', '✅ Chatbot inicializado correctamente con token válido', 'success');
+                } else {
+                    updateStatus('chatbot-test', '⚠️ Chatbot inicializado pero sin token válido - usará respuestas de fallback', 'warning');
+                }
+            } else {
+                updateStatus('chatbot-test', '❌ Error: Chatbot no se inicializó correctamente', 'error');
+            }
+        }
+
+        // Capturar logs de consola
+        const originalLog = console.log;
+        const originalWarn = console.warn;
+        const originalError = console.error;
+        
+        function captureLogs() {
+            const logsDiv = document.getElementById('console-logs');
+            let logs = '';
+            
+            console.log = function(...args) {
+                logs += `[LOG] ${args.join(' ')}\n`;
+                originalLog.apply(console, args);
+            };
+            
+            console.warn = function(...args) {
+                logs += `[WARN] ${args.join(' ')}\n`;
+                originalWarn.apply(console, args);
+            };
+            
+            console.error = function(...args) {
+                logs += `[ERROR] ${args.join(' ')}\n`;
+                originalError.apply(console, args);
+            };
+            
+            // Actualizar logs cada 2 segundos
+            setInterval(() => {
+                if (logs) {
+                    logsDiv.innerHTML = `<pre>${logs}</pre>`;
+                }
+            }, 2000);
+        }
+
+        // Inicializar test
+        document.addEventListener('DOMContentLoaded', function() {
+            captureLogs();
+            
+            // Esperar a que se carguen las variables de entorno
+            if (window.CONFIG && window.CONFIG.HUGGING_FACE_TOKEN) {
+                updateStatus('load-status', '✅ Variables de entorno cargadas correctamente', 'success');
+                displayConfig();
+                setTimeout(testChatbot, 1000);
+            } else {
+                window.addEventListener('envLoaded', function() {
+                    updateStatus('load-status', '✅ Variables de entorno cargadas correctamente', 'success');
+                    displayConfig();
+                    setTimeout(testChatbot, 1000);
+                });
+                
+                // Timeout después de 5 segundos
+                setTimeout(() => {
+                    if (!window.CONFIG) {
+                        updateStatus('load-status', '❌ Error: No se pudieron cargar las variables de entorno', 'error');
+                        displayConfig();
+                        testChatbot();
+                    }
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+</html>
