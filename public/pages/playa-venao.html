@@ -266,6 +266,67 @@
             font-weight: 600;
         }
         
+        /* Estilos para el botón Ver en Maps */
+        .view-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(45deg, #ff6b35, #fd7e14);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(255, 107, 53, 0.3);
+            margin-top: 0.8rem;
+        }
+        
+        .view-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .view-btn:hover::before {
+            left: 100%;
+        }
+        
+        .view-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(255, 107, 53, 0.4);
+            background: linear-gradient(45deg, #e55a2b, #e55a2b);
+        }
+        
+        .view-btn:active {
+            transform: translateY(-1px) scale(1.01);
+        }
+        
+        /* Animación de pulso para el botón */
+        @keyframes viewPulse {
+            0% { box-shadow: 0 6px 15px rgba(255, 107, 53, 0.3); }
+            50% { box-shadow: 0 6px 15px rgba(255, 107, 53, 0.5), 0 0 0 8px rgba(255, 107, 53, 0.1); }
+            100% { box-shadow: 0 6px 15px rgba(255, 107, 53, 0.3); }
+        }
+        
+        .view-btn {
+            animation: viewPulse 2s infinite;
+        }
+        
+        .view-btn:hover {
+            animation: none;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .hero-title {
@@ -353,6 +414,10 @@
                             <h3>El Breakpoint</h3>
                             <p>Cocina del Pacífico y bar de surf con ambiente relajado</p>
                             <span class="distance">A 150m</span>
+                            <a href="https://www.google.com/maps/search/El+Breakpoint+Playa+Venao" target="_blank" class="view-btn">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>Ver en Maps</span>
+                            </a>
                         </div>
                     </div>
                     <div class="nearby-item">
@@ -361,6 +426,10 @@
                             <h3>Sunset Beach</h3>
                             <p>Cocina internacional y vista espectacular al mar</p>
                             <span class="distance">A 300m</span>
+                            <a href="https://www.google.com/maps/search/Sunset+Beach+Playa+Venao" target="_blank" class="view-btn">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>Ver en Maps</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -375,6 +444,10 @@
                             <h3>Venao Surf Resort</h3>
                             <p>4 estrellas | Playa privada | Escuela de surf</p>
                             <span class="distance">A 350m</span>
+                            <a href="https://www.google.com/maps/search/Venao+Surf+Resort+Playa+Venao" target="_blank" class="view-btn">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>Ver en Maps</span>
+                            </a>
                         </div>
                     </div>
                     <div class="nearby-item">
@@ -383,6 +456,10 @@
                             <h3>Beach Break Lodge</h3>
                             <p>3 estrellas | Vista al mar | Piscina</p>
                             <span class="distance">A 450m</span>
+                            <a href="https://www.google.com/maps/search/Beach+Break+Lodge+Playa+Venao" target="_blank" class="view-btn">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>Ver en Maps</span>
+                            </a>
                         </div>
                     </div>
                 </div>

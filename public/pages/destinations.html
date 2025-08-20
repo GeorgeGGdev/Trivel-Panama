@@ -740,6 +740,22 @@
             .cta-section {
                 padding: 2rem 1.5rem;
             }
+            
+            /* Responsive para botones de Google Maps */
+            .google-maps-btn {
+                font-size: 0.9rem !important;
+                padding: 0.8rem 1.5rem !important;
+            }
+            
+            .province-tabs {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                text-align: center;
+            }
         }
 
         /* Provincias: estilos de secciones y pestañas */
@@ -800,6 +816,39 @@
             border-color: #ff6b35;
             transform: translateY(-2px);
             box-shadow: 0 10px 24px rgba(255,107,53,0.3);
+        }
+        
+        /* Estilos especiales para el botón de mapa */
+        .tab-btn[data-tab^="map-"] {
+            background: linear-gradient(45deg, #ff6b35, #fd7e14);
+            color: white;
+            border-color: #ff6b35;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tab-btn[data-tab^="map-"]::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .tab-btn[data-tab^="map-"]:hover::before {
+            left: 100%;
+        }
+        
+        .tab-btn[data-tab^="map-"].active, 
+        .tab-btn[data-tab^="map-"]:hover {
+            background: linear-gradient(45deg, #e55a2b, #e55a2b);
+            color: white;
+            border-color: #e55a2b;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 12px 28px rgba(255, 107, 53, 0.4);
         }
         .tab-content { margin-bottom: 1.5rem; }
         .tab-pane { display: none; }
@@ -880,6 +929,52 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
         .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(255,107,53,0.35); }
+        
+        /* Estilos para el botón de Google Maps */
+        .google-maps-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .google-maps-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .google-maps-btn:hover::before {
+            left: 100%;
+        }
+        
+        .google-maps-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
+            background: linear-gradient(45deg, #e55a2b, #e55a2b) !important;
+        }
+        
+        .google-maps-btn:active {
+            transform: translateY(-1px) scale(1.01);
+        }
+        
+        /* Animación de pulso para el botón de Google Maps */
+        @keyframes googlePulse {
+            0% { box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3); }
+            50% { box-shadow: 0 8px 20px rgba(255, 107, 53, 0.5), 0 0 0 10px rgba(255, 107, 53, 0.1); }
+            100% { box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3); }
+        }
+        
+        .google-maps-btn {
+            animation: googlePulse 2s infinite;
+        }
+        
+        .google-maps-btn:hover {
+            animation: none;
+        }
     </style>
 </head>
 <body>
@@ -1242,6 +1337,9 @@
                             <button type="submit" class="submit-btn">
                                 <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>Enviar solicitud
                             </button>
+                        </div>
+                        <div id="quoteFormError" style="display:none; color:#e74c3c; font-size:0.9rem; margin-top:1rem; text-align:center; background:rgba(231,76,60,0.1); padding:0.8rem; border-radius:8px; border:1px solid rgba(231,76,60,0.2);">
+                            <i class="fas fa-exclamation-triangle"></i> Por favor, completa todos los campos requeridos
                         </div>
                     </form>
                 </div>
@@ -1697,18 +1795,32 @@
                                 </div>
                                 <div class="province-tabs" style="margin-top:0.5rem;">
                                     <button class="tab-btn active" data-tab="desc-${idx}">Descripción</button>
-                                    <button class="tab-btn" data-tab="map-${idx}">Mapa</button>
+                                    <button class="tab-btn" data-tab="map-${idx}">
+                                        <i class="fas fa-map-marked-alt" style="margin-right: 0.3rem;"></i>Mapa
+                                    </button>
                                 </div>
                                 <div class="tab-content">
                                     <div class="tab-pane active" data-pane="desc-${idx}">
                                         <p class="card-description" style="margin-top:0.25rem;">${b.description}</p>
                                         <span class="time-chip"><i class="fas fa-plane-departure" style="margin-right:6px;"></i>${b.time}</span>
-                                        <button class="card-button quote-btn" data-province="${province.name}" data-beach="${b.name}" style="margin-top:1rem;">
-                                            <span>Cotizar viaje</span><i class="fas fa-arrow-right"></i>
-                                        </button>
+                                        <div style="display: flex; gap: 0.8rem; margin-top: 1rem; flex-wrap: wrap;">
+                                            <button class="card-button quote-btn" data-province="${province.name}" data-beach="${b.name}" style="flex: 1; min-width: 140px;">
+                                                <span>Cotizar viaje</span><i class="fas fa-arrow-right"></i>
+                                            </button>
+                                                                                         <a href="${b.map.replace('&output=embed', '')}" target="_blank" class="google-maps-btn" style="flex: 1; min-width: 140px; background: linear-gradient(45deg, #ff6b35, #fd7e14); color: white; border: none; padding: 1.2rem; border-radius: 15px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; align-items: center; justify-content: center; gap: 0.8rem; text-decoration: none; position: relative; overflow: hidden; box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);">
+                                                 <span>Ver en Google Maps</span>
+                                                 <i class="fas fa-map-marked-alt"></i>
+                                             </a>
+                                        </div>
                                     </div>
                                     <div class="tab-pane" data-pane="map-${idx}">
                                         <iframe class="map-embed" src="${b.map}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                        <div style="text-align: center; margin-top: 1rem;">
+                                                                                         <a href="${b.map.replace('&output=embed', '')}" target="_blank" class="google-maps-btn" style="display: inline-flex; align-items: center; gap: 0.8rem; background: linear-gradient(45deg, #ff6b35, #fd7e14); color: white; border: none; padding: 1rem 2rem; border-radius: 15px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-decoration: none; position: relative; overflow: hidden; box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);">
+                                                 <span>Abrir en Google Maps</span>
+                                                 <i class="fas fa-map-marked-alt"></i>
+                                             </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1895,10 +2007,96 @@
     
     
     </script>
+<<<<<<< HEAD
     
     <!-- Cargador de variables de entorno -->
     <script src="../JS/env-loader.js"></script>
     <!-- Chatbot Script -->
     <script src="../JS/chatbot.js"></script>
+=======
+
+    <!-- Validación del formulario de cotización -->
+    <script>
+    document.getElementById('quoteForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const startDateInput = document.getElementById('startDate');
+        const durationInput = document.getElementById('duration');
+        const travelersInput = document.getElementById('travelers');
+        const contactInput = document.getElementById('contact');
+        const quoteFormError = document.getElementById('quoteFormError');
+        
+        let hasError = false;
+        
+        // Limpiar estilos previos
+        startDateInput.style.borderColor = '';
+        durationInput.style.borderColor = '';
+        travelersInput.style.borderColor = '';
+        contactInput.style.borderColor = '';
+        
+        // Validar fecha de viaje
+        if (!startDateInput.value) {
+            startDateInput.style.borderColor = '#e74c3c';
+            hasError = true;
+        }
+        
+        // Validar duración
+        if (!durationInput.value || durationInput.value < 1 || durationInput.value > 60) {
+            durationInput.style.borderColor = '#e74c3c';
+            hasError = true;
+        }
+        
+        // Validar número de viajeros
+        if (!travelersInput.value || travelersInput.value < 1 || travelersInput.value > 20) {
+            travelersInput.style.borderColor = '#e74c3c';
+            hasError = true;
+        }
+        
+        // Validar email
+        if (!contactInput.value.trim()) {
+            contactInput.style.borderColor = '#e74c3c';
+            hasError = true;
+        } else if (!isValidEmail(contactInput.value)) {
+            contactInput.style.borderColor = '#e74c3c';
+            quoteFormError.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Por favor, ingresa un email válido';
+            hasError = true;
+        }
+        
+        if (hasError) {
+            quoteFormError.style.display = 'block';
+            
+            // Ocultar el mensaje de error después de 3 segundos
+            setTimeout(() => {
+                quoteFormError.style.display = 'none';
+                startDateInput.style.borderColor = '';
+                durationInput.style.borderColor = '';
+                travelersInput.style.borderColor = '';
+                contactInput.style.borderColor = '';
+            }, 3000);
+        } else {
+            quoteFormError.style.display = 'none';
+            // Aquí puedes agregar la lógica de envío del formulario
+            alert('¡Gracias por tu solicitud de cotización! Te contactaremos pronto.');
+            this.reset();
+            // Cerrar el modal
+            document.getElementById('quoteModal').style.display = 'none';
+        }
+    });
+    
+    // Función para validar email
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+    
+    // Limpiar errores cuando el usuario empiece a escribir
+    document.getElementById('quoteForm').addEventListener('input', function(e) {
+        const quoteFormError = document.getElementById('quoteFormError');
+        if (quoteFormError.style.display === 'block') {
+            quoteFormError.style.display = 'none';
+            e.target.style.borderColor = '';
+        }
+    });
+    </script>
+>>>>>>> 661b4070d0c45502106f8b3b912222bd852b929f
 </body>
 </html>

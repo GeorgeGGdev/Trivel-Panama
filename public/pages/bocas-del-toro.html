@@ -370,6 +370,67 @@
             font-weight: 600;
         }
         
+        /* Estilos para el botón Ver en Maps */
+        .view-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(45deg, #ff6b35, #fd7e14);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(255, 107, 53, 0.3);
+            margin-top: 0.8rem;
+        }
+        
+        .view-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .view-btn:hover::before {
+            left: 100%;
+        }
+        
+        .view-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(255, 107, 53, 0.4);
+            background: linear-gradient(45deg, #e55a2b, #e55a2b);
+        }
+        
+        .view-btn:active {
+            transform: translateY(-1px) scale(1.01);
+        }
+        
+        /* Animación de pulso para el botón */
+        @keyframes viewPulse {
+            0% { box-shadow: 0 6px 15px rgba(255, 107, 53, 0.3); }
+            50% { box-shadow: 0 6px 15px rgba(255, 107, 53, 0.5), 0 0 0 8px rgba(255, 107, 53, 0.1); }
+            100% { box-shadow: 0 6px 15px rgba(255, 107, 53, 0.3); }
+        }
+        
+        .view-btn {
+            animation: viewPulse 2s infinite;
+        }
+        
+        .view-btn:hover {
+            animation: none;
+        }
+        
         .activities-section {
             background: white;
             border-radius: 25px;
@@ -544,6 +605,10 @@
                             <h3>El Fogón del Mar</h3>
                             <p>Mariscos frescos y cocina caribeña auténtica</p>
                             <span class="distance">A 200m</span>
+                            <a href="https://www.google.com/maps/search/El+Fogón+del+Mar+Bocas+del+Toro" target="_blank" class="view-btn">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>Ver en Maps</span>
+                            </a>
                         </div>
                     </div>
                     <div class="nearby-item">
@@ -552,6 +617,10 @@
                             <h3>La Terraza del Caribe</h3>
                             <p>Cocina internacional con vista al mar</p>
                             <span class="distance">A 350m</span>
+                            <a href="https://www.google.com/maps/search/La+Terraza+del+Caribe+Bocas+del+Toro" target="_blank" class="view-btn">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>Ver en Maps</span>
+                            </a>
                         </div>
                     </div>
                     <div class="nearby-item">
@@ -560,6 +629,10 @@
                             <h3>Sabor del Mar</h3>
                             <p>Cocina fusión caribeña y panameña</p>
                             <span class="distance">A 400m</span>
+                            <a href="https://www.google.com/maps/search/Sabor+del+Mar+Bocas+del+Toro" target="_blank" class="view-btn">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>Ver en Maps</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -574,6 +647,10 @@
                             <h3>Paradise Beach Resort</h3>
                             <p>5 estrellas | Playa privada | Spa | WiFi gratis</p>
                             <span class="distance">A 500m</span>
+                            <a href="https://www.google.com/maps/search/Paradise+Beach+Resort+Bocas+del+Toro" target="_blank" class="view-btn">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>Ver en Maps</span>
+                            </a>
                         </div>
                     </div>
                     <div class="nearby-item">
@@ -582,6 +659,10 @@
                             <h3>Caribbean Lodge</h3>
                             <p>4 estrellas | Vista al mar | Restaurante | Bar</p>
                             <span class="distance">A 800m</span>
+                            <a href="https://www.google.com/maps/search/Caribbean+Lodge+Bocas+del+Toro" target="_blank" class="view-btn">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>Ver en Maps</span>
+                            </a>
                         </div>
                     </div>
                     <div class="nearby-item">
@@ -590,6 +671,10 @@
                             <h3>Bocas Hostel</h3>
                             <p>Hostel | Ambiente joven | Cocina compartida | WiFi</p>
                             <span class="distance">A 1.2km</span>
+                            <a href="https://www.google.com/maps/search/Bocas+Hostel+Bocas+del+Toro" target="_blank" class="view-btn">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>Ver en Maps</span>
+                            </a>
                         </div>
                     </div>
                 </div>
