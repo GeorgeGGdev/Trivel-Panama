@@ -99,28 +99,9 @@ body {
     color: var(--primary-color);
 }
 
-.nav-menu a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
-    transition: var(--transition);
-    position: relative;
-}
+/* Estilos de navegación heredados del archivo principal */
 
-.nav-menu a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--solid-orange);
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-.nav-menu a:hover::after {
-    width: 100%;
-}
 
 .auth-btn {
     background: var(--solid-orange);
@@ -141,7 +122,7 @@ body {
 
 /* Hero Section */
 .hero-section {
-    background: url('https://elblogdelviajero.com/wp-content/uploads/2021/03/ccimage-shutterstock_216642919.jpg') no-repeat center center;
+    background: url('https://mokumsurfclub.com/wp-content/uploads/2019/05/playa_estrellas_bocas_del_toro_panama-scaled.jpg') no-repeat center center;
     background-size: cover;
     color: white;
     padding: 8rem 5% 4rem;
@@ -162,7 +143,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('../assets/img/background-pattern.png');
+    background: url('https://mokumsurfclub.com/wp-content/uploads/2019/05/playa_estrellas_bocas_del_toro_panama-scaled.jpg');
     opacity: 0.1;
     z-index: -1;
 }
@@ -556,28 +537,7 @@ body {
     gap: 2rem;
 }
 
-.nav-menu a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
-    transition: var(--transition);
-    position: relative;
-}
-
-.nav-menu a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent-color);
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.nav-menu a:hover::after {
-    width: 100%;
-}
+/* Estilos de navegación heredados del archivo principal */
 
 .auth-btn {
     background: var(--solid-orange);

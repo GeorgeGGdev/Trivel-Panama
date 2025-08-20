@@ -1,10 +1,24 @@
-$content = Get-Content -Path 'destinations.html' -Raw
+# Script para actualizar enlaces incorrectos en los footers
+# Reemplaza "carrusel.html" con "marketplace.html" en todas las páginas
 
-# Actualizar enlaces para Bocas del Toro
-$content = $content -replace '(?s)(<div class="card-content">.*?Bocas del Toro.*?<div class="card-footer">.*?)(<a href="playa-venao.html" class="learn-more">more information</a>)(.*?)(</div>.*?</div>)', '$1<a href="bocas-del-toro.html" class="learn-more">more information</a>$3$4'
+$files = @(
+    "bocas-del-toro.html",
+    "san-blas.html", 
+    "playa-veracruz.html",
+    "playa-venao.html",
+    "playa-estrella.html"
+)
 
-# Actualizar enlaces para San Blas
-$content = $content -replace '(?s)(<div class="card-content">.*?San Blas.*?<div class="card-footer">.*?)(<a href="playa-venao.html" class="learn-more">more information</a>)(.*?)(</div>.*?</div>)', '$1<a href="san-blas.html" class="learn-more">more information</a>$3$4'
+foreach ($file in $files) {
+    if (Test-Path $file) {
+        Write-Host "Actualizando $file..."
+        $content = Get-Content $file -Raw
+        $content = $content -replace 'carrusel\.html', 'marketplace.html'
+        Set-Content $file $content -NoNewline
+        Write-Host "$file actualizado correctamente"
+    } else {
+        Write-Host "Archivo $file no encontrado"
+    }
+}
 
-# Guardar cambios
-Set-Content -Path 'destinations.html' -Value $content
+Write-Host "Proceso completado!"

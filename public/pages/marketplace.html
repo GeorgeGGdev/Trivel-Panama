@@ -6,6 +6,7 @@
     <title>Marketplace - Trivel Panamá</title>
     <meta name="description" content="Explora propiedades únicas en nuestro marketplace de Trivel Panamá.">
     <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/dynamic-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -23,64 +24,6 @@
             margin-top: 80px;
             flex: 1;
             padding: 2rem 0;
-        }
-        
-        /* Header Styles */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .logo img {
-            height: 40px;
-            border-radius: 8px;
-        }
-        
-        .logo span {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #333;
-        }
-        
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .nav-menu a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-menu a:hover {
-            color: #0066cc;
         }
         
         /* Main Container */
@@ -363,73 +306,6 @@
             transform: translateY(-2px);
         }
         
-        /* Footer */
-        .footer {
-            background: #000;
-            color: white;
-            padding: 3rem 0 2rem 0;
-            margin-top: auto;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section h4 {
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-section p,
-        .footer-section li {
-            color: #ccc;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-        
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .footer-section li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-section a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-section a:hover {
-            color: #ff6b35;
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid #333;
-            padding-top: 1.5rem;
-            text-align: center;
-        }
-        
-        .footer-bottom p {
-            color: #999;
-            font-size: 0.8rem;
-            margin: 0;
-        }
-        
         /* Responsive Design */
         @media (max-width: 768px) {
             .page-header h1 {
@@ -451,15 +327,6 @@
             .empty-content h2 {
                 font-size: 1.5rem;
             }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .nav-menu {
-                display: none;
-            }
 
             .filters-grid {
                 grid-template-columns: 1fr;
@@ -479,25 +346,109 @@
                 font-size: 1.8rem;
             }
         }
+
+        /* Estilos para botones de autenticación en el header */
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .auth-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+        }
+        .login-btn {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        .login-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .register-btn {
+            background: var(--primary-color);
+            color: white;
+        }
+        .register-btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--primary-color);
+        }
+        .user-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .logout-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .logout-btn:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .auth-btn span { display: none; }
+            .auth-btn i { font-size: 1rem; }
+            .user-info { gap: 0.5rem; }
+            .user-name { font-size: 0.8rem; }
+        }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Fixed Header -->
     <header class="header">
-        <div class="header-content">
-            <div class="logo">
-                <img src="../assets/img/Logo.png" alt="Trivel Panama">
-                <span>Trivel Panama</span>
-            </div>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="destinations.html">Destinos</a></li>
-                    <li><a href="marketplace.html">Marketplace</a></li>
-                    <li><a href="ContactUs.html">Contacto</a></li>
-                    <li><a href="FAQs.html">FAQs</a></li>
-                </ul>
-            </nav>
+        <div class="logo">
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
+                <span class="logo-text">Trivel Panama</span>
+            </a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="marketplace.html">Marketplace</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="FAQs.html">FAQs</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button id="loginBtn" class="auth-btn login-btn">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Iniciar Sesión</span>
+            </button>
+            <button id="registerBtn" class="auth-btn register-btn">
+                <i class="fas fa-user-plus"></i>
+                <span>Registrarse</span>
+            </button>
         </div>
     </header>
 
@@ -539,6 +490,7 @@
                         <label for="price-filter">Precio máximo</label>
                         <input type="number" id="price-filter" placeholder="Precio máximo">
                     </div>
+<<<<<<< HEAD
                                          <div class="filter-group">
                          <label for="guests-filter">Huéspedes</label>
                          <select id="guests-filter">
@@ -556,6 +508,24 @@
                          </button>
                      </div>
 
+=======
+                    <div class="filter-group">
+                        <label for="guests-filter">Huéspedes</label>
+                        <select id="guests-filter">
+                            <option value="">Cualquier número</option>
+                            <option value="1-2">1-2 personas</option>
+                            <option value="3-4">3-4 personas</option>
+                            <option value="5-6">5-6 personas</option>
+                            <option value="7+">7+ personas</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>&nbsp;</label>
+                        <button id="clear-filters" class="clear-filters-btn">
+                            <i class="fas fa-times"></i> Limpiar Filtros
+                        </button>
+                    </div>
+>>>>>>> 8de3fb6b5ac4c954d00ef1b9500d7717197d070d
                 </div>
             </div>
 
@@ -570,56 +540,98 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h4>Trivel Panama</h4>
-                    <p>Descubre la magia de Panamá con experiencias únicas y memorables. Conectamos viajeros con las mejores propiedades del país.</p>
-                    <div style="margin-top: 1rem;">
-                        <a href="#" style="margin-right: 1rem;"><i class="fab fa-facebook"></i></a>
-                        <a href="#" style="margin-right: 1rem;"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
+    <!-- Footer Minimalista -->
+    <footer style="background: #000; color: #fff; padding: 2.5rem 0 1.5rem 0; position: relative;">
+        <div style="max-width: 1000px; margin: 0 auto; padding: 0 2rem;">
+            <!-- Sección principal -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2rem;">
+                <!-- Logo y redes sociales -->
+                <div>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <img src="../assets/img/Logo.png" alt="Trivel Panama" style="height: 45px; border-radius: 8px;">
+                        <div>
+                            <h3 style="font-size: 1.5rem; font-weight: 600; margin: 0; color: #fff;">Trivel Panama</h3>
+                            <span style="color: #ff6b35; font-size: 0.8rem; font-weight: 500;">#ViajaConTrivel</span>
+                        </div>
+                    </div>
+                    <p style="color: #ccc; line-height: 1.6; margin-bottom: 1rem; font-size: 0.9rem; max-width: 280px;">
+                        Descubre la magia de Panamá con experiencias únicas y memorables.
+                    </p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="https://facebook.com/trivelpanama" target="_blank" style="color: #fff; font-size: 1.1rem; transition: color 0.3s; opacity: 0.7;" onmouseover="this.style.opacity='1'; this.style.color='#1877f2'" onmouseout="this.style.opacity='0.7'; this.style.color='#fff'"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/trivelpanama" target="_blank" style="color: #fff; font-size: 1.1rem; transition: color 0.3s; opacity: 0.7;" onmouseover="this.style.opacity='1'; this.style.color='#e4405f'" onmouseout="this.style.opacity='0.7'; this.style.color='#fff'"><i class="fab fa-instagram"></i></a>
+                        <a href="https://tiktok.com/@trivelpanama" target="_blank" style="color: #fff; font-size: 1.1rem; transition: color 0.3s; opacity: 0.7;" onmouseover="this.style.opacity='1'; this.style.color='#ff6b35'" onmouseout="this.style.opacity='0.7'; this.style.color='#fff'"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Enlaces</h4>
-                    <ul>
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="destinations.html">Destinos</a></li>
-                        <li><a href="ContactUs.html">Contacto</a></li>
-                        <li><a href="FAQs.html">FAQs</a></li>
+                
+                <!-- Enlaces rápidos -->
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Enlaces</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem;"><a href="../index.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Home</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="destinations.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Destinos</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="#gallery" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Galería</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="ContactUs.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Contacto</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Destinos</h4>
-                    <ul>
-                        <li><a href="bocas-del-toro.html">Bocas del Toro</a></li>
-                        <li><a href="san-blas.html">San Blas</a></li>
-                        <li><a href="playa-venao.html">Playa Venao</a></li>
-                        <li><a href="playa-estrella.html">Playa Estrella</a></li>
+                
+                <!-- Destinos -->
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Destinos</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem;"><a href="bocas-del-toro.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Bocas del Toro</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="san-blas.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">San Blas</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="playa-venao.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Playa Venao</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="playa-estrella.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Playa Estrella</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Contacto</h4>
-                    <ul>
-                        <li>info@trivelpanama.com</li>
-                        <li>+507 123-4567</li>
-                        <li>Panama City, Panama</li>
+                
+                <!-- Contacto -->
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Contacto</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">info@trivelpanama.com</li>
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">+507 123-4567</li>
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">Panama City, Panama</li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Publica con nosotros</h4>
-                    <ul>
-                        <li><a href="registrar-propiedad.html">Registrar Propiedad</a></li>
-                        <li>Conecta con viajeros</li>
-                        <li>Maximiza tus ingresos</li>
+                
+                <!-- Publica con nosotros -->
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Publica con nosotros</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem;"><a href="registrar-propiedad.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Registrar Propiedad</a></li>
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">Conecta con viajeros</li>
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">Maximiza tus ingresos</li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Trivel Panama | Tu aventura comienza aquí</p>
+            
+            <!-- Línea divisoria -->
+            <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 1.5rem 0;"></div>
+            
+            <!-- Información legal y certificaciones -->
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                    <a href="#" style="color: #999; text-decoration: none; font-size: 0.8rem; transition: color 0.3s;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#999'">Privacidad</a>
+                    <a href="#" style="color: #999; text-decoration: none; font-size: 0.8rem; transition: color 0.3s;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#999'">Cookies</a>
+                    <a href="#" style="color: #999; text-decoration: none; font-size: 0.8rem; transition: color 0.3s;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#999'">Términos</a>
+                </div>
+                
+                <!-- Certificaciones -->
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <i class="fas fa-shield-alt" style="color: #ff6b35; font-size: 0.9rem;" title="Sitio Seguro"></i>
+                    <i class="fas fa-award" style="color: #ff6b35; font-size: 0.9rem;" title="Top Rated"></i>
+                    <i class="fas fa-leaf" style="color: #ff6b35; font-size: 0.9rem;" title="Eco Friendly"></i>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div style="text-align: center; padding-top: 1rem;">
+                <p style="color: #666; font-size: 0.8rem; margin: 0;">
+                    &copy; 2025 Trivel Panama | 
+                    <span style="color: #ff6b35; font-weight: 500;">Tu aventura comienza aquí</span>
+                </p>
             </div>
         </div>
     </footer>
@@ -639,7 +651,7 @@
             document.getElementById('loading-state').innerHTML = '<div class="empty-content"><i class="fas fa-exclamation-triangle"></i><h2>Error de Conexión</h2><p>No se pudo conectar con la base de datos. Por favor, recarga la página.</p></div>';
         }
 
-                // Global variable to store all properties
+        // Global variable to store all properties
         let allProperties = [];
 
         // Load properties from Firebase
@@ -972,6 +984,97 @@
 
         // Load properties when page loads
         document.addEventListener('DOMContentLoaded', loadProperties);
+
+        // Authentication Script
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginBtn = document.getElementById('loginBtn');
+            const registerBtn = document.getElementById('registerBtn');
+            const authButtons = document.querySelector('.auth-buttons');
+            
+            // Event listeners para los botones
+            loginBtn.addEventListener('click', function() {
+                window.location.href = 'login.html';
+            });
+
+            registerBtn.addEventListener('click', function() {
+                window.location.href = 'register.html';
+            });
+            
+            // Verificar estado de autenticación
+            firebase.auth().onAuthStateChanged(async function(user) {
+                if (user) {
+                    // Usuario está logueado - mostrar información del usuario
+                    try {
+                        const db = firebase.firestore();
+                        const userDoc = await db.collection('users').doc(user.uid).get();
+                        let displayName = '';
+                        if (userDoc.exists && userDoc.data().fullName) {
+                            displayName = userDoc.data().fullName;
+                        }
+                        if (!displayName) {
+                            // Mostrar solo las primeras 5 letras del correo
+                            const email = user.email;
+                            let shortEmail = email;
+                            if (email.length > 5) {
+                                shortEmail = email.substring(0, 5) + '...';
+                            }
+                            displayName = shortEmail;
+                        }
+                        
+                        authButtons.innerHTML = `
+                            <div class="user-info">
+                                <span class="user-name">${displayName}</span>
+                                <button id="logoutBtn" class="auth-btn logout-btn">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>Cerrar Sesión</span>
+                                </button>
+                            </div>
+                        `;
+                        
+                        document.getElementById('logoutBtn').addEventListener('click', function() {
+                            firebase.auth().signOut().then(function() {
+                                window.location.reload();
+                            });
+                        });
+                    } catch (e) {
+                        authButtons.innerHTML = `
+                            <div class="user-info">
+                                <span class="user-name">${user.email ? user.email.substring(0, 5) + '...' : 'Usuario'}</span>
+                                <button id="logoutBtn" class="auth-btn logout-btn">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>Cerrar Sesión</span>
+                                </button>
+                            </div>
+                        `;
+                        
+                        document.getElementById('logoutBtn').addEventListener('click', function() {
+                            firebase.auth().signOut().then(function() {
+                                window.location.reload();
+                            });
+                        });
+                    }
+                } else {
+                    // Usuario no está logueado - mostrar botones de login y registro
+                    authButtons.innerHTML = `
+                        <button id="loginBtn" class="auth-btn login-btn">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span>Iniciar Sesión</span>
+                        </button>
+                        <button id="registerBtn" class="auth-btn register-btn">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Registrarse</span>
+                        </button>
+                    `;
+                    // Re-attach event listeners for newly created buttons
+                    document.getElementById('loginBtn').addEventListener('click', function() {
+                        window.location.href = 'login.html';
+                    });
+                    document.getElementById('registerBtn').addEventListener('click', function() {
+                        window.location.href = 'register.html';
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html> 
