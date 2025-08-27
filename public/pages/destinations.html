@@ -975,6 +975,202 @@
         .google-maps-btn:hover {
             animation: none;
         }
+
+        /* Estilos para filtros de playas específicas */
+        .beach-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .beach-filter-btn {
+            background: white;
+            color: #555;
+            border: 2px solid #e9ecef;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .beach-filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.4s;
+        }
+        
+        .beach-filter-btn:hover::before {
+            left: 100%;
+        }
+        
+        .beach-filter-btn.active,
+        .beach-filter-btn:hover {
+            background: #ff6b35;
+            color: white;
+            border-color: #ff6b35;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(255,107,53,0.3);
+        }
+        
+        /* Layout de 2 columnas para información de playas */
+        .beach-info-grid {
+            display: none; /* Inicialmente oculto */
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .beach-info-grid.show {
+            display: grid; /* Mostrar cuando tenga la clase 'show' */
+        }
+        
+        .beach-info-column {
+            background: rgba(255,255,255,0.8);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,107,53,0.1);
+        }
+        
+        .beach-info-column h4 {
+            color: #ff6b35;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .beach-info-column h4 i {
+            font-size: 1.2rem;
+        }
+        
+        .beach-info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .beach-info-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            color: #555;
+        }
+        
+        .beach-info-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .beach-info-list li i {
+            color: #ff6b35;
+            font-size: 1rem;
+            min-width: 20px;
+        }
+        
+        .beach-info-list li strong {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        /* Responsive para filtros de playas */
+        @media (max-width: 768px) {
+            .beach-filters {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+            
+            .beach-filter-btn {
+                width: 200px;
+                text-align: center;
+            }
+            
+            .beach-info-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        /* Animaciones adicionales para los filtros */
+        @keyframes filterSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .beach-filters {
+            animation: filterSlideIn 0.8s ease-out;
+        }
+        
+        .beach-filter-btn {
+            animation: filterSlideIn 0.8s ease-out;
+        }
+        
+        /* Mejoras visuales para las columnas de información */
+        .beach-info-column {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .beach-info-column::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #ff6b35, #fd7e14);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .beach-info-column:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .beach-info-column:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255,107,53,0.15);
+        }
+        
+        /* Efecto de hover para los elementos de la lista */
+        .beach-info-list li {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .beach-info-list li:hover {
+            background: rgba(255,107,53,0.05);
+            padding-left: 1rem;
+            border-radius: 8px;
+        }
+        
+        .beach-info-list li:hover i {
+            transform: scale(1.2);
+        }
     </style>
 </head>
 <body>
@@ -982,7 +1178,7 @@
     <header class="header">
         <div class="logo">
             <a href="../index.html" class="logo-link">
-                <img src="../assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
+                <img src="../assets/img/Logo.png" alt="Trivel Panama Logo" class="logo-img">
                 <span class="logo-text">Trivel Panama</span>
             </a>
         </div>
@@ -1777,9 +1973,22 @@
                         <p class="province-subtitle">Tres playas imperdibles</p>
                     </div>
                 </div>
+                
+                <!-- Filtros específicos para cada playa -->
+                <div class="beach-filters">
+                    <button class="beach-filter-btn active" data-beach-filter="all-${province.name.replace(/\s+/g, '-')}">
+                        <i class="fas fa-globe-americas" style="margin-right: 0.3rem;"></i>Todas las Playas
+                    </button>
+                    ${province.beaches.map((b, idx) => `
+                        <button class="beach-filter-btn" data-beach-filter="${b.name.replace(/\s+/g, '-')}-${province.name.replace(/\s+/g, '-')}">
+                            <i class="fas fa-umbrella-beach" style="margin-right: 0.3rem;"></i>${b.name}
+                        </button>
+                    `).join('')}
+                </div>
+                
                 <div class="cards-grid">
                     ${province.beaches.map((b,idx) => `
-                        <div class="card-new beach-card" style="margin-bottom:0;">
+                        <div class="card-new beach-card" data-beach="${b.name.replace(/\s+/g, '-')}-${province.name.replace(/\s+/g, '-')}" style="margin-bottom:0;">
                             <div class="card-image-new">
                                 <img src="${b.img}" alt="${b.name}">
                                 <div class="card-overlay"></div>
@@ -1793,7 +2002,30 @@
                                         <p class="card-subtitle">${province.name}</p>
                                     </div>
                                 </div>
-                                <div class="province-tabs" style="margin-top:0.5rem;">
+                                
+                                <!-- Información organizada en 2 columnas -->
+                                <div class="beach-info-grid">
+                                    <div class="beach-info-column">
+                                        <h4><i class="fas fa-info-circle"></i>Información General</h4>
+                                        <ul class="beach-info-list">
+                                            <li><i class="fas fa-map-marker-alt"></i><strong>Ubicación:</strong> ${province.name}</li>
+                                            <li><i class="fas fa-clock"></i><strong>Tiempo de viaje:</strong> ${b.time}</li>
+                                            <li><i class="fas fa-water"></i><strong>Tipo de agua:</strong> ${b.name.includes('Caribe') || province.name.includes('Bocas') || province.name.includes('Colón') ? 'Caribeña' : 'Pacífica'}</li>
+                                            <li><i class="fas fa-umbrella-beach"></i><strong>Actividades:</strong> ${getActivitiesForBeach(b.name, province.name)}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="beach-info-column">
+                                        <h4><i class="fas fa-star"></i>Características</h4>
+                                        <ul class="beach-info-list">
+                                            <li><i class="fas fa-palmtree"></i><strong>Ambiente:</strong> ${getEnvironmentForBeach(b.name, province.name)}</li>
+                                            <li><i class="fas fa-users"></i><strong>Ideal para:</strong> ${getIdealForBeach(b.name, province.name)}</li>
+                                            <li><i class="fas fa-camera"></i><strong>Fotografía:</strong> ${getPhotographyForBeach(b.name, province.name)}</li>
+                                            <li><i class="fas fa-utensils"></i><strong>Gastronomía:</strong> ${getGastronomyForBeach(b.name, province.name)}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="province-tabs" style="margin-top:1rem;">
                                     <button class="tab-btn active" data-tab="desc-${idx}">Descripción</button>
                                     <button class="tab-btn" data-tab="map-${idx}">
                                         <i class="fas fa-map-marked-alt" style="margin-right: 0.3rem;"></i>Mapa
@@ -1807,19 +2039,19 @@
                                             <button class="card-button quote-btn" data-province="${province.name}" data-beach="${b.name}" style="flex: 1; min-width: 140px;">
                                                 <span>Cotizar viaje</span><i class="fas fa-arrow-right"></i>
                                             </button>
-                                                                                         <a href="${b.map.replace('&output=embed', '')}" target="_blank" class="google-maps-btn" style="flex: 1; min-width: 140px; background: linear-gradient(45deg, #ff6b35, #fd7e14); color: white; border: none; padding: 1.2rem; border-radius: 15px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; align-items: center; justify-content: center; gap: 0.8rem; text-decoration: none; position: relative; overflow: hidden; box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);">
-                                                 <span>Ver en Google Maps</span>
-                                                 <i class="fas fa-map-marked-alt"></i>
-                                             </a>
+                                            <a href="${b.map.replace('&output=embed', '')}" target="_blank" class="google-maps-btn" style="flex: 1; min-width: 140px; background: linear-gradient(45deg, #ff6b35, #fd7e14); color: white; border: none; padding: 1.2rem; border-radius: 15px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; align-items: center; justify-content: center; gap: 0.8rem; text-decoration: none; position: relative; overflow: hidden; box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);">
+                                                <span>Ver en Google Maps</span>
+                                                <i class="fas fa-map-marked-alt"></i>
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="tab-pane" data-pane="map-${idx}">
                                         <iframe class="map-embed" src="${b.map}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                         <div style="text-align: center; margin-top: 1rem;">
-                                                                                         <a href="${b.map.replace('&output=embed', '')}" target="_blank" class="google-maps-btn" style="display: inline-flex; align-items: center; gap: 0.8rem; background: linear-gradient(45deg, #ff6b35, #fd7e14); color: white; border: none; padding: 1rem 2rem; border-radius: 15px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-decoration: none; position: relative; overflow: hidden; box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);">
-                                                 <span>Abrir en Google Maps</span>
-                                                 <i class="fas fa-map-marked-alt"></i>
-                                             </a>
+                                            <a href="${b.map.replace('&output=embed', '')}" target="_blank" class="google-maps-btn" style="display: inline-flex; align-items: center; gap: 0.8rem; background: linear-gradient(45deg, #ff6b35, #fd7e14); color: white; border: none; padding: 1rem 2rem; border-radius: 15px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-decoration: none; position: relative; overflow: hidden; box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);">
+                                                <span>Abrir en Google Maps</span>
+                                                <i class="fas fa-map-marked-alt"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -1845,7 +2077,231 @@
                 });
             });
 
+            // Filtros específicos para cada playa
+            const beachFilterButtons = section.querySelectorAll('.beach-filter-btn');
+            const beachCards = section.querySelectorAll('.beach-card');
+            
+            beachFilterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-beach-filter');
+                    
+                    // Actualizar botones activos
+                    beachFilterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    this.classList.add('active');
+                    
+                    // Filtrar tarjetas de playas y mostrar/ocultar información detallada
+                    beachCards.forEach(card => {
+                        const beachData = card.getAttribute('data-beach');
+                        const beachInfoGrid = card.querySelector('.beach-info-grid');
+                        
+                        if (filter.includes('all') || beachData === filter) {
+                            card.style.display = 'block';
+                            card.style.animation = 'fadeInUp 0.6s ease forwards';
+                            
+                            // Mostrar información detallada solo si NO es "Todas las Playas"
+                            if (filter.includes('all')) {
+                                // Ocultar información detallada cuando se selecciona "Todas las Playas"
+                                if (beachInfoGrid) {
+                                    beachInfoGrid.classList.remove('show');
+                                }
+                            } else {
+                                // Mostrar información detallada cuando se selecciona una playa específica
+                                if (beachInfoGrid) {
+                                    beachInfoGrid.classList.add('show');
+                                }
+                            }
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
             return section;
+        }
+
+        // Funciones auxiliares para obtener información específica de cada playa
+        function getActivitiesForBeach(beachName, provinceName) {
+            const activities = {
+                'Playa Estrella': 'Snorkel, Observación de estrellas de mar, Natación',
+                'Red Frog Beach': 'Senderismo, Observación de fauna, Relajación',
+                'Starfish Beach': 'Snorkel, Fotografía, Natación tranquila',
+                'Playa Veracruz': 'Mariscos, Atardeceres, Actividades familiares',
+                'Isla Taboga': 'Ferry, Gastronomía local, Paseos históricos',
+                'Playa Bonita': 'Resorts, Actividades acuáticas, Vida nocturna',
+                'Playa Venao': 'Surf, Ambiente bohemio, Atardeceres',
+                'Playa El Arenal': 'Snorkel, Isla Iguana, Arena blanca',
+                'Playa Destiladeros': 'Tranquilidad, Caminatas, Naturaleza',
+                'Isla Grande': 'Snorkel, Arrecifes, Ambiente local',
+                'Playa La Angosta': 'Aguas transparentes, Cala íntima',
+                'Portobelo': 'Historia colonial, Bahías, Cultura',
+                'Playa Santa Clara': 'Familias, Mar tranquilo, Arena clara',
+                'Playa Farallón': 'Resorts, Actividades acuáticas, Vida nocturna',
+                'Playa La Ermita': 'Ambiente local, Aguas cálidas, El Valle',
+                'Punta Chame': 'Kitesurf, Caminatas, Bancos de arena',
+                'Playa Coronado': 'Gastronomía, Hoteles, Arena negra',
+                'Playa Gorgona': 'Surf, Fin de semana, Malibú',
+                'Playa Las Lajas': 'Tranquilidad, Olas suaves, Kilómetros de playa',
+                'Playa La Barqueta': 'Caminatas, Cerca de David, Extensa',
+                'Isla Parida': 'Snorkel, Aguas cristalinas, Islas',
+                'Santa Catalina': 'Surf, Coiba, Pacífico central',
+                'Playa Morrillo': 'Olas poderosas, Paisajes salvajes',
+                'Isla Coiba': 'Parque Nacional, Biodiversidad, Granito de Oro',
+                'Playa El Agallito': 'Observación de aves, Manglares',
+                'Boca Parita': 'Fauna, Costa tranquila, Manglares',
+                'Playa Monagrillo': 'Playas bajas, Cerca de Chitré',
+                'Jaqué': 'Comunidad costera, Pacífico, Extensa playa',
+                'La Palma': 'Capital de Darién, Estuario, Salida a playas',
+                'Garachiné': 'Costa selvática, Pacífico, Localidad costera'
+            };
+            return activities[beachName] || 'Natación, Relajación, Actividades locales';
+        }
+
+        function getEnvironmentForBeach(beachName, provinceName) {
+            const environments = {
+                'Playa Estrella': 'Tranquilo y familiar',
+                'Red Frog Beach': 'Selvático y aventurero',
+                'Starfish Beach': 'Sereno y fotogénico',
+                'Playa Veracruz': 'Urbano y accesible',
+                'Isla Taboga': 'Pintoresco e histórico',
+                'Playa Bonita': 'Resort y sofisticado',
+                'Playa Venao': 'Bohemio y surfista',
+                'Playa El Arenal': 'Natural y virgen',
+                'Playa Destiladeros': 'Tranquilo y rural',
+                'Isla Grande': 'Caribeño y vibrante',
+                'Playa La Angosta': 'Íntimo y exclusivo',
+                'Portobelo': 'Histórico y cultural',
+                'Playa Santa Clara': 'Familiar y seguro',
+                'Playa Farallón': 'Turístico y activo',
+                'Playa La Ermita': 'Local y auténtico',
+                'Punta Chame': 'Deportivo y ventoso',
+                'Playa Coronado': 'Residencial y gastronómico',
+                'Playa Gorgona': 'Surfista y relajado',
+                'Playa Las Lajas': 'Extenso y solitario',
+                'Playa La Barqueta': 'Natural y amplio',
+                'Isla Parida': 'Prístino y remoto',
+                'Santa Catalina': 'Surfista y aventurero',
+                'Playa Morrillo': 'Salvaje y poderoso',
+                'Isla Coiba': 'Protegido y único',
+                'Playa El Agallito': 'Ecológico y observación',
+                'Boca Parita': 'Natural y observación',
+                'Playa Monagrillo': 'Local y amplio',
+                'Jaqué': 'Remoto y comunitario',
+                'La Palma': 'Cultural y fluvial',
+                'Garachiné': 'Selvático y costero'
+            };
+            return environments[beachName] || 'Natural y acogedor';
+        }
+
+        function getIdealForBeach(beachName, provinceName) {
+            const idealFor = {
+                'Playa Estrella': 'Familias y fotógrafos',
+                'Red Frog Beach': 'Aventureros y naturaleza',
+                'Starfish Beach': 'Fotógrafos y snorkel',
+                'Playa Veracruz': 'Familias y gastronomía',
+                'Isla Taboga': 'Historia y escapadas',
+                'Playa Bonita': 'Lujo y comodidad',
+                'Playa Venao': 'Surfistas y bohemios',
+                'Playa El Arenal': 'Naturaleza y snorkel',
+                'Playa Destiladeros': 'Tranquilidad y caminatas',
+                'Isla Grande': 'Snorkel y cultura local',
+                'Playa La Angosta': 'Parejas y intimidad',
+                'Portobelo': 'Cultura e historia',
+                'Playa Santa Clara': 'Familias y niños',
+                'Playa Farallón': 'Turistas y actividades',
+                'Playa La Ermita': 'Locales y autenticidad',
+                'Punta Chame': 'Deportes acuáticos',
+                'Playa Coronado': 'Gastronomía y confort',
+                'Playa Gorgona': 'Surfistas y fin de semana',
+                'Playa Las Lajas': 'Tranquilidad y espacio',
+                'Playa La Barqueta': 'Caminatas y naturaleza',
+                'Isla Parida': 'Aventura y snorkel',
+                'Santa Catalina': 'Surfistas y Coiba',
+                'Playa Morrillo': 'Surfistas experimentados',
+                'Isla Coiba': 'Naturaleza y biodiversidad',
+                'Playa El Agallito': 'Observadores de aves',
+                'Boca Parita': 'Naturaleza y fauna',
+                'Playa Monagrillo': 'Locales y tranquilidad',
+                'Jaqué': 'Aventura y comunidad',
+                'La Palma': 'Cultura y exploración',
+                'Garachiné': 'Aventura y selva'
+            };
+            return idealFor[beachName] || 'Todos los viajeros';
+        }
+
+        function getPhotographyForBeach(beachName, provinceName) {
+            const photography = {
+                'Playa Estrella': 'Estrellas de mar y aguas turquesas',
+                'Red Frog Beach': 'Selva tropical y fauna',
+                'Starfish Beach': 'Estrellas de mar y paisajes',
+                'Playa Veracruz': 'Skyline y atardeceres',
+                'Isla Taboga': 'Arquitectura colonial y flores',
+                'Playa Bonita': 'Resorts y puestas de sol',
+                'Playa Venao': 'Olas y atardeceres dorados',
+                'Playa El Arenal': 'Arena blanca y arrecifes',
+                'Playa Destiladeros': 'Paisajes naturales',
+                'Isla Grande': 'Arrecifes y cultura local',
+                'Playa La Angosta': 'Cala íntima y aguas claras',
+                'Portobelo': 'Fuerte colonial y bahías',
+                'Playa Santa Clara': 'Familias y mar tranquilo',
+                'Playa Farallón': 'Actividades y vida nocturna',
+                'Playa La Ermita': 'Ambiente local auténtico',
+                'Punta Chame': 'Deportes acuáticos y viento',
+                'Playa Coronado': 'Gastronomía y arena negra',
+                'Playa Gorgona': 'Surf y ambiente relajado',
+                'Playa Las Lajas': 'Extensión y soledad',
+                'Playa La Barqueta': 'Naturaleza y amplitud',
+                'Isla Parida': 'Islas y aguas cristalinas',
+                'Santa Catalina': 'Surf y acceso a Coiba',
+                'Playa Morrillo': 'Olas poderosas y paisajes',
+                'Isla Coiba': 'Biodiversidad única',
+                'Playa El Agallito': 'Aves y manglares',
+                'Boca Parita': 'Fauna y costa natural',
+                'Playa Monagrillo': 'Amplitud y tranquilidad',
+                'Jaqué': 'Comunidad y costa remota',
+                'La Palma': 'Cultura y estuario',
+                'Garachiné': 'Selva y costa salvaje'
+            };
+            return photography[beachName] || 'Paisajes naturales y momentos únicos';
+        }
+
+        function getGastronomyForBeach(beachName, provinceName) {
+            const gastronomy = {
+                'Playa Estrella': 'Mariscos frescos y cocina local',
+                'Red Frog Beach': 'Comida local y frutas tropicales',
+                'Starfish Beach': 'Pescado fresco y cocina caribeña',
+                'Playa Veracruz': 'Mariscos y restaurantes locales',
+                'Isla Taboga': 'Pescado fresco y cocina isleña',
+                'Playa Bonita': 'Restaurantes de resort y internacional',
+                'Playa Venao': 'Cocina bohemia y pescado fresco',
+                'Playa El Arenal': 'Pescado local y cocina tradicional',
+                'Playa Destiladeros': 'Comida local y sencilla',
+                'Isla Grande': 'Pescado fresco y cocina caribeña',
+                'Playa La Angosta': 'Opciones limitadas, llevar comida',
+                'Portobelo': 'Cocina local y pescado fresco',
+                'Playa Santa Clara': 'Restaurantes familiares',
+                'Playa Farallón': 'Restaurantes turísticos',
+                'Playa La Ermita': 'Comida local auténtica',
+                'Punta Chame': 'Restaurantes de deportes acuáticos',
+                'Playa Coronado': 'Gastronomía variada y restaurantes',
+                'Playa Gorgona': 'Restaurantes de surf y locales',
+                'Playa Las Lajas': 'Opciones limitadas, llevar comida',
+                'Playa La Barqueta': 'Comida local y pescado',
+                'Isla Parida': 'Opciones limitadas, llevar comida',
+                'Santa Catalina': 'Restaurantes de surf y pescado',
+                'Playa Morrillo': 'Opciones limitadas, llevar comida',
+                'Isla Coiba': 'Llevar comida, opciones limitadas',
+                'Playa El Agallito': 'Comida local y pescado',
+                'Boca Parita': 'Pescado fresco y cocina local',
+                'Playa Monagrillo': 'Comida local y pescado',
+                'Jaqué': 'Comida local y pescado fresco',
+                'La Palma': 'Cocina local y pescado',
+                'Garachiné': 'Comida local y pescado fresco'
+            };
+            return gastronomy[beachName] || 'Pescado fresco y cocina local';
         }
 
         const provincesContainer = document.getElementById('provinces-container');
