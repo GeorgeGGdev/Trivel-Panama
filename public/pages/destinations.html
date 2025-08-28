@@ -1800,13 +1800,16 @@
                                         <p class="card-description" style="margin-top:0.25rem;">${b.description}</p>
                                         <span class="time-chip"><i class="fas fa-plane-departure" style="margin-right:6px;"></i>${b.time}</span>
                                         <div style="display: flex; gap: 0.8rem; margin-top: 1rem; flex-wrap: wrap;">
+                                            <button class="card-button description-btn" data-beach="${b.name}" style="flex: 1; min-width: 140px; background: linear-gradient(45deg, #1a73e8, #4285f4); color: white; border: none; padding: 1.2rem; border-radius: 15px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; align-items: center; justify-content: center; gap: 0.8rem; text-decoration: none; position: relative; overflow: hidden; box-shadow: 0 8px 20px rgba(26, 115, 232, 0.3);">
+                                                <span>Descripción</span><i class="fas fa-info-circle"></i>
+                                            </button>
                                             <button class="card-button quote-btn" data-province="${province.name}" data-beach="${b.name}" style="flex: 1; min-width: 140px;">
                                                 <span>Cotizar viaje</span><i class="fas fa-arrow-right"></i>
                                             </button>
-                                                                                         <a href="${b.map.replace('&output=embed', '')}" target="_blank" class="google-maps-btn" style="flex: 1; min-width: 140px; background: linear-gradient(45deg, #ff6b35, #fd7e14); color: white; border: none; padding: 1.2rem; border-radius: 15px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; align-items: center; justify-content: center; gap: 0.8rem; text-decoration: none; position: relative; overflow: hidden; box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);">
-                                                 <span>Ver en Google Maps</span>
-                                                 <i class="fas fa-map-marked-alt"></i>
-                                             </a>
+                                            <a href="${b.map.replace('&output=embed', '')}" target="_blank" class="google-maps-btn" style="flex: 1; min-width: 140px; background: linear-gradient(45deg, #ff6b35, #fd7e14); color: white; border: none; padding: 1.2rem; border-radius: 15px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; align-items: center; justify-content: center; gap: 0.8rem; text-decoration: none; position: relative; overflow: hidden; box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);">
+                                                <span>Ver en Google Maps</span>
+                                                <i class="fas fa-map-marked-alt"></i>
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="tab-pane" data-pane="map-${idx}">
@@ -1867,6 +1870,88 @@
             const btn = e.target.closest('.quote-btn');
             if (btn) {
                 openModal(btn.dataset.province, btn.dataset.beach);
+            }
+            
+            const descBtn = e.target.closest('.description-btn');
+            if (descBtn) {
+                const beachName = descBtn.dataset.beach;
+                let destinationPage = '';
+                
+                switch (beachName) {
+                    case 'Playa Estrella':
+                        destinationPage = 'playa-estrella.html';
+                        break;
+                    case 'Red Frog Beach':
+                        destinationPage = 'red-frog-beach.html';
+                        break;
+                    case 'Starfish Beach':
+                        destinationPage = 'starfish-beach.html';
+                        break;
+                    case 'Playa Veracruz':
+                        destinationPage = 'playa-veracruz.html';
+                        break;
+                    case 'Isla Taboga':
+                        destinationPage = 'isla-taboga.html';
+                        break;
+                    case 'Playa Bonita':
+                        destinationPage = 'playa-bonita.html';
+                        break;
+                    case 'Playa Venao':
+                        destinationPage = 'playa-venao.html';
+                        break;
+                    case 'Playa El Arenal (Pedasí)':
+                        destinationPage = 'playa-el-arenal.html';
+                        break;
+                    case 'Playa Destiladeros':
+                        destinationPage = 'playa-destiladeros.html';
+                        break;
+                    case 'Isla Grande':
+                        destinationPage = 'isla-grande.html';
+                        break;
+                    case 'Playa La Angosta':
+                        destinationPage = 'playa-la-angosta.html';
+                        break;
+                    case 'Portobelo (playas cercanas)':
+                        destinationPage = 'portobelo.html';
+                        break;
+                    case 'Playa Santa Clara':
+                        destinationPage = 'playa-santa-clara.html';
+                        break;
+                    case 'Playa Farallón / Playa Blanca':
+                        destinationPage = 'playa-blanca.html';
+                        break;
+                    case 'Playa La Ermita (Antón)':
+                        destinationPage = 'playa-la-ermita.html';
+                        break;
+                    case 'Punta Chame':
+                        destinationPage = 'punta-chame.html';
+                        break;
+                    case 'Playa Coronado':
+                        destinationPage = 'playa-coronado.html';
+                        break;
+                    case 'Playa Gorgona (Malibú)':
+                        destinationPage = 'playa-gorgona.html';
+                        break;
+                    case 'Playa Las Lajas':
+                        destinationPage = 'playa-las-lajas.html';
+                        break;
+                    case 'Playa La Barqueta':
+                        destinationPage = 'playa-la-barqueta.html';
+                        break;
+                    case 'Isla Parida (Golfo de Chiriquí)':
+                        destinationPage = 'isla-parida.html';
+                        break;
+                    case 'Santa Catalina':
+                        destinationPage = 'santa-catalina.html';
+                        break;
+                    case 'Playa Morrillo':
+                        destinationPage = 'playa-morrillo.html';
+                        break;
+                }
+                
+                if (destinationPage) {
+                    window.location.href = destinationPage;
+                }
             }
         });
         modalClose.addEventListener('click', closeModal);
