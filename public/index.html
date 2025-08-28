@@ -32,6 +32,29 @@
         box-sizing: border-box;
       }
       
+      /* Estilos específicos para la primera imagen del hero */
+      .hero-slide:first-child {
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+      }
+      
+      /* Efecto de sombra sutil para mejorar la legibilidad del texto */
+      .hero-slide:first-child::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(26, 54, 93, 0.3) 0%, rgba(26, 54, 93, 0.1) 100%);
+        pointer-events: none;
+        z-index: 1;
+      }
+      
       /* Prevenir expansión en scroll */
       .hero-carousel {
         overflow: hidden;
@@ -46,6 +69,83 @@
       .search-bar input { flex: 1; border: none; padding: 1.2rem 1.8rem; font-size: 1.2rem; border-radius: 30px 0 0 30px; outline: none; }
       .search-bar button { background: var(--gradient-orange); color: #fff; border: none; padding: 0 2.5rem; font-size: 1.2rem; border-radius: 0 30px 30px 0; cursor: pointer; transition: background 0.3s; }
       .search-bar button:hover { background: var(--accent-color); }
+      
+      /* Estilos para los botones de destinos destacados */
+      .destination-cards .card .learn-more {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        font-weight: 600;
+      }
+      
+      .destination-cards .card .learn-more:hover {
+        background: var(--accent-color);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(26, 115, 232, 0.3);
+      }
+      
+      .destination-cards .card .reserve-now {
+        background: var(--gradient-orange);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        font-weight: 600;
+      }
+      
+      .destination-cards .card .reserve-now:hover {
+        background: var(--accent-color);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 107, 0, 0.3);
+      }
+      
+      /* Responsive para los botones en móviles */
+      @media (max-width: 768px) {
+        .destination-cards .card .learn-more,
+        .destination-cards .card .reserve-now {
+          font-size: 0.9rem;
+          padding: 0.7rem 0.8rem;
+        }
+      }
+      
+      /* Estilos para el botón Ver más destinos */
+      .view-more-destinations-btn {
+        background: var(--gradient-blue) !important;
+        color: white !important;
+        text-decoration: none !important;
+        border: none !important;
+        transition: all 0.3s ease !important;
+      }
+      
+      .view-more-destinations-btn:hover {
+        background: var(--accent-color) !important;
+        transform: translateY(-3px) !important;
+        box-shadow: 0 10px 30px rgba(26, 115, 232, 0.4) !important;
+      }
+      
+      .view-more-destinations-btn:active {
+        transform: translateY(-1px) !important;
+      }
+      
+      /* Responsive para el botón Ver más destinos */
+      @media (max-width: 768px) {
+        .view-more-destinations-btn {
+          font-size: 1rem !important;
+          padding: 0.8rem 2rem !important;
+        }
+      }
       /* Estilos para la sección de estadísticas mejorada */
       .stats-enhanced {
         position: relative;
@@ -809,6 +909,14 @@
         .user-name {
           font-size: 0.8rem;
         }
+        
+        /* Ajustes específicos para la imagen del hero en móviles */
+        .hero-slide:first-child {
+          background-size: cover !important;
+          background-position: center !important;
+
+
+        }
       }
     </style>
 </head>
@@ -850,7 +958,6 @@
     <!-- Hero Section Mejorado con Carrusel -->
     <section id="home" class="hero" style="position:relative; overflow:hidden;">
         <div class="hero-carousel" style="width:100vw; height:100vh; position:relative;">
-            <div class="hero-slide" style="background:url('assets/img/BocasToro.jpeg') center/cover no-repeat; width:100vw; height:100vh; position:absolute; top:0; left:0; opacity:1; transition:opacity 1s;"></div>
             <div class="hero-slide" style="background:url('assets/img/Red Frog Beach.jpg') center/cover no-repeat; width:100vw; height:100vh; position:absolute; top:0; left:0; opacity:0; transition:opacity 1s;"></div>
             <div class="hero-slide" style="background:url('assets/img/venao.jpg') center/cover no-repeat; width:100vw; height:100vh; position:absolute; top:0; left:0; opacity:0; transition:opacity 1s;"></div>
             <div class="hero-overlay"></div>
@@ -1059,10 +1166,16 @@
                         <li style="margin-bottom:0.4rem;"><i class="fas fa-fish" style="color:var(--accent-color); margin-right:0.5rem;"></i> Snorkel y buceo</li>
                         <li><i class="fas fa-cocktail" style="color:var(--accent-color); margin-right:0.5rem;"></i> Vida nocturna</li>
                     </ul>
-                    <button class="learn-more" onclick="window.location.href='pages/bocas-del-toro.html'" style="font-size:1.1rem;">
-                        <span>Ver más</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <button class="learn-more" onclick="window.location.href='pages/bocas-del-toro.html'" style="font-size:1rem; flex: 1; padding: 0.8rem 1rem;">
+                            <span>Ver más</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button class="reserve-now" onclick="window.location.href='pages/ContactUs.html'" style="font-size:1rem; flex: 1; padding: 0.8rem 1rem; background: var(--gradient-orange); color: white; border: none; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                            <span>Reserva ahora</span>
+                            <i class="fas fa-calendar-check"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="card" style="overflow:visible; position:relative; transition:transform 0.3s, box-shadow 0.3s;">
@@ -1079,10 +1192,16 @@
                         <li style="margin-bottom:0.4rem;"><i class="fas fa-users" style="color:var(--accent-color); margin-right:0.5rem;"></i> Cultura Guna</li>
                         <li><i class="fas fa-leaf" style="color:var(--accent-color); margin-right:0.5rem;"></i> Naturaleza virgen</li>
                     </ul>
-                    <button class="learn-more" onclick="window.location.href='pages/san-blas.html'" style="font-size:1.1rem;">
-                        <span>Ver más</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <button class="learn-more" onclick="window.location.href='pages/san-blas.html'" style="font-size:1rem; flex: 1; padding: 0.8rem 1rem;">
+                            <span>Ver más</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button class="reserve-now" onclick="window.location.href='pages/ContactUs.html'" style="font-size:1rem; flex: 1; padding: 0.8rem 1rem; background: var(--gradient-orange); color: white; border: none; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                            <span>Reserva ahora</span>
+                            <i class="fas fa-calendar-check"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="card" style="overflow:visible; position:relative; transition:transform 0.3s, box-shadow 0.3s;">
@@ -1099,12 +1218,26 @@
                         <li style="margin-bottom:0.4rem;"><i class="fas fa-sun" style="color:var(--accent-color); margin-right:0.5rem;"></i> Atardeceres únicos</li>
                         <li><i class="fas fa-music" style="color:var(--accent-color); margin-right:0.5rem;"></i> Festivales y vida local</li>
                     </ul>
-                    <button class="learn-more" onclick="window.location.href='pages/playa-venao.html'" style="font-size:1.1rem;">
-                        <span>Ver más</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <button class="learn-more" onclick="window.location.href='pages/playa-venao.html'" style="font-size:1rem; flex: 1; padding: 0.8rem 1rem;">
+                            <span>Ver más</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button class="reserve-now" onclick="window.location.href='pages/ContactUs.html'" style="font-size:1rem; flex: 1; padding: 0.8rem 1rem; background: var(--gradient-orange); color: white; border: none; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; display: flex: align-items: center; justify-content: center; gap: 0.5rem;">
+                            <span>Reserva ahora</span>
+                            <i class="fas fa-calendar-check"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
+        </div>
+        
+        <!-- Botón Ver más destinos -->
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="pages/destinations.html" class="view-more-destinations-btn" style="display: inline-flex; align-items: center; gap: 0.8rem; background: var(--gradient-blue); color: white; text-decoration: none; padding: 1rem 2.5rem; border-radius: 25px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(26, 115, 232, 0.2); border: none;">
+                <span>Ver más destinos</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
     </section>
 
