@@ -1,0 +1,5 @@
+[33mef1df0d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/provincias-destinos[m[33m, [m[1;31morigin/feature/provincias-destinos[m[33m)[m Actualización de la página de Playa Venao
+[33m5b3557a[m Add Google Maps integration: Enhanced map buttons and added 'Ver en Maps' buttons for restaurants and hotels across all beach pages
+[33m029aa1e[m[33m ([m[1;32mmain[m[33m)[m Destinations: corregir render por provincia (3 playas c/pestañas desc/mapa + tiempos)
+[33mb7c971b[m Destinations: secciones por provincia con 3 playas, pestañas mapa/descripción y modal de cotización
+[33mb09635f[m Bocas del Toro: actualizar imagen hero a BocasToro.jpeg

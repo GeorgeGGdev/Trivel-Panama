@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playa Destiladeros - Trivel Panamá</title>
+    <meta name="description" content="Descubre Playa Destiladeros, playas amplias y tranquilas cerca de Pedasí. El paraíso perfecto para relajarte con Trivel Panamá.">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/destinations.css">
+    <link rel="stylesheet" href="../CSS/dynamic-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-content {
+            margin-top: 80px;
+        }
+        
+        /* Estilos para botones de autenticación en el header */
+        .auth-buttons {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+        }
+        .auth-btn {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.6rem 1.2rem;
+          border: none;
+          border-radius: 25px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-decoration: none;
+          font-family: 'Poppins', sans-serif;
+        }
+        .login-btn {
+          background: transparent;
+          color: var(--primary-color);
+          border: 2px solid var(--primary-color);
+        }
+        .login-btn:hover {
+          background: var(--primary-color);
+          color: white;
+          transform: translateY(-2px);
+        }
+        .register-btn {
+          background: var(--primary-color);
+          color: white;
+        }
+        .register-btn:hover {
+          background: var(--accent-color);
+          transform: translateY(-2px);
+        }
+        .user-info {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          color: var(--primary-color);
+        }
+        .user-name {
+          font-weight: 600;
+          font-size: 0.9rem;
+        }
+        .logout-btn {
+          background: var(--accent-color);
+          color: white;
+          border: none;
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          font-size: 0.8rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .logout-btn:hover {
+          background: #e55a2b;
+          transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+          .auth-btn span { display: none; }
+          .auth-btn i { font-size: 1rem; }
+          .user-info { gap: 0.5rem; }
+          .user-name { font-size: 0.8rem; }
+        }
+        
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Hero Section para Playa Destiladeros */
+        .hero-section {
+            background: linear-gradient(135deg, #1a73e8 0%, #4285f4 50%, #34a853 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200') center/cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        
+        /* Sección de contenido principal */
+        .main-content {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+        
+        /* Tarjetas de restaurantes y hoteles */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 2rem;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .card-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-features {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .feature-tag {
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Botón de reserva */
+        .reserva-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .reserva-btn {
+            background: linear-gradient(45deg, var(--accent-color), #ff6b35);
+            color: white;
+            border: none;
+            padding: 2rem 4rem;
+            border-radius: 50px;
+            font-size: 2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        .reserva-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.6);
+            animation: none;
+        }
+        
+        .reserva-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .reserva-btn:hover::before {
+            left: 100%;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .reserva-btn {
+                padding: 1.5rem 3rem;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../assets/img/logo.png" alt="Trivel Panamá Logo">
+                </a>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="destinations.html">Destinos</a></li>
+                    <li><a href="marketplace.html">Marketplace</a></li>
+                    <li><a href="FAQs.html">FAQs</a></li>
+                    <li><a href="ContactUs.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons" id="authButtons">
+                <a href="login.html" class="auth-btn login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Iniciar Sesión</span>
+                </a>
+                <a href="register.html" class="auth-btn register-btn">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Registrarse</span>
+                </a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <div class="page-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Playa Destiladeros</h1>
+                <p class="hero-subtitle">Playas amplias y tranquilas cerca de Pedasí</p>
+                <p class="hero-description">
+                    Disfruta de la serenidad de Playa Destiladeros, donde encontrarás kilómetros de arena dorada 
+                    y aguas tranquilas perfectas para relajarte y desconectarte del mundo.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contenido principal -->
+        <div class="main-content">
+            <h2 class="section-title">Explora Playa Destiladeros</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 3rem; line-height: 1.6;">
+                Playa Destiladeros es un destino costero que te ofrece la perfecta combinación de tranquilidad 
+                y belleza natural. Con sus extensas playas de arena dorada y aguas cristalinas del Pacífico, 
+                es el lugar ideal para escapar del bullicio urbano y disfrutar de momentos de paz y serenidad.
+            </p>
+
+            <!-- Restaurantes cercanos -->
+            <h3 style="font-size: 2rem; color: var(--primary-color); margin-bottom: 2rem; text-align: center;">
+                Restaurantes Cercanos
+            </h3>
+            <div class="cards-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800" alt="Restaurante Costa Azul" class="card-image">
+                    <div class="card-content">
+                        <h4 class="card-title">Restaurante Costa Azul</h4>
+                        <p class="card-description">
+                            Restaurante familiar con vista panorámica al mar, especializado en pescados frescos 
+                            y mariscos locales. Su terraza es perfecta para disfrutar de las mejores puestas 
+                            de sol mientras degustas la gastronomía regional.
+                        </p>
+                        <div class="card-features">
+                            <span class="feature-tag">Pescados frescos</span>
+                            <span class="feature-tag">Terraza panorámica</span>
+                            <span class="feature-tag">Gastronomía local</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800" alt="El Rincón del Mar" class="card-image">
+                    <div class="card-content">
+                        <h4 class="card-title">El Rincón del Mar</h4>
+                        <p class="card-description">
+                            Restaurante rústico con ambiente playero que ofrece los mejores ceviches y 
+                            pescados a la parrilla. Su ubicación privilegiada te permite disfrutar de 
+                            la brisa marina mientras comes.
+                        </p>
+                        <div class="card-features">
+                            <span class="feature-tag">Ceviches frescos</span>
+                            <span class="feature-tag">Pescados a la parrilla</span>
+                            <span class="feature-tag">Ambiente playero</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hoteles y cabañas cercanas -->
+            <h3 style="font-size: 2rem; color: var(--primary-color); margin-bottom: 2rem; text-align: center;">
+                Hoteles y Cabañas Cercanas
+            </h3>
+            <div class="cards-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800" alt="Hotel Destiladeros Beach" class="card-image">
+                    <div class="card-content">
+                        <h4 class="card-title">Hotel Destiladeros Beach</h4>
+                        <p class="card-description">
+                            Hotel boutique con habitaciones modernas y vistas directas al mar. Ofrece 
+                            piscina infinita, spa relajante y acceso directo a la playa. Perfecto para 
+                            una escapada romántica o vacaciones familiares.
+                        </p>
+                        <div class="card-features">
+                            <span class="feature-tag">Vistas al mar</span>
+                            <span class="feature-tag">Piscina infinita</span>
+                            <span class="feature-tag">Spa relajante</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800" alt="Cabañas Tranquilidad" class="card-image">
+                    <div class="card-content">
+                        <h4 class="card-title">Cabañas Tranquilidad</h4>
+                        <p class="card-description">
+                            Cabañas ecológicas ubicadas en primera línea de playa, diseñadas para 
+                            maximizar la conexión con la naturaleza. Cada cabaña cuenta con terraza 
+                            privada, hamaca y acceso directo al mar.
+                        </p>
+                        <div class="card-features">
+                            <span class="feature-tag">Primera línea de playa</span>
+                            <span class="feature-tag">Cabañas ecológicas</span>
+                            <span class="feature-tag">Terraza privada</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón de reserva -->
+            <div class="reserva-section">
+                <h3 style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 2rem;">
+                    ¿Listo para tu aventura?
+                </h3>
+                <p style="font-size: 1.2rem; color: #666; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Reserva tu experiencia en Playa Destiladeros y descubre la tranquilidad y belleza 
+                    natural de uno de los destinos costeros más serenos de Panamá.
+                </p>
+                <button class="reserva-btn" onclick="window.location.href='reserva-crud.html'">
+                    ¡Reserva Ya!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Trivel Panamá</h4>
+                <p>Tu compañero de viaje en Panamá</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="destinations.html">Destinos</a></li>
+                    <li><a href="marketplace.html">Marketplace</a></li>
+                    <li><a href="FAQs.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p><i class="fas fa-phone"></i> +507 123-4567</p>
+                <p><i class="fas fa-envelope"></i> info@trivelpanama.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Panamá, Panamá</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Trivel Panamá. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Verificar autenticación del usuario
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            const authButtons = document.getElementById('authButtons');
+            
+            if (user) {
+                authButtons.innerHTML = `
+                    <div class="user-info">
+                        <i class="fas fa-user-circle"></i>
+                        <span class="user-name">${user.name}</span>
+                        <button class="logout-btn" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                `;
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('user');
+            window.location.reload();
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if(window.scrollY > 40) {
+                header.style.boxShadow = '0 2px 12px rgba(26,115,232,0.10)';
+                header.style.background = 'rgba(255,255,255,0.97)';
+            } else {
+                header.style.boxShadow = '';
+                header.style.background = '';
+            }
+        });
+
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

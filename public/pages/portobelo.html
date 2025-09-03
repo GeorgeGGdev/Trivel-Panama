@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portobelo - Trivel Panamá</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #1a73e8 0%, #34a853 50%, #ea4335 100%);
+            color: white;
+            padding: 120px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .main-content {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .beach-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .content-section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #1a73e8;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #1a73e8, #34a853);
+            border-radius: 2px;
+        }
+
+        .description-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .place-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .place-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(26, 115, 232, 0.2);
+            border-color: #1a73e8;
+        }
+
+        .place-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .place-content {
+            padding: 25px;
+        }
+
+        .place-title {
+            font-size: 1.4rem;
+            color: #1a73e8;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .place-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .place-features {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .feature-tag {
+            background: linear-gradient(135deg, #1a73e8, #34a853);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .reserva-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 30px;
+            margin: 60px 0;
+        }
+
+        .reserva-title {
+            font-size: 2.5rem;
+            color: #1a73e8;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+
+        .reserva-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .reserva-btn {
+            background: linear-gradient(135deg, #1a73e8 0%, #34a853 50%, #ea4335 100%);
+            color: white;
+            border: none;
+            padding: 25px 60px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(26, 115, 232, 0.4);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .reserva-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .reserva-btn:hover::before {
+            left: 100%;
+        }
+
+        .reserva-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(26, 115, 232, 0.6);
+        }
+
+        .reserva-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .reserva-btn i {
+            margin-left: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .places-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .reserva-btn {
+                padding: 20px 40px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../assets/img/Logo.png" alt="Trivel Panamá">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="destinations.html">Destinos</a></li>
+                    <li><a href="marketplace.html">Marketplace</a></li>
+                    <li><a href="ContactUs.html">Contacto</a></li>
+                    <li><a href="FAQs.html">FAQs</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <button class="login-btn" onclick="window.location.href='login.html'">Iniciar Sesión</button>
+                    <button class="register-btn" onclick="window.location.href='register.html'">Registrarse</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Portobelo</h1>
+                <p class="hero-subtitle">Historia y belleza natural en la costa atlántica</p>
+                <p class="hero-description">
+                    Descubre la rica historia colonial de Portobelo, un puerto legendario que fue 
+                    el centro del comercio español en América. Sus playas vírgenes y fortalezas 
+                    históricas te transportarán a otra época.
+                </p>
+            </div>
+        </section>
+
+        <div class="main-content">
+            <img src="../assets/img/portobelo-beach.jpg" alt="Portobelo" class="beach-image" 
+                 onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'">
+
+            <section class="content-section">
+                <h2 class="section-title">Sobre Portobelo</h2>
+                <p class="description-text">
+                    Portobelo es una joya histórica ubicada en la costa atlántica de Panamá, en la provincia de Colón. 
+                    Fundada en 1597, esta ciudad portuaria fue uno de los puertos más importantes del Imperio Español 
+                    durante la época colonial, siendo el punto de partida para el transporte del oro y la plata hacia España.
+                </p>
+                <p class="description-text">
+                    Hoy en día, Portobelo combina perfectamente su rico patrimonio histórico con la belleza natural de 
+                    sus playas vírgenes. Sus aguas cristalinas del Mar Caribe, sus playas de arena dorada y sus 
+                    fortalezas históricas bien conservadas la convierten en un destino único que ofrece tanto 
+                    aventura cultural como relajación playera.
+                </p>
+                <p class="description-text">
+                    La ciudad es famosa por sus fortalezas coloniales, incluyendo el Fuerte San Lorenzo y las 
+                    ruinas de las murallas que protegían el puerto. Además, sus playas ofrecen excelentes 
+                    oportunidades para el buceo, la pesca deportiva y la observación de la vida marina.
+                </p>
+            </section>
+
+            <section class="content-section">
+                <h2 class="section-title">Restaurantes Cercanos</h2>
+                <div class="places-grid">
+                    <div class="place-card">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Restaurante Mar Caribe" class="place-image">
+                        <div class="place-content">
+                            <h3 class="place-title">Restaurante Mar Caribe</h3>
+                            <p class="place-description">
+                                Disfruta de la auténtica cocina caribeña con vista al mar. Especializado en 
+                                pescados frescos, mariscos y platos tradicionales panameños.
+                            </p>
+                            <div class="place-features">
+                                <span class="feature-tag">Mariscos</span>
+                                <span class="feature-tag">Vista al mar</span>
+                                <span class="feature-tag">Cocina local</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="place-card">
+                        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="La Fortaleza Grill" class="place-image">
+                        <div class="place-content">
+                            <h3 class="place-title">La Fortaleza Grill</h3>
+                            <p class="place-description">
+                                Un restaurante con ambiente colonial que ofrece parrillas de carne y pescado, 
+                                acompañados de ingredientes frescos de la región.
+                            </p>
+                            <div class="place-features">
+                                <span class="feature-tag">Parrilla</span>
+                                <span class="feature-tag">Ambiente colonial</span>
+                                <span class="feature-tag">Ingredientes frescos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2 class="section-title">Hoteles y Cabañas Cercanas</h2>
+                <div class="places-grid">
+                    <div class="place-card">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Hotel Colonial Portobelo" class="place-image">
+                        <div class="place-content">
+                            <h3 class="place-title">Hotel Colonial Portobelo</h3>
+                            <p class="place-description">
+                                Un hotel boutique que combina la elegancia colonial con comodidades modernas. 
+                                Ubicado en el corazón histórico de Portobelo, ofrece habitaciones únicas y 
+                                un servicio personalizado.
+                            </p>
+                            <div class="place-features">
+                                <span class="feature-tag">Boutique</span>
+                                <span class="feature-tag">Ubicación histórica</span>
+                                <span class="feature-tag">Servicio personalizado</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="place-card">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Cabañas del Mar" class="place-image">
+                        <div class="place-content">
+                            <h3 class="place-title">Cabañas del Mar</h3>
+                            <p class="place-description">
+                                Cabañas rústicas pero cómodas ubicadas a pocos metros de la playa. 
+                                Perfectas para quienes buscan una experiencia más íntima y cercana a la naturaleza.
+                            </p>
+                            <div class="place-features">
+                                <span class="feature-tag">Cabañas rústicas</span>
+                                <span class="feature-tag">Cerca de la playa</span>
+                                <span class="feature-tag">Experiencia natural</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reserva-section">
+                <h2 class="reserva-title">¿Listo para tu aventura?</h2>
+                <p class="reserva-subtitle">
+                    Reserva tu estadía en Portobelo y descubre la perfecta combinación de historia, 
+                    cultura y belleza natural en la costa atlántica de Panamá.
+                </p>
+                <button class="reserva-btn" onclick="window.location.href='reserva-crud.html'">
+                    Reserva Ya! <i class="fas fa-arrow-right"></i>
+                </button>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Trivel Panamá</h3>
+                <p>Descubre las mejores playas y destinos turísticos de Panamá</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="destinations.html">Destinos</a></li>
+                    <li><a href="marketplace.html">Marketplace</a></li>
+                    <li><a href="ContactUs.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Email: info@trivelpanama.com</p>
+                <p>Teléfono: +507 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Trivel Panamá. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../JS/main.js"></script>
+</body>
+</html>
