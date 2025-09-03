@@ -7,6 +7,7 @@
     <meta name="description" content="Explora propiedades únicas en nuestro ShoreHouse Market Hub de Trivel Panamá.">
     <link rel="stylesheet" href="../CSS/styles.css">
     <link rel="stylesheet" href="../CSS/dynamic-icons.css">
+    <link rel="stylesheet" href="../CSS/hamburger-menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -353,6 +354,37 @@
             gap: 1rem;
             align-items: center;
         }
+        
+        /* Header layout adjustments */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .hamburger-btn {
+            order: 1;
+        }
+        
+        .logo {
+            order: 2;
+            flex: 1;
+        }
+        
+        .nav-menu {
+            order: 3;
+        }
+        
+        .auth-buttons {
+            order: 4;
+        }
+        
+        /* Hide old hamburger menu on mobile */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: none;
+            }
+        }
         .auth-btn {
             display: flex;
             align-items: center;
@@ -420,16 +452,16 @@
 <body>
     <!-- Fixed Header -->
     <header class="header">
+        <button class="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="logo">
             <a href="../index.html" class="logo-link">
                 <img src="../assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
                 <span class="logo-text">Trivel Panama</span>
             </a>
-        </div>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
         </div>
         <nav class="nav-menu">
             <ul>
@@ -624,6 +656,7 @@
 
     <!-- Scripts -->
     <script src="../JS/main.js"></script>
+    <script src="../JS/hamburger-menu.js"></script>
     <script>
         // Initialize Firebase
         if (typeof firebase === 'undefined') {
@@ -777,8 +810,8 @@
                                     ${amenities.map(amenity => `<span class="amenity-tag">${amenity.trim()}</span>`).join('')}
                                 </div>
                             ` : ''}
-                            <button class="contact-button" onclick="contactOwner('${property.ownerEmail || ''}', '${property.propertyName || ''}')">
-                                <i class="fas fa-envelope"></i> Contactar Propietario
+                            <button class="contact-button" onclick="contactOwner('${property.ownerEmail || ''}', '${property.propertyName || ''}', '${property.ownerPhone || property.phone || ''}')">
+                                <i class="fab fa-whatsapp"></i> Contactar Propietario
                             </button>
                         </div>
                     </div>
@@ -790,8 +823,21 @@
         }
 
         // Contact owner function
-        function contactOwner(email, propertyName) {
-            if (email) {
+        function contactOwner(email, propertyName, phoneNumber) {
+            if (phoneNumber) {
+                // Remove any non-numeric characters from phone number
+                const cleanPhone = phoneNumber.replace(/\D/g, '');
+                // Add country code if not present (assuming Panama +507)
+                const phoneWithCode = cleanPhone.startsWith('507') ? cleanPhone : 
+                                    cleanPhone.startsWith('0') ? '507' + cleanPhone.substring(1) : 
+                                    '507' + cleanPhone;
+                
+                // Create WhatsApp URL with property name as message
+                const message = encodeURIComponent(`Hola! Me interesa la propiedad "${propertyName}". ¿Podrías darme más información?`);
+                const whatsappUrl = `https://wa.me/${phoneWithCode}?text=${message}`;
+                
+                window.open(whatsappUrl, '_blank');
+            } else if (email) {
                 window.location.href = `mailto:${email}?subject=Consulta sobre ${propertyName}`;
             } else {
                 alert('Información de contacto no disponible para esta propiedad.');

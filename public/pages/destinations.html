@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../CSS/destinations.css">
     <link rel="stylesheet" href="../CSS/dynamic-icons.css">
     <link rel="stylesheet" href="../CSS/chatbot.css">
+    <link rel="stylesheet" href="../CSS/hamburger-menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -78,11 +79,38 @@
           background: #e55a2b;
           transform: translateY(-2px);
         }
+        /* Header layout adjustments */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .hamburger-btn {
+            order: 1;
+        }
+        
+        .logo {
+            order: 2;
+            flex: 1;
+        }
+        
+        .nav-menu {
+            order: 3;
+        }
+        
+        .auth-buttons {
+            order: 4;
+        }
+        
         @media (max-width: 768px) {
           .auth-btn span { display: none; }
           .auth-btn i { font-size: 1rem; }
           .user-info { gap: 0.5rem; }
           .user-name { font-size: 0.8rem; }
+          .hamburger {
+            display: none;
+          }
         }
         
         /* Animaciones */
@@ -1176,16 +1204,16 @@
 <body>
     <!-- Fixed Header -->
     <header class="header">
+        <button class="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="logo">
             <a href="../index.html" class="logo-link">
                 <img src="../assets/img/Logo.png" alt="Trivel Panama Logo" class="logo-img">
                 <span class="logo-text">Trivel Panama</span>
             </a>
-        </div>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
         </div>
         <nav class="nav-menu">
             <ul>
@@ -2638,6 +2666,9 @@
         }
     });
     </script>
+    
+    <!-- Hamburger Menu Script -->
+    <script src="../JS/hamburger-menu.js"></script>
 >>>>>>> 661b4070d0c45502106f8b3b912222bd852b929f
 </body>
 </html>
