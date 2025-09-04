@@ -31,6 +31,7 @@ class HamburgerMenu {
         const isMarketplace = currentPath.includes('marketplace.html');
         const isContact = currentPath.includes('ContactUs.html');
         const isFAQs = currentPath.includes('FAQs.html');
+        const isPublish = currentPath.includes('registrar-propiedad.html');
 
         menu.innerHTML = `
             <div class="hamburger-menu-header">
@@ -73,6 +74,12 @@ class HamburgerMenu {
                         <a href="${this.getFAQsPath()}" class="${isFAQs ? 'active' : ''}">
                             <i class="fas fa-question-circle"></i>
                             <span>FAQs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="${this.getPublishPath()}" class="${isPublish ? 'active' : ''}">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Publicar en marketplace</span>
                         </a>
                     </li>
                 </ul>
@@ -137,6 +144,14 @@ class HamburgerMenu {
             return 'FAQs.html';
         }
         return 'pages/FAQs.html';
+    }
+
+    getPublishPath() {
+        const currentPath = window.location.pathname;
+        if (currentPath.includes('/pages/')) {
+            return 'registrar-propiedad.html';
+        }
+        return 'pages/registrar-propiedad.html';
     }
 
     bindEvents() {
