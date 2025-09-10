@@ -61,7 +61,7 @@ class HamburgerMenu {
                     <li>
                         <a href="${this.getMarketplacePath()}" class="${isMarketplace ? 'active' : ''}">
                             <i class="fas fa-store"></i>
-                            <span>ShoreHouse Market Hub</span>
+                            <span>Market Hub</span>
                         </a>
                     </li>
                     <li>
@@ -74,12 +74,6 @@ class HamburgerMenu {
                         <a href="${this.getFAQsPath()}" class="${isFAQs ? 'active' : ''}">
                             <i class="fas fa-question-circle"></i>
                             <span>FAQs</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="${this.getPublishPath()}" class="${isPublish ? 'active' : ''}">
-                            <i class="fas fa-plus-circle"></i>
-                            <span>Publicar en marketplace</span>
                         </a>
                     </li>
                 </ul>
