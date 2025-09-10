@@ -39,7 +39,7 @@ body {
     left: 0;
     width: 100%;
     background: white;
-    padding: 1rem 5%;
+    padding: 0.7rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -55,12 +55,12 @@ body {
 }
 
 .logo-img {
-    height: 40px;
-    margin-right: 10px;
+    height: 32px;
+    margin-right: 8px;
 }
 
 .logo-text {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: 700;
     color: var(--text-color);
     transition: var(--transition);
@@ -73,7 +73,7 @@ body {
 .nav-menu ul {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .nav-menu a {
@@ -82,7 +82,8 @@ body {
     font-weight: 500;
     transition: var(--transition);
     position: relative;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.9rem;
 }
 
 .nav-menu a::after {
@@ -101,17 +102,20 @@ body {
     width: 80%;
 }
 
+
+
 .auth-btn {
     background: var(--gradient-orange);
     color: white;
     border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
     cursor: pointer;
     transition: var(--transition);
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+    font-size: 0.85rem;
 }
 
 .auth-btn::after {
@@ -153,6 +157,22 @@ body {
     background-color: var(--text-color);
     margin: 5px 0;
     transition: var(--transition);
+}
+
+@media (max-width: 1024px) {
+    .nav-menu ul {
+        gap: 0.8rem;
+    }
+    
+    .nav-menu a {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    .auth-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 768px) {

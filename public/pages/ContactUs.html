@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../CSS/styles.css">
     <link rel="stylesheet" href="../CSS/contact.css">
     <link rel="stylesheet" href="../CSS/dynamic-icons.css">
+    <link rel="stylesheet" href="../CSS/chatbot.css">
+    <link rel="stylesheet" href="../CSS/hamburger-menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -88,22 +90,22 @@
 <body>
     <!-- Fixed Header -->
     <header class="header">
+        <button class="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="logo">
             <a href="../index.html" class="logo-link">
                 <img src="../assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
                 <span class="logo-text">Trivel Panama</span>
             </a>
         </div>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
         <nav class="nav-menu">
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="destinations.html">Destinations</a></li>
-                <li><a href="marketplace.html">Marketplace</a></li>
+                <li><a href="marketplace.html">Market Hub</a></li>
                 <li><a href="ContactUs.html">Contact Us</a></li>
                 <li><a href="FAQs.html">FAQs</a></li>
             </ul>
@@ -170,6 +172,9 @@
                             <span>Send Message</span>
                             <i class="fas fa-paper-plane"></i>
                         </button>
+                        <div id="contactFormError" style="display:none; color:#e74c3c; font-size:0.9rem; margin-top:1rem; text-align:center; background:rgba(231,76,60,0.1); padding:0.8rem; border-radius:8px; border:1px solid rgba(231,76,60,0.2);">
+                            <i class="fas fa-exclamation-triangle"></i> Por favor, completa todos los campos requeridos
+                        </div>
                         <!-- Mapa visual de Google Maps -->
                         <div class="google-maps-link" style="margin-top: 1.5em; text-align: center; width: 100%; max-width: 100%; margin-left: 0; margin-right: 0;">
                             <a href="https://maps.app.goo.gl/Do9rJGup8MtmcRbN6" target="_blank" rel="noopener noreferrer" style="display:inline-block;max-width:100%;width:100%;">
@@ -338,6 +343,7 @@
 
     <!-- Scripts -->
     <script src="../JS/contact.js"></script>
+    <script src="../JS/hamburger-menu.js"></script>
     
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -441,6 +447,101 @@
                 });
             }
         });
+    });
+    </script>
+    
+    <!-- Cargador de variables de entorno -->
+    <script src="../JS/env-loader.js"></script>
+    <!-- Chatbot Script -->
+    <script src="../JS/chatbot.js"></script>
+
+    <!-- Validación del formulario de contacto -->
+    <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const subjectSelect = document.getElementById('subject');
+        const messageInput = document.getElementById('message');
+        const contactFormError = document.getElementById('contactFormError');
+        
+        let hasError = false;
+        
+        // Limpiar estilos previos
+        nameInput.style.borderColor = '';
+        emailInput.style.borderColor = '';
+        subjectSelect.style.borderColor = '';
+        messageInput.style.borderColor = '';
+        
+        // Validar nombre
+        if (!nameInput.value.trim()) {
+            nameInput.style.borderColor = '#e74c3c';
+            hasError = true;
+        }
+        
+        // Validar email
+        if (!emailInput.value.trim()) {
+            emailInput.style.borderColor = '#e74c3c';
+            hasError = true;
+        } else if (!isValidEmail(emailInput.value)) {
+            emailInput.style.borderColor = '#e74c3c';
+            contactFormError.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Por favor, ingresa un email válido';
+            hasError = true;
+        }
+        
+        // Validar asunto
+        if (!subjectSelect.value) {
+            subjectSelect.style.borderColor = '#e74c3c';
+            hasError = true;
+        }
+        
+        // Validar mensaje
+        if (!messageInput.value.trim()) {
+            messageInput.style.borderColor = '#e74c3c';
+            hasError = true;
+        }
+        
+        if (hasError) {
+            contactFormError.style.display = 'block';
+            
+            // Ocultar el mensaje de error después de 3 segundos
+            setTimeout(() => {
+                contactFormError.style.display = 'none';
+                nameInput.style.borderColor = '';
+                emailInput.style.borderColor = '';
+                subjectSelect.style.borderColor = '';
+                messageInput.style.borderColor = '';
+            }, 3000);
+        } else {
+            contactFormError.style.display = 'none';
+            // Aquí puedes agregar la lógica de envío del formulario
+            alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+            this.reset();
+        }
+    });
+    
+    // Función para validar email
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+    
+    // Limpiar errores cuando el usuario empiece a escribir
+    document.getElementById('contactForm').addEventListener('input', function(e) {
+        const contactFormError = document.getElementById('contactFormError');
+        if (contactFormError.style.display === 'block') {
+            contactFormError.style.display = 'none';
+            e.target.style.borderColor = '';
+        }
+    });
+    
+    // Limpiar errores cuando el usuario cambie el select
+    document.getElementById('subject').addEventListener('change', function() {
+        const contactFormError = document.getElementById('contactFormError');
+        if (contactFormError.style.display === 'block') {
+            contactFormError.style.display = 'none';
+            this.style.borderColor = '';
+        }
     });
     </script>
 </body>

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playa Las Lajas - Trivel Panamá</title>
+    <meta name="description" content="Descubre Playa Las Lajas, la playa más larga de Panamá en Chiriquí. Arena blanca y aguas cristalinas del Pacífico con Trivel Panamá.">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/destinations.css">
+    <link rel="stylesheet" href="../CSS/dynamic-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-content {
+            margin-top: 80px;
+        }
+        
+        /* Estilos para botones de autenticación en el header */
+        .auth-buttons {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+        }
+        .auth-btn {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.6rem 1.2rem;
+          border: none;
+          border-radius: 25px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-decoration: none;
+          font-family: 'Poppins', sans-serif;
+        }
+        .login-btn {
+          background: transparent;
+          color: var(--primary-color);
+          border: 2px solid var(--primary-color);
+        }
+        .login-btn:hover {
+          background: var(--primary-color);
+          color: white;
+          transform: translateY(-2px);
+        }
+        .register-btn {
+          background: var(--primary-color);
+          color: white;
+        }
+        .register-btn:hover {
+          background: var(--accent-color);
+          transform: translateY(-2px);
+        }
+        .user-info {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          color: var(--primary-color);
+        }
+        .user-name {
+          font-weight: 600;
+          font-size: 0.9rem;
+        }
+        .logout-btn {
+          background: var(--accent-color);
+          color: white;
+          border: none;
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          font-size: 0.8rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .logout-btn:hover {
+          background: #e55a2b;
+          transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+          .auth-btn span { display: none; }
+          .auth-btn i { font-size: 1rem; }
+          .user-info { gap: 0.5rem; }
+          .user-name { font-size: 0.8rem; }
+        }
+        
+        /* Hero Section para Playa Las Lajas */
+        .destination-hero {
+            background: url('https://images.unsplash.com/photo-1526779259212-939e64788e3c?w=1200') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .destination-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(26, 115, 232, 0.8), rgba(52, 168, 83, 0.6), rgba(234, 67, 53, 0.7));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+        
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: linear-gradient(45deg, #ff6b35, #fd7e14);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .hero-cta:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.6);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b35, #fd7e14);
+            border-radius: 2px;
+        }
+        
+        .section-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 107, 53, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .distance {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b35, #fd7e14);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        /* Estilos para el botón Ver en Maps */
+        .view-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(45deg, #ff6b35, #fd7e14);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .view-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .view-btn:hover::before {
+            left: 100%;
+        }
+        
+        .view-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(255, 107, 53, 0.4);
+        }
+        
+        .view-btn:active {
+            transform: translateY(-1px) scale(1.01);
+        }
+        
+        /* Animación de pulso para el botón */
+        @keyframes viewPulse {
+            0%, 100% { 
+                box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+            }
+            50% { 
+                box-shadow: 0 8px 25px rgba(255, 107, 53, 0.5);
+            }
+        }
+        
+        .view-btn {
+            animation: viewPulse 2s infinite;
+        }
+        
+        .view-btn:hover {
+            animation: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .main-content {
+                padding: 2rem 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <button class="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="logo">
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/img/Logo.png" alt="Trivel Panama Logo" class="logo-img">
+                <span class="logo-text">Trivel Panama</span>
+            </a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="marketplace.html">Market Hub</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="FAQs.html">FAQs</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button id="loginBtn" class="auth-btn login-btn">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Iniciar Sesión</span>
+            </button>
+            <button id="registerBtn" class="auth-btn register-btn">
+                <i class="fas fa-user-plus"></i>
+                <span>Registrarse</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="page-content">
+        <!-- Hero Section -->
+        <section class="destination-hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Playa Las Lajas</h1>
+                <p class="hero-subtitle">Chiriquí</p>
+                <p class="hero-description">Descubre Playa Las Lajas, la playa más larga de Panamá. Con más de 20 kilómetros de arena blanca y aguas cristalinas del Pacífico, este paraíso natural te espera en la provincia de Chiriquí.</p>
+                <a href="#explore" class="hero-cta">
+                    <span>Explorar Ahora</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="main-content" id="explore">
+            <!-- About Section -->
+            <section class="content-section">
+                <h2 class="section-title">Sobre Playa Las Lajas</h2>
+                <p class="section-description">
+                    Playa Las Lajas es reconocida como la playa más larga de Panamá, extendiéndose por más de 20 kilómetros de costa en la provincia de Chiriquí. 
+                    Esta playa virgen de arena blanca y aguas cristalinas del Océano Pacífico ofrece un ambiente tranquilo y natural, perfecto para quienes 
+                    buscan escapar del bullicio y conectarse con la naturaleza en su estado más puro.
+                </p>
+            </section>
+
+            <!-- Restaurants Section -->
+            <section class="content-section">
+                <h2 class="section-title">Restaurantes Recomendados</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400');"></div>
+                        <div class="card-content">
+                            <h3 class="card-title">Restaurante Las Lajas</h3>
+                            <p class="card-description">Mariscos frescos y cocina local con ingredientes de la región</p>
+                            <span class="distance">A 200m</span>
+                            <a href="https://maps.app.goo.gl/las-lajas-restaurant" target="_blank" class="view-btn">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>Ver en Maps</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400');"></div>
+                        <div class="card-content">
+                            <h3 class="card-title">La Cabaña del Pescador</h3>
+                            <p class="card-description">Pescado fresco del día y ambiente familiar</p>
+                            <span class="distance">A 500m</span>
+                            <a href="https://maps.app.goo.gl/cabana-pescador" target="_blank" class="view-btn">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>Ver en Maps</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hotels Section -->
+            <section class="content-section">
+                <h2 class="section-title">Alojamientos Recomendados</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400');"></div>
+                        <div class="card-content">
+                            <h3 class="card-title">Hotel Las Lajas</h3>
+                            <p class="card-description">3 estrellas | Frente al mar | Piscina | Restaurante</p>
+                            <span class="distance">A 100m</span>
+                            <a href="https://maps.app.goo.gl/las-lajas-hotel" target="_blank" class="view-btn">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>Ver en Maps</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400');"></div>
+                        <div class="card-content">
+                            <h3 class="card-title">Cabañas del Pacífico</h3>
+                            <p class="card-description">Cabañas rústicas | Ambiente natural | Vista al mar</p>
+                            <span class="distance">A 800m</span>
+                            <a href="https://maps.app.goo.gl/cabanas-pacifico-lajas" target="_blank" class="view-btn">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>Ver en Maps</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Trivel Panamá</h3>
+                <p>Descubre las playas más hermosas de Panamá con nosotros.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="destinations.html">Destinos</a></li>
+                    <li><a href="ContactUs.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><a href="ContactUs.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Trivel Panamá. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../JS/main.js"></script>
+    <script src="../JS/auth.js"></script>
+    <script>
+        // Auth functionality
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const authButtons = document.querySelector('.auth-buttons');
+        
+        // Event listeners para los botones
+        if (loginBtn) {
+            loginBtn.addEventListener('click', function() {
+                window.location.href = 'login.html';
+            });
+        }
+        
+        if (registerBtn) {
+            registerBtn.addEventListener('click', function() {
+                window.location.href = 'register.html';
+            });
+        }
+        
+        // Check if user is logged in
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                // User is logged in - show user info and logout button
+                const displayName = user.displayName || user.email.split('@')[0];
+                authButtons.innerHTML = `
+                    <div class="user-info">
+                        <i class="fas fa-user-circle" style="font-size: 1.2rem;"></i>
+                        <span class="user-name">${displayName}</span>
+                        <button id="logoutBtn" class="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Cerrar Sesión</span>
+                        </button>
+                    </div>
+                `;
+                
+                // Add logout functionality
+                document.getElementById('logoutBtn').addEventListener('click', function() {
+                    firebase.auth().signOut().then(() => {
+                        window.location.reload();
+                    });
+                });
+            } else {
+                // User is not logged in - show login and register buttons
+                authButtons.innerHTML = `
+                    <button id="loginBtn" class="auth-btn login-btn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Iniciar Sesión
+                    </button>
+                    <button id="registerBtn" class="auth-btn register-btn">
+                        <i class="fas fa-user-plus"></i>
+                        Registrarse
+                    </button>
+                `;
+                // Re-attach event listeners for newly created buttons
+                document.getElementById('loginBtn').addEventListener('click', function() {
+                    window.location.href = 'login.html';
+                });
+                document.getElementById('registerBtn').addEventListener('click', function() {
+                    window.location.href = 'register.html';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

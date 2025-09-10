@@ -294,6 +294,65 @@
             box-shadow: 0 10px 30px rgba(0, 102, 204, 0.3);
         }
         
+        /* Error Messages */
+        .error-message {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .error-message.show {
+            display: flex;
+        }
+        
+        .error-message i {
+            font-size: 0.75rem;
+        }
+        
+        .form-group.error input,
+        .form-group.error select,
+        .form-group.error textarea {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+        }
+        
+        .form-group.error label {
+            color: #dc3545;
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #dc3545;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .toast.show {
+            transform: translateX(0);
+        }
+        
+        .toast.success {
+            background: #28a745;
+        }
+        
+        .toast i {
+            font-size: 1.2rem;
+        }
+        
         /* Footer */
         .footer {
             background: #000;
@@ -412,7 +471,7 @@
                 <ul class="nav-menu">
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="destinations.html">Destinos</a></li>
-                    <li><a href="marketplace.html">Marketplace</a></li>
+                    <li><a href="marketplace.html">Market Hub</a></li>
                     <li><a href="ContactUs.html">Contacto</a></li>
                     <li><a href="FAQs.html">FAQs</a></li>
                 </ul>
@@ -532,7 +591,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="ownerWhatsapp">WhatsApp (Opcional)</label>
-                                <input type="tel" id="ownerWhatsapp" name="ownerWhatsapp" placeholder="+507 123-4567">
+                                <input type="tel" id="ownerWhatsapp" name="ownerWhatsapp" placeholder="0000-0000">
+                                <div class="error-message" id="whatsapp-error">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <span>El formato debe ser 0000-0000</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -752,9 +815,186 @@
                 });
             }
             
+            // Validation functions
+            function showToast(message, type = 'error') {
+                const toastContainer = document.getElementById('toast-container');
+                const toast = document.createElement('div');
+                toast.className = `toast ${type}`;
+                
+                const icon = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-triangle';
+                toast.innerHTML = `
+                    <i class="${icon}"></i>
+                    <span>${message}</span>
+                `;
+                
+                toastContainer.appendChild(toast);
+                
+                // Show toast
+                setTimeout(() => toast.classList.add('show'), 100);
+                
+                // Hide toast after 4 seconds
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    setTimeout(() => toastContainer.removeChild(toast), 300);
+                }, 4000);
+            }
+            
+            function validateWhatsApp(phoneNumber) {
+                if (!phoneNumber) return true; // Optional field
+                
+                // Remove any spaces or special characters except dash
+                const cleanNumber = phoneNumber.replace(/[^\d-]/g, '');
+                
+                // Check if it matches the format 0000-0000
+                const whatsappRegex = /^\d{4}-\d{4}$/;
+                return whatsappRegex.test(cleanNumber);
+            }
+            
+            function showFieldError(fieldId, message) {
+                const field = document.getElementById(fieldId);
+                const formGroup = field.closest('.form-group');
+                const errorElement = formGroup.querySelector('.error-message');
+                
+                if (errorElement) {
+                    errorElement.querySelector('span').textContent = message;
+                    errorElement.classList.add('show');
+                }
+                formGroup.classList.add('error');
+            }
+            
+            function hideFieldError(fieldId) {
+                const field = document.getElementById(fieldId);
+                const formGroup = field.closest('.form-group');
+                const errorElement = formGroup.querySelector('.error-message');
+                
+                if (errorElement) {
+                    errorElement.classList.remove('show');
+                }
+                formGroup.classList.remove('error');
+            }
+            
+            function validateRequiredFields() {
+                const requiredFields = [
+                    'propertyName',
+                    'propertyType', 
+                    'location',
+                    'address',
+                    'bedrooms',
+                    'bathrooms',
+                    'capacity',
+                    'price',
+                    'description',
+                    'ownerName',
+                    'ownerEmail',
+                    'ownerPhone',
+                    'terms'
+                ];
+                
+                let hasErrors = false;
+                const missingFields = [];
+                
+                requiredFields.forEach(fieldId => {
+                    const field = document.getElementById(fieldId);
+                    if (!field) return;
+                    
+                    let isEmpty = false;
+                    
+                    if (field.type === 'checkbox') {
+                        isEmpty = !field.checked;
+                    } else {
+                        isEmpty = !field.value.trim();
+                    }
+                    
+                    if (isEmpty) {
+                        hasErrors = true;
+                        const label = field.closest('.form-group').querySelector('label');
+                        const fieldName = label ? label.textContent.replace('*', '').trim() : fieldId;
+                        missingFields.push(fieldName);
+                    }
+                });
+                
+                if (hasErrors) {
+                    const message = `Por favor completa los siguientes campos obligatorios: ${missingFields.join(', ')}`;
+                    showToast(message, 'error');
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            // WhatsApp validation and formatting
+            const whatsappField = document.getElementById('ownerWhatsapp');
+            if (whatsappField) {
+                whatsappField.addEventListener('input', function() {
+                    let value = this.value;
+                    
+                    // Remove any non-digit characters
+                    const digits = value.replace(/\D/g, '');
+                    
+                    // Format as 0000-0000 if we have enough digits
+                    if (digits.length >= 4) {
+                        const firstPart = digits.substring(0, 4);
+                        const secondPart = digits.substring(4, 8);
+                        value = firstPart + (secondPart ? '-' + secondPart : '');
+                    } else {
+                        value = digits;
+                    }
+                    
+                    // Update the field value
+                    this.value = value;
+                    
+                    // Validate format
+                    if (value && !validateWhatsApp(value)) {
+                        showFieldError('ownerWhatsapp', 'El formato debe ser 0000-0000');
+                    } else {
+                        hideFieldError('ownerWhatsapp');
+                    }
+                });
+                
+                whatsappField.addEventListener('blur', function() {
+                    const value = this.value;
+                    if (value && !validateWhatsApp(value)) {
+                        showFieldError('ownerWhatsapp', 'El formato debe ser 0000-0000');
+                    } else {
+                        hideFieldError('ownerWhatsapp');
+                    }
+                });
+                
+                // Prevent pasting invalid characters
+                whatsappField.addEventListener('paste', function(e) {
+                    e.preventDefault();
+                    const paste = (e.clipboardData || window.clipboardData).getData('text');
+                    const digits = paste.replace(/\D/g, '');
+                    
+                    if (digits.length >= 4) {
+                        const firstPart = digits.substring(0, 4);
+                        const secondPart = digits.substring(4, 8);
+                        this.value = firstPart + (secondPart ? '-' + secondPart : '');
+                    } else {
+                        this.value = digits;
+                    }
+                    
+                    // Trigger validation
+                    this.dispatchEvent(new Event('input'));
+                });
+            }
+
             // Form submission
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
+                
+                // Validate required fields
+                if (!validateRequiredFields()) {
+                    return;
+                }
+                
+                // Validate WhatsApp format
+                const whatsappValue = document.getElementById('ownerWhatsapp').value;
+                if (whatsappValue && !validateWhatsApp(whatsappValue)) {
+                    showToast('El número de WhatsApp debe tener el formato 0000-0000', 'error');
+                    showFieldError('ownerWhatsapp', 'El formato debe ser 0000-0000');
+                    return;
+                }
                 
                 // Validate form
                 if (!form.checkValidity()) {
@@ -889,5 +1129,8 @@
             }
         });
     </script>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
 </body>
 </html> 

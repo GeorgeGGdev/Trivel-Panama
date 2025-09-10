@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marketplace - Trivel Panamá</title>
-    <meta name="description" content="Explora propiedades únicas en nuestro marketplace de Trivel Panamá.">
+    <title>Market Hub - Trivel Panamá</title>
+    <meta name="description" content="Explora propiedades únicas en nuestro Market Hub de Trivel Panamá.">
     <link rel="stylesheet" href="../CSS/styles.css">
     <link rel="stylesheet" href="../CSS/dynamic-icons.css">
+    <link rel="stylesheet" href="../CSS/hamburger-menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -353,14 +354,45 @@
             gap: 1rem;
             align-items: center;
         }
+        
+        /* Header layout adjustments */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .hamburger-btn {
+            order: 1;
+        }
+        
+        .logo {
+            order: 2;
+            flex: 1;
+        }
+        
+        .nav-menu {
+            order: 3;
+        }
+        
+        .auth-buttons {
+            order: 4;
+        }
+        
+        /* Hide old hamburger menu on mobile */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: none;
+            }
+        }
         .auth-btn {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.2rem;
+            gap: 0.4rem;
+            padding: 0.4rem 0.8rem;
             border: none;
-            border-radius: 25px;
-            font-size: 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -396,22 +428,22 @@
             font-size: 0.9rem;
         }
         .logout-btn {
-            background: var(--accent-color);
+            background: #dc3545;
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 16px;
+            font-size: 0.75rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
         .logout-btn:hover {
-            background: #e55a2b;
+            background: #c82333;
             transform: translateY(-2px);
         }
         @media (max-width: 768px) {
             .auth-btn span { display: none; }
-            .auth-btn i { font-size: 1rem; }
+            .auth-btn i { font-size: 0.8rem; }
             .user-info { gap: 0.5rem; }
             .user-name { font-size: 0.8rem; }
         }
@@ -420,22 +452,22 @@
 <body>
     <!-- Fixed Header -->
     <header class="header">
+        <button class="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="logo">
             <a href="../index.html" class="logo-link">
                 <img src="../assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
                 <span class="logo-text">Trivel Panama</span>
             </a>
         </div>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
         <nav class="nav-menu">
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="destinations.html">Destinations</a></li>
-                <li><a href="marketplace.html">Marketplace</a></li>
+                <li><a href="marketplace.html">Market Hub</a></li>
                 <li><a href="ContactUs.html">Contact Us</a></li>
                 <li><a href="FAQs.html">FAQs</a></li>
             </ul>
@@ -457,7 +489,7 @@
         <div class="main-container">
             <!-- Page Header -->
             <div class="page-header">
-                <h1>Marketplace</h1>
+                <h1>Market Hub</h1>
                 <p>Explora propiedades únicas y encuentra tu próximo destino en Panamá.</p>
             </div>
 
@@ -478,10 +510,12 @@
                         <label for="type-filter">Tipo de Propiedad</label>
                         <select id="type-filter">
                             <option value="">Todos los tipos</option>
-                            <option value="Casa">Casa</option>
-                            <option value="Apartamento">Apartamento</option>
-                            <option value="Villa">Villa</option>
-                            <option value="Cabaña">Cabaña</option>
+                            <option value="casa">Casa</option>
+                            <option value="apartamento">Apartamento</option>
+                            <option value="villa">Villa</option>
+                            <option value="cabaña">Cabaña</option>
+                            <option value="hostal">Hostal</option>
+                            <option value="hotel">Hotel</option>
                         </select>
                     </div>
                     <div class="filter-group">
@@ -622,6 +656,7 @@
 
     <!-- Scripts -->
     <script src="../JS/main.js"></script>
+    <script src="../JS/hamburger-menu.js"></script>
     <script>
         // Initialize Firebase
         if (typeof firebase === 'undefined') {
@@ -641,12 +676,14 @@
                 const propertiesContainer = document.getElementById('properties-container');
                 const loadingState = document.getElementById('loading-state');
                 
+                console.log('Properties snapshot size:', propertiesSnapshot.size);
+                
                 if (propertiesSnapshot.empty) {
                     propertiesContainer.innerHTML = `
                         <div class="empty-content">
                             <i class="fas fa-store"></i>
                             <h2>No hay propiedades disponibles</h2>
-                            <p>Aún no hay propiedades registradas en nuestro marketplace. Sé el primero en registrar tu propiedad.</p>
+                            <p>Aún no hay propiedades registradas en nuestro Market Hub. Sé el primero en registrar tu propiedad.</p>
                             <a href="registrar-propiedad.html" class="contact-button" style="display: inline-block; text-decoration: none; margin-top: 1rem;">Registrar Propiedad</a>
                         </div>
                     `;
@@ -656,11 +693,41 @@
                 // Store all properties globally
                 allProperties = [];
                 propertiesSnapshot.forEach(doc => {
-                    allProperties.push({
+                    const propertyData = {
                         id: doc.id,
                         ...doc.data()
+                    };
+                    
+                    // Normalize data to ensure consistency
+                    if (propertyData.propertyType) {
+                        propertyData.propertyType = propertyData.propertyType.toLowerCase().trim();
+                    }
+                    if (propertyData.location) {
+                        propertyData.location = propertyData.location.trim();
+                    }
+                    if (propertyData.price) {
+                        propertyData.price = parseFloat(propertyData.price) || 0;
+                    }
+                    if (propertyData.capacity) {
+                        propertyData.capacity = parseInt(propertyData.capacity) || 0;
+                    }
+                    
+                    console.log('Loaded property:', propertyData.propertyName, {
+                        type: propertyData.propertyType,
+                        location: propertyData.location,
+                        price: propertyData.price,
+                        capacity: propertyData.capacity
                     });
+                    
+                    allProperties.push(propertyData);
                 });
+
+                console.log('Total properties loaded:', allProperties.length);
+                console.log('All properties:', allProperties.map(p => ({
+                    name: p.propertyName,
+                    type: p.propertyType,
+                    location: p.location
+                })));
 
                 // Display all properties initially
                 displayProperties(allProperties);
@@ -743,8 +810,8 @@
                                     ${amenities.map(amenity => `<span class="amenity-tag">${amenity.trim()}</span>`).join('')}
                                 </div>
                             ` : ''}
-                            <button class="contact-button" onclick="contactOwner('${property.ownerEmail || ''}', '${property.propertyName || ''}')">
-                                <i class="fas fa-envelope"></i> Contactar Propietario
+                            <button class="contact-button" onclick="contactOwner('${property.ownerEmail || ''}', '${property.propertyName || ''}', '${property.ownerPhone || property.phone || ''}')">
+                                <i class="fab fa-whatsapp"></i> Contactar Propietario
                             </button>
                         </div>
                     </div>
@@ -756,8 +823,21 @@
         }
 
         // Contact owner function
-        function contactOwner(email, propertyName) {
-            if (email) {
+        function contactOwner(email, propertyName, phoneNumber) {
+            if (phoneNumber) {
+                // Remove any non-numeric characters from phone number
+                const cleanPhone = phoneNumber.replace(/\D/g, '');
+                // Add country code if not present (assuming Panama +507)
+                const phoneWithCode = cleanPhone.startsWith('507') ? cleanPhone : 
+                                    cleanPhone.startsWith('0') ? '507' + cleanPhone.substring(1) : 
+                                    '507' + cleanPhone;
+                
+                // Create WhatsApp URL with property name as message
+                const message = encodeURIComponent(`Hola! Me interesa la propiedad "${propertyName}". ¿Podrías darme más información?`);
+                const whatsappUrl = `https://wa.me/${phoneWithCode}?text=${message}`;
+                
+                window.open(whatsappUrl, '_blank');
+            } else if (email) {
                 window.location.href = `mailto:${email}?subject=Consulta sobre ${propertyName}`;
             } else {
                 alert('Información de contacto no disponible para esta propiedad.');
@@ -766,30 +846,50 @@
 
         // Filter properties
         function filterProperties() {
-            const locationFilter = document.getElementById('location-filter').value;
-            const typeFilter = document.getElementById('type-filter').value;
-            const priceFilter = document.getElementById('price-filter').value;
-            const guestsFilter = document.getElementById('guests-filter').value;
+            const locationFilter = document.getElementById('location-filter').value.trim();
+            const typeFilter = document.getElementById('type-filter').value.trim();
+            const priceFilter = document.getElementById('price-filter').value.trim();
+            const guestsFilter = document.getElementById('guests-filter').value.trim();
 
             console.log('Filtering with:', { locationFilter, typeFilter, priceFilter, guestsFilter });
+            console.log('Total properties to filter:', allProperties.length);
 
             let filteredProperties = allProperties.filter(property => {
-                // Location filter
-                if (locationFilter && property.location !== locationFilter) {
-                    console.log('Filtered out by location:', property.propertyName, property.location, '!==', locationFilter);
-                    return false;
+                console.log('Checking property:', property.propertyName, {
+                    location: property.location,
+                    propertyType: property.propertyType,
+                    price: property.price,
+                    capacity: property.capacity
+                });
+
+                // Location filter - case insensitive comparison
+                if (locationFilter && property.location) {
+                    const propertyLocation = property.location.toLowerCase().trim();
+                    const filterLocation = locationFilter.toLowerCase().trim();
+                    if (propertyLocation !== filterLocation) {
+                        console.log('Filtered out by location:', property.propertyName, propertyLocation, '!==', filterLocation);
+                        return false;
+                    }
                 }
 
-                // Property type filter
-                if (typeFilter && property.propertyType !== typeFilter) {
-                    console.log('Filtered out by type:', property.propertyName, property.propertyType, '!==', typeFilter);
-                    return false;
+                // Property type filter - case insensitive comparison
+                if (typeFilter && property.propertyType) {
+                    const propertyType = property.propertyType.toLowerCase().trim();
+                    const filterType = typeFilter.toLowerCase().trim();
+                    if (propertyType !== filterType) {
+                        console.log('Filtered out by type:', property.propertyName, propertyType, '!==', filterType);
+                        return false;
+                    }
                 }
 
                 // Price filter
                 if (priceFilter && property.price) {
                     const maxPrice = parseFloat(priceFilter);
                     const propertyPrice = parseFloat(property.price);
+                    if (isNaN(maxPrice) || isNaN(propertyPrice)) {
+                        console.log('Invalid price values:', { maxPrice, propertyPrice });
+                        return false;
+                    }
                     if (propertyPrice > maxPrice) {
                         console.log('Filtered out by price:', property.propertyName, propertyPrice, '>', maxPrice);
                         return false;
@@ -799,6 +899,11 @@
                 // Guests filter
                 if (guestsFilter && property.capacity) {
                     const capacity = parseInt(property.capacity);
+                    if (isNaN(capacity)) {
+                        console.log('Invalid capacity value:', property.capacity);
+                        return false;
+                    }
+                    
                     let passesGuestFilter = false;
                     
                     switch (guestsFilter) {
@@ -897,6 +1002,7 @@
             if (guestsFilter) guestsFilter.value = '';
             
             console.log('All filters cleared, showing all properties');
+            console.log('Total properties to show:', allProperties.length);
             
             // Display all properties
             displayProperties(allProperties);
