@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Hub - Trivel Panamá</title>
+    <meta name="description" content="Explora propiedades únicas en nuestro market hub de Trivel Panamá.">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/dynamic-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+        }
+        
+        .page-content {
+            margin-top: 80px;
+            flex: 1;
+            padding: 2rem 0;
+        }
+        
+        /* Main Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #0066cc, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Properties Grid */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .property-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .property-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #0066cc, #0099ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .property-content {
+            padding: 1.5rem;
+        }
+
+        .property-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-location {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .property-location i {
+            color: #0066cc;
+        }
+
+        .property-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .property-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .property-detail i {
+            color: #0066cc;
+            width: 16px;
+        }
+
+        .property-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0066cc;
+            margin-bottom: 1rem;
+        }
+
+        .property-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .property-amenities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .amenity-tag {
+            background: #f0f8ff;
+            color: #0066cc;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .contact-button {
+            width: 100%;
+            background: linear-gradient(45deg, #0066cc, #0099ff);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 102, 204, 0.3);
+        }
+
+        /* Loading and Empty States */
+        .loading-state {
+            text-align: center;
+            padding: 4rem;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #0066cc;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 2rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .empty-content {
+            background: white;
+            border-radius: 20px;
+            padding: 4rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .empty-content i {
+            font-size: 4rem;
+            color: #0066cc;
+            margin-bottom: 2rem;
+        }
+        
+        .empty-content h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .empty-content p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Filters */
+        .filters-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            padding: 0.8rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .filter-group select:focus,
+        .filter-group input:focus {
+            outline: none;
+            border-color: #0066cc;
+        }
+
+        .clear-filters-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .clear-filters-btn:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .properties-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .empty-content {
+                padding: 2rem;
+            }
+            
+            .empty-content i {
+                font-size: 3rem;
+            }
+            
+            .empty-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .filters-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-container {
+                padding: 0 1rem;
+            }
+            
+            .empty-content {
+                padding: 1.5rem;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Estilos para botones de autenticación en el header */
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .auth-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+        }
+        .login-btn {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        .login-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .register-btn {
+            background: var(--primary-color);
+            color: white;
+        }
+        .register-btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--primary-color);
+        }
+        .user-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .logout-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .logout-btn:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .auth-btn span { display: none; }
+            .auth-btn i { font-size: 1rem; }
+            .user-info { gap: 0.5rem; }
+            .user-name { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="logo">
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
+                <span class="logo-text">Trivel Panama</span>
+            </a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="market-hub.html">Market Hub</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="FAQs.html">FAQs</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button id="loginBtn" class="auth-btn login-btn">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Iniciar Sesión</span>
+            </button>
+            <button id="registerBtn" class="auth-btn register-btn">
+                <i class="fas fa-user-plus"></i>
+                <span>Registrarse</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="page-content">
+        <div class="main-container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>Market Hub</h1>
+                <p>Explora propiedades únicas y encuentra tu próximo destino en Panamá.</p>
+            </div>
+
+            <!-- Filters Section -->
+            <div class="filters-section">
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label for="location-filter">Ubicación</label>
+                        <select id="location-filter">
+                            <option value="">Todas las ubicaciones</option>
+                            <option value="Bocas del Toro">Bocas del Toro</option>
+                            <option value="San Blas">San Blas</option>
+                            <option value="Playa Venao">Playa Venao</option>
+                            <option value="Playa Estrella">Playa Estrella</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="type-filter">Tipo de Propiedad</label>
+                        <select id="type-filter">
+                            <option value="">Todos los tipos</option>
+                            <option value="casa">Casa</option>
+                            <option value="apartamento">Apartamento</option>
+                            <option value="villa">Villa</option>
+                            <option value="cabaña">Cabaña</option>
+                            <option value="hostal">Hostal</option>
+                            <option value="hotel">Hotel</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="price-filter">Precio máximo</label>
+                        <input type="number" id="price-filter" placeholder="Precio máximo">
+                    </div>
+<<<<<<< HEAD
+                                         <div class="filter-group">
+                         <label for="guests-filter">Huéspedes</label>
+                         <select id="guests-filter">
+                             <option value="">Cualquier número</option>
+                             <option value="1-2">1-2 personas</option>
+                             <option value="3-4">3-4 personas</option>
+                             <option value="5-6">5-6 personas</option>
+                             <option value="7+">7+ personas</option>
+                         </select>
+                     </div>
+                     <div class="filter-group">
+                         <label>&nbsp;</label>
+                         <button id="clear-filters" class="clear-filters-btn">
+                             <i class="fas fa-times"></i> Limpiar Filtros
+                         </button>
+                     </div>
+
+=======
+                    <div class="filter-group">
+                        <label for="guests-filter">Huéspedes</label>
+                        <select id="guests-filter">
+                            <option value="">Cualquier número</option>
+                            <option value="1-2">1-2 personas</option>
+                            <option value="3-4">3-4 personas</option>
+                            <option value="5-6">5-6 personas</option>
+                            <option value="7+">7+ personas</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>&nbsp;</label>
+                        <button id="clear-filters" class="clear-filters-btn">
+                            <i class="fas fa-times"></i> Limpiar Filtros
+                        </button>
+                    </div>
+>>>>>>> 8de3fb6b5ac4c954d00ef1b9500d7717197d070d
+                </div>
+            </div>
+
+            <!-- Properties Container -->
+            <div id="properties-container">
+                <!-- Loading State -->
+                <div class="loading-state" id="loading-state">
+                    <div class="loading-spinner"></div>
+                    <h3>Cargando propiedades...</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Minimalista -->
+    <footer style="background: #000; color: #fff; padding: 2.5rem 0 1.5rem 0; position: relative;">
+        <div style="max-width: 1000px; margin: 0 auto; padding: 0 2rem;">
+            <!-- Sección principal -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2rem;">
+                <!-- Logo y redes sociales -->
+                <div>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <img src="../assets/img/Logo.png" alt="Trivel Panama" style="height: 45px; border-radius: 8px;">
+                        <div>
+                            <h3 style="font-size: 1.5rem; font-weight: 600; margin: 0; color: #fff;">Trivel Panama</h3>
+                            <span style="color: #ff6b35; font-size: 0.8rem; font-weight: 500;">#ViajaConTrivel</span>
+                        </div>
+                    </div>
+                    <p style="color: #ccc; line-height: 1.6; margin-bottom: 1rem; font-size: 0.9rem; max-width: 280px;">
+                        Descubre la magia de Panamá con experiencias únicas y memorables.
+                    </p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="https://facebook.com/trivelpanama" target="_blank" style="color: #fff; font-size: 1.1rem; transition: color 0.3s; opacity: 0.7;" onmouseover="this.style.opacity='1'; this.style.color='#1877f2'" onmouseout="this.style.opacity='0.7'; this.style.color='#fff'"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/trivelpanama" target="_blank" style="color: #fff; font-size: 1.1rem; transition: color 0.3s; opacity: 0.7;" onmouseover="this.style.opacity='1'; this.style.color='#e4405f'" onmouseout="this.style.opacity='0.7'; this.style.color='#fff'"><i class="fab fa-instagram"></i></a>
+                        <a href="https://tiktok.com/@trivelpanama" target="_blank" style="color: #fff; font-size: 1.1rem; transition: color 0.3s; opacity: 0.7;" onmouseover="this.style.opacity='1'; this.style.color='#ff6b35'" onmouseout="this.style.opacity='0.7'; this.style.color='#fff'"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Enlaces rápidos -->
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Enlaces</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem;"><a href="../index.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Home</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="destinations.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Destinos</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="#gallery" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Galería</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="ContactUs.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Destinos -->
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Destinos</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem;"><a href="bocas-del-toro.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Bocas del Toro</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="san-blas.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">San Blas</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="playa-venao.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Playa Venao</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="playa-estrella.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Playa Estrella</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contacto -->
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Contacto</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">info@trivelpanama.com</li>
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">+507 123-4567</li>
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">Panama City, Panama</li>
+                    </ul>
+                </div>
+                
+                <!-- Publica con nosotros -->
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Publica con nosotros</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem;"><a href="registrar-propiedad.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Registrar Propiedad</a></li>
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">Conecta con viajeros</li>
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">Maximiza tus ingresos</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Línea divisoria -->
+            <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 1.5rem 0;"></div>
+            
+            <!-- Información legal y certificaciones -->
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                    <a href="#" style="color: #999; text-decoration: none; font-size: 0.8rem; transition: color 0.3s;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#999'">Privacidad</a>
+                    <a href="#" style="color: #999; text-decoration: none; font-size: 0.8rem; transition: color 0.3s;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#999'">Cookies</a>
+                    <a href="#" style="color: #999; text-decoration: none; font-size: 0.8rem; transition: color 0.3s;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#999'">Términos</a>
+                </div>
+                
+                <!-- Certificaciones -->
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <i class="fas fa-shield-alt" style="color: #ff6b35; font-size: 0.9rem;" title="Sitio Seguro"></i>
+                    <i class="fas fa-award" style="color: #ff6b35; font-size: 0.9rem;" title="Top Rated"></i>
+                    <i class="fas fa-leaf" style="color: #ff6b35; font-size: 0.9rem;" title="Eco Friendly"></i>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div style="text-align: center; padding-top: 1rem;">
+                <p style="color: #666; font-size: 0.8rem; margin: 0;">
+                    &copy; 2025 Trivel Panama | 
+                    <span style="color: #ff6b35; font-weight: 500;">Tu aventura comienza aquí</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="../JS/firebaseConfig.js"></script>
+
+    <!-- Scripts -->
+    <script src="../JS/main.js"></script>
+    <script>
+        // Initialize Firebase
+        if (typeof firebase === 'undefined') {
+            console.error('Firebase not loaded');
+            document.getElementById('loading-state').innerHTML = '<div class="empty-content"><i class="fas fa-exclamation-triangle"></i><h2>Error de Conexión</h2><p>No se pudo conectar con la base de datos. Por favor, recarga la página.</p></div>';
+        }
+
+        // Global variable to store all properties
+        let allProperties = [];
+
+        // Load properties from Firebase
+        async function loadProperties() {
+            try {
+                const db = firebase.firestore();
+                const propertiesSnapshot = await db.collection('Properties').get();
+                
+                const propertiesContainer = document.getElementById('properties-container');
+                const loadingState = document.getElementById('loading-state');
+                
+                console.log('Properties snapshot size:', propertiesSnapshot.size);
+                
+                if (propertiesSnapshot.empty) {
+                    propertiesContainer.innerHTML = `
+                        <div class="empty-content">
+                            <i class="fas fa-store"></i>
+                            <h2>No hay propiedades disponibles</h2>
+                            <p>Aún no hay propiedades registradas en nuestro market hub. Sé el primero en registrar tu propiedad.</p>
+                            <a href="registrar-propiedad.html" class="contact-button" style="display: inline-block; text-decoration: none; margin-top: 1rem;">Registrar Propiedad</a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Store all properties globally
+                allProperties = [];
+                propertiesSnapshot.forEach(doc => {
+                    const propertyData = {
+                        id: doc.id,
+                        ...doc.data()
+                    };
+                    
+                    // Normalize data to ensure consistency
+                    if (propertyData.propertyType) {
+                        propertyData.propertyType = propertyData.propertyType.toLowerCase().trim();
+                    }
+                    if (propertyData.location) {
+                        propertyData.location = propertyData.location.trim();
+                    }
+                    if (propertyData.price) {
+                        propertyData.price = parseFloat(propertyData.price) || 0;
+                    }
+                    if (propertyData.capacity) {
+                        propertyData.capacity = parseInt(propertyData.capacity) || 0;
+                    }
+                    
+                    console.log('Loaded property:', propertyData.propertyName, {
+                        type: propertyData.propertyType,
+                        location: propertyData.location,
+                        price: propertyData.price,
+                        capacity: propertyData.capacity
+                    });
+                    
+                    allProperties.push(propertyData);
+                });
+
+                console.log('Total properties loaded:', allProperties.length);
+                console.log('All properties:', allProperties.map(p => ({
+                    name: p.propertyName,
+                    type: p.propertyType,
+                    location: p.location
+                })));
+
+                // Display all properties initially
+                displayProperties(allProperties);
+                
+            } catch (error) {
+                console.error('Error loading properties:', error);
+                document.getElementById('properties-container').innerHTML = `
+                    <div class="empty-content">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h2>Error al cargar propiedades</h2>
+                        <p>Hubo un problema al cargar las propiedades. Por favor, intenta de nuevo más tarde.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Function to display properties
+        function displayProperties(properties) {
+            const propertiesContainer = document.getElementById('properties-container');
+            
+            if (properties.length === 0) {
+                propertiesContainer.innerHTML = `
+                    <div class="empty-content">
+                        <i class="fas fa-search"></i>
+                        <h2>No se encontraron propiedades</h2>
+                        <p>No hay propiedades que coincidan con los filtros seleccionados. Intenta con otros criterios.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let propertiesHTML = '<div class="properties-grid">';
+            
+            properties.forEach(property => {
+                // Handle amenities - they can be either an array or a string
+                let amenities = [];
+                if (property.amenities) {
+                    if (Array.isArray(property.amenities)) {
+                        // If amenities is already an array, use it directly
+                        amenities = property.amenities.slice(0, 3);
+                    } else if (typeof property.amenities === 'string') {
+                        // If amenities is a string, split it
+                        amenities = property.amenities.split(',').slice(0, 3);
+                    }
+                }
+                
+                propertiesHTML += `
+                    <div class="property-card">
+                        <div class="property-image">
+                            ${property.images && property.images.length > 0 ? `<img src="${property.images[0]}" alt="${property.propertyName}">` : '<i class="fas fa-home"></i>'}
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-title">${property.propertyName || 'Propiedad sin nombre'}</h3>
+                            <div class="property-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                ${property.location || 'Ubicación no especificada'}
+                            </div>
+                            <div class="property-details">
+                                <div class="property-detail">
+                                    <i class="fas fa-users"></i>
+                                    ${property.capacity || 'N/A'} huéspedes
+                                </div>
+                                <div class="property-detail">
+                                    <i class="fas fa-bed"></i>
+                                    ${property.bedrooms || 'N/A'} habitaciones
+                                </div>
+                                <div class="property-detail">
+                                    <i class="fas fa-home"></i>
+                                    ${property.propertyType || 'N/A'}
+                                </div>
+                                <div class="property-detail">
+                                    <i class="fas fa-bath"></i>
+                                    ${property.bathrooms || 'N/A'} baños
+                                </div>
+                            </div>
+                            <div class="property-price">$${property.price || 'N/A'}/noche</div>
+                            <p class="property-description">${property.description || 'Sin descripción disponible.'}</p>
+                            ${amenities.length > 0 ? `
+                                <div class="property-amenities">
+                                    ${amenities.map(amenity => `<span class="amenity-tag">${amenity.trim()}</span>`).join('')}
+                                </div>
+                            ` : ''}
+                            <button class="contact-button" onclick="contactOwner('${property.ownerEmail || ''}', '${property.propertyName || ''}')">
+                                <i class="fas fa-envelope"></i> Contactar Propietario
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            propertiesHTML += '</div>';
+            propertiesContainer.innerHTML = propertiesHTML;
+        }
+
+        // Contact owner function
+        function contactOwner(email, propertyName) {
+            if (email) {
+                window.location.href = `mailto:${email}?subject=Consulta sobre ${propertyName}`;
+            } else {
+                alert('Información de contacto no disponible para esta propiedad.');
+            }
+        }
+
+        // Filter properties
+        function filterProperties() {
+            const locationFilter = document.getElementById('location-filter').value.trim();
+            const typeFilter = document.getElementById('type-filter').value.trim();
+            const priceFilter = document.getElementById('price-filter').value.trim();
+            const guestsFilter = document.getElementById('guests-filter').value.trim();
+
+            console.log('Filtering with:', { locationFilter, typeFilter, priceFilter, guestsFilter });
+            console.log('Total properties to filter:', allProperties.length);
+
+            let filteredProperties = allProperties.filter(property => {
+                console.log('Checking property:', property.propertyName, {
+                    location: property.location,
+                    propertyType: property.propertyType,
+                    price: property.price,
+                    capacity: property.capacity
+                });
+
+                // Location filter - case insensitive comparison
+                if (locationFilter && property.location) {
+                    const propertyLocation = property.location.toLowerCase().trim();
+                    const filterLocation = locationFilter.toLowerCase().trim();
+                    if (propertyLocation !== filterLocation) {
+                        console.log('Filtered out by location:', property.propertyName, propertyLocation, '!==', filterLocation);
+                        return false;
+                    }
+                }
+
+                // Property type filter - case insensitive comparison
+                if (typeFilter && property.propertyType) {
+                    const propertyType = property.propertyType.toLowerCase().trim();
+                    const filterType = typeFilter.toLowerCase().trim();
+                    if (propertyType !== filterType) {
+                        console.log('Filtered out by type:', property.propertyName, propertyType, '!==', filterType);
+                        return false;
+                    }
+                }
+
+                // Price filter
+                if (priceFilter && property.price) {
+                    const maxPrice = parseFloat(priceFilter);
+                    const propertyPrice = parseFloat(property.price);
+                    if (isNaN(maxPrice) || isNaN(propertyPrice)) {
+                        console.log('Invalid price values:', { maxPrice, propertyPrice });
+                        return false;
+                    }
+                    if (propertyPrice > maxPrice) {
+                        console.log('Filtered out by price:', property.propertyName, propertyPrice, '>', maxPrice);
+                        return false;
+                    }
+                }
+
+                // Guests filter
+                if (guestsFilter && property.capacity) {
+                    const capacity = parseInt(property.capacity);
+                    if (isNaN(capacity)) {
+                        console.log('Invalid capacity value:', property.capacity);
+                        return false;
+                    }
+                    
+                    let passesGuestFilter = false;
+                    
+                    switch (guestsFilter) {
+                        case '1-2':
+                            passesGuestFilter = (capacity >= 1 && capacity <= 2);
+                            break;
+                        case '3-4':
+                            passesGuestFilter = (capacity >= 3 && capacity <= 4);
+                            break;
+                        case '5-6':
+                            passesGuestFilter = (capacity >= 5 && capacity <= 6);
+                            break;
+                        case '7+':
+                            passesGuestFilter = (capacity >= 7);
+                            break;
+                    }
+                    
+                    if (!passesGuestFilter) {
+                        console.log('Filtered out by guests:', property.propertyName, capacity, 'not in range', guestsFilter);
+                        return false;
+                    }
+                }
+
+                console.log('Property passes all filters:', property.propertyName);
+                return true;
+            });
+
+            console.log('Filtered properties count:', filteredProperties.length);
+            console.log('Filtered properties:', filteredProperties.map(p => p.propertyName));
+
+            // Display filtered properties
+            displayProperties(filteredProperties);
+        }
+
+        // Add event listeners for filters
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Setting up event listeners...');
+            
+            // Set up filter event listeners
+            const locationFilter = document.getElementById('location-filter');
+            const typeFilter = document.getElementById('type-filter');
+            const priceFilter = document.getElementById('price-filter');
+            const guestsFilter = document.getElementById('guests-filter');
+            const clearFiltersBtn = document.getElementById('clear-filters');
+
+            if (locationFilter) {
+                locationFilter.addEventListener('change', function() {
+                    console.log('Location filter changed to:', this.value);
+                    filterProperties();
+                });
+            }
+
+            if (typeFilter) {
+                typeFilter.addEventListener('change', function() {
+                    console.log('Type filter changed to:', this.value);
+                    filterProperties();
+                });
+            }
+
+            if (priceFilter) {
+                priceFilter.addEventListener('input', function() {
+                    console.log('Price filter changed to:', this.value);
+                    filterProperties();
+                });
+            }
+
+            if (guestsFilter) {
+                guestsFilter.addEventListener('change', function() {
+                    console.log('Guests filter changed to:', this.value);
+                    filterProperties();
+                });
+            }
+
+            if (clearFiltersBtn) {
+                clearFiltersBtn.addEventListener('click', function() {
+                    console.log('Clear filters clicked');
+                    clearFilters();
+                });
+            }
+
+            console.log('Event listeners set up successfully');
+        });
+
+        // Clear all filters
+        function clearFilters() {
+            console.log('Clearing all filters...');
+            
+            const locationFilter = document.getElementById('location-filter');
+            const typeFilter = document.getElementById('type-filter');
+            const priceFilter = document.getElementById('price-filter');
+            const guestsFilter = document.getElementById('guests-filter');
+            
+            if (locationFilter) locationFilter.value = '';
+            if (typeFilter) typeFilter.value = '';
+            if (priceFilter) priceFilter.value = '';
+            if (guestsFilter) guestsFilter.value = '';
+            
+            console.log('All filters cleared, showing all properties');
+            console.log('Total properties to show:', allProperties.length);
+            
+            // Display all properties
+            displayProperties(allProperties);
+        }
+
+        // Load properties when page loads
+        document.addEventListener('DOMContentLoaded', loadProperties);
+
+        // Authentication Script
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginBtn = document.getElementById('loginBtn');
+            const registerBtn = document.getElementById('registerBtn');
+            const authButtons = document.querySelector('.auth-buttons');
+            
+            // Event listeners para los botones
+            loginBtn.addEventListener('click', function() {
+                window.location.href = 'login.html';
+            });
+
+            registerBtn.addEventListener('click', function() {
+                window.location.href = 'register.html';
+            });
+            
+            // Verificar estado de autenticación
+            firebase.auth().onAuthStateChanged(async function(user) {
+                if (user) {
+                    // Usuario está logueado - mostrar información del usuario
+                    try {
+                        const db = firebase.firestore();
+                        const userDoc = await db.collection('users').doc(user.uid).get();
+                        let displayName = '';
+                        if (userDoc.exists && userDoc.data().fullName) {
+                            displayName = userDoc.data().fullName;
+                        }
+                        if (!displayName) {
+                            // Mostrar solo las primeras 5 letras del correo
+                            const email = user.email;
+                            let shortEmail = email;
+                            if (email.length > 5) {
+                                shortEmail = email.substring(0, 5) + '...';
+                            }
+                            displayName = shortEmail;
+                        }
+                        
+                        authButtons.innerHTML = `
+                            <div class="user-info">
+                                <span class="user-name">${displayName}</span>
+                                <button id="logoutBtn" class="auth-btn logout-btn">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>Cerrar Sesión</span>
+                                </button>
+                            </div>
+                        `;
+                        
+                        document.getElementById('logoutBtn').addEventListener('click', function() {
+                            firebase.auth().signOut().then(function() {
+                                window.location.reload();
+                            });
+                        });
+                    } catch (e) {
+                        authButtons.innerHTML = `
+                            <div class="user-info">
+                                <span class="user-name">${user.email ? user.email.substring(0, 5) + '...' : 'Usuario'}</span>
+                                <button id="logoutBtn" class="auth-btn logout-btn">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>Cerrar Sesión</span>
+                                </button>
+                            </div>
+                        `;
+                        
+                        document.getElementById('logoutBtn').addEventListener('click', function() {
+                            firebase.auth().signOut().then(function() {
+                                window.location.reload();
+                            });
+                        });
+                    }
+                } else {
+                    // Usuario no está logueado - mostrar botones de login y registro
+                    authButtons.innerHTML = `
+                        <button id="loginBtn" class="auth-btn login-btn">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span>Iniciar Sesión</span>
+                        </button>
+                        <button id="registerBtn" class="auth-btn register-btn">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Registrarse</span>
+                        </button>
+                    `;
+                    // Re-attach event listeners for newly created buttons
+                    document.getElementById('loginBtn').addEventListener('click', function() {
+                        window.location.href = 'login.html';
+                    });
+                    document.getElementById('registerBtn').addEventListener('click', function() {
+                        window.location.href = 'register.html';
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
