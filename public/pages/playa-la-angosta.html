@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playa La Angosta - Trivel Panamá</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #2f4858;
+            --accent-color: #f7c59f;
+            --light-color: #f8f9fa;
+            --dark-color: #333;
+            --gray-color: #666;
+            --white: #fff;
+            --box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 1rem;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .logo-text span {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .auth-buttons .btn {
+            margin-left: 1rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .auth-buttons .btn-login {
+            color: var(--dark-color);
+            border: 1px solid #ddd;
+        }
+        
+        .auth-buttons .btn-signup {
+            background: var(--primary-color);
+            color: white;
+            border: 1px solid var(--primary-color);
+        }
+        
+        .auth-buttons .btn-login:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .auth-buttons .btn-signup:hover {
+            background: #e05a2b;
+            border-color: #e05a2b;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/5e/4c/2e/playa-la-angosta.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1s ease 0.3s both;
+        }
+        
+        .hero-badge i {
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .btn-explore {
+            display: inline-flex;
+            align-items: center;
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn-explore i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-explore:hover {
+            background: #e05a2b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        .btn-explore:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Main Content */
+        main {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: var(--primary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        /* Info Section */
+        .info-section {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+        
+        .info-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .info-icon i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .info-text h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--secondary-color);
+        }
+        
+        .info-text p {
+            color: var(--gray-color);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            margin-bottom: 5rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item-content {
+            padding: 1.5rem;
+            background: white;
+        }
+        
+        .gallery-item h3 {
+            margin: 0 0 0.5rem 0;
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+        }
+        
+        .gallery-item p {
+            color: var(--gray-color);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        /* Activities Section */
+        .activities-section {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .activity-card {
+            background: #f8f9fa;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+        
+        .activity-image {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .activity-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .activity-card:hover .activity-image img {
+            transform: scale(1.05);
+        }
+        
+        .activity-content {
+            padding: 1.8rem;
+        }
+        
+        .activity-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+        
+        .activity-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .activity-icon i {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .activity-title {
+            margin: 0;
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+        }
+        
+        .activity-description {
+            color: var(--gray-color);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .activity-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .activity-link i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .activity-link:hover {
+            color: #e05a2b;
+        }
+        
+        .activity-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Location Section */
+        .location-section {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            height: 450px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .transport-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .transport-option {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1.8rem;
+            transition: var(--transition);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .transport-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .transport-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+        
+        .transport-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .transport-icon i {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .transport-title {
+            margin: 0;
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+        }
+        
+        .transport-description {
+            color: var(--gray-color);
+            line-height: 1.7;
+            margin: 0;
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .cta-text {
+            color: var(--gray-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #ff8e53 100%);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn-cta i {
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        .btn-cta:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Booking Section */
+        .booking-section {
+            background: linear-gradient(135deg, #2f4858 0%, #1a2a3a 100%);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 25px;
+            text-align: center;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .booking-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/diagmonds-light.png');
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .booking-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .booking-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .booking-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn-booking {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn-booking i {
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-booking:hover {
+            background: #e05a2b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        .btn-booking:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+            margin-right: 1rem;
+        }
+        
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .footer-about p {
+            color: #bbb;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-links h3::after, .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        .footer-contact p {
+            color: #bbb;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.7;
+        }
+        
+        .footer-contact i {
+            margin-right: 1rem;
+            color: var(--primary-color);
+            margin-top: 0.3rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .auth-buttons {
+                margin-left: auto;
+            }
+            
+            .hero {
+                height: 70vh;
+                margin-top: 70px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .info-section, .activities-section, .location-section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            
+            .auth-buttons .btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .hero {
+                height: 60vh;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn-explore, .btn-booking, .btn-cta {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .info-grid, .transport-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid, .activities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease forwards;
+        }
+        
+        .animate-slide-in-left {
+            animation: slideInLeft 1s ease forwards;
+        }
+        
+        .animate-slide-in-right {
+            animation: slideInRight 1s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/img/trivel-logo.png" alt="Trivel Panama Logo">
+                <span class="logo-text">Trivel <span>Panamá</span></span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="destinations.html">Destinos</a></li>
+                <li><a href="#">Tours</a></li>
+                <li><a href="#">Experiencias</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+            
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-login">Iniciar Sesión</a>
+                <a href="#" class="btn btn-signup">Registrarse</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-umbrella-beach"></i>
+                <span>Paraíso Escondido</span>
+            </div>
+            <h1 class="animate-fade-in-up">Playa La Angosta</h1>
+            <p class="animate-fade-in-up delay-1">Descubre la belleza salvaje de esta playa escondida, donde las aguas cristalinas se encuentran con impresionantes acantilados y una exuberante vegetación tropical.</p>
+            <a href="#reserva" class="btn-explore animate-fade-in-up delay-2">
+                <span>Reservar Ahora</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Información Principal -->
+        <section class="info-section">
+            <h2 class="section-title">Playa La Angosta</h2>
+            <p>Ubicada en la costa del Pacífico panameño, Playa La Angosta es un tesoro escondido que cautiva a sus visitantes con su belleza natural y su ambiente tranquilo. Esta playa de arena dorada se encuentra rodeada de impresionantes acantilados y una exuberante vegetación tropical, creando un paisaje único que parece sacado de una postal.</p>
+            
+            <div class="info-grid">
+                <div class="info-item animate-fade-in-up delay-1">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Ubicación</h3>
+                        <p>Costa del Pacífico, Provincia de Veraguas</p>
+                    </div>
+                </div>
+                
+                <div class="info-item animate-fade-in-up delay-2">
+                    <div class="info-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Distancia</h3>
+                        <p>3.5 horas desde Ciudad de Panamá</p>
+                    </div>
+                </div>
+                
+                <div class="info-item animate-fade-in-up delay-3">
+                    <div class="info-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Tipo de Playa</h3>
+                        <p>Arena dorada, aguas cristalinas</p>
+                    </div>
+                </div>
+                
+                <div class="info-item animate-fade-in-up delay-4">
+                    <div class="info-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Ideal para</h3>
+                        <p>Aventureros, parejas, amantes de la naturaleza</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 2.5rem;">Lo que hace especial a Playa La Angosta es su ambiente tranquilo y su belleza natural prácticamente intacta. A diferencia de otras playas más concurridas, aquí encontrarás un refugio de paz donde podrás conectar con la naturaleza y disfrutar del sonido relajante de las olas. Las aguas cristalinas son ideales para nadar y hacer snorkel, mientras que los acantilados que rodean la playa ofrecen impresionantes vistas panorámicas del océano Pacífico.</p>
+        </section>
+
+        <!-- Galería de Imágenes -->
+        <section class="gallery-section">
+            <h2 class="section-title">Galería de Fotos</h2>
+            <p style="text-align: center; color: #666; max-width: 700px; margin: 0 auto 2rem;">Descubre la belleza de Playa La Angosta a través de estas impresionantes imágenes que capturan su esencia única.</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/5e/4c/2e/playa-la-angosta.jpg" alt="Vista panorámica de Playa La Angosta">
+                    <div class="gallery-item-content">
+                        <h3>Vista Panorámica</h3>
+                        <p>Una vista impresionante de la playa rodeada de acantilados y vegetación tropical.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/5e/4c/2f/playa-la-angosta-2.jpg" alt="Amanecer en Playa La Angosta">
+                    <div class="gallery-item-content">
+                        <h3>Amanecer Mágico</h3>
+                        <p>Los amaneceres pintan el cielo con tonos cálidos sobre el Pacífico.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/5e/4c/30/playa-la-angosta-3.jpg" alt="Acantilados en Playa La Angosta">
+                    <div class="gallery-item-content">
+                        <h3>Acantilados Impresionantes</h3>
+                        <p>Impresionantes formaciones rocosas que rodean la playa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Actividades -->
+        <section class="activities-section">
+            <h2 class="section-title">Actividades en Playa La Angosta</h2>
+            <p style="text-align: center; color: #666; max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem; line-height: 1.7;">Disfruta de estas increíbles experiencias durante tu visita a Playa La Angosta y descubre todo lo que este paraíso tiene para ofrecer.</p>
+            
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/5e/4c/31/snorkel-la-angosta.jpg" alt="Snorkel en Playa La Angosta">
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-header">
+                            <div class="activity-icon">
+                                <i class="fas fa-water"></i>
+                            </div>
+                            <h3 class="activity-title">Snorkeling</h3>
+                        </div>
+                        <p class="activity-description">Explora los arrecifes de coral cercanos y descubre la increíble vida marina que habita en las aguas cristalinas de Playa La Angosta. Ideal para todas las edades y niveles de experiencia.</p>
+                        <a href="#" class="activity-link">Ver más detalles <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/5e/4c/32/senderismo-la-angosta.jpg" alt="Senderismo en Playa La Angosta">
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-header">
+                            <div class="activity-icon">
+                                <i class="fas fa-hiking"></i>
+                            </div>
+                            <h3 class="activity-title">Senderismo</h3>
+                        </div>
+                        <p class="activity-description">Explora los senderos que rodean la playa y descubre la rica biodiversidad de la zona, con impresionantes vistas al océano y a la selva tropical.</p>
+                        <a href="#" class="activity-link">Ver más detalles <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/5e/4c/33/avistamiento-aves.jpg" alt="Avistamiento de aves en Playa La Angosta">
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-header">
+                            <div class="activity-icon">
+                                <i class="fas fa-binoculars"></i>
+                            </div>
+                            <h3 class="activity-title">Avistamiento de Aves</h3>
+                        </div>
+                        <p class="activity-description">Observa la gran variedad de aves que habitan en los acantilados y la vegetación circundante, incluyendo especies migratorias y endémicas de la región.</p>
+                        <a href="#" class="activity-link">Ver más detalles <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ubicación -->
+        <section class="location-section">
+            <h2 class="section-title">¿Cómo llegar a Playa La Angosta?</h2>
+            <p style="text-align: center; color: #666; max-width: 700px; margin: 0 auto 2.5rem; font-size: 1.1rem; line-height: 1.7;">Instrucciones detalladas para llegar a este paraíso escondido en la costa del Pacífico panameño.</p>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps?q=Playa+La+Angosta+Panama&output=embed" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <h3 style="font-size: 1.8rem; color: #333; margin-bottom: 1.5rem; display: flex; align-items: center;">
+                    <i class="fas fa-route" style="color: #ff6b35; margin-right: 1rem;"></i>
+                    Opciones de transporte
+                </h3>
+                <div class="transport-options">
+                    <div class="transport-option">
+                        <div class="transport-header">
+                            <div class="transport-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <h4 class="transport-title">En auto</h4>
+                        </div>
+                        <p class="transport-description">Desde la Ciudad de Panamá, toma la vía Panamericana hacia el oeste hasta Santiago, luego sigue las indicaciones hacia Soná y finalmente hacia Playa La Angosta. El camino incluye tramos de terracería en buen estado.</p>
+                    </div>
+                    
+                    <div class="transport-option">
+                        <div class="transport-header">
+                            <div class="transport-icon">
+                                <i class="fas fa-bus"></i>
+                            </div>
+                            <h4 class="transport-title">En autobús</h4>
+                        </div>
+                        <p class="transport-description">Toma un bus desde la Terminal de Albrook en la Ciudad de Panamá con destino a Santiago. Desde allí, toma un bus local a Soná y luego un taxi hasta Playa La Angosta.</p>
+                    </div>
+                    
+                    <div class="transport-option">
+                        <div class="transport-header">
+                            <div class="transport-icon">
+                                <i class="fas fa-ship"></i>
+                            </div>
+                            <h4 class="transport-title">En barco</h4>
+                        </div>
+                        <p class="transport-description">Otra opción es llegar en barco desde playas cercanas como Santa Catalina, disfrutando de un paseo costero con hermosas vistas de la costa del Pacífico.</p>
+                    </div>
+                </div>
+                
+                <div class="cta-section">
+                    <p class="cta-text">¿Necesitas ayuda para planificar tu viaje?</p>
+                    <a href="#contacto" class="btn-cta">
+                        <span>Contáctanos</span>
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Reserva -->
+        <section class="booking-section">
+            <div class="booking-content">
+                <h2>¿Listo para vivir esta experiencia?</h2>
+                <p>Reserva ahora tu viaje a Playa La Angosta y descubre por qué es uno de los destinos más hermosos y exclusivos de Panamá.</p>
+                <a href="#" class="btn-booking">
+                    <span>Reservar Ahora</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="../assets/img/trivel-logo.png" alt="Trivel Panama Logo">
+                    <span class="footer-logo-text">Trivel Panamá</span>
+                </div>
+                <p>Descubre los destinos más impresionantes de Panamá con nosotros. Ofrecemos experiencias únicas que te permitirán conectar con la naturaleza y la cultura local.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="destinations.html">Destinos</a></li>
+                    <li><a href="#">Tours</a></li>
+                    <li><a href="#">Experiencias</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Calle 50, Torre Global Bank, Ciudad de Panamá, Panamá</p>
+                <p><i class="fas fa-phone"></i> +507 123-4567</p>
+                <p><i class="fas fa-envelope"></i> info@trivelpanama.com</p>
+                <p><i class="fas fa-clock"></i> Lunes - Viernes: 9:00 AM - 6:00 PM</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Trivel Panamá. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animación al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate-fade-in-up, .animate-slide-in-left, .animate-slide-in-right');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translate(0, 0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(element => {
+                element.style.opacity = 0;
+                if (element.classList.contains('animate-fade-in-up')) {
+                    element.style.transform = 'translateY(30px)';
+                } else if (element.classList.contains('animate-slide-in-left')) {
+                    element.style.transform = 'translateX(-50px)';
+                } else if (element.classList.contains('animate-slide-in-right')) {
+                    element.style.transform = 'translateX(50px)';
+                }
+                observer.observe(element);
+            });
+            
+            // Smooth scroll para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

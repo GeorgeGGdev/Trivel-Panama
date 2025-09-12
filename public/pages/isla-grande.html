@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isla Grande - Trivel Panamá</title>
+    <meta name="description" content="Descubre Isla Grande, un paraíso caribeño en la provincia de Colón. Playas de arena blanca, aguas cristalinas y un ambiente relajado te esperan en este destino único de Panamá.">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/destinations.css">
+    <link rel="stylesheet" href="../CSS/dynamic-icons.css">
+    <link rel="stylesheet" href="../CSS/chatbot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-content {
+            margin-top: 80px;
+        }
+        
+        /* Estilos para botones de autenticación en el header */
+        .auth-buttons {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+        }
+        .auth-btn {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.6rem 1.2rem;
+          border: none;
+          border-radius: 25px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-decoration: none;
+          font-family: 'Poppins', sans-serif;
+        }
+        .login-btn {
+          background: transparent;
+          color: var(--primary-color);
+          border: 2px solid var(--primary-color);
+        }
+        .login-btn:hover {
+          background: var(--primary-color);
+          color: white;
+          transform: translateY(-2px);
+        }
+        .register-btn {
+          background: var(--primary-color);
+          color: white;
+        }
+        .register-btn:hover {
+          background: var(--accent-color);
+          transform: translateY(-2px);
+        }
+        .user-info {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          color: var(--primary-color);
+        }
+        .user-name {
+          font-weight: 600;
+          font-size: 0.9rem;
+        }
+        .logout-btn {
+          background: var(--accent-color);
+          color: white;
+          border: none;
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          font-size: 0.8rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .logout-btn:hover {
+          background: #e55a2b;
+          transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .destination-hero {
+            background: url('https://images.unsplash.com/photo-1586016421599-88301f2f0ae7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .destination-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(26, 115, 232, 0.3), rgba(0, 0, 0, 0.5));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            padding: 0 2rem;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: #1a73e8;
+            color: white;
+            padding: 0.8rem 2.5rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 25px rgba(26, 115, 232, 0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 2rem;
+            text-shadow: 3px 3px 25px rgba(0,0,0,0.6);
+            letter-spacing: -2px;
+            animation: slideInUp 1s ease-out;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
+            line-height: 1.7;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Contenido Principal */
+        .destination-content {
+            background: #f8f9fa;
+            padding: 6rem 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .destination-info {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .destination-info h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        
+        .destination-info p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .highlight-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .highlight-icon {
+            font-size: 2.5rem;
+            color: #1a73e8;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight-card p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .reserva-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: linear-gradient(135deg, #1a73e8, #4285f4);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(26, 115, 232, 0.3);
+        }
+        
+        .reserva-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(26, 115, 232, 0.4);
+        }
+        
+        .reserva-btn:active {
+            transform: translateY(0);
+        }
+        
+        .gallery-section {
+            margin: 6rem 0;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            height: 250px;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .nearby-section {
+            margin: 6rem 0;
+        }
+        
+        .nearby-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .nearby-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .nearby-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .nearby-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .nearby-info {
+            padding: 1.5rem;
+        }
+        
+        .nearby-info h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .nearby-info p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .nearby-link {
+            display: inline-flex;
+            align-items: center;
+            color: #1a73e8;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .nearby-link:hover {
+            color: #0d47a1;
+        }
+        
+        .nearby-link i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .nearby-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .destination-info h2 {
+                font-size: 2rem;
+            }
+            
+            .destination-info p {
+                font-size: 1.1rem;
+            }
+            
+            .highlight-card {
+                padding: 1.5rem;
+            }
+            
+            .highlight-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            .reserva-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="logo">
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/img/Logo.png" alt="Trivel Panama" class="logo-img">
+                <span class="logo-text">Trivel Panamá</span>
+            </a>
+        </div>
+        <nav class="nav-menu">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="../index.html" class="nav-link">Inicio</a></li>
+                <li class="nav-item"><a href="destinations.html" class="nav-link active">Destinos</a></li>
+                <li class="nav-item"><a href="marketplace.html" class="nav-link">Marketplace</a></li>
+                <li class="nav-item"><a href="market-hub.html" class="nav-link">Market Hub</a></li>
+                <li class="nav-item"><a href="FAQs.html" class="nav-link">FAQs</a></li>
+                <li class="nav-item"><a href="ContactUs.html" class="nav-link">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.html" class="auth-btn login-btn">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Iniciar Sesión</span>
+            </a>
+            <a href="register.html" class="auth-btn register-btn">
+                <i class="fas fa-user-plus"></i>
+                <span>Registrarse</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="destination-hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>Colón, Panamá
+            </div>
+            <h1 class="hero-title">Isla Grande</h1>
+            <p class="hero-subtitle">Descubre el encanto caribeño de Panamá en esta isla paradisíaca llena de cultura, naturaleza y aventura</p>
+            <a href="#reservar" class="reserva-btn">
+                <span>Reservar Ahora</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Contenido Principal -->
+    <main class="destination-content">
+        <div class="container">
+            <section class="destination-info">
+                <h2>Bienvenido a Isla Grande</h2>
+                <p>Sumérgete en la belleza natural de Isla Grande, un paraíso caribeño ubicado en la provincia de Colón. Con sus playas de arena blanca, aguas cristalinas y una rica herencia afroantillana, este destino único te ofrece la combinación perfecta entre relajación y aventura.</p>
+                
+                <div class="highlights">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-umbrella-beach"></i>
+                        </div>
+                        <h3>Playas de Ensueño</h3>
+                        <p>Disfruta de playas vírgenes con aguas cristalinas ideales para nadar, hacer snorkel o simplemente relajarte bajo el sol caribeño.</p>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-fish"></i>
+                        </div>
+                        <h3>Vida Marina</h3>
+                        <p>Explora los arrecifes de coral y descubre la increíble biodiversidad marina que rodea la isla.</p>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Gastronomía Local</h3>
+                        <p>Prueba los sabores auténticos de la cocina afroantillana con platos preparados con ingredientes frescos del mar.</p>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3>Cultura Viva</h3>
+                        <p>Sumérgete en la vibrante cultura afroantillana a través de su música, danza y tradiciones únicas.</p>
+                    </div>
+                </div>
+                
+                <a href="#reservar" class="reserva-btn">
+                    <span>Reservar Mi Aventura</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </section>
+            
+            <!-- Galería de Fotos -->
+            <section class="gallery-section">
+                <h2>Galería de Isla Grande</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Playa de Isla Grande">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Paisaje de Isla Grande">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Atardecer en Isla Grande">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Naturaleza de Isla Grande">
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Actividades Cercanas -->
+            <section class="nearby-section">
+                <h2>Actividades Recomendadas</h2>
+                <div class="nearby-grid">
+                    <div class="nearby-item">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Snorkeling en Isla Grande">
+                        <div class="nearby-info">
+                            <h3>Tour de Snorkeling</h3>
+                            <p>Explora los coloridos arrecifes de coral y la vida marina que rodea la isla en una experiencia inolvidable de snorkeling.</p>
+                            <a href="#" class="nearby-link">Ver más <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="nearby-item">
+                        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Tour cultural en Isla Grande">
+                        <div class="nearby-info">
+                            <h3>Tour Cultural</h3>
+                            <p>Conoce la rica herencia afroantillana de la isla a través de su música, danza y tradiciones ancestrales.</p>
+                            <a href="#" class="nearby-link">Ver más <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="nearby-item">
+                        <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Tour en barco por Isla Grande">
+                        <div class="nearby-info">
+                            <h3>Tour en Barco</h3>
+                            <p>Disfruta de un recorrido en barco por las aguas cristalinas que rodean la isla y descubre playas vírgenes.</p>
+                            <a href="#" class="nearby-link">Ver más <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Formulario de Reserva -->
+            <section id="reservar" class="booking-section">
+                <div class="booking-form">
+                    <h2>Reserva tu Aventura en Isla Grande</h2>
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="checkin">Fecha de Llegada</label>
+                                <input type="date" id="checkin" name="checkin" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout">Fecha de Salida</label>
+                                <input type="date" id="checkout" name="checkout" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Número de Personas</label>
+                            <select id="guests" name="guests" required>
+                                <option value="1">1 Persona</option>
+                                <option value="2" selected>2 Personas</option>
+                                <option value="3">3 Personas</option>
+                                <option value="4">4 Personas</option>
+                                <option value="5">5 Personas</option>
+                                <option value="6">6+ Personas</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje Adicional</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="reserva-btn">
+                            <span>Confirmar Reserva</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: #000; color: #fff; padding: 2.5rem 0 1.5rem 0; position: relative;">
+        <div style="max-width: 1000px; margin: 0 auto; padding: 0 2rem;">
+            <!-- Sección principal -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2rem;">
+                <!-- Logo y redes sociales -->
+                <div>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <img src="../assets/img/Logo.png" alt="Trivel Panama" style="height: 45px; border-radius: 8px;">
+                        <div>
+                            <h2 style="font-size: 1.5rem; font-weight: 700; color: #fff; margin: 0;">Trivel Panamá</h2>
+                            <p style="color: #aaa; font-size: 0.9rem; margin: 0.2rem 0 0 0;">Tu guía de viajes en Panamá</p>
+                        </div>
+                    </div>
+                    <p style="color: #aaa; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem;">Descubre los mejores destinos y experiencias en Panamá con nuestra plataforma de viajes.</p>
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                        <a href="#" style="color: #fff; font-size: 1.2rem; transition: color 0.3s ease;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: #fff; font-size: 1.2rem; transition: color 0.3s ease;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: #fff; font-size: 1.2rem; transition: color 0.3s ease;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: #fff; font-size: 1.2rem; transition: color 0.3s ease;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Enlaces rápidos -->
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Enlaces Rápidos</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem;"><a href="../index.html" style="color: #aaa; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Inicio</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="destinations.html" style="color: #aaa; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Destinos</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="marketplace.html" style="color: #aaa; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Marketplace</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="market-hub.html" style="color: #aaa; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Market Hub</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="FAQs.html" style="color: #aaa; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">FAQs</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="ContactUs.html" style="color: #aaa; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Destinos Populares -->
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Destinos Populares</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem;"><a href="bocas-del-toro.html" style="color: #aaa; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Bocas del Toro</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="san-blas.html" style="color: #aaa; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">San Blas</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="playa-venao.html" style="color: #aaa; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Playa Venao</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="playa-veracruz.html" style="color: #aaa; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Playa Veracruz</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="playa-estrella.html" style="color: #aaa; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Playa Estrella</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contacto -->
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Contacto</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem; color: #aaa; font-size: 0.9rem;">
+                            <i class="fas fa-envelope" style="margin-right: 0.5rem; color: #1a73e8;"></i>
+                            info@trivelpanama.com
+                        </li>
+                        <li style="margin-bottom: 0.8rem; color: #aaa; font-size: 0.9rem;">
+                            <i class="fas fa-phone-alt" style="margin-right: 0.5rem; color: #1a73e8;"></i>
+                            +507 123-4567
+                        </li>
+                        <li style="margin-bottom: 0.8rem; color: #aaa; font-size: 0.9rem;">
+                            <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem; color: #1a73e8;"></i>
+                            Ciudad de Panamá, Panamá
+                        </li>
+                        <li style="margin-bottom: 0.8rem; color: #aaa; font-size: 0.9rem;">
+                            <i class="fas fa-clock" style="margin-right: 0.5rem; color: #1a73e8;"></i>
+                            Lunes - Viernes: 9:00 - 18:00
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Boletín Informativo -->
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Boletín Informativo</h4>
+                    <p style="color: #aaa; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem;">Suscríbete para recibir ofertas exclusivas y actualizaciones sobre destinos en Panamá.</p>
+                    <form style="display: flex; gap: 0.5rem;">
+                        <input type="email" placeholder="Tu correo electrónico" style="flex: 1; padding: 0.6rem 1rem; border: 1px solid #333; border-radius: 25px; background: #111; color: #fff; font-size: 0.9rem; outline: none;">
+                        <button type="submit" style="background: #1a73e8; color: white; border: none; border-radius: 25px; padding: 0 1.5rem; cursor: pointer; transition: background 0.3s ease;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Línea divisoria -->
+            <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 1.5rem 0;"></div>
+            
+            <!-- Copyright y enlaces legales -->
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <p style="color: #777; font-size: 0.8rem; margin: 0;">
+                    &copy; 2023 Trivel Panamá. Todos los derechos reservados.
+                </p>
+                <div style="display: flex; gap: 1.5rem;
+                ">
+                    <a href="#" style="color: #777; text-decoration: none; font-size: 0.8rem; transition: color 0.3s ease;">Términos y Condiciones</a>
+                    <a href="#" style="color: #777; text-decoration: none; font-size: 0.8rem; transition: color 0.3s ease;">Política de Privacidad</a>
+                    <a href="#" style="color: #777; text-decoration: none; font-size: 0.8rem; transition: color 0.3s ease;">Política de Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../JS/destinations.js"></script>
+    
+    <script>
+        // Script para el formulario de reserva
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obtener los valores del formulario
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const guests = document.getElementById('guests').value;
+            const message = document.getElementById('message').value;
+            
+            // Aquí iría la lógica para enviar el formulario
+            console.log('Formulario enviado:', {
+                name,
+                email,
+                phone,
+                checkin,
+                checkout,
+                guests,
+                message
+            });
+            
+            // Mostrar mensaje de éxito
+            alert('¡Gracias por tu reserva! Nos pondremos en contacto contigo pronto para confirmar los detalles.');
+            
+            // Limpiar el formulario
+            this.reset();
+        });
+        
+        // Configurar fechas mínimas para los campos de fecha
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('checkin').min = today;
+        document.getElementById('checkout').min = today;
+        
+        // Actualizar fecha mínima de salida cuando se selecciona una fecha de llegada
+        document.getElementById('checkin').addEventListener('change', function() {
+            document.getElementById('checkout').min = this.value;
+        });
+    </script>
+</body>
+</html>

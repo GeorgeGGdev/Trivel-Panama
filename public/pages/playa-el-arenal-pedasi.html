@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playa El Arenal (Pedasí) - Trivel Panamá</title>
+    <meta name="description" content="Descubre Playa El Arenal en Pedasí, un paraíso de aguas cristalinas y arena blanca en la península de Azuero con Trivel Panamá.">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/destinations.css">
+    <link rel="stylesheet" href="../CSS/dynamic-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-content { margin-top: 80px; }
+        
+        .auth-buttons {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+        }
+        .auth-btn {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.6rem 1.2rem;
+          border: none;
+          border-radius: 25px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-decoration: none;
+          font-family: 'Poppins', sans-serif;
+        }
+        .login-btn {
+          background: transparent;
+          color: var(--primary-color);
+          border: 2px solid var(--primary-color);
+        }
+        .login-btn:hover {
+          background: var(--primary-color);
+          color: white;
+          transform: translateY(-2px);
+        }
+        .register-btn {
+          background: var(--primary-color);
+          color: white;
+        }
+        .register-btn:hover {
+          background: #e55a2b;
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+        
+        .hero-section {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/2d/2d/3e/playa-el-arenal.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+        
+        .destination-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+        
+        .destination-info {
+            margin-bottom: 4rem;
+        }
+        
+        .destination-info h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        
+        .destination-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+        
+        .gallery-section {
+            margin: 4rem 0;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .activities-section {
+            margin: 4rem 0;
+        }
+        
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .activity-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .activity-image {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .activity-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .activity-card:hover .activity-image img {
+            transform: scale(1.1);
+        }
+        
+        .activity-content {
+            padding: 1.5rem;
+        }
+        
+        .activity-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .activity-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .activity-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .activity-link i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .activity-link:hover {
+            color: #e55a2b;
+        }
+        
+        .activity-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        .location-section {
+            margin: 4rem 0;
+        }
+        
+        .map-container {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .destination-info h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="logo">
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
+                <span class="logo-text">Trivel Panama</span>
+            </a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="marketplace.html">ShoreHouse Market Hub</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="FAQs.html">FAQs</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button id="loginBtn" class="auth-btn login-btn">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Iniciar Sesión</span>
+            </button>
+            <button id="registerBtn" class="auth-btn register-btn">
+                <i class="fas fa-user-plus"></i>
+                <span>Registrarse</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="destination-hero page-content">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-umbrella-beach" style="margin-right: 0.5rem;"></i>Paraíso de Arena Blanca
+            </div>
+            <h1 class="hero-title">Playa El Arenal</h1>
+            <p class="hero-subtitle">Un paraíso de arena blanca en el corazón de Pedasí, donde el mar turquesa se encuentra con la tranquilidad de la península de Azuero</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="destination-content">
+        <div class="container">
+            <section class="destination-info">
+                <h2>Explora Playa El Arenal</h2>
+                <p>Ubicada a solo 15 minutos del encantador pueblo de Pedasí, Playa El Arenal es una de las joyas mejor guardadas de la península de Azuero. Con sus aguas turquesas cristalinas y su arena blanca como el azúcar, esta playa es el lugar perfecto para quienes buscan escapar de las multitudes y disfrutar de la naturaleza en su estado más puro.</p>
+                
+                <div style="background: #f9f9f9; border-left: 4px solid var(--primary-color); padding: 2rem; margin: 2.5rem 0; border-radius: 0 8px 8px 0; text-align: left;">
+                    <h3 style="margin-top: 0; color: #333; font-size: 1.5rem; margin-bottom: 1.5rem;">Datos Importantes</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <div style="background: #ff6b35; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 style="margin: 0 0 0.3rem 0; color: #333; font-size: 1rem;">Ubicación</h4>
+                                <p style="margin: 0; color: #666;">Pedasí, Provincia de Los Santos</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <div style="background: #ff6b35; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 style="margin: 0 0 0.3rem 0; color: #333; font-size: 1rem;">Tiempo de viaje</h4>
+                                <p style="margin: 0; color: #666;">4.5 horas desde la Ciudad de Panamá</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <div style="background: #ff6b35; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="fas fa-umbrella-beach"></i>
+                            </div>
+                            <div>
+                                <h4 style="margin: 0 0 0.3rem 0; color: #333; font-size: 1rem;">Tipo de playa</h4>
+                                <p style="margin: 0; color: #666;">Arena blanca, aguas tranquilas</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <div style="background: #ff6b35; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <h4 style="margin: 0 0 0.3rem 0; color: #333; font-size: 1rem;">Ideal para</h4>
+                                <p style="margin: 0; color: #666;">Familias, snorkel, relajación</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p>Lo que hace especial a Playa El Arenal es su belleza natural prácticamente intacta. A diferencia de otras playas más concurridas, aquí encontrarás un ambiente tranquilo y relajado, perfecto para desconectar del estrés de la vida cotidiana. Las aguas poco profundas y cristalinas son ideales para nadar y hacer snorkel, mientras que la suave arena blanca invita a largos paseos junto al mar.</p>
+            </section>
+
+        <!-- Galería de Imágenes -->
+        <section class="gallery-section">
+            <h2>Galería de Fotos</h2>
+            <p style="text-align: center; color: #666; max-width: 700px; margin: 0 auto 2rem;">Descubre la belleza de Playa El Arenal a través de estas impresionantes imágenes que capturan su esencia única.</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" style="border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s ease; height: 100%;">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/2d/2d/3e/playa-el-arenal.jpg" alt="Vista panorámica de Playa El Arenal" style="width: 100%; height: 300px; object-fit: cover; transition: transform 0.5s ease;">
+                    <div style="padding: 1.5rem; background: white;">
+                        <h3 style="margin: 0 0 0.5rem 0; color: #333;">Vista Panorámica</h3>
+                        <p style="margin: 0; color: #666; font-size: 0.95rem;">Una vista impresionante de la extensión de arena blanca y aguas turquesas.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" style="border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s ease; height: 100%;">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/2d/2d/3f/playa-el-arenal-2.jpg" alt="Aguas cristalinas de Playa El Arenal" style="width: 100%; height: 300px; object-fit: cover; transition: transform 0.5s ease;">
+                    <div style="padding: 1.5rem; background: white;">
+                        <h3 style="margin: 0 0 0.5rem 0; color: #333;">Aguas Cristalinas</h3>
+                        <p style="margin: 0; color: #666; font-size: 0.95rem;">Las aguas transparentes invitan a un refrescante baño en el mar.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" style="border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s ease; height: 100%;">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/2d/2d/40/playa-el-arenal-3.jpg" alt="Atardecer en Playa El Arenal" style="width: 100%; height: 300px; object-fit: cover; transition: transform 0.5s ease;">
+                    <div style="padding: 1.5rem; background: white;">
+                        <h3 style="margin: 0 0 0.5rem 0; color: #333;">Atardeceres Mágicos</h3>
+                        <p style="margin: 0; color: #666; font-size: 0.95rem;">Los atardeceres pintan el cielo con tonos cálidos sobre el Pacífico.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Actividades -->
+        <section class="activities-section" style="background: white; border-radius: 25px; padding: 3rem; margin-bottom: 3rem; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+            <h2 style="text-align: center; font-size: 2.2rem; color: #333; margin-bottom: 2rem;">Actividades en Playa El Arenal</h2>
+            <p style="text-align: center; color: #666; max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem; line-height: 1.7;">Disfruta de estas increíbles experiencias durante tu visita a Playa El Arenal y descubre todo lo que este paraíso tiene para ofrecer.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;">
+                <div style="background: #f8f9fa; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s ease; height: 100%;">
+                    <div style="height: 220px; overflow: hidden;">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/2d/2d/41/snorkel-playa-el-arenal.jpg" alt="Snorkel en Playa El Arenal" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                    <div style="padding: 1.8rem;">
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                            <div style="width: 50px; height: 50px; background: #ff6b35; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; flex-shrink: 0;">
+                                <i class="fas fa-water" style="color: white; font-size: 1.2rem;"></i>
+                            </div>
+                            <h3 style="margin: 0; color: #333; font-size: 1.4rem;">Snorkeling</h3>
+                        </div>
+                        <p style="color: #666; line-height: 1.7; margin-bottom: 1.5rem;">Explora los arrecifes de coral cercanos y descubre la increíble vida marina que habita en las aguas cristalinas de Playa El Arenal. Ideal para todas las edades y niveles de experiencia.</p>
+                        <a href="#" style="display: inline-flex; align-items: center; color: #ff6b35; font-weight: 600; text-decoration: none; transition: all 0.3s ease;">
+                            Ver más detalles
+                            <i class="fas fa-arrow-right" style="margin-left: 0.5rem; transition: transform 0.3s ease;"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div style="background: #f8f9fa; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s ease; height: 100%;">
+                    <div style="height: 220px; overflow: hidden;">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/2d/2d/42/paseo-caballo-playa.jpg" alt="Paseo a caballo en la playa" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                    <div style="padding: 1.8rem;">
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                            <div style="width: 50px; height: 50px; background: #ff6b35; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; flex-shrink: 0;">
+                                <i class="fas fa-horse" style="color: white; font-size: 1.2rem;"></i>
+                            </div>
+                            <h3 style="margin: 0; color: #333; font-size: 1.4rem;">Paseos a Caballo</h3>
+                        </div>
+                        <p style="color: #666; line-height: 1.7; margin-bottom: 1.5rem;">Disfruta de un inolvidable paseo a caballo por la orilla del mar al atardecer. Una experiencia romántica y relajante en contacto con la naturaleza.</p>
+                        <a href="#" style="display: inline-flex; align-items: center; color: #ff6b35; font-weight: 600; text-decoration: none; transition: all 0.3s ease;">
+                            Ver más detalles
+                            <i class="fas fa-arrow-right" style="margin-left: 0.5rem; transition: transform 0.3s ease;"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div style="background: #f8f9fa; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s ease; height: 100%;">
+                    <div style="height: 220px; overflow: hidden;">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/2d/2d/43/exploracion-pedasi.jpg" alt="Explorando Pedasí" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                    <div style="padding: 1.8rem;">
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                            <div style="width: 50px; height: 50px; background: #ff6b35; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; flex-shrink: 0;">
+                                <i class="fas fa-archway" style="color: white; font-size: 1.2rem;"></i>
+                            </div>
+                            <h3 style="margin: 0; color: #333; font-size: 1.4rem;">Tour por Pedasí</h3>
+                        </div>
+                        <p style="color: #666; line-height: 1.7; margin-bottom: 1.5rem;">Descubre el encanto colonial del pueblo de Pedasí, sus calles empedradas, iglesias históricas y la cálida hospitalidad de su gente.</p>
+                        <a href="#" style="display: inline-flex; align-items: center; color: #ff6b35; font-weight: 600; text-decoration: none; transition: all 0.3s ease;">
+                            Ver más detalles
+                            <i class="fas fa-arrow-right" style="margin-left: 0.5rem; transition: transform 0.3s ease;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ubicación -->
+        <section class="location-section" style="background: white; border-radius: 25px; padding: 3rem; margin-bottom: 3rem; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+            <h2 style="text-align: center; font-size: 2.2rem; color: #333; margin-bottom: 1.5rem;">¿Cómo llegar a Playa El Arenal?</h2>
+            <p style="text-align: center; color: #666; max-width: 700px; margin: 0 auto 2.5rem; font-size: 1.1rem; line-height: 1.7;">Instrucciones detalladas para llegar a este paraíso en la península de Azuero y disfrutar de sus aguas cristalinas.</p>
+            
+            <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 3rem;">
+                <iframe src="https://www.google.com/maps?q=Playa+El+Arenal+Pedasi&output=embed" allowfullscreen="" loading="lazy" style="width: 100%; height: 450px; border: none;"></iframe>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <h3 style="font-size: 1.8rem; color: #333; margin-bottom: 1.5rem; display: flex; align-items: center;">
+                    <i class="fas fa-route" style="color: #ff6b35; margin-right: 1rem;"></i>
+                    Opciones de transporte
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div style="background: #f8f9fa; border-radius: 15px; padding: 1.8rem; transition: all 0.3s ease; border-left: 4px solid #ff6b35;">
+                        <div style="display: flex; align-items: center; margin-bottom: 1.2rem;">
+                            <div style="width: 50px; height: 50px; background: #ff6b35; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; flex-shrink: 0;">
+                                <i class="fas fa-car" style="color: white; font-size: 1.2rem;"></i>
+                            </div>
+                            <h4 style="margin: 0; color: #333; font-size: 1.3rem;">En auto</h4>
+                        </div>
+                        <p style="color: #666; line-height: 1.7; margin: 0;">
+                            Desde la Ciudad de Panamá, toma la vía Panamericana hacia el oeste hasta Divisa, luego sigue las señales hacia Chitré y luego a Pedasí. Desde Pedasí, sigue las indicaciones hacia Playa El Arenal (aproximadamente 15 minutos).
+                        </p>
+                    </div>
+                    
+                    <div style="background: #f8f9fa; border-radius: 15px; padding: 1.8rem; transition: all 0.3s ease; border-left: 4px solid #ff6b35;">
+                        <div style="display: flex; align-items: center; margin-bottom: 1.2rem;">
+                            <div style="width: 50px; height: 50px; background: #ff6b35; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; flex-shrink: 0;">
+                                <i class="fas fa-bus" style="color: white; font-size: 1.2rem;"></i>
+                            </div>
+                            <h4 style="margin: 0; color: #333; font-size: 1.3rem;">En autobús</h4>
+                        </div>
+                        <p style="color: #666; line-height: 1.7; margin: 0;">
+                            Toma un bus desde la Terminal de Albrook en la Ciudad de Panamá con destino a Las Tablas o Chitré, y desde allí un autobús local a Pedasí. Desde Pedasí, puedes tomar un taxi hasta Playa El Arenal.
+                        </p>
+                    </div>
+                    
+                    <div style="background: #f8f9fa; border-radius: 15px; padding: 1.8rem; transition: all 0.3s ease; border-left: 4px solid #ff6b35;">
+                        <div style="display: flex; align-items: center; margin-bottom: 1.2rem;">
+                            <div style="width: 50px; height: 50px; background: #ff6b35; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; flex-shrink: 0;">
+                                <i class="fas fa-plane" style="color: white; font-size: 1.2rem;"></i>
+                            </div>
+                            <h4 style="margin: 0; color: #333; font-size: 1.3rem;">En avión</h4>
+                        </div>
+                        <p style="color: #666; line-height: 1.7; margin: 0;">
+                            Vuelos nacionales desde la Ciudad de Panamá hasta el aeropuerto de Pedasí (PDA), y desde allí un corto viaje en taxi hasta la playa. La opción más rápida para quienes tienen poco tiempo.
+                        </p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 3rem; text-align: center;">
+                    <p style="color: #666; margin-bottom: 1.5rem;">¿Necesitas ayuda para planificar tu viaje?</p>
+                    <a href="#contacto" class="view-btn" style="display: inline-flex; align-items: center; gap: 0.8rem; padding: 1rem 2.5rem; border-radius: 50px; background: linear-gradient(135deg, #ff6b35 0%, #ff8e53 100%); color: white; text-decoration: none; font-weight: 600; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; border: none; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);">
+                        <span>Contáctanos</span>
+                        <i class="fas fa-envelope" style="transition: transform 0.3s ease;"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Reserva -->
+        <section id="reserva" class="booking-section" style="background: #f9f9f9; padding: 3rem; border-radius: 10px; margin: 4rem 0; text-align: center;">
+            <h2>¿Listo para vivir esta experiencia?</h2>
+            <p style="max-width: 700px; margin: 0 auto 2rem;">Reserva ahora tu viaje a Playa El Arenal y descubre por qué es uno de los destinos más hermosos de la península de Azuero.</p>
+            <a href="#" class="cta-button" style="display: inline-flex; align-items: center; gap: 0.8rem; padding: 1rem 2.5rem; border-radius: 50px; background: linear-gradient(135deg, #ff6b35 0%, #ff8e53 100%); color: white; text-decoration: none; font-weight: 600; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; border: none; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);">
+                <span>Reservar Ahora</span>
+                <i class="fas fa-arrow-right" style="transition: transform 0.3s ease;"></i>
+            </a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: #000; color: #fff; padding: 2.5rem 0 1.5rem 0; position: relative;">
+        <div style="max-width: 1000px; margin: 0 auto; padding: 0 2rem;">
+            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2rem;">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <img src="../assets/img/Logo.png" alt="Trivel Panama" style="height: 45px; border-radius: 8px;">
+                        <div>
+                            <h3 style="margin: 0; font-size: 1.5rem; font-weight: 700;">Trivel Panamá</h3>
+                            <p style="margin: 0.2rem 0 0 0; color: #aaa; font-size: 0.9rem;">Explora lo mejor de Panamá</p>
+                        </div>
+                    </div>
+                    <p style="color: #aaa; line-height: 1.6; margin-bottom: 1.5rem; font-size: 0.95rem;">Tu guía definitiva para descubrir los destinos más increíbles de Panamá. Ofrecemos experiencias únicas y memorables.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="#" style="color: #fff; font-size: 1.2rem; transition: color 0.3s ease;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: #fff; font-size: 1.2rem; transition: color 0.3s ease;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: #fff; font-size: 1.2rem; transition: color 0.3s ease;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: #fff; font-size: 1.2rem; transition: color 0.3s ease;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Enlaces Rápidos</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.6rem;"><a href="../index.html" style="color: #ccc; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Inicio</a></li>
+                        <li style="margin-bottom: 0.6rem;"><a href="destinations.html" style="color: #ccc; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Destinos</a></li>
+                        <li style="margin-bottom: 0.6rem;"><a href="#" style="color: #ccc; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Tours</a></li>
+                        <li style="margin-bottom: 0.6rem;"><a href="#" style="color: #ccc; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Servicios</a></li>
+                        <li><a href="#" style="color: #ccc; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Destinos Populares</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.6rem;"><a href="bocas-del-toro.html" style="color: #ccc; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Bocas del Toro</a></li>
+                        <li style="margin-bottom: 0.6rem;"><a href="san-blas.html" style="color: #ccc; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">San Blas</a></li>
+                        <li style="margin-bottom: 0.6rem;"><a href="playa-venao.html" style="color: #ccc; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Playa Venao</a></li>
+                        <li><a href="playa-veracruz.html" style="color: #ccc; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Playa Veracruz</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Contacto</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">info@trivelpanama.com</li>
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">+507 123-4567</li>
+                        <li style="color: #ccc; font-size: 0.9rem;">Calle 50, Ciudad de Panamá</li>
+                    </ul>
+                    
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin: 1.5rem 0 1rem 0;">Boletín Informativo</h4>
+                    <div style="display: flex; margin-bottom: 1rem;">
+                        <input type="email" placeholder="Tu correo electrónico" style="flex: 1; padding: 0.6rem 0.8rem; border: none; border-radius: 4px 0 0 4px; font-family: 'Poppins', sans-serif; font-size: 0.9rem;">
+                        <button style="background: #ff6b35; color: white; border: none; padding: 0 1rem; border-radius: 0 4px 4px 0; cursor: pointer; transition: background 0.3s ease;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 1.5rem 0;"></div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-top: 1rem;">
+                <p style="margin: 0; color: #888; font-size: 0.85rem;">&copy; 2023 Trivel Panamá. Todos los derechos reservados.</p>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="#" style="color: #888; text-decoration: none; font-size: 0.85rem; transition: color 0.3s ease;">Términos y Condiciones</a>
+                    <a href="#" style="color: #888; text-decoration: none; font-size: 0.85rem; transition: color 0.3s ease;">Política de Privacidad</a>
+                    <a href="#" style="color: #888; text-decoration: none; font-size: 0.85rem; transition: color 0.3s ease;">Política de Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../JS/destinations.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.querySelector('.hamburger-btn');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburgerBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburgerBtn.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

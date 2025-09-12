@@ -520,6 +520,55 @@ body {
     margin-right: 10px;
 }
 
+/* Estilos para el botón de Reservar Ahora */
+.card-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    padding: 0 1rem 1rem;
+}
+
+.reserva-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8e53 100%);
+    color: white !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+}
+
+.reserva-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+    background: linear-gradient(135deg, #ff5a1f 0%, #ff7a3d 100%);
+}
+
+.reserva-button:active {
+    transform: translateY(1px);
+}
+
+.reserva-button i {
+    transition: transform 0.3s ease;
+}
+
+.reserva-button:hover i {
+    transform: translateX(5px);
+}
+
 .logo-text {
     font-size: 1.8rem;
     font-weight: 700;
