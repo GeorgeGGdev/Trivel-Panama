@@ -79,7 +79,7 @@ class HamburgerMenu {
                     <li>
                         <a href="${this.getPublishPath()}" class="${isPublish ? 'active' : ''}">
                             <i class="fas fa-plus-circle"></i>
-                            <span>Publicar en marketplace</span>
+                            <span>Publish in marketplace</span>
                         </a>
                     </li>
                 </ul>
@@ -274,11 +274,11 @@ class HamburgerMenu {
             accountButtons.innerHTML = `
                 <a href="${this.getLoginPath()}" class="hamburger-menu-account-btn">
                     <i class="fas fa-sign-in-alt"></i>
-                    <span>Iniciar Sesión</span>
+                    <span>Sign In</span>
                 </a>
                 <a href="${this.getRegisterPath()}" class="hamburger-menu-account-btn">
                     <i class="fas fa-user-plus"></i>
-                    <span>Registrarse</span>
+                    <span>Register</span>
                 </a>
             `;
         }
@@ -302,7 +302,7 @@ class HamburgerMenu {
             </div>
             <button class="hamburger-menu-logout" id="hamburger-menu-logout">
                 <i class="fas fa-sign-out-alt"></i>
-                <span>Cerrar Sesión</span>
+                <span>Sign Out</span>
             </button>
         `;
 

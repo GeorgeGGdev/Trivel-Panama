@@ -34,7 +34,7 @@ class TrivelChatbot {
                         </div>
                         <div class="chatbot-info">
                             <h3>Trivel Assistant</h3>
-                            <span class="status">En línea</span>
+                            <span class="status">Online</span>
                         </div>
                     </div>
                     <button id="chatbot-close" class="chatbot-close">
@@ -50,25 +50,25 @@ class TrivelChatbot {
                                 <i class="fas fa-robot"></i>
                             </div>
                             <div class="message-text">
-                                <p>¡Hola! Soy tu asistente virtual de Trivel Panamá. ¿En qué puedo ayudarte hoy? Puedo responder preguntas sobre nuestros destinos, servicios, reservas y más.</p>
+                                <p>Hello! I'm your virtual assistant from Trivel Panama. How can I help you today? I can answer questions about our destinations, services, bookings and more.</p>
                             </div>
                         </div>
-                        <div class="message-time">Ahora</div>
+                        <div class="message-time">Now</div>
                     </div>
                 </div>
 
                 <!-- Quick Actions -->
                 <div class="quick-actions">
-                    <button class="quick-action-btn" data-action="destinos">🌴 Destinos</button>
-                    <button class="quick-action-btn" data-action="reservas">📅 Reservas</button>
-                    <button class="quick-action-btn" data-action="precios">💰 Precios</button>
-                    <button class="quick-action-btn" data-action="contacto">📞 Contacto</button>
+                    <button class="quick-action-btn" data-action="destinos">🌴 Destinations</button>
+                    <button class="quick-action-btn" data-action="reservas">📅 Bookings</button>
+                    <button class="quick-action-btn" data-action="precios">💰 Prices</button>
+                    <button class="quick-action-btn" data-action="contacto">📞 Contact</button>
                 </div>
 
                 <!-- Chat Input -->
                 <div class="chat-input-container">
                     <div class="chat-input-wrapper">
-                        <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." maxlength="500">
+                        <input type="text" id="chat-input" placeholder="Type your message..." maxlength="500">
                         <button id="chat-send" class="chat-send-btn">
                             <i class="fas fa-paper-plane"></i>
                         </button>
@@ -169,7 +169,7 @@ class TrivelChatbot {
             this.addMessage(response, 'bot');
         } catch (error) {
             this.hideTypingIndicator();
-            this.addMessage('Lo siento, estoy teniendo problemas técnicos. Por favor, intenta de nuevo en unos momentos.', 'bot');
+            this.addMessage('Sorry, I\'m having technical issues. Please try again in a few moments.', 'bot');
             console.error('Chatbot error:', error);
         }
     }
@@ -189,7 +189,7 @@ class TrivelChatbot {
         try {
             // Verificar que tenemos el token antes de hacer la llamada
             if (!this.token || this.token === 'YOUR_HUGGING_FACE_TOKEN_HERE') {
-                console.warn('Hugging Face token no configurado. Usando respuesta de fallback.');
+                console.warn('Hugging Face token not configured. Using fallback response.');
                 return this.getFallbackResponse(userMessage);
             }
 
@@ -214,7 +214,7 @@ class TrivelChatbot {
             }
 
             const data = await response.json();
-            let botResponse = data[0]?.generated_text || 'No entiendo tu pregunta. ¿Podrías reformularla?';
+            let botResponse = data[0]?.generated_text || 'I don\'t understand your question. Could you rephrase it?';
 
             // Clean up the response
             botResponse = this.cleanResponse(botResponse, userMessage);
@@ -298,18 +298,18 @@ class TrivelChatbot {
             cleaned = cleaned.substring(0, 200) + '...';
         }
         
-        return cleaned || 'Gracias por tu mensaje. ¿Hay algo específico sobre Panamá en lo que pueda ayudarte?';
+        return cleaned || 'Thank you for your message. Is there something specific about Panama I can help you with?';
     }
 
     handleQuickAction(action) {
         const actions = {
-            'destinos': 'Te cuento sobre nuestros destinos más populares:\n\n🌴 Bocas del Toro - Playas caribeñas y vida marina\n🏝️ San Blas - Islas vírgenes y cultura Guna\n🏄 Playa Venao - Surf y atardeceres\n⭐ Playa Estrella - Estrellas de mar y snorkel\n\n¿Cuál te interesa más?',
-            'reservas': 'Para hacer una reserva puedes:\n\n📱 Llamar al +507 123-4567\n📧 Enviar email a info@trivelpanama.com\n🌐 Usar nuestro formulario web\n\n¿En qué destino quieres reservar?',
-            'precios': 'Nuestros precios varían según el paquete:\n\n💰 Básico: Desde $150/persona\n💎 Premium: Desde $300/persona\n👑 VIP: Desde $500/persona\n\n¿Te gustaría una cotización personalizada?',
-            'contacto': 'Nuestros canales de contacto:\n\n📱 WhatsApp: +507 123-4567\n📧 Email: info@trivelpanama.com\n🌐 Web: trivelpanama.com\n📍 Oficina: Panama City\n\n¿Cuál prefieres usar?'
+            'destinos': 'Let me tell you about our most popular destinations:\n\n🌴 Bocas del Toro - Caribbean beaches and marine life\n🏝️ San Blas - Virgin islands and Guna culture\n🏄 Playa Venao - Surf and sunsets\n⭐ Playa Estrella - Starfish and snorkeling\n\nWhich one interests you most?',
+            'reservas': 'To make a reservation you can:\n\n📱 Call +507 123-4567\n📧 Send email to info@trivelpanama.com\n🌐 Use our web form\n\nWhich destination do you want to book?',
+            'precios': 'Our prices vary by package:\n\n💰 Basic: From $150/person\n💎 Premium: From $300/person\n👑 VIP: From $500/person\n\nWould you like a personalized quote?',
+            'contacto': 'Our contact channels:\n\n📱 WhatsApp: +507 123-4567\n📧 Email: info@trivelpanama.com\n🌐 Web: trivelpanama.com\n📍 Office: Panama City\n\nWhich one do you prefer to use?'
         };
 
-        const response = actions[action] || 'Lo siento, no entiendo esa acción. ¿Puedes ser más específico?';
+        const response = actions[action] || 'Sorry, I don\'t understand that action. Can you be more specific?';
         this.addMessage(response, 'bot');
     }
 
@@ -318,7 +318,7 @@ class TrivelChatbot {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${sender}-message`;
         
-        const time = new Date().toLocaleTimeString('es-ES', { 
+        const time = new Date().toLocaleTimeString('en-US', { 
             hour: '2-digit', 
             minute: '2-digit' 
         });

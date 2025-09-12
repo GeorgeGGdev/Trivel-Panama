@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShoreHouse Market Hub - Trivel Panamá</title>
-    <meta name="description" content="Explora propiedades únicas en nuestro ShoreHouse Market Hub de Trivel Panamá.">
+    <title>ShoreHouse Market Hub - Trivel Panama</title>
+    <meta name="description" content="Explore unique properties in our ShoreHouse Market Hub from Trivel Panama.">
     <link rel="stylesheet" href="../CSS/styles.css">
     <link rel="stylesheet" href="../CSS/dynamic-icons.css">
     <link rel="stylesheet" href="../CSS/hamburger-menu.css">
@@ -156,8 +156,8 @@
             line-height: 1.5;
             margin-bottom: 1.5rem;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
+            line-clamp: 3;
+             vertical-align: middle;
             overflow: hidden;
         }
 
@@ -459,7 +459,7 @@
         </button>
         <div class="logo">
             <a href="../index.html" class="logo-link">
-                <img src="../assets/img/Logo.png" alt="Trivel Panamá Logo" class="logo-img">
+                <img src="../assets/img/Logo.png" alt="Trivel Panama Logo" class="logo-img">
                 <span class="logo-text">Trivel Panama</span>
             </a>
         </div>
@@ -470,17 +470,17 @@
                 <li><a href="marketplace.html">ShoreHouse Market Hub</a></li>
                 <li><a href="ContactUs.html">Contact Us</a></li>
                 <li><a href="FAQs.html">FAQs</a></li>
-                <li><a href="registrar-propiedad.html">Publicar en marketplace</a></li>
+                <li><a href="registrar-propiedad.html">Publish on marketplace</a></li>
             </ul>
         </nav>
         <div class="auth-buttons">
             <button id="loginBtn" class="auth-btn login-btn">
                 <i class="fas fa-sign-in-alt"></i>
-                <span>Iniciar Sesión</span>
+                <span>Sign In</span>
             </button>
             <button id="registerBtn" class="auth-btn register-btn">
                 <i class="fas fa-user-plus"></i>
-                <span>Registrarse</span>
+                <span>Register</span>
             </button>
         </div>
     </header>
@@ -491,16 +491,16 @@
             <!-- Page Header -->
             <div class="page-header">
                 <h1>ShoreHouse Market Hub</h1>
-                <p>Explora propiedades únicas y encuentra tu próximo destino en Panamá.</p>
+                <p>Explore unique properties and find your next destination in Panama.</p>
             </div>
 
             <!-- Filters Section -->
             <div class="filters-section">
                 <div class="filters-grid">
                     <div class="filter-group">
-                        <label for="location-filter">Ubicación</label>
+                        <label for="location-filter">Location</label>
                         <select id="location-filter">
-                            <option value="">Todas las ubicaciones</option>
+                            <option value="">All locations</option>
                             <option value="Bocas del Toro">Bocas del Toro</option>
                             <option value="San Blas">San Blas</option>
                             <option value="Playa Venao">Playa Venao</option>
@@ -508,35 +508,35 @@
                         </select>
                     </div>
                     <div class="filter-group">
-                        <label for="type-filter">Tipo de Propiedad</label>
+                        <label for="type-filter">Property Type</label>
                         <select id="type-filter">
-                            <option value="">Todos los tipos</option>
-                            <option value="casa">Casa</option>
-                            <option value="apartamento">Apartamento</option>
+                            <option value="">All types</option>
+                            <option value="casa">House</option>
+                            <option value="apartamento">Apartment</option>
                             <option value="villa">Villa</option>
-                            <option value="cabaña">Cabaña</option>
-                            <option value="hostal">Hostal</option>
+                            <option value="cabaña">Cabin</option>
+                            <option value="hostal">Hostel</option>
                             <option value="hotel">Hotel</option>
                         </select>
                     </div>
                     <div class="filter-group">
-                        <label for="price-filter">Precio máximo</label>
-                        <input type="number" id="price-filter" placeholder="Precio máximo">
+                        <label for="price-filter">Maximum price</label>
+                        <input type="number" id="price-filter" placeholder="Maximum price">
                     </div>
                     <div class="filter-group">
-                        <label for="guests-filter">Huéspedes</label>
+                        <label for="guests-filter">Guests</label>
                         <select id="guests-filter">
-                            <option value="">Cualquier número</option>
-                            <option value="1-2">1-2 personas</option>
-                            <option value="3-4">3-4 personas</option>
-                            <option value="5-6">5-6 personas</option>
-                            <option value="7+">7+ personas</option>
+                            <option value="">Any number</option>
+                            <option value="1-2">1-2 people</option>
+                            <option value="3-4">3-4 people</option>
+                            <option value="5-6">5-6 people</option>
+                            <option value="7+">7+ people</option>
                         </select>
                     </div>
                     <div class="filter-group">
                         <label>&nbsp;</label>
                         <button id="clear-filters" class="clear-filters-btn">
-                            <i class="fas fa-times"></i> Limpiar Filtros
+                            <i class="fas fa-times"></i> Clear Filters
                         </button>
                     </div>
                 </div>
@@ -547,7 +547,7 @@
                 <!-- Loading State -->
                 <div class="loading-state" id="loading-state">
                     <div class="loading-spinner"></div>
-                    <h3>Cargando propiedades...</h3>
+                    <h3>Loading properties...</h3>
                 </div>
             </div>
         </div>
@@ -568,7 +568,7 @@
                         </div>
                     </div>
                     <p style="color: #ccc; line-height: 1.6; margin-bottom: 1rem; font-size: 0.9rem; max-width: 280px;">
-                        Descubre la magia de Panamá con experiencias únicas y memorables.
+                        Discover the magic of Panama with unique and memorable experiences.
                     </p>
                     <div style="display: flex; gap: 1rem;">
                         <a href="https://facebook.com/trivelpanama" target="_blank" style="color: #fff; font-size: 1.1rem; transition: color 0.3s; opacity: 0.7;" onmouseover="this.style.opacity='1'; this.style.color='#1877f2'" onmouseout="this.style.opacity='0.7'; this.style.color='#fff'"><i class="fab fa-facebook"></i></a>
@@ -579,18 +579,18 @@
                 
                 <!-- Enlaces rápidos -->
                 <div>
-                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Enlaces</h4>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Links</h4>
                     <ul style="list-style: none; padding: 0; margin: 0;">
                         <li style="margin-bottom: 0.8rem;"><a href="../index.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Home</a></li>
-                        <li style="margin-bottom: 0.8rem;"><a href="destinations.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Destinos</a></li>
-                        <li style="margin-bottom: 0.8rem;"><a href="#gallery" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Galería</a></li>
-                        <li style="margin-bottom: 0.8rem;"><a href="ContactUs.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Contacto</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="destinations.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Destinations</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="#gallery" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Gallery</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="ContactUs.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Contact</a></li>
                     </ul>
                 </div>
                 
                 <!-- Destinos -->
                 <div>
-                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Destinos</h4>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Destinations</h4>
                     <ul style="list-style: none; padding: 0; margin: 0;">
                         <li style="margin-bottom: 0.8rem;"><a href="bocas-del-toro.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Bocas del Toro</a></li>
                         <li style="margin-bottom: 0.8rem;"><a href="san-blas.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">San Blas</a></li>
@@ -601,7 +601,7 @@
                 
                 <!-- Contacto -->
                 <div>
-                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Contacto</h4>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Contact</h4>
                     <ul style="list-style: none; padding: 0; margin: 0;">
                         <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">info@trivelpanama.com</li>
                         <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">+507 123-4567</li>
@@ -611,11 +611,11 @@
                 
                 <!-- Publica con nosotros -->
                 <div>
-                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Publica con nosotros</h4>
+                    <h4 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Publish with us</h4>
                     <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="margin-bottom: 0.8rem;"><a href="registrar-propiedad.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Registrar Propiedad</a></li>
-                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">Conecta con viajeros</li>
-                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">Maximiza tus ingresos</li>
+                        <li style="margin-bottom: 0.8rem;"><a href="registrar-propiedad.html" style="color: #ccc; text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#ccc'">Register Property</a></li>
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">Connect with travelers</li>
+                        <li style="margin-bottom: 0.8rem; color: #ccc; font-size: 0.9rem;">Maximize your income</li>
                     </ul>
                 </div>
             </div>
@@ -626,14 +626,14 @@
             <!-- Información legal y certificaciones -->
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
                 <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-                    <a href="#" style="color: #999; text-decoration: none; font-size: 0.8rem; transition: color 0.3s;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#999'">Privacidad</a>
+                    <a href="#" style="color: #999; text-decoration: none; font-size: 0.8rem; transition: color 0.3s;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#999'">Privacy</a>
                     <a href="#" style="color: #999; text-decoration: none; font-size: 0.8rem; transition: color 0.3s;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#999'">Cookies</a>
-                    <a href="#" style="color: #999; text-decoration: none; font-size: 0.8rem; transition: color 0.3s;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#999'">Términos</a>
+                    <a href="#" style="color: #999; text-decoration: none; font-size: 0.8rem; transition: color 0.3s;" onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#999'">Terms</a>
                 </div>
                 
                 <!-- Certificaciones -->
                 <div style="display: flex; gap: 1rem; align-items: center;">
-                    <i class="fas fa-shield-alt" style="color: #ff6b35; font-size: 0.9rem;" title="Sitio Seguro"></i>
+                    <i class="fas fa-shield-alt" style="color: #ff6b35; font-size: 0.9rem;" title="Secure Site"></i>
                     <i class="fas fa-award" style="color: #ff6b35; font-size: 0.9rem;" title="Top Rated"></i>
                     <i class="fas fa-leaf" style="color: #ff6b35; font-size: 0.9rem;" title="Eco Friendly"></i>
                 </div>
@@ -643,7 +643,7 @@
             <div style="text-align: center; padding-top: 1rem;">
                 <p style="color: #666; font-size: 0.8rem; margin: 0;">
                     &copy; 2025 Trivel Panama | 
-                    <span style="color: #ff6b35; font-weight: 500;">Tu aventura comienza aquí</span>
+                    <span style="color: #ff6b35; font-weight: 500;">Your adventure starts here</span>
                 </p>
             </div>
         </div>
@@ -662,7 +662,7 @@
         // Initialize Firebase
         if (typeof firebase === 'undefined') {
             console.error('Firebase not loaded');
-            document.getElementById('loading-state').innerHTML = '<div class="empty-content"><i class="fas fa-exclamation-triangle"></i><h2>Error de Conexión</h2><p>No se pudo conectar con la base de datos. Por favor, recarga la página.</p></div>';
+            document.getElementById('loading-state').innerHTML = '<div class="empty-content"><i class="fas fa-exclamation-triangle"></i><h2>Connection Error</h2><p>Could not connect to the database. Please reload the page.</p></div>';
         }
 
         // Global variable to store all properties
@@ -683,9 +683,9 @@
                     propertiesContainer.innerHTML = `
                         <div class="empty-content">
                             <i class="fas fa-store"></i>
-                            <h2>No hay propiedades disponibles</h2>
-                            <p>Aún no hay propiedades registradas en nuestro ShoreHouse Market Hub. Sé el primero en registrar tu propiedad.</p>
-                            <a href="registrar-propiedad.html" class="contact-button" style="display: inline-block; text-decoration: none; margin-top: 1rem;">Registrar Propiedad</a>
+                            <h2>No properties available</h2>
+                            <p>There are no properties listed in our ShoreHouse Market Hub yet. Be the first to register your property.</p>
+                            <a href="registrar-propiedad.html" class="contact-button" style="display: inline-block; text-decoration: none; margin-top: 1rem;">Register Property</a>
                         </div>
                     `;
                     return;
@@ -738,8 +738,8 @@
                 document.getElementById('properties-container').innerHTML = `
                     <div class="empty-content">
                         <i class="fas fa-exclamation-triangle"></i>
-                        <h2>Error al cargar propiedades</h2>
-                        <p>Hubo un problema al cargar las propiedades. Por favor, intenta de nuevo más tarde.</p>
+                        <h2>Error loading properties</h2>
+                        <p>There was a problem loading properties. Please try again later.</p>
                     </div>
                 `;
             }
@@ -753,8 +753,8 @@
                 propertiesContainer.innerHTML = `
                     <div class="empty-content">
                         <i class="fas fa-search"></i>
-                        <h2>No se encontraron propiedades</h2>
-                        <p>No hay propiedades que coincidan con los filtros seleccionados. Intenta con otros criterios.</p>
+                        <h2>No properties found</h2>
+                        <p>No properties match the selected filters. Try other criteria.</p>
                     </div>
                 `;
                 return;
@@ -781,19 +781,19 @@
                             ${property.images && property.images.length > 0 ? `<img src="${property.images[0]}" alt="${property.propertyName}">` : '<i class="fas fa-home"></i>'}
                         </div>
                         <div class="property-content">
-                            <h3 class="property-title">${property.propertyName || 'Propiedad sin nombre'}</h3>
+                            <h3 class="property-title">${property.propertyName || 'Unnamed property'}</h3>
                             <div class="property-location">
                                 <i class="fas fa-map-marker-alt"></i>
-                                ${property.location || 'Ubicación no especificada'}
+                                ${property.location || 'Location not specified'}
                             </div>
                             <div class="property-details">
                                 <div class="property-detail">
                                     <i class="fas fa-users"></i>
-                                    ${property.capacity || 'N/A'} huéspedes
+                                    ${property.capacity || 'N/A'} guests
                                 </div>
                                 <div class="property-detail">
                                     <i class="fas fa-bed"></i>
-                                    ${property.bedrooms || 'N/A'} habitaciones
+                                    ${property.bedrooms || 'N/A'} bedrooms
                                 </div>
                                 <div class="property-detail">
                                     <i class="fas fa-home"></i>
@@ -801,18 +801,18 @@
                                 </div>
                                 <div class="property-detail">
                                     <i class="fas fa-bath"></i>
-                                    ${property.bathrooms || 'N/A'} baños
+                                    ${property.bathrooms || 'N/A'} bathrooms
                                 </div>
                             </div>
-                            <div class="property-price">$${property.price || 'N/A'}/noche</div>
-                            <p class="property-description">${property.description || 'Sin descripción disponible.'}</p>
+                            <div class="property-price">$${property.price || 'N/A'}/night</div>
+                            <p class="property-description">${property.description || 'No description available.'}</p>
                             ${amenities.length > 0 ? `
                                 <div class="property-amenities">
                                     ${amenities.map(amenity => `<span class="amenity-tag">${amenity.trim()}</span>`).join('')}
                                 </div>
                             ` : ''}
                             <button class="contact-button" onclick="contactOwner('${property.ownerEmail || ''}', '${property.propertyName || ''}', '${property.ownerPhone || property.phone || ''}')">
-                                <i class="fab fa-whatsapp"></i> Contactar Propietario
+                                <i class="fab fa-whatsapp"></i> Contact Owner
                             </button>
                         </div>
                     </div>
@@ -834,14 +834,14 @@
                                     '507' + cleanPhone;
                 
                 // Create WhatsApp URL with property name as message
-                const message = encodeURIComponent(`Hola! Me interesa la propiedad "${propertyName}". ¿Podrías darme más información?`);
+                const message = encodeURIComponent(`Hello! I'm interested in the property "${propertyName}". Could you share more information?`);
                 const whatsappUrl = `https://wa.me/${phoneWithCode}?text=${message}`;
                 
                 window.open(whatsappUrl, '_blank');
             } else if (email) {
-                window.location.href = `mailto:${email}?subject=Consulta sobre ${propertyName}`;
+                window.location.href = `mailto:${email}?subject=Inquiry about ${propertyName}`;
             } else {
-                alert('Información de contacto no disponible para esta propiedad.');
+                alert('Contact information not available for this property.');
             }
         }
 
@@ -1085,11 +1085,11 @@
                     authButtons.innerHTML = `
                         <button id="loginBtn" class="auth-btn login-btn">
                             <i class="fas fa-sign-in-alt"></i>
-                            <span>Iniciar Sesión</span>
+                            <span>Sign In</span>
                         </button>
                         <button id="registerBtn" class="auth-btn register-btn">
                             <i class="fas fa-user-plus"></i>
-                            <span>Registrarse</span>
+                            <span>Register</span>
                         </button>
                     `;
                     // Re-attach event listeners for newly created buttons

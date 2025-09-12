@@ -5,37 +5,37 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             src: '../assets/img/BocasToro.jpeg',
             title: 'Bocas del Toro',
-            desc: 'Un paraíso caribeño con aguas cristalinas y vida marina vibrante'
+            desc: 'A Caribbean paradise with crystal clear waters and vibrant marine life'
         },
         {
             src: '../assets/img/SanBlas.jpg',
             title: 'San Blas',
-            desc: 'Islas prístinas y rica cultura indígena en este paraíso tropical'
+            desc: 'Pristine islands and rich indigenous culture in this tropical paradise'
         },
         {
             src: '../assets/img/venao.jpg',
             title: 'Playa Venao',
-            desc: 'Olas perfectas y atardeceres impresionantes en la costa del Pacífico'
+            desc: 'Perfect waves and impressive sunsets on the Pacific coast'
         },
         {
             src: '../assets/img/Starfish Beach.jpeg',
             title: 'Starfish Beach',
-            desc: 'Un paraíso natural con estrellas de mar y aguas turquesas'
+            desc: 'A natural paradise with starfish and turquoise waters'
         },
         {
             src: '../assets/img/Red Frog Beach.jpg',
             title: 'Red Frog Beach',
-            desc: 'Una playa única con ranas rojas y exuberante vegetación'
+            desc: 'A unique beach with red frogs and lush vegetation'
         },
         {
             src: '../assets/img/Isla Grande.jpg',
             title: 'Isla Grande',
-            desc: 'Una isla caribeña con playas de arena blanca y aguas cristalinas'
+            desc: 'A Caribbean island with white sand beaches and crystal clear waters'
         },
         {
             src: '../assets/img/Taboga Island.jpeg',
             title: 'Isla Taboga',
-            desc: 'La isla de las flores, un refugio pacífico cerca de la ciudad'
+            desc: 'The island of flowers, a peaceful refuge near the city'
         }
     ];
 
