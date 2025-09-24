@@ -954,8 +954,7 @@
         </button>
         <div class="logo">
             <a href="index.html" class="logo-link">
-                <img src="assets/img/Logo.png" alt="Trivel Panama Logo" class="logo-img">
-                <span class="logo-text">Trivel Panama</span>
+                <img src="assets/img/logoo.png" alt="Trivel Logo" class="logo-img">
             </a>
         </div>
         <nav class="nav-menu">
@@ -1943,9 +1942,8 @@
                 <!-- Logo y redes sociales -->
                 <div>
                     <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <img src="assets/img/Logo.png" alt="Trivel Panama" style="height: 45px; border-radius: 8px;">
+                        <img src="assets/img/logoo.png" alt="Trivel Logo" style="height: 50px; width: auto; border-radius: 8px;">
                         <div>
-                            <h3 style="font-size: 1.5rem; font-weight: 600; margin: 0; color: #fff;">Trivel Panama</h3>
                             <span style="color: #ff6b35; font-size: 0.8rem; font-weight: 500;">#TravelWithTrivel</span>
                         </div>
                     </div>
@@ -2538,19 +2536,7 @@
         slide.style.backgroundPositionY = (scrollY * 0.1) + 'px';
       });
     });
-    // Hero carrusel: controles manuales y automáticos
-    function showHeroSlide(idx) {
-      window.heroSlides.forEach((slide, i) => {
-        slide.style.opacity = (i === idx) ? '1' : '0';
-      });
-      document.getElementById('heroTitle').textContent = window.heroTitles[idx];
-      document.getElementById('heroSubtitle').textContent = window.heroSubtitles[idx];
-    }
-    heroInterval = setInterval(() => {
-      window.heroIndex = (window.heroIndex + 1) % window.heroSlides.length;
-      showHeroSlide(window.heroIndex);
-    }, 5000);
-    showHeroSlide(0);
+    // Hero carrusel ya inicializado arriba
     // Controles manuales removidos - carrusel automático únicamente
     // Animación sutil en badges y sellos
     const badges = document.querySelectorAll('.badge-anim');
