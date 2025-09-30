@@ -1054,22 +1054,71 @@
 
     <!-- Validación del formulario de búsqueda -->
     <script>
-    // List of valid destinations (you can expand this list)
-    const destinosValidos = [
-        'bocas del toro', 'bocas', 'toro',
-        'san blas', 'sanblas', 'kuna yala',
-        'taboga', 'isla taboga',
-        'contadora', 'isla contadora',
-        'isla grande', 'islagrande',
-        'playa estrella', 'starfish beach', 'estrella',
-        'playa venao', 'venao',
-        'playa veracruz', 'veracruz',
-        'panamá', 'panama', 'ciudad de panamá', 'panama city',
-        'darién', 'darien',
-        'chiriquí', 'chiriqui', 'boquete',
-        'azueros', 'pedasí', 'pedasi',
-        'colón', 'colon', 'portobelo'
-    ];
+    // Mapeo de destinos a sus respectivas páginas
+    const destinos = {
+        // Bocas del Toro
+        'bocas del toro': 'bocas-del-toro.html',
+        'bocas': 'bocas-del-toro.html',
+        'toro': 'bocas-del-toro.html',
+        
+        // San Blas / Guna Yala
+        'san blas': 'san-blas.html',
+        'sanblas': 'san-blas.html',
+        'kuna yala': 'san-blas.html',
+        'gunayala': 'san-blas.html',
+        
+        // Isla Taboga
+        'taboga': 'isla-taboga.html',
+        'isla taboga': 'isla-taboga.html',
+        
+        // Isla Grande
+        'isla grande': 'isla-grande.html',
+        'islagrande': 'isla-grande.html',
+        
+        // Playa Estrella / Starfish Beach
+        'playa estrella': 'starfish-beach.html',
+        'starfish beach': 'starfish-beach.html',
+        'estrella': 'starfish-beach.html',
+        
+        // Playa Venao
+        'playa venao': 'playa-venao.html',
+        'venao': 'playa-venao.html',
+        
+        // Otras playas
+        'playa veracruz': 'playa-veracruz.html',
+        'veracruz': 'playa-veracruz.html',
+        'playa santa clara': 'playa-santa-clara.html',
+        'santa clara': 'playa-santa-clara.html',
+        'playa farallón': 'playa-farallon-playa-blanca.html',
+        'farallón': 'playa-farallon-playa-blanca.html',
+        'playa blanca': 'playa-farallon-playa-blanca.html',
+        'playa destiladeros': 'playa-destiladeros.html',
+        'destiladeros': 'playa-destiladeros.html',
+        'playa la angosta': 'playa-la-angosta.html',
+        'la angosta': 'playa-la-angosta.html',
+        
+        // Otras ubicaciones
+        'portobelo': 'portobelo.html',
+        'colon': 'portobelo.html',
+        'colón': 'portobelo.html',
+        
+        // Ubicaciones generales (redirigir a la página de destinos)
+        'panamá': 'destinations.html',
+        'panama': 'destinations.html',
+        'ciudad de panamá': 'destinations.html',
+        'panama city': 'destinations.html',
+        'darién': 'destinations.html',
+        'darien': 'destinations.html',
+        'chiriquí': 'destinations.html',
+        'chiriqui': 'destinations.html',
+        'boquete': 'destinations.html',
+        'azueros': 'destinations.html',
+        'pedasí': 'destinations.html',
+        'pedasi': 'destinations.html'
+    };
+    
+    // Lista de nombres de destinos para autocompletado
+    const destinosValidos = Object.keys(destinos);
 
     document.getElementById('searchForm').addEventListener('submit', function(e) {
         e.preventDefault(); // Prevent form submission
@@ -1083,23 +1132,27 @@
             return false;
         }
         
-        // Verify if the destination exists
-        const destinoExiste = destinosValidos.some(destino => 
-            destino.includes(searchTerm) || searchTerm.includes(destino)
-        );
+        // Buscar el destino en el mapeo
+        let destinoEncontrado = null;
+        for (const [key, value] of Object.entries(destinos)) {
+            if (key.includes(searchTerm) || searchTerm.includes(key)) {
+                destinoEncontrado = value;
+                break;
+            }
+        }
         
-        if (destinoExiste) {
-            // Valid destination - redirect to destinations page
-            window.location.href = 'pages/destinations.html';
+        if (destinoEncontrado) {
+            // Redirigir a la página específica del destino
+            window.location.href = 'pages/' + destinoEncontrado;
         } else {
             // Destination doesn't exist - use native validation with custom message
             searchInput.setCustomValidity('This destination does not exist');
             searchInput.reportValidity();
             
-                             // Clear the custom message after showing it
-                 setTimeout(() => {
-                     searchInput.setCustomValidity('');
-                 }, 3000);
+            // Clear the custom message after showing it
+            setTimeout(() => {
+                searchInput.setCustomValidity('');
+            }, 3000);
         }
         
         return false; // Ensure the form is not submitted
@@ -1116,10 +1169,10 @@
             return;
         }
         
-        // Filter destinations that match the search term
+        // Filtrar destinos que coincidan con el término de búsqueda
         const matchingDestinations = destinosValidos.filter(destino => 
             destino.toLowerCase().includes(searchTerm.toLowerCase())
-        );
+        ).slice(0, 5); // Limitar a 5 sugerencias
         
         console.log('Matching destinations:', matchingDestinations); // Debug log
         
@@ -1146,8 +1199,13 @@
     function selectSuggestion(destino) {
         document.getElementById('searchInput').value = destino;
         document.getElementById('searchSuggestions').style.display = 'none';
-        // Automatically redirect when selecting a suggestion
-        window.location.href = 'pages/destinations.html';
+        // Redirigir a la página del destino seleccionado
+        if (destinos[destino]) {
+            window.location.href = 'pages/' + destinos[destino];
+        } else {
+            // Si no se encuentra una página específica, redirigir a la página de destinos
+            window.location.href = 'pages/destinations.html';
+        }
     }
     
     // Clear custom validation and show suggestions when the user starts typing
